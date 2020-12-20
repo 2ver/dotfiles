@@ -10,6 +10,8 @@ export ZSH="/Users/uver/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="spaceship"
 
+unsetopt PROMPT_SP
+
 SPACESHIP_PROMPT_ORDER=(
 user
 dir
@@ -123,6 +125,10 @@ bindkey -M menuselect 'l' vi-forward-char
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+# Named directories
+hash -d v=~/Videos
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

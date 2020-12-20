@@ -6,11 +6,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'tyrannicaltoucan/vim-deep-space'
+"Plug 'rafi/awesome-vim-colorschemes'
+"Plug 'tyrannicaltoucan/vim-deep-space'
 "Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'lervag/vimtex'
 Plug 'ajh17/VimCompletesMe'
+Plug 'pineapplegiant/spaceduck'
 
 call plug#end()
 
@@ -30,10 +31,16 @@ set incsearch "Search as characters are entered
 set hlsearch "Highlights matching searcher
 
 " Colors
-set background=dark
-set termguicolors
-colorscheme deep-space
-hi! Normal ctermbg=NONE guibg=NONE
+"if exists('+termguicolors')
+"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
+"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"
+"  set termguicolors
+"endif
+
+colorscheme spaceduck
+hi Normal ctermbg=NONE
+hi LineNr term=bold cterm=bold ctermbg=NONE
+"hi clear LineNr
 
 " LaTeX settings
 let g:vimtex_view_method = 'skim'
@@ -43,7 +50,8 @@ let g:vimtex_quickfix_ignore_filters = [
       \ '\\headheight is too small'
       \]
 " Key remaps
-nnoremap <C-L> :noh<CR><C-L> "Press to stop highlighting search terms
+nnoremap <silent> <C-l> :noh<CR><C-l> 
+" Press to stop highlighting search terms
 nnoremap <expr> j v:count ? 'j' : 'gj' "Remap k to work in wrapped lines
 nnoremap <expr> k v:count ? 'k' : 'gk' "Remap j to work in wrapped lines
 

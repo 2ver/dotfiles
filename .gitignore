@@ -1,0 +1,5 @@
+.cfg
+~/.newsboat/cache.db
+~/.newsboat/history.cmdline
+~/.newsboat/history.search
+~/.newsboat/urls

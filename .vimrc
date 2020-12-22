@@ -39,6 +39,12 @@ endif
 highlight Normal ctermbg=NONE
 highlight LineNr term=bold cterm=bold ctermbg=NONE
 
+" Change cursor shape
+let &t_SI = "\<Esc>]50;CursorShape=2\x7"
+let &t_SR = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+
 " LaTeX settings
 let g:vimtex_view_method = 'skim'
 let g:vimtex_quickfix_ignore_filters = [
@@ -46,8 +52,10 @@ let g:vimtex_quickfix_ignore_filters = [
       \ 'Over-specification in `v',
       \ '\\headheight is too small'
       \]
+
 " Key remaps
 nnoremap <silent> <C-l> :noh<CR><C-l> 
+
 " Press to stop highlighting search terms
 nnoremap <expr> j v:count ? 'j' : 'gj' "Remap k to work in wrapped lines
 nnoremap <expr> k v:count ? 'k' : 'gk' "Remap j to work in wrapped lines

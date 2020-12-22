@@ -6,12 +6,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
-"Plug 'rafi/awesome-vim-colorschemes'
-"Plug 'tyrannicaltoucan/vim-deep-space'
-"Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'lervag/vimtex'
 Plug 'ajh17/VimCompletesMe'
 Plug 'pineapplegiant/spaceduck'
+Plug 'sonph/onehalf', { 'rtp': 'vim'}
 
 call plug#end()
 
@@ -31,16 +29,15 @@ set incsearch "Search as characters are entered
 set hlsearch "Highlights matching searcher
 
 " Colors
-"if exists('+termguicolors')
-"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
-"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"
-"  set termguicolors
-"endif
+colorscheme onehalfdark
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"
+  set termguicolors
+endif
 
-colorscheme spaceduck
-hi Normal ctermbg=NONE
-hi LineNr term=bold cterm=bold ctermbg=NONE
-"hi clear LineNr
+highlight Normal ctermbg=NONE
+highlight LineNr term=bold cterm=bold ctermbg=NONE
 
 " LaTeX settings
 let g:vimtex_view_method = 'skim'

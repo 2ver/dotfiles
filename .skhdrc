@@ -35,29 +35,29 @@ alt + cmd - k : yabai -m window --swap north
 alt + cmd - l : yabai -m window --swap east
 
 # Move focus container to workspace
-shift + alt - 0x53 : yabai -m window --space 1; yabai -m space --focus 1
-shift + alt - 0x54 : yabai -m window --space 2; yabai -m space --focus 2
-shift + alt - 0x55 : yabai -m window --space 3; yabai -m space --focus 3
-shift + alt - 0x56 : yabai -m window --space 4; yabai -m space --focus 4
-shift + alt - 0x57 : yabai -m window --space 5; yabai -m space --focus 5
-shift + alt - 0x58 : yabai -m window --space 6; yabai -m space --focus 6
-shift + alt - 0x59 : yabai -m window --space 7; yabai -m space --focus 7
-shift + alt - 0x5B : yabai -m window --space 8; yabai -m space --focus 8
+shift + alt - 0x12 : yabai -m window --space 1; yabai -m space --focus 1
+shift + alt - 0x13 : yabai -m window --space 2; yabai -m space --focus 2
+shift + alt - 0x14 : yabai -m window --space 3; yabai -m space --focus 3
+shift + alt - 0x15 : yabai -m window --space 4; yabai -m space --focus 4
+shift + alt - 0x17 : yabai -m window --space 5; yabai -m space --focus 5
+shift + alt - 0x16 : yabai -m window --space 6; yabai -m space --focus 6
+shift + alt - 0x1A : yabai -m window --space 7; yabai -m space --focus 7
+shift + alt - 0x1C : yabai -m window --space 8; yabai -m space --focus 8
 
-shift + alt - 0x5C : yabai -m window --space last; yabai -m space --focus last
+shift + alt - 0x19 : yabai -m window --space last; yabai -m space --focus last
 shift + alt - p : yabai -m window --space prev; yabai -m space --focus prev
 shift + alt - n : yabai -m window --space next; yabai -m space --focus next
 
 # Instant space switching
-lctrl - 0x53 : yabai -m space --focus 1
-lctrl - 0x54 : yabai -m space --focus 2
-lctrl - 0x55 : yabai -m space --focus 3
-lctrl - 0x56 : yabai -m space --focus 4
-lctrl - 0x57 : yabai -m space --focus 5
-lctrl - 0x58 : yabai -m space --focus 6
-lctrl - 0x59 : yabai -m space --focus 7
-lctrl - 0x5B : yabai -m space --focus 8
-lctrl - 0x5C : yabai -m space --focus last
+lctrl - 0x12 : yabai -m space --focus 1
+lctrl - 0x13 : yabai -m space --focus 2
+lctrl - 0x14 : yabai -m space --focus 3
+lctrl - 0x15 : yabai -m space --focus 4
+lctrl - 0x17 : yabai -m space --focus 5
+lctrl - 0x16 : yabai -m space --focus 6
+lctrl - 0x1A : yabai -m space --focus 7
+lctrl - 0x1C : yabai -m space --focus 8
+lctrl - 0x19 : yabai -m space --focus last
 
 # Resize windows
 lctrl + alt - h : yabai -m window --resize left:-40:0 ; \

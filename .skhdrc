@@ -20,7 +20,7 @@ alt - s : osascript -e 'tell application "Spotify" to activate'
 
 alt - v : osascript /Users/uver/Scripts/Open Vivaldi.scpt
 
-alt - t : osascript -e 'tell apllication "Dictionary" to activate'
+alt - t : osascript -e 'tell application "Dictionary" to activate'
 
 # Move managed window
 shift + alt - h : yabai -m window --warp west
@@ -95,15 +95,19 @@ shift + alt - space : \
 alt - f         : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
-# Restart Chunkwm
+# Restart Yabai
 shift + lctrl + alt - r : \
     /usr/bin/env osascript <<< \
         'display notification "Restarting yabai" with title "yabai"'; \
     brew services restart yabai
 
-# Media key test
-# cmd + alt + ctrl - n : osascript -e 'tell application "Spotify" to next track'
+# Change spacing on specified desktop
+lctrl + alt - y : yabai -m space --padding rel:-10:-10:-10:-10
+alt - y : yabai -m space --padding rel:10:10:10:10
 
+# Set space padding default
+lctrl + alt - d : yabai -m space --padding abs:100:100:100:100
+lctrl + alt - b : yabai -m space --padding abs:10:10:10:10
 
 #Default ideas
 

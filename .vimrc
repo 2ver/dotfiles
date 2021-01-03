@@ -29,7 +29,6 @@ set hlsearch "Highlights matching searcher
 
 " System clipboard (and primary selection)
 vnoremap <C-c> "*y :let @+=@*<CR>
-map <C-v> "+P
 
 " Colors
 colorscheme onehalfdark
@@ -42,11 +41,15 @@ colorscheme onehalfdark
 highlight Normal ctermbg=NONE
 highlight LineNr term=bold cterm=bold ctermbg=NONE
 
-" Change cursor shape
-let &t_SI = "\<Esc>]50;CursorShape=2\x7"
-let &t_SR = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" Change cursor shape on Mac
+"let &t_SI = "\<Esc>]50;CursorShape=2\x7"
+"let &t_SR = "\<Esc>]50;CursorShape=1\x7"
+"let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
+" Change cursor shape in Termite
+let &t_SI = "\<Esc>[4 q"
+let &t_SR = "\<Esc>[6 q"
+let &t_EI = "\<Esc>[2 q"
 
 " LaTeX settings
 let g:vimtex_view_method = 'skim'

@@ -19,7 +19,6 @@ filetype plugin indent on
 set so=999 "Keep cursor in center (except at top or bottom)
 set ignorecase "Ignore capitalization when searching
 set smartcase "If searching for 'word', show 'word' and 'Word' but only show 'Word' if searching for 'Word'
-set clipboard=unnamed "Global clipboad
 set nu rnu "Relative line numbers (and show exact number on current line)
 set noswapfile
 set autoindent "Enable auto indentation of lines
@@ -28,13 +27,17 @@ set showmatch "Highlights matching brackets
 set incsearch "Search as characters are entered
 set hlsearch "Highlights matching searcher
 
+" System clipboard (and primary selection)
+vnoremap <C-c> "*y :let @+=@*<CR>
+map <C-v> "+P
+
 " Colors
 colorscheme onehalfdark
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"
-  set termguicolors
-endif
+"if exists('+termguicolors')
+"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
+"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"
+"  set termguicolors
+"endif
 
 highlight Normal ctermbg=NONE
 highlight LineNr term=bold cterm=bold ctermbg=NONE

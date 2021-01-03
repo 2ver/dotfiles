@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/uver/.oh-my-zsh"
+export ZSH="/home/uver/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -13,12 +13,12 @@ ZSH_THEME="spaceship"
 unsetopt PROMPT_SP
 
 SPACESHIP_PROMPT_ORDER=(
-user
-dir
-git
-line_sep
-vi_mode
-char
+	user
+	dir
+	git
+	line_sep
+	vi_mode
+	char
 )
 
 SPACESHIP_PROMPT_ADD_NEWLINE=false
@@ -59,7 +59,7 @@ SPACESHIP_VI_MODE_SHOW=false
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -81,7 +81,7 @@ DISABLE_AUTO_TITLE="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/.oh-my-zsh/themes
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -89,27 +89,14 @@ DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-git
-brew
-osx
-vi-mode
-zsh-syntax-highlighting
-zsh-autosuggestions
+	git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
-
-export RPS1="%{$reset_color%}"
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# vi mode
-export KEYTIMEOUT=1
-
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -126,19 +113,12 @@ bindkey -M menuselect 'l' vi-forward-char
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Named directories
-hash -d v=~/Videos
-
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-source ~/.zshaliases
-test -e /Users/uver/.iterm2_shell_integration.zsh && source /Users/uver/.iterm2_shell_integration.zsh || true
+alias config='/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver'

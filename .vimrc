@@ -51,6 +51,12 @@ let &t_SI = "\<Esc>[4 q"
 let &t_SR = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup End
+
+
 " LaTeX settings
 let g:vimtex_view_method = 'skim'
 let g:vimtex_quickfix_ignore_filters = [

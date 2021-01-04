@@ -90,6 +90,7 @@ SPACESHIP_VI_MODE_SHOW=false
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
+	vi-mode
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
@@ -97,6 +98,41 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# Change cursor shape in vi-mode
+#_fix_cursor() {
+#	echo -ne '\e[4 q'
+#}
+#precmd_functions+=(_fix_cursor)
+
+bindkey -v
+export KEYTIMEOUT=1
+
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+function zle-keymap-select {
+	if [[ ${KEYMAP} == vicmd ]] ||
+		 [[ $1 = 'block' ]]; then
+		echo -ne '\e[2 q'
+	elif [[ ${KEYMAP} == main ]] ||
+			 [[ ${KEYMAP} == viins ]] ||
+			 [[ ${KEYMAP} = '' ]] ||
+			 [[ $1 = 'beam' ]]; then
+		echo -ne '\e[4 q'
+	fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+	zle -K viins
+	echo -ne "\e[4 q"
+}
+zle -N zle-line-init
+echo -ne '\e[4 q'
+preexe() { echo -ne '\e[4 q' ;}
+
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

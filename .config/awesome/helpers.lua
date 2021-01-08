@@ -177,7 +177,7 @@ end
 -- Resize client or factor
 -- Constants --
 local floating_resize_amount = dpi(20)
-local tiling_resize_factor= 0.05
+local tiling_resize_factor= 0.02
 ---------------
 function helpers.resize_dwim(c, direction)
     if c and c.floating then

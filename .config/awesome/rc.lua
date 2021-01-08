@@ -135,7 +135,7 @@ user = {
     -- >> Coronavirus <<
     -- Country to check for corona statistics
     -- Uses the https://corona-stats.online API
-    coronavirus_country = "us",
+    coronavirus_country = "usa",
 }
 -- ===================================================================
 
@@ -314,7 +314,7 @@ awful.screen.connect_for_each_screen(function(s)
     local l = awful.layout.suit -- Alias to save time :)
     -- Tag layouts
     local layouts = {
-        l.corner.nw,
+        l.tile,
         l.tile,
         l.tile,
         l.tile,
@@ -636,7 +636,7 @@ awful.rules.rules = {
         except_any = {
             type = { "dialog" }
         },
-        properties = { floating = true, width = screen_width * 0.45, height = screen_height * 0.55}
+        properties = { floating = false, width = screen_width * 0.45, height = screen_height * 0.55}
     },
 
     -- Screenruler

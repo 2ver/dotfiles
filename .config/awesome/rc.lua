@@ -408,20 +408,12 @@ awful.rules.rules = {
     {
         rule_any = {
             instance = {
-                "DTA",  -- Firefox addon DownThemAll.
                 "copyq",  -- Includes session name in class.
                 "floating_terminal",
-                "riotclientux.exe",
-                "leagueclientux.exe",
-                "Devtools", -- Firefox devtools
             },
             class = {
-                "Gpick",
-                "Lxappearance",
                 "Nm-connection-editor",
                 "File-roller",
-                "fst",
-                "Nvidia-settings",
             },
             name = {
                 "Event Tester",  -- xev
@@ -440,33 +432,12 @@ awful.rules.rules = {
         properties = { floating = true }
     },
 
-    -- TODO why does Chromium always start up floating in AwesomeWM?
-    -- Temporary fix until I figure it out
-    {
-        rule_any = {
-            class = {
-                "Chromium-browser",
-                "Chromium",
-            }
-        },
-        properties = { floating = false }
-    },
-
     -- Fullscreen clients
     {
         rule_any = {
             class = {
-                "lt-love",
-                "portal2_linux",
-                "csgo_linux64",
-                "EtG.x86_64",
-                "factorio",
-                "dota2",
-                "Terraria.bin.x86",
-                "dontstarve_steam",
             },
             instance = {
-                "synthetik.exe",
             },
         },
         properties = { fullscreen = true }
@@ -514,27 +485,12 @@ awful.rules.rules = {
     {
         rule_any = {
             instance = {
-                "install league of legends (riot client live).exe",
-                "gw2-64.exe",
-                "battle.net.exe",
-                "riotclientservices.exe",
-                "leagueclientux.exe",
-                "riotclientux.exe",
-                "leagueclient.exe",
+                "spotify",
                 "^editor$",
                 "markdown_input"
             },
             class = {
                 "qutebrowser",
-                "Sublime_text",
-                "Subl3",
-                --"discord",
-                --"TelegramDesktop",
-                "firefox",
-                "Nightly",
-                "Steam",
-                "Lutris",
-                "Chromium",
                 "^editor$",
                 "markdown_input"
                 -- "Thunderbird",
@@ -570,9 +526,6 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "TelegramDesktop",
-                "firefox",
-                "Nightly",
             },
             type = {
                 "dialog",
@@ -632,7 +585,7 @@ awful.rules.rules = {
     -- Pavucontrol
     {
         rule_any = { class = { "Pavucontrol" } },
-        properties = { floating = true, width = screen_width * 0.45, height = screen_height * 0.8 }
+        properties = { floating = false, width = screen_width * 0.45, height = screen_height * 0.8 }
     },
 
     -- Galculator
@@ -654,22 +607,6 @@ awful.rules.rules = {
             type = { "dialog" }
         },
         properties = { floating = false, width = screen_width * 0.45, height = screen_height * 0.55}
-    },
-
-    -- Screenruler
-    {
-        rule_any = { class = { "Screenruler" } },
-        properties = { border_width = 0, floating = true, ontop = true, titlebars_enabled = false },
-        callback = function (c)
-            awful.placement.centered(c,{honor_padding = true, honor_workarea=true})
-        end
-    },
-
-    -- Keepass
-    {
-        rule_any = { class = { "KeePassXC" } },
-        except_any = { name = { "KeePassXC-Browser Confirm Access" }, type = { "dialog" } },
-        properties = { floating = true, width = screen_width * 0.7, height = screen_height * 0.75},
     },
 
     -- Scratchpad
@@ -774,94 +711,33 @@ awful.rules.rules = {
         end
     },
 
-    -- Magit window
-    {
-        rule = { instance = "Magit" },
-        properties = { floating = true, width = screen_width * 0.55, height = screen_height * 0.6 }
-    },
-
-    -- Steam guard
-    {
-        rule = { name = "Steam Guard - Computer Authorization Required" },
-        properties = { floating = true },
-        -- Such a stubborn window, centering it does not work
-        -- callback = function (c)
-        --     gears.timer.delayed_call(function()
-        --         awful.placement.centered(c,{honor_padding = true, honor_workarea=true})
-        --     end)
-        -- end
-    },
-
     -- MPV
-    {
-        rule = { class = "mpv" },
-        properties = {},
-        callback = function (c)
-            -- Make it floating, ontop and move it out of the way if the current tag is maximized
-            if awful.layout.get(awful.screen.focused()) == awful.layout.suit.max then
-                c.floating = true
-                c.ontop = true
-                c.width = screen_width * 0.30
-                c.height = screen_height * 0.35
-                awful.placement.bottom_right(c, {
-                    honor_padding = true,
-                    honor_workarea = true,
-                    margins = { bottom = beautiful.useless_gap * 2, right = beautiful.useless_gap * 2}
-                })
-            end
+    --{
+    --    rule = { class = "mpv" },
+    --    properties = {},
+    --    callback = function (c)
+    --        -- Make it floating, ontop and move it out of the way if the current tag is maximized
+    --        if awful.layout.get(awful.screen.focused()) == awful.layout.suit.max then
+    --            c.floating = true
+    --            c.ontop = true
+    --            c.width = screen_width * 0.30
+    --            c.height = screen_height * 0.35
+    --            awful.placement.bottom_right(c, {
+    --                honor_padding = true,
+    --                honor_workarea = true,
+    --                margins = { bottom = beautiful.useless_gap * 2, right = beautiful.useless_gap * 2}
+    --            })
+    --        end
 
-            -- Restore `ontop` after fullscreen is disabled
-            -- Sorta tries to fix: https://github.com/awesomeWM/awesome/issues/667
-            c:connect_signal("property::fullscreen", function ()
-                if not c.fullscreen then
-                    c.ontop = true
-                end
-            end)
-        end
-    },
-
-    -- "Fix" games that minimize on focus loss.
-    -- Usually this can be fixed by launching them with
-    -- SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0 but not all games use SDL
-    {
-        rule_any = {
-            instance = {
-                "synthetik.exe"
-            },
-        },
-        properties = {},
-        callback = function (c)
-            -- Unminimize automatically
-            c:connect_signal("property::minimized", function()
-                if c.minimized then
-                    c.minimized = false
-                end
-            end)
-        end
-    },
-
-    -- League of Legends client QoL fixes
-    {
-        rule = { instance = "league of legends.exe" },
-        properties = {},
-        callback = function (c)
-            local matcher = function (c)
-                return awful.rules.match(c, { instance = "leagueclientux.exe" })
-            end
-            -- Minimize LoL client after game window opens
-            for c in awful.client.iterate(matcher) do
-                c.urgent = false
-                c.minimized = true
-            end
-
-            -- Unminimize LoL client after game window closes
-            c:connect_signal("unmanage", function()
-                for c in awful.client.iterate(matcher) do
-                    c.minimized = false
-                end
-            end)
-        end
-    },
+    --        -- Restore `ontop` after fullscreen is disabled
+    --        -- Sorta tries to fix: https://github.com/awesomeWM/awesome/issues/667
+    --        c:connect_signal("property::fullscreen", function ()
+    --            if not c.fullscreen then
+    --                c.ontop = true
+    --            end
+    --        end)
+    --    end
+    --},
 
     ---------------------------------------------
     -- Start application on specific workspace --
@@ -870,8 +746,7 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "firefox",
-                "Nightly",
+                "vivaldi-stable",
                 -- "qutebrowser",
             },
         },
@@ -880,61 +755,28 @@ awful.rules.rules = {
             instance = { "Toolkit" },
             type = { "dialog" }
         },
-        properties = { screen = 1, tag = awful.screen.focused().tags[1] },
+        properties = { screen = 1, tag = awful.screen.focused().tags[2] },
     },
 
-    -- Games
+    -- Social
     {
         rule_any = {
             class = {
-                "underlords",
-                "lt-love",
-                "portal2_linux",
-                "deadcells",
-                "csgo_linux64",
-                "EtG.x86_64",
-                "factorio",
-                "dota2",
-                "Terraria.bin.x86",
-                "dontstarve_steam",
-                "Wine",
-                "trove.exe"
-            },
-            instance = {
-                "love.exe",
-                "synthetik.exe",
-                "pathofexile_x64steam.exe",
-                "leagueclient.exe",
-                "glyphclientapp.exe"
-            },
-        },
-        properties = { screen = 1, tag = awful.screen.focused().tags[2] }
-    },
-
-    -- Chatting
-    {
-        rule_any = {
-            class = {
-                "Chromium",
-                "Chromium-browser",
                 "discord",
-                "TelegramDesktop",
-                "Signal",
-                "Slack",
-                "TeamSpeak 3",
-                "zoom",
                 "weechat",
-                "6cord",
+                "thunderbird",
             },
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[3] }
     },
 
-    -- Editing
+    -- File browser
     {
         rule_any = {
             class = {
-                "^editor$",
+                -- "thunar"
+                -- "pcmanfm"
+                --"^editor$",
                 -- "Emacs",
                 -- "Subl3",
             },
@@ -955,40 +797,35 @@ awful.rules.rules = {
         properties = { screen = 1, tag = awful.screen.focused().tags[5] }
     },
 
-    -- Image editing
+    -- Programming
     {
         rule_any = {
             class = {
-                "Gimp",
-                "Inkscape",
+                "eclipse",
             },
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[6] }
     },
 
-    -- Mail
+    -- Games
     {
         rule_any = {
             class = {
-                "email",
+                "minecraft",
             },
             instance = {
-                "email",
             },
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[7] }
     },
 
-    -- Game clients/launchers
+    -- Music
     {
         rule_any = {
             class = {
-                "Steam",
-                "battle.net.exe",
-                "Lutris",
+                "Spotify",
             },
             name = {
-                "Steam",
             }
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[8] }
@@ -1003,7 +840,6 @@ awful.rules.rules = {
                 "Transmission",
                 "Deluge",
                 "VirtualBox Manager",
-                "KeePassXC"
             },
             instance = {
                 "torrent",

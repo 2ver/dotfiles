@@ -78,11 +78,11 @@ local exit_screen_theme = exit_screen_themes[2]
 user = {
     -- >> Default applications <<
     -- Check apps.lua for more
-    terminal = "termite",
-    floating_terminal = "termite",
-    browser = "vivaldi",
+    terminal = "kitty -1",
+    floating_terminal = "kitty -1",
+    browser = "qutebrowser",
     file_manager = "thunar",
-    editor = "termite -e vim",
+    editor = "kitty -1 --class editor -e vim",
     email_client = "thunderbird",
     music_client = "spotify",
 

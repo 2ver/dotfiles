@@ -267,6 +267,17 @@ awful.layout.layouts = {
     --awful.layout.suit.corner.se,
 }
 
+
+awful.screen.connect_for_each_screen(function(s)
+    s.padding = {
+    left = 30,
+    right = 30,
+    top = 30,
+    bottom = 30,
+    }
+end)
+
+
 -- Wallpaper
 -- ===================================================================
 local function set_wallpaper(s)
@@ -1071,6 +1082,7 @@ client.connect_signal('property::geometry', function(c)
         awful.client.property.set(c, 'floating_geometry', c:geometry())
     end
 end)
+
 
 -- ==============================================================
 -- ==============================================================

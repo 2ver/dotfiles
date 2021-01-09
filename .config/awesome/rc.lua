@@ -72,6 +72,8 @@ local exit_screen_themes = {
 }
 local exit_screen_theme = exit_screen_themes[2]
 -- ===================================================================
+
+
 -- User variables and preferences
 user = {
     -- >> Default applications <<
@@ -106,7 +108,7 @@ user = {
     -- >> Sidebar <<
     sidebar = {
         hide_on_mouse_leave = true,
-        show_on_mouse_screen_edge = true,
+        show_on_mouse_screen_edge = false,
     },
 
     -- >> Lock screen <<
@@ -238,6 +240,10 @@ require("elemental.microphone_overlay")
 require("evil")
 -- ===================================================================
 -- ===================================================================
+
+-- {{{ Autorun
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
+-- }}}
 
 -- Get screen geometry
 -- I am using a single screen setup and I assume that screen geometry will not

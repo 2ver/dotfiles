@@ -516,7 +516,7 @@ sidebar:setup {
                 helpers.vertical_pad(dpi(25)),
                 layout = wibox.layout.fixed.vertical
             },
-            shape = helpers.prrect(beautiful.sidebar_border_radius, false, true, false, false),
+            shape = helpers.prrect(beautiful.sidebar_border_radius, true, false, false, false),
             bg = x.color0.."66",
             widget = wibox.container.background
         },
@@ -548,7 +548,7 @@ sidebar:setup {
         },
         layout = wibox.layout.align.vertical,
     },
-    shape = helpers.prrect(beautiful.sidebar_border_radius, false, true, false, false),
+    shape = helpers.prrect(beautiful.sidebar_border_radius, true, false, false, true),
     bg = beautiful.sidebar_bg or beautiful.wibar_bg or "#111111",
     widget = wibox.container.background
 }

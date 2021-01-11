@@ -9,7 +9,8 @@ Plug 'ervandew/supertab'
 Plug 'lervag/vimtex'
 Plug 'ajh17/VimCompletesMe'
 Plug 'pineapplegiant/spaceduck'
-Plug 'sonph/onehalf', { 'rtp': 'vim'}
+"Plug 'sonph/onehalf', { 'rtp': 'vim'}
+Plug 'dracula/vim', { 'as': 'dracula'}
 
 call plug#end()
 
@@ -21,17 +22,19 @@ set ignorecase "Ignore capitalization when searching
 set smartcase "If searching for 'word', show 'word' and 'Word' but only show 'Word' if searching for 'Word'
 set nu rnu "Relative line numbers (and show exact number on current line)
 set noswapfile
+set clipboard=unnamedplus
 set autoindent "Enable auto indentation of lines
 set smartindent "Allow Vim to best-effort guess the indentation
 set showmatch "Highlights matching brackets
 set incsearch "Search as characters are entered
 set hlsearch "Highlights matching searcher
+set matchpairs+=<:>
 
 " System clipboard (and primary selection)
 vnoremap <C-c> "*y :let @+=@*<CR>
 
 " Colors
-colorscheme onehalfdark
+colorscheme dracula
 "if exists('+termguicolors')
 "  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
 "  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"

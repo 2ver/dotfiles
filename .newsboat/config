@@ -45,6 +45,6 @@ highlight article "\\[[0-9][0-9]*\\]" color66 default bold
 highlight article "\\[image [0-9][0-9]*\\]" color109 default bold
 highlight article "\\[embedded flash: [0-9][0-9]*\\]" color66 default bold
 
-browser vivaldi
+browser qutebrowser
 macro , open-in-browser
-macro m set browser "/usr/bin/mpv %u" ; open-in-browser ; set browser vivaldi
+macro m set browser "/usr/bin/mpv %u" ; open-in-browser ; set browser qutebrowser

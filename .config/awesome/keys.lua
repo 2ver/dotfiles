@@ -149,12 +149,14 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "equal",
         function ()
             awful.tag.incgap(5, nil)
+            --awful.tag.incmwfact(5, nil)
         end,
         {description = "increment gaps size for the current tag", group = "gaps"}
     ),
     awful.key({ superkey }, "minus",
         function ()
             awful.tag.incgap(-5, nil)
+            --awful.tag.incmwfact(5, nil)
         end,
         {description = "decrement gap size for the current tag", group = "gaps"}
     ),

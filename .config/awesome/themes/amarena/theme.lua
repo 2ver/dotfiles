@@ -49,28 +49,30 @@ theme.screen_margin = dpi(5)
 
 -- Borders
 theme.border_width  = dpi(0)
--- theme.border_color = x.color0
-theme.border_normal = x.background
-theme.border_focus  = x.background
+theme.border_color = x.color0
+--theme.border_normal = x.background
+--theme.border_focus  = x.background
 -- Rounded corners
-theme.border_radius = dpi(6)
+--theme.border_radius = dpi(6)
+theme.border_radius = dpi(0)
 
 -- Titlebars
 -- (Titlebar items can be customized in titlebars.lua)
 theme.titlebars_enabled = true
-theme.titlebar_size = dpi(35)
+theme.titlebar_size = dpi(25)
 theme.titlebar_title_enabled = false
 theme.titlebar_font = "sans bold 9"
 -- Window title alignment: left, right, center
 theme.titlebar_title_align = "center"
 -- Titlebar position: top, bottom, left, right
 theme.titlebar_position = "top"
-theme.titlebar_bg = x.background
--- theme.titlebar_bg_focus = x.color12
--- theme.titlebar_bg_normal = x.color8
-theme.titlebar_fg_focus = x.background
-theme.titlebar_fg_normal = x.color8
---theme.titlebar_fg = x.color7
+--theme.titlebar_bg = x.background
+theme.titlebar_bg = x.color17
+theme.titlebar_bg_focus = x.color17
+theme.titlebar_bg_normal = x.color17
+theme.titlebar_fg_focus = x.color17
+theme.titlebar_fg_normal = x.color17
+theme.titlebar_fg = x.color17
 
 -- Notifications
 -- ============================
@@ -171,7 +173,7 @@ theme.tasklist_align = "center"
 theme.sidebar_bg = x.background
 theme.sidebar_fg = x.color7
 theme.sidebar_opacity = 1
-theme.sidebar_position = "left" -- left or right
+theme.sidebar_position = "right" -- left or right
 theme.sidebar_width = dpi(300)
 theme.sidebar_x = 0
 theme.sidebar_y = 0

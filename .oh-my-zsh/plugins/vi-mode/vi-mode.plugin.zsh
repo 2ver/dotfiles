@@ -3,6 +3,11 @@ function zle-keymap-select() {
   # update keymap variable for the prompt
   VI_KEYMAP=$KEYMAP
 
+  #case $KEYMAP in
+  #  vicmd) print -n -- "\E]50;CursorShape=0\C-G";;
+  #  viins|main) print -n -- "\E]50;CursorShape=2\C-G";;
+  #esac
+
   case $KEYMAP in
     vicmd) print -n -- "\E]50;CursorShape=0\C-G";;
     viins|main) print -n -- "\E]50;CursorShape=2\C-G";;

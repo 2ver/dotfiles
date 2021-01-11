@@ -13,7 +13,7 @@ apps.browser = function ()
     awful.spawn(user.browser, { switchtotag = true })
 end
 apps.file_manager = function ()
-    awful.spawn(user.file_manager, { floating = true })
+    awful.spawn(user.file_manager, { floating = false })
 end
 apps.telegram = function ()
     helpers.run_or_raise({class = 'TelegramDesktop'}, false, "telegram", { switchtotag = true })
@@ -23,10 +23,10 @@ apps.discord = function ()
     -- >> Ubuntu / Debian
     -- helpers.run_or_raise({instance = 'discordapp.com__channels_@me'}, false, "chromium-browser --app=\"https://discordapp.com/channels/@me\"")
     -- >> Arch
-    helpers.run_or_raise({instance = 'discordapp.com__channels_@me'}, false, "chromium --app=\"https://discordapp.com/channels/@me\"")
+    --helpers.run_or_raise({instance = 'discordapp.com__channels_@me'}, false, "chromium --app=\"https://discordapp.com/channels/@me\"")
 
     -- Run or raise Discord app
-    -- helpers.run_or_raise({class = 'discord'}, false, "discord")
+    helpers.run_or_raise({class = 'discord'}, false, "discord")
 end
 apps.weechat = function ()
     helpers.run_or_raise({instance = 'weechat'}, true, user.terminal.." --class weechat -e weechat")

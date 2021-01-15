@@ -551,8 +551,15 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "F2", apps.file_manager,
         {description = "file manager", group = "launcher"}),
     -- Spawn music client
-    awful.key({ superkey }, "F3", apps.music,
-        {description = "music client", group = "launcher"}),
+    --awful.key({ superkey }, "F3", apps.music_client,
+    --    {description = "music client", group = "launcher"}),
+    
+    awful.key({superkey}, "F3",
+        function()
+            awful.spawn.with_shell("kitty -o font_size=12 --class music -e ncmpcpp")
+        end,
+            {description = "music client", group = "launcher"}),
+
     -- Spawn cava in a terminal
     awful.key({ superkey }, "F4", function() awful.spawn("visualizer") end,
         {description = "cava", group = "launcher"}),

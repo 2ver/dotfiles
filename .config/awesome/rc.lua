@@ -84,7 +84,7 @@ user = {
     file_manager = "thunar",
     editor = "kitty -1 --class editor -e vim",
     email_client = "thunderbird",
-    music_client = "spotify",
+    music_client = "kitty -o font_size=12 --class music -e ncmpcpp",
 
     -- >> Web Search <<
     web_search_cmd = "xdg-open https://duckduckgo.com/?q=",

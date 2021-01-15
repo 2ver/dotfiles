@@ -84,7 +84,7 @@ user = {
     file_manager = "thunar",
     editor = "kitty -1 --class editor -e vim",
     email_client = "thunderbird",
-    music_client = "kitty -o font_size=12 --class music -e ncmpcpp",
+    music_client = "kitty -o font_size=14 --class music -e ncmpcpp",
 
     -- >> Web Search <<
     web_search_cmd = "xdg-open https://duckduckgo.com/?q=",
@@ -665,8 +665,8 @@ awful.rules.rules = {
         },
         properties = {
             floating = true,
-            width = screen_width * 0.45,
-            height = screen_height * 0.50
+            width = screen_width * 0.70,
+            height = screen_height * 0.70
         },
     },
 

@@ -241,6 +241,13 @@ keys.globalkeys = gears.table.join(
                                                 end,
         {description = "spawn floating terminal", group = "launcher"}),
 
+    -- Spawn browser
+    awful.key({superkey}, "b",
+        function()
+            awful.spawn(user.browser)
+        end,
+            {description = "spawn browser", group = "launcher"}),
+
     -- Reload Awesome
     awful.key({ superkey, ctrlkey }, "r", awesome.restart,
         {description = "reload awesome", group = "awesome"}),
@@ -573,8 +580,8 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "grave", function() sidebar_toggle() end,
         {description = "show or hide sidebar", group = "awesome"}),
     -- Toggle wibar(s)
-    awful.key({ superkey }, "b", function() wibars_toggle() end,
-        {description = "show or hide wibar(s)", group = "awesome"}),
+    --awful.key({ superkey }, "b", function() wibars_toggle() end,
+    --    {description = "show or hide wibar(s)", group = "awesome"}),
     -- Emacs (O for org mode)
     --awful.key({ superkey }, "o", apps.org,
     --    {description = "emacs", group = "launcher"}),

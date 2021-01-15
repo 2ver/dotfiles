@@ -1,38 +1,106 @@
 mpd_host = "localhost"
 mpd_port = "6600"
 
-#main_window_highlight_color = "white"
-current_item_prefix = "$(white)$r"
-current_item_suffix = "$/r$(end)"
-
-progressbar_look = "▁▁▁"
-progressbar_color = "black"
-progressbar_elapsed_color = "white"
-
-song_list_format = " $8%a • %t"
-song_status_format = "$5%t  • $7%a • $3%b"
-
-now_playing_prefix = "$b$7▶ "
-now_playing_suffix = "$8$/b"
-
-song_columns_list_format = "(42)[158]{t|f} (32)[160]{a}"
-#song_columns_list_format = "(42)[yellow]{t|f} (32)[red]{a}"
-
-player_state_color = "181"
-
-color1 = "cyan"
-color2 = "white"
-
-mouse_support = "yes"
-header_visibility = "no"
-statusbar_visibility = "yes"
-playlist_display_mode = "columns" (classic/columns)
+# Behaviour
+playlist_disable_highlight_delay = 2
 autocenter_mode = "yes"
 centered_cursor = "yes"
+ignore_leading_the = "yes"
+allow_for_physical_item_deletion = "no"
+
+# Appearance
+colors_enabled = "yes"
+playlist_display_mode = "columns"
+user_interface = classic
+volume_color = "white"
+
+# Window
+song_window_title_format = "Music"
+statusbar_visibility = "no"
+header_visibility = "no"
 titles_visibility = "no"
-enable_window_title = "no"
-display_remaining_time = "no"
+
+# Progress bar
+progressbar_look = "▂▂▂"
+progressbar_color = "black"
+progressbar_elapsed_color = "yellow"
+
+# Alternative UI
+alternative_ui_separator_color = "black"
+alternative_header_first_line_format = $b$5«$/b$5« $b$8{%t}|{%f}$/b $5»$b$5»$/b
+alternative_header_second_line_format = {$b{$2%a$9}{ - $7%b$9}{ ($2%y$9)}}|{%D}
+
+# Song list
+song_status_format = "$7%t"
+song_list_format = "  %t $R%a %l  "
+song_columns_list_format = "(53)[white]{tr} (45)[blue]{a}"
+song_library_format = {{%a - %t} (%b)}|{%f}
+
+# Colors
+main_window_color = "blue"
+current_item_prefix = "$(blue)$r"
+current_item_suffix = "$/r$(end)"
+current_item_inactive_column_prefix = red
+current_item_inactive_column_suffix = red
+
+color1 = "white"
+color2 = "red"
 
 
 
-space_add_mode = "add_remove"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#main_window_highlight_color = "white"
+#current_item_prefix = "$(white)$r"
+#current_item_suffix = "$/r$(end)"
+#
+#progressbar_look = "▁▁▁"
+#progressbar_color = "black"
+#progressbar_elapsed_color = "white"
+#
+#song_list_format = " $8%a • %t"
+#song_status_format = "$5%t  • $7%a • $3%b"
+#
+#now_playing_prefix = "$b$7▶ "
+#now_playing_suffix = "$8$/b"
+#
+#song_columns_list_format = "(42)[158]{t|f} (32)[160]{a}"
+#song_columns_list_format = "(42)[yellow]{t|f} (32)[red]{a}"
+#
+#player_state_color = "181"
+#
+#color1 = "cyan"
+#color2 = "white"
+#
+#mouse_support = "yes"
+#header_visibility = "no"
+#statusbar_visibility = "yes"
+#playlist_display_mode = "columns" (classic/columns)
+#autocenter_mode = "yes"
+#centered_cursor = "yes"
+#titles_visibility = "no"
+#enable_window_title = "no"
+#display_remaining_time = "no"
+#
+#
+#
+#space_add_mode = "add_remove"

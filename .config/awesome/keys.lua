@@ -225,6 +225,13 @@ keys.globalkeys = gears.table.join(
         end,
         {description = "go back", group = "tag"}),
 
+    -- Toggle interal screen
+    awful.key({ superkey, ctrlkey }, "s", 
+        function ()
+            awful.spawn.with_shell("~/.config/awesome/monitor.sh")
+        end,
+        {description = "toggle interal display", group = "display"}),
+
     -- Spawn terminal
     awful.key({ superkey }, "Return", function () awful.spawn(user.terminal) end,
         {description = "open a terminal", group = "launcher"}),

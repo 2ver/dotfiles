@@ -68,10 +68,10 @@ theme.titlebar_title_align = "center"
 theme.titlebar_position = "top"
 --theme.titlebar_bg = x.background
 theme.titlebar_bg = x.color17
-theme.titlebar_bg_focus = x.color17
-theme.titlebar_bg_normal = x.color17
-theme.titlebar_fg_focus = x.color17
-theme.titlebar_fg_normal = x.color17
+--theme.titlebar_bg_focus = x.color17
+--theme.titlebar_bg_normal = x.color17
+--theme.titlebar_fg_focus = x.color17
+--theme.titlebar_fg_normal = x.color17
 theme.titlebar_fg = x.color17
 
 -- Notifications

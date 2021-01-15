@@ -83,6 +83,12 @@ SPACESHIP_VI_MODE_SHOW=false
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
+# Kitty zsh integration
+autoload -Uz compinit
+compinit
+kitty + complete setup zsh | source /dev/stdin
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/

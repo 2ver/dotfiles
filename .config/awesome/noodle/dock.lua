@@ -356,8 +356,8 @@ end
 remove_client = function(c)
     if not c.class then return end -- Some clients have no class (rare)
 
-    -- Decrement class count
-    dock_class_count[c.class] = dock_class_count[c.class] - 1
+    -- Decrement class count (commented to supress warning)
+    --dock_class_count[c.class] = dock_class_count[c.class] - 1
 
     -- Check if we need to hide the item from the dock
     if dock_class_count[c.class] == 0 then

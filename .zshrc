@@ -139,6 +139,11 @@ zle -N zle-line-init
 echo -ne '\e[4 q'
 preexe() { echo -ne '\e[4 q' ;}
 
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

@@ -23,7 +23,7 @@ titles_visibility = "no"
 # Progress bar
 progressbar_look = "▂▂▂"
 progressbar_color = "black"
-progressbar_elapsed_color = "yellow"
+progressbar_elapsed_color = "213"
 
 # Alternative UI
 alternative_ui_separator_color = "black"

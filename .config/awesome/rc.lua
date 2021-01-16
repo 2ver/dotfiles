@@ -184,7 +184,8 @@ local naughty = require("naughty")
 
 -- Load theme
 local theme_dir = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme .. "/"
-beautiful.init(theme_dir .. "theme.lua")
+--beautiful.init(theme_dir .. "theme.lua")
+beautiful.init("~/.config/awesome/themes/amarena/theme.lua")
 
 -- Error handling
 -- ===================================================================
@@ -462,16 +463,15 @@ awful.rules.rules = {
                 "dialog",
             },
             class = {
-                "Steam",
                 "discord",
                 "music",
-                "markdown_input",
-                "scratchpad",
+                --"markdown_input",
+                --"scratchpad",
             },
             instance = {
                 "music",
-                "markdown_input",
-                "scratchpad",
+                --"markdown_input",
+                --"scratchpad",
             },
             role = {
                 "GtkFileChooserDialog",
@@ -485,14 +485,13 @@ awful.rules.rules = {
     {
         rule_any = {
             instance = {
-                "spotify",
                 "^editor$",
-                "markdown_input"
+                --"markdown_input"
             },
             class = {
                 "qutebrowser",
                 "^editor$",
-                "markdown_input"
+                --"markdown_input"
                 -- "Thunderbird",
             },
             type = {
@@ -666,7 +665,8 @@ awful.rules.rules = {
         properties = {
             floating = true,
             width = screen_width * 0.70,
-            height = screen_height * 0.70
+            height = screen_height * 0.70,
+            tag = awful.screen.focused().tags[8]
         },
     },
 
@@ -746,7 +746,6 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "vivaldi-stable",
                 -- "qutebrowser",
             },
         },
@@ -763,7 +762,7 @@ awful.rules.rules = {
         rule_any = {
             class = {
                 "discord",
-                "weechat",
+                --"weechat",
                 "thunderbird",
             },
         },
@@ -803,6 +802,9 @@ awful.rules.rules = {
             class = {
                 "eclipse",
             },
+            instance = {
+                "eclipse"
+            }
         },
         properties = { screen = 1, tag = awful.screen.focused().tags[6] }
     },
@@ -823,14 +825,19 @@ awful.rules.rules = {
     {
         rule_any = {
             class = {
-                "Spotify",
+                "spotify",
             },
             name = {
-            }
-        },
-        properties = { screen = 1, tag = awful.screen.focused().tags[8] }
-    },
+                "spotify",
+            },
+            instance = {
+                "spotify"
+            },
 
+        },
+        properties = {  screen = 1, tag = awful.screen.focused().tags[8] }
+    },
+    
     -- Miscellaneous
     -- All clients that I want out of my way when they are running
     {

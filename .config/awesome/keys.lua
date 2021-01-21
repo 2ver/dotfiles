@@ -386,17 +386,17 @@ keys.globalkeys = gears.table.join(
     -- Volume Control with volume keys
     awful.key( { }, "XF86AudioMute",
         function()
-            helpers.volume_control(0)
+            awful.spawn.with_shell("pulseaudio-ctl mute")
         end,
         {description = "(un)mute volume", group = "volume"}),
     awful.key( { }, "XF86AudioLowerVolume",
         function()
-            helpers.volume_control(-5)
+            awful.spawn.with_shell("pulseaudio-ctl down")
         end,
         {description = "lower volume", group = "volume"}),
     awful.key( { }, "XF86AudioRaiseVolume",
         function()
-            helpers.volume_control(5)
+            awful.spawn.with_shell("pulseaudio-ctl up")
         end,
         {description = "raise volume", group = "volume"}),
 

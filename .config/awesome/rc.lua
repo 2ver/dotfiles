@@ -81,7 +81,7 @@ user = {
     terminal = "kitty -1",
     floating_terminal = "kitty -1",
     browser = "qutebrowser",
-    file_manager = "thunar",
+    file_manager = "pcmanfm",
     editor = "kitty -1 --class editor -e vim",
     email_client = "thunderbird",
     music_client = "kitty -o font_size=14 --class music -e ncmpcpp",

@@ -22,6 +22,15 @@ def_key "l"
 def_key "l"
 	enter_directory
 
+def_key "v"
+    select_item
+def_key "ctrl-v"
+    remove_selection
+def_key "V"
+    select_range
+def_key "ctrl-r"
+    reverse_selection
+
 def_key "."
 	show_lyrics
 
@@ -45,10 +54,19 @@ def_key "d"
 def_key "0"
 	replay_song
 
+def_key "r"
+    toggle_random
+def_key "R"
+    toggle_repeat
+def_key "x"
+    toggle_consume
+
 def_key "J"
-	move_sort_order_down
+	move_selected_items_down
 def_key "K"
-	move_sort_order_up
+	move_selected_items_up
 
 def_key "space"
 	pause
+
+#unbind keys

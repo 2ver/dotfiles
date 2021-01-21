@@ -23,8 +23,11 @@ set ignorecase "Ignore capitalization when searching"
 set smartcase "If searching for 'word', show 'word' and 'Word' but only show 'Word' if searching for 'Word'"
 set nu rnu "Relative line numbers (and show exact number on current line)"
 set noswapfile
-set clipboard=unnamedplus
+"set clipboard=unnamedplus"
 set autoindent "Enable auto indentation of lines"
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
 set smartindent "Allow Vim to best-effort guess the indentation"
 set showmatch "Highlights matching brackets"
 set incsearch "Search as characters are entered"

@@ -438,9 +438,9 @@ keys.globalkeys = gears.table.join(
     -- Screenshots
     awful.key( { }, "Print", function() apps.screenshot("full") end,
         {description = "take full screenshot", group = "screenshots"}),
-    awful.key( { superkey, shiftkey }, "c", function() apps.screenshot("selection") end,
+    awful.key( { superkey, shiftkey, altkey }, "3", function() apps.screenshot("selection") end,
         {description = "select area to capture", group = "screenshots"}),
-    awful.key( { superkey, shiftkey, altkey }, "4", function() apps.screenshot("clipboard") end,
+    awful.key( { superkey, shiftkey}, "c", function() apps.screenshot("clipboard") end,
         {description = "select area to copy to clipboard", group = "screenshots"}),
     awful.key( { superkey }, "Print", function() apps.screenshot("browse") end,
         {description = "browse screenshots", group = "screenshots"}),

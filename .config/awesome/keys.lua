@@ -336,7 +336,7 @@ keys.globalkeys = gears.table.join(
     -- Run program (d for dmenu ;)
     awful.key({ superkey }, "space",
         function()
-            awful.spawn.with_shell("rofi -matching fuzzy -show combi")
+            awful.spawn.with_shell("rofi -matching fuzzy -show run")
         end,
         {description = "rofi launcher", group = "launcher"}),
 

@@ -1,5 +1,5 @@
 configuration {
-    modi: "combi,windowcd,run";
+    modi: "run,windowcd,combi";
     lines: 10;
     columns: 2;
     font: "sans 13";

@@ -757,11 +757,11 @@ keys.clientkeys = gears.table.join(
 
     -- P for pin: keep on top OR sticky
     -- On top
-    --awful.key({ superkey, shiftkey }, "p", function (c) c.ontop = not c.ontop end,
-    --    {description = "toggle keep on top", group = "client"}),
+    awful.key({ superkey, shiftkey }, "p", function (c) c.ontop = not c.ontop end,
+        {description = "toggle keep on top", group = "client"}),
     -- Sticky
-    --awful.key({ superkey, ctrlkey }, "p", function (c) c.sticky = not c.sticky end,
-    --    {description = "toggle sticky", group = "client"}),
+    awful.key({ superkey, ctrlkey }, "p", function (c) c.sticky = not c.sticky end,
+        {description = "toggle sticky", group = "client"}),
 
     -- Minimize
     awful.key({ superkey,           }, "n",

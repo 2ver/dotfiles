@@ -126,7 +126,7 @@ keys.globalkeys = gears.table.join(
         {description = "focus right", group = "client"}),
 
     -- Window switcher
-    awful.key({ superkey }, "Tab",
+    awful.key({ superkey, ctrlkey }, "Escape",
         function ()
             window_switcher_show(awful.screen.focused())
         end,
@@ -207,17 +207,17 @@ keys.globalkeys = gears.table.join(
     -- Urgent or Undo:
     -- Jump to urgent client or (if there is no such client) go back
     -- to the last tag
-    awful.key({ superkey,           }, "u",
-        function ()
-            uc = awful.client.urgent.get()
-            -- If there is no urgent client, go back to last tag
-            if uc == nil then
-                awful.tag.history.restore()
-            else
-                awful.client.urgent.jumpto()
-            end
-        end,
-        {description = "jump to urgent client", group = "client"}),
+    --awful.key({ superkey,           }, "u",
+    --    function ()
+    --        uc = awful.client.urgent.get()
+    --        -- If there is no urgent client, go back to last tag
+    --        if uc == nil then
+    --            awful.tag.history.restore()
+    --        else
+    --            awful.client.urgent.jumpto()
+    --        end
+    --    end,
+    --    {description = "jump to urgent client", group = "client"}),
 
     awful.key({ superkey,           }, "x",
         function ()

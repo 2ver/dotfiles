@@ -15,6 +15,13 @@ def filter_yt(info:interceptor.Request):
         info.block()
 
 interceptor.register(filter_yt)
+
+config.load_autoconfig()
+
+config.set("colors.webpage.darkmode.enabled", True)
+#c.content.user_stylesheets = ['~/.config/qutebrowser/css/duolingo-dark.css']
+
+
 # Mpv keybindings
 config.bind(',M', 'spawn mpv {url}')
 config.bind(',m', 'hint links spawn mpv {hint-url}')

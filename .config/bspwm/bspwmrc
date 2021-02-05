@@ -3,29 +3,39 @@
 # Autostart
 ~/.fehbg
 ~/.config/awesome/autorun.sh
+picom &
 
+# For sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+# Monitor(s)
 bspc monitor HDMI-1 -d I II III IV V VI VII VIII IX X
-bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+#bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+bspc config remove_disabled_monitors    true
+bspc config remove_unplugged_monitors   true
 
-bspc config border_width         0
+# Gaps
 bspc config top_padding         50
 bspc config right_padding       50
 bspc config bottom_padding      50
 bspc config left_padding        50
-bspc config window_gap          10
+bspc config window_gap           8
+bspc config border_width         0
 
-bspc config split_ratio          0.52
+# Global
+bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc config pointer_modifier            mod4
-bspc config focus_follows_pointer       true
+# Mouse
+bspc config pointer_modifier        mod4
+bspc config click_to_focus          none
+bspc config focus_follows_pointer   true
 
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
+bspc rule -a Discord desktop='^3' follow=on
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off

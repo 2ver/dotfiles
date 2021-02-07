@@ -34,7 +34,7 @@ set incsearch "Search as characters are entered"
 set hlsearch "Highlights matching searcher"
 
 " System clipboard (and primary selection) "
-"vnoremap <C-c> "*y :let @+=@*<CR>
+vnoremap <C-c> "*y :let @+=@*<CR>
 
 " Colors "
 colorscheme lena

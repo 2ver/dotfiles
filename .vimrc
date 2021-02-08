@@ -33,8 +33,12 @@ set showmatch "Highlights matching brackets"
 set incsearch "Search as characters are entered"
 set hlsearch "Highlights matching searcher"
 
-" System clipboard (and primary selection) "
+" System clipboard (and primary selection)"
 vnoremap <C-c> "*y :let @+=@*<CR>
+
+" Tab cycling"
+nnoremap H gT
+nnoremap L gt
 
 " Colors "
 colorscheme lena

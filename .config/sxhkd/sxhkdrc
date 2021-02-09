@@ -14,6 +14,15 @@ super + @space
 super + b
     qutebrowser
 
+super + p
+    bwmenu --auto-lock -1
+
+super + alt + p
+    kitty -e htop
+
+super + F2
+    pcmanfm
+
 super + F3
     kitty -o font_size=12 -e ncmpcpp
 
@@ -61,6 +70,9 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
     pulseaudio-ctl up
 
+XF86AudioPlay
+    playerctl play-pause
+
 #
 # state/flags
 #
@@ -104,8 +116,11 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+super + {_,alt + }{1-9,0}
+	bspc {desktop -f,node --to-desktop} '^{1-9,10}' --follow
+
+super + shift + {1-9,0}
+    bspc node --to-desktop '^{1-9,10}'
 
 #
 # preselect

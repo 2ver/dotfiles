@@ -33,9 +33,7 @@ bspc config click_to_focus          none
 bspc config focus_follows_pointer   true
 
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Gimp desktop='^6' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a Discord desktop='^3' follow=on
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off

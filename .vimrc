@@ -64,8 +64,9 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 
-" System clipboard (and primary selection)"
+" System clipboard (and primary selection)
 vnoremap <C-c> "*y :let @+=@*<CR>
+
 " -- }}}
 
 " -- {{{ Split and tab customization

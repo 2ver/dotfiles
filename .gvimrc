@@ -1,4 +1,10 @@
 colorscheme lena
+
+set guioptions=Ace
+set guicursor=n-v-c:blinkon0
+set guicursor=i-ci:hor8-Cursor
+set guifont=Monospace\ Regular\ 12
+
 hi Normal             guifg=#FDFDFD       guibg=#303342
 hi Delimiter          guifg=#FDFDFD
 hi Comment            guifg=#74778A       gui=italic
@@ -20,7 +26,7 @@ hi Ignore             guifg=#282A36
 hi PreProc            guifg=#74778A       gui=bold
 hi Operator           guifg=#556FFF       gui=bold
 hi Normal             guifg=#FDFDFD
-hi Cursor             guifg=#FDFDFD       guibg=#F37F97
+hi Cursor             guibg=#ECECE6       guifg=#000000
 hi CursorLine         guibg=#282A36       gui=NONE
 hi MatchParen         guifg=#FDFDFD       guibg=NONE      gui=underline
 hi Pmenu              guifg=#BEBEC1       guibg=#282A36

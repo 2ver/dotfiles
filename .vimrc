@@ -3,6 +3,7 @@ set nocompatible
 " -- {{{ Plug package manager
 call plug#begin('~/.vim/plugged')
 
+" Main plugins
 Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ervandew/supertab'
@@ -16,6 +17,13 @@ Plug 'tpope/vim-surround'
 "Plug 'lervag/vimtex'"
 "Plug 'ajh17/VimCompletesMe'"
 "Plug 'Raimondi/delimitMate'
+
+" Writing plugins
+Plug 'reedes/vim-pencil'
+Plug 'danielbmarques/vim-ditto'
+Plug 'tommcdo/vim-exchange'
+Plug 'junegunn/limelight.vim'
+"Plug 'junegunn/goyo.vim'
 
 call plug#end()
 " -- }}}
@@ -51,6 +59,9 @@ set splitright
 " -- {{{ Key remaps
 " Toggle NERDTree
 nmap <silent> <leader>f :NERDTreeToggle %<CR>
+
+" Toggle Limelight
+nmap <Leader>L :Limelight!!<CR>
 
 " Stop highlighting search
 nnoremap <silent> <C-l> :noh<CR><C-l>  
@@ -181,3 +192,26 @@ let g:closetag_regions = {
 let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
 " -- }}}
+
+" -- {{{ Ditto (highlight repeated words)
+au FileType txt,markdown,text,tex DittoOn  " Turn on Ditto's autocmds
+nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
+
+nmap =d <Plug>DittoNext                " Jump to the next word
+nmap -d <Plug>DittoPrev                " Jump to the previous word
+nmap +d <Plug>DittoGood                " Ignore the word under the cursor
+nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
+nmap ]d <Plug>DittoMore                " Show the next matches
+nmap [d <Plug>DittoLess                " Show the previous matches
+" -- }}}
+
+" -- {{{ Limelight
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_default_coefficient = 0.7
+" -- }}}
+
+" -- {{{ Pencil
+augroup pencil
+    autocmd!
+    autocmd FileType text,txt call pencil#init({'wrap': 'soft'})
+augroup END

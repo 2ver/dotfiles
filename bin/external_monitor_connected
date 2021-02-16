@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+_laptop() {
+   xrandr --output eDP-1 --mode 1920x1080 \
+   "$@"
+}
+
+_external() {
+   xrandr --output HDMI-1 --primary --rate 119.98 --mode 1920x1080
+   #xrandr --output eDP-1 --same-as HDMI-1
+   xrandr --output eDP-1 --off
+}
+if [ -n "$(xrandr --query | grep 'HDMI-1 connected')" ]; then
+   _external
+else
+   _laptop --primary
+fi

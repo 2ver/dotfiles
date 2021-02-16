@@ -2,7 +2,9 @@
 
 # Autostart
 ~/.fehbg
-~/.config/awesome/autorun.sh
+~/bin/external_monitor_connected
+#~/bin/bspwm/conf_desktops
+#~/.config/awesome/autorun.sh
 picom &
 
 # For sxhkd
@@ -10,7 +12,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Monitor(s)
 bspc monitor HDMI-1 -d I II III IV V VI VII VIII IX X
-#bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
 bspc config remove_disabled_monitors    true
 bspc config remove_unplugged_monitors   true
 

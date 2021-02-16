@@ -3,6 +3,7 @@
 # Autostart
 ~/.fehbg
 ~/bin/external_monitor_connected
+~/bin/autostart
 #~/bin/bspwm/conf_desktops
 #~/.config/awesome/autorun.sh
 picom &

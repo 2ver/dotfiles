@@ -21,8 +21,8 @@ Plug 'tpope/vim-surround'
 " Writing plugins
 Plug 'reedes/vim-pencil'
 Plug 'danielbmarques/vim-ditto'
-Plug 'tommcdo/vim-exchange'
 Plug 'junegunn/limelight.vim'
+Plug 'tommcdo/vim-exchange'
 "Plug 'junegunn/goyo.vim'
 
 call plug#end()
@@ -38,9 +38,10 @@ set smartcase " If searching for 'word', show 'word' and 'Word' but only show 'W
 set nu rnu " Relative line numbers (and show exact number on current line)
 set noswapfile
 set autoindent " Enable auto indentation of lines
-set tabstop=2 softtabstop=2
-set shiftwidth=2
+set tabstop=3 softtabstop=3
+set shiftwidth=3
 set expandtab
+set nobreakindent
 set smartindent " Allow Vim to best-effort guess the indentation
 set showmatch " Highlights matching brackets
 set incsearch " Search as characters are entered
@@ -49,9 +50,12 @@ set wildmenu " Tab Completion
 set wildmode=longest:full,full " First tab brings up options, second tab cycle
 set mouse=a " Cursor support
 set ruler " Always show current position
+set rulerformat=%-12.(%l,%c%V%)%{PencilMode()}\ %P
 set lazyredraw " Don't redraw while executing macros for performance boost
 set nowrap " Don't wrap lines
-set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)
+"set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)
+set statusline=%<%f\ %h%m%r%w\ \ %{PencilMode()}\ %=\ col\ %c%V\ \ line\ %l\,%L\ %P
+set laststatus=2
 set splitbelow
 set splitright
 " -- }}}
@@ -115,6 +119,13 @@ highlight LineNr term=bold cterm=bold ctermbg=NONE
 "   -- }}}
 
 "   -- {{{ Cursor Shape
+
+" Start in block
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup End
+
 " Change cursor shape in Termite/Kitty
 let &t_SI = "\<Esc>[4 q"
 let &t_SR = "\<Esc>[6 q"
@@ -129,12 +140,6 @@ let &t_EI = "\<Esc>[2 q"
 "\<Esc>]50;CursorShape=0\x7
 "   -- }}}
 " -- }}}
-
-"augroup myCmds
-"au!
-"autocmd VimEnter * silent !echo -ne "\e[2 q"
-"augroup End
-
 
 " Return to last edit position when opening files
 augroup last_edit
@@ -215,3 +220,7 @@ augroup pencil
     autocmd!
     autocmd FileType text,txt call pencil#init({'wrap': 'soft'})
 augroup END
+
+" -- {{{ Coc
+autocmd FileType text,txt let b:coc_suggest_disable = 1
+" -- }}}

@@ -27,6 +27,7 @@ call plug#end()
 syntax on
 filetype plugin indent on
 set encoding=utf-8
+set timeoutlen=1000 ttimeoutlen=0 " Instantly switch back to normal (no delay)
 set so=999 " Keep cursor in center (except at top or bottom)
 set ignorecase " Ignore capitalization when searching
 set smartcase " If searching for 'word', show 'word' and 'Word' but only show 'Word' if searching for 'Word'
@@ -37,7 +38,7 @@ set tabstop=3 softtabstop=3
 set shiftwidth=3
 set expandtab
 set nobreakindent
-set showcmd
+set showcmd "Show current pressed key under statusline
 set smartindent " Allow Vim to best-effort guess the indentation
 set showmatch " Highlights matching brackets
 set incsearch " Search as characters are entered
@@ -49,7 +50,6 @@ set ruler " Always show current position
 set rulerformat=%-12.(%l,%c%V%)%{PencilMode()}\ %P
 set lazyredraw " Don't redraw while executing macros for performance boost
 set nowrap " Don't wrap lines
-"set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)
 set statusline=%<%f\ %h%m%r%w\ \ %{PencilMode()}\ %=\ col\ %c%V\ \ line\ %l\,%L\ %P
 set laststatus=2
 set splitbelow
@@ -57,6 +57,10 @@ set splitright
 " -- }}}
 
 " -- {{{ Command remaps
+" Set leader key to space"
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
 " Save write protected file
 cmap w!! w !sudo tee % >/dev/null
 " -- }}}
@@ -80,16 +84,12 @@ nmap <silent> <leader>f :NERDTreeToggle %<CR>
 nmap <Leader>L :Limelight!!<CR>
 
 " Stop highlighting search
-nnoremap <silent> <C-l> :noh<CR><C-l>  
+nnoremap <silent> <C-l> :let @/ = ""<CR>
 
 " Remap k to work in wrapped lines
 nnoremap <expr> j v:count ? 'j' : 'gj' 
 " Remap j to work in wrapped lines
 nnoremap <expr> k v:count ? 'k' : 'gk' 
-
-" Set leader key to space"
-nnoremap <SPACE> <Nop>
-let mapleader = " "
 
 " System clipboard (and primary selection)
 vnoremap <C-c> "*y :let @+=@*<CR>
@@ -102,23 +102,27 @@ nnoremap H gT
 nnoremap L gt
 
 " Split navigation
-nnoremap <Esc>h :winc h<CR>
-nnoremap <Esc>j :winc j<CR>
-nnoremap <Esc>k :winc k<CR>
-nnoremap <Esc>l :winc l<CR>
+nnoremap <silent> <Esc>h :winc h<CR>
+nnoremap <silent> <Esc>j :winc j<CR>
+nnoremap <silent> <Esc>k :winc k<CR>
+nnoremap <silent> <Esc>l :winc l<CR>
 
 " Resize split panes
-nnoremap <silent> <leader>; = :res +3<CR>
-nnoremap <silent> <leader>y = :res -3<CR>
-nnoremap <silent> <leader>, = :vert res -3<CR>
-nnoremap <silent> <leader>. = :vert res +3<CR>
+"nnoremap <silent> <leader>; = :res +3<CR>
+"nnoremap <silent> <leader>y = :res -3<CR>
+"nnoremap <silent> <leader>, = :vert res -3<CR>
+"nnoremap <silent> <leader>. = :vert res +3<CR>
 
+nnoremap <silent> <Esc>; = :res +3<CR>
+nnoremap <silent> <Esc>y = :res -3<CR>
+nnoremap <silent> <Esc>, = :vert res -3<CR>
+nnoremap <silent> <Esc>. = :vert res +3<CR>
 " Kill focused split pane
 nnoremap <C-q> <C-W>q
 
 " Open a vertically split terminal
-nnoremap <leader>t = :vert term<CR>
-nnoremap <leader>ht = :term<CR>
+nnoremap <silent> <leader>t = :vert term<CR>
+nnoremap <silent> <leader>ht = :term<CR>
 " -- }}}
 
 " -- {{{ Aesthetic customization
@@ -206,7 +210,7 @@ let g:closetag_regions = {
     \ 'typescript.tsx': 'jsxRegion,tsxRegion',
     \ 'javascript.jsx': 'jsxRegion',
     \ }
-let g:closetag_shortcut = '>'
+let g:closetag_shortcut = '<'
 let g:closetag_close_shortcut = '<leader>>'
 " -- }}}
 

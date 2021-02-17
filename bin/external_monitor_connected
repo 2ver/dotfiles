@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 _laptop() {
    xrandr --output eDP-1 --mode 1920x1080 \

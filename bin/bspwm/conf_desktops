@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ "$(bspc query -M | wc -l)" -eq 2 ]; then
+   #bspc monitor HDMI-1 -d I II III IV V VI VII VIII IX X
+   #bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+   xrandr --output eDP-1 --off 
+   #xrandr --output eDP-1 --same-as HDMI-1 --mode 1920x1080
+else
+   xrandr --output eDP-1 --mode 1920x1080
+fi

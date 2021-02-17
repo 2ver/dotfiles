@@ -42,6 +42,7 @@ set tabstop=3 softtabstop=3
 set shiftwidth=3
 set expandtab
 set nobreakindent
+set showcmd
 set smartindent " Allow Vim to best-effort guess the indentation
 set showmatch " Highlights matching brackets
 set incsearch " Search as characters are entered

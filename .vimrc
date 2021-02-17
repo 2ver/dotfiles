@@ -4,19 +4,14 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " Main plugins
-Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ervandew/supertab'
 Plug 'alvan/vim-closetag'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'flw-cn/vim-nerdtree-l-open-h-close'
 Plug 'tpope/vim-surround'
-"Plug 'rust-lang/rust.vim'
-"Plug 'w0rp/ale'
+"Plug 'sheerun/vim-polyglot'
 "Plug 'lervag/vimtex'"
-"Plug 'ajh17/VimCompletesMe'"
-"Plug 'Raimondi/delimitMate'
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
@@ -61,7 +56,23 @@ set splitbelow
 set splitright
 " -- }}}
 
+" -- {{{ Command remaps
+" Save write protected file
+cmap w!! w !sudo tee % >/dev/null
+" -- }}}
+
 " -- {{{ Key remaps
+" Source files
+nnoremap <leader>s :source %<CR>
+nnoremap <leader>sv :source ~/.vimrc<CR>
+
+" Quickly open dotfiles
+nnoremap <leader>dv :tabnew ~/.vimrc<CR>
+nnoremap <leader>dz :tabnew ~/.zshrc<CR>
+nnoremap <leader>da :tabnew ~/.config/awesome/rc.lua<CR>
+nnoremap <leader>db :tabnew ~/.config/bspwm/bspwmrc<CR>
+nnoremap <leader>ds :tabnew ~/.config/sxhkd/sxhkdrc<CR>
+
 " Toggle NERDTree
 nmap <silent> <leader>f :NERDTreeToggle %<CR>
 
@@ -223,5 +234,20 @@ augroup pencil
 augroup END
 
 " -- {{{ Coc
+"    -- {{{ Use tab key to navigate
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"    -- }}}
+" Disable popup suggestions in text documents
 autocmd FileType text,txt let b:coc_suggest_disable = 1
 " -- }}}

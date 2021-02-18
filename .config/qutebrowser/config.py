@@ -29,7 +29,7 @@ config.bind(';m', 'hint links spawn funnel "{hint-url}"')
 
 c.editor.command = ['termite', '-e', 'vim {}']
 c.tabs.position = "top"
-c.url.searchengines = { "DEFAULT" : "https://searx.bar/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}" }
+c.url.searchengines = { "DEFAULT" : "https://searx.bar/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}", "gh" : "https://github.com/search?q={}&ref=opensearch" }
 
 # Dracula theme
 dracula.draw.blood(c, {

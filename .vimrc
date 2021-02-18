@@ -9,16 +9,11 @@ Plug 'alvan/vim-closetag'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'flw-cn/vim-nerdtree-l-open-h-close'
-Plug 'tpope/vim-surround'
 "Plug 'sheerun/vim-polyglot'
-"Plug 'lervag/vimtex'"
 
 " Writing plugins
 Plug 'reedes/vim-pencil'
 Plug 'danielbmarques/vim-ditto'
-Plug 'junegunn/limelight.vim'
-Plug 'tommcdo/vim-exchange'
-"Plug 'junegunn/goyo.vim'
 
 call plug#end()
 " -- }}}

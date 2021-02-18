@@ -16,6 +16,7 @@ SPACESHIP_PROMPT_ORDER=(
 	user
 	dir
 	git
+   rust
 	line_sep
 	vi_mode
 	char
@@ -23,11 +24,22 @@ SPACESHIP_PROMPT_ORDER=(
 
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_PROMPT_SUFFIXES_SHOW=false
-SPACESHIP_CHAR_SYMBOL=' ❯ '
+SPACESHIP_PROMPT_PREFIXES_SHOW=true
+SPACESHIP_PROMPT_SUFFIXES_SHOW=true
+SPACESHIP_PROMPT_DEFAULT_PREFIX='via '
+SPACESHIP_CHAR_SYMBOL='❯ '
+SPACESHIP_CHAR_COLOR_SUCCESS=10
+SPACESHIP_CHAR_COLOR_FAILURE=8
 SPACESHIP_USER_SHOW=false
 SPACESHIP_HOST_SHOW=false
-SPACESHIP_GIT_PREFIX=' on '
+SPACESHIP_DIR_COLOR=5
+SPACESHIP_GIT_PREFIX='on '
+#SPACESHIP_GIT_STATUS_PREFIX=' ❰'
+SPACESHIP_GIT_STATUS_PREFIX=' ❬'
+#SPACESHIP_GIT_STATUS_SUFFIX='❱'
+SPACESHIP_GIT_STATUS_SUFFIX='❭'
+SPACESHIP_GIT_STATUS_COLOR=9
+SPACESHIP_RUST_COLOR=10
 SPACESHIP_VI_MODE_SHOW=false
 
 # Set list of themes to pick from when loading at random
@@ -171,3 +183,11 @@ bindkey "^[[B" history-beginning-search-forward-end
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver'
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern url)
+ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
+ZSH_HIGHLIGHT_STYLES[path]='fg=5'
+ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=13'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=1'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=11'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=10'

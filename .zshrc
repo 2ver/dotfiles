@@ -113,9 +113,9 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
 source /home/uver/.aliasrc
 source /home/uver/.bwsessionkey
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -185,21 +185,26 @@ bindkey "^[[B" history-beginning-search-forward-end
 alias config='/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver'
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern url)
-ZSH_HIGHLIGHT_STYLES[alias]='fg=5'
-ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=8'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=8,bold'
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=8,bold'
+ZSH_HIGHLIGHT_STYLES[global-alias]='fg=8,bold'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=8,bold'
 ZSH_HIGHLIGHT_STYLES[function]='fg=8,bold'
 ZSH_HIGHLIGHT_STYLES[command]='fg=8,bold'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=12'
-ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=8'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=4,bold'
+ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=8,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=5'
-ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=13'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=7'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=1'
 ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=11'
-ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=10'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=2'
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=2'
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=2'
-ZSH_HIGHLIGHT_STYLES[redirection]='fg=10'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=2'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=2'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=8'
-ZSH_HIGHLIGHT_STYLES[arg0]='fg=8'
+ZSH_HIGHLIGHT_STYLES[arg0]='fg=10'
 ZSH_HIGHLIGHT_STYLES[default]='fg=7'
+
+typeset -A ZSH_HIGHLIGHT_PATTERNS
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=9')

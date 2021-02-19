@@ -19,13 +19,19 @@ interceptor.register(filter_yt)
 config.load_autoconfig()
 
 config.set("colors.webpage.darkmode.enabled", True)
-#c.content.user_stylesheets = ['~/.config/qutebrowser/css/duolingo-dark.css']
-
 
 # Mpv keybindings
 config.bind(',M', 'spawn mpv {url}')
 config.bind(',m', 'hint links spawn mpv {hint-url}')
 config.bind(';m', 'hint links spawn funnel "{hint-url}"')
+
+# List bookmarks
+config.bind('b', 'set-cmd-text -s :bookmark-load')
+config.bind('B', 'set-cmd-text -s :bookmark-load -t')
+
+# List quickmarks
+config.bind('q', 'set-cmd-text -s :quickmark-load')
+config.bind('Q', 'set-cmd-text -s :quickmark-load -t')
 
 c.editor.command = ['termite', '-e', 'vim {}']
 c.tabs.position = "top"
@@ -33,7 +39,8 @@ c.url.searchengines = { "DEFAULT" : "https://searx.bar/search?q={}", "d" : "http
 
 # Dracula theme
 dracula.draw.blood(c, {
-    'speacing':{
+   #'speacing':{
+   'spacing':{
         'vertical': 6,
         'horizontal': 8
     }

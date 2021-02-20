@@ -33,49 +33,29 @@ config.bind('B', 'set-cmd-text -s :bookmark-load -t')
 config.bind('q', 'set-cmd-text -s :quickmark-load')
 config.bind('Q', 'set-cmd-text -s :quickmark-load -t')
 
+# Aliases
+# Alias for moving tabs
+c.aliases['tabm'] = 'tab-move'
+
 c.editor.command = ['termite', '-e', 'vim {}']
 c.tabs.position = "top"
 c.url.searchengines = { "DEFAULT" : "https://searx.bar/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}", "gh" : "https://github.com/search?q={}&ref=opensearch" }
 
-# Dracula theme
-dracula.draw.blood(c, {
+# Lena theme
+dracula.draw.lena(c, {
    'spacing':{
         'vertical': 6,
         'horizontal': 8
     }
 })
 
-# Xresources colors
-#def read_xresources(prefix):
-#    props = {}
-#    x = subprocess.run(["xrdb", "-query"], stdout=subprocess.PIPE)
-#    lines = x.stdout.decode().split("\n")
-#    for line in filter(lambda l: l.startswith(prefix), lines):
-#        prop, _, value = line.partition(":\t")
-#        props[prop] = value
-#    return props
-#
-#xresources = read_xresources("*")
-#
-#c.colors.statusbar.normal.bg = xresources['*.background']
-#c.colors.statusbar.normal.fg = xresources["*.foreground"]
-#c.colors.statusbar.command.bg = xresources["*.background"]
-#c.colors.statusbar.command.fg = xresources["*.foreground"]
 c.statusbar.show = "in-mode"
 c.statusbar.widgets = ["keypress", "url", "progress"]
-#
-#c.colors.tabs.even.bg = xresources["*.background"]
-#c.colors.tabs.odd.bg = xresources["*.background"]
-#c.colors.tabs.even.fg = xresources["*.foreground"]
-#c.colors.tabs.odd.fg = xresources["*.foreground"]
-#c.colors.tabs.selected.even.bg = xresources["*.color8"]
-#c.colors.tabs.selected.odd.bg = xresources["*.color8"]
-#c.colors.tabs.hints.bg = xresources["*.background"]
-#c.colors.tabs.hints.fg = xresources["*.foreground"]
+
 c.tabs.show = "multiple"
 c.tabs.last_close = "close"
 
-c.prompt.radius = 20
+c.prompt.radius = 40
 
 c.scrolling.smooth = True
 
@@ -84,17 +64,3 @@ c.tabs.title.format = "{audio}{current_title}"
 
 # Font size
 c.fonts.web.size.default = 15
-
-#c.colors.tabs.indicator.stop = xresources["*.color14"]
-#c.colors.completion.odd.bg = xresources["*.background"]
-#c.colors.completion.even.bg = xresources["*.background"]
-#c.colors.completion.fg = xresources["*.foreground"]
-#c.colors.completion.category.bg = xresources["*.background"]
-#c.colors.completion.category.fg = xresources["*.foreground"]
-#c.colors.completion.item.selected.bg = xresources["*.background"]
-#c.colors.completion.item.selected.fg = xresources["*.foreground"]
-
-# If not light theme
-#if xresources["*.background"] != "#ffffff":
-#    c.colors.webpage.darkmode.enabled = True
-#    c.hints.border = "1px solid #FFFFFF"

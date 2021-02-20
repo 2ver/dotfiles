@@ -16,7 +16,7 @@ def filter_yt(info:interceptor.Request):
 
 interceptor.register(filter_yt)
 
-config.load_autoconfig()
+config.load_autoconfig(False)
 
 config.set("colors.webpage.darkmode.enabled", True)
 
@@ -39,7 +39,6 @@ c.url.searchengines = { "DEFAULT" : "https://searx.bar/search?q={}", "d" : "http
 
 # Dracula theme
 dracula.draw.blood(c, {
-   #'speacing':{
    'spacing':{
         'vertical': 6,
         'horizontal': 8

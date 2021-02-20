@@ -75,9 +75,6 @@ nnoremap <leader>ds :tabnew ~/.config/sxhkd/sxhkdrc<CR>
 " Toggle NERDTree
 nmap <silent> <leader>f :NERDTreeToggle %<CR>
 
-" Toggle Limelight
-nmap <Leader>L :Limelight!!<CR>
-
 " Stop highlighting search
 nnoremap <silent> <C-l> :let @/ = ""<CR>
 

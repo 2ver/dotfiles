@@ -1,6 +1,6 @@
 import subprocess
 import os
-import dracula.draw
+import lena.draw
 
 from qutebrowser.api import interceptor
 
@@ -18,7 +18,7 @@ interceptor.register(filter_yt)
 
 config.load_autoconfig(False)
 
-config.set("colors.webpage.darkmode.enabled", True)
+#config.set("colors.webpage.darkmode.enabled", True)
 
 # Mpv keybindings
 config.bind(',M', 'spawn mpv {url}')
@@ -39,10 +39,13 @@ c.aliases['tabm'] = 'tab-move'
 
 c.editor.command = ['termite', '-e', 'vim {}']
 c.tabs.position = "top"
+c.url.start_pages = ["~/.config/qutebrowser/startpage/index.html"]
+#c.url.start_pages.append('~/.config/qutebrowser/startpage/index.html')
+c.url.default_page = ("~/.config/qutebrowser/startpage/index.html")
 c.url.searchengines = { "DEFAULT" : "https://searx.bar/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}", "gh" : "https://github.com/search?q={}&ref=opensearch" }
 
 # Lena theme
-dracula.draw.lena(c, {
+lena.draw.lena(c, {
    'spacing':{
         'vertical': 6,
         'horizontal': 8

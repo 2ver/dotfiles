@@ -184,7 +184,7 @@ bindkey "^[[B" history-beginning-search-forward-end
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver'
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern url)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_STYLES[alias]='fg=8,bold'
 ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=8,bold'
 ZSH_HIGHLIGHT_STYLES[global-alias]='fg=8,bold'

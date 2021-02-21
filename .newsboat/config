@@ -32,7 +32,7 @@ color listnormal        color8   default
 color listfocus         color4   default bold
 color listnormal_unread color250 default
 color listfocus_unread  color4   default bold
-color info              color18  color5  standout
+color info              color2 default
 color article           color7   default
 
 highlight article "^Feed:.*" color6

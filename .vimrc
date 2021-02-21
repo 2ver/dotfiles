@@ -15,6 +15,9 @@ Plug 'flw-cn/vim-nerdtree-l-open-h-close'
 Plug 'reedes/vim-pencil'
 Plug 'danielbmarques/vim-ditto'
 
+" Notes
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
 " -- }}}
 

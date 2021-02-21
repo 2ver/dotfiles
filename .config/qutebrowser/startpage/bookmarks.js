@@ -16,14 +16,14 @@ const bookmarks = [
   {
     title: "Reddit",
     links: [
-      { name: "/r/unixporn", url: "https://reddit.com/r/unixporn" },
-      { name: "/r/vim", url: "https://reddit.com/r/vim" },
+      { name: "r/unixporn", url: "https://reddit.com/r/unixporn" },
+      { name: "r/vim", url: "https://reddit.com/r/vim" },
     ],
   },
   {
     title: "Social",
     links: [
-      { name: "Twitter", url: "https://twitter.com" },
+      { name: "Discord", url: "https://discord.com/app" },
     ],
   },
 ];

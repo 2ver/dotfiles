@@ -2,8 +2,8 @@
 
 # Autostart
 ~/.fehbg
-~/bin/external_monitor_connected
-~/bin/autostart
+/usr/local/bin/external_monitor_connected
+/usr/local/bin/autostart
 #~/bin/bspwm/conf_desktops
 #~/.config/awesome/autorun.sh
 picom &

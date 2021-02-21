@@ -174,6 +174,12 @@ bindkey "^[[B" history-beginning-search-forward-end
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# Functions
+function colors()
+{
+   for COLOR in {1..255}; do echo -en "\e[38;5;${COLOR}m${COLOR} "; done; echo;
+}
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.

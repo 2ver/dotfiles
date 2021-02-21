@@ -37,7 +37,7 @@ color article           color7   default
 
 highlight article "^Feed:.*" color6
 highlight article "^Title:.*" color4 default bold
-highlight article "^Author:.*" color2
+highlight article "^Author:.*" color1
 highlight article "^Date:.*" color3
 highlight article "^Link:.*" color5
 highlight article "^Flags:.*" color9

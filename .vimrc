@@ -15,6 +15,9 @@ Plug 'flw-cn/vim-nerdtree-l-open-h-close'
 Plug 'reedes/vim-pencil'
 Plug 'danielbmarques/vim-ditto'
 
+" Discord Rich Presence
+Plug 'hugolgst/vimsence'
+
 " Notes
 Plug 'vimwiki/vimwiki'
 
@@ -231,6 +234,10 @@ augroup pencil
     autocmd!
     autocmd FileType text,txt call pencil#init({'wrap': 'soft'})
 augroup END
+
+" -- {{{ Discord Rich Presence
+"let g: vimsence
+" -- }}}
 
 " -- {{{ Coc
 "    -- {{{ Use tab key to navigate

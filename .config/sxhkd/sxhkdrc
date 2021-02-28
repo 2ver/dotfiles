@@ -14,11 +14,14 @@ super + @space
 super + b
     qutebrowser
 
-super + p
+super + alt + p
     bwmenu --auto-lock -1
 
-super + alt + p
+super + p
     kitty -e htop
+
+super + e
+	 emacs
 
 super + F2
     pcmanfm
@@ -26,8 +29,13 @@ super + F2
 super + F3
     kitty -o font_size=12 -e ncmpcpp
 
+# Copy selected area to clipboard
 super + shift + c
     maim -s | xclip -selection clipboard -t image/png
+
+# Save selected area as screenshot
+super + shift + alt + c
+   maim -s ~/Pictures/Screenshots/$(date +%s).png
 
 # make sxhkd reload its configuration files:
 super + ctrl + Escape

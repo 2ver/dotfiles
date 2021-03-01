@@ -1,4 +1,4 @@
-#+title Uver Configuration
+#+title: Uver Configuration
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
 * Package System Setup
@@ -38,25 +38,36 @@
 
 #+end_src
 
+* Keep Directories Clean
+
+#+begin_src emacs-lisp
+
+  (use-package no-littering)
+
+  (setq auto-save-file-name-transforms
+        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+
+#+end_src
+
 * Basic UI Configuration
 ** Disable default clutter
 #+begin_src emacs-lisp
 
   (setq inhibit-startup-message t)
 
-  (scroll-bar-mode -1)								     ; Disable visible scrollbar
-  (setq maximum-scroll-margin 0.5                ; Scrolloff behaviour
+  (scroll-bar-mode -1)                       ; Disable visible scrollbar
+  (setq maximum-scroll-margin 0.5            ; Scrolloff behaviour
         scroll-margin 99999
         scroll-perserve-screen-position t
         scroll-conservatively 0)	
   (setq display-line-numbers-type 'relative)
-  (tool-bar-mode -1)										; Disable toolbar
-  (tooltip-mode -1)										   ; Disable tooltips
-  (set-fringe-mode 10)									   ; Give some breathing room
-  (menu-bar-mode -1)										; Disable the menu bar
-  (save-place-mode 1)									   ; Open file at last edit
-  (blink-cursor-mode 0)									; Disable blinking cursor
-  (setq ring-bell-function 'ignore)					; Turn off bell
+  (tool-bar-mode -1)                         ; Disable toolbar
+  (tooltip-mode -1)                          ; Disable tooltips
+  (set-fringe-mode 10)                       ; Give some breathing room
+  (menu-bar-mode -1)                         ; Disable the menu bar
+  (save-place-mode 1)                        ; Open file at last edit
+  (blink-cursor-mode 0)                      ; Disable blinking cursor
+  (setq ring-bell-function 'ignore)          ; Turn off bell
 
 #+end_src
 
@@ -64,8 +75,8 @@
 #+begin_src emacs-lisp
 
   ;; Move blocks from customize interface to custom file (https://stackoverflow.com/questions/5052088/what-is-custom-set-variables-and-faces-in-my-emacs/5058752)
-  (setq custom-file "~/.emacs.d/custom.el")
-  (load custom-file)
+  ;; (setq custom-file "~/.emacs.d/custom.el")
+  ;; (load custom-file)
 
 #+end_src
 
@@ -167,6 +178,17 @@
 #+end_src
 
 * UI Configuration
+** Which Key
+#+begin_src emacs-lisp
+
+  (use-package which-key
+    :init (which-key-mode)
+    :diminish which-key-mode
+    :config
+    (setq which-key-idle-delay 0.3))
+
+#+end_src
+
 ** Ivy
 #+begin_src emacs-lisp
 
@@ -188,12 +210,6 @@
     :config
     (ivy-mode 1))
 
-  (use-package which-key
-    :init (which-key-mode)
-    :diminish which-key-mode
-    :config
-    (setq which-key-idle-delay 0.3))
-
   (use-package ivy-rich
     :init
     (ivy-rich-mode 1))
@@ -202,6 +218,7 @@
     :after ivy)
 
   ;; For showing recently used commands first
+  ;; Check on prescient.el
   (use-package smex)
 
   ;; Lazy load recent commands
@@ -259,7 +276,7 @@
 *** Colorscheme
 #+begin_src emacs-lisp
 
-(load-theme 'lena t)
+  (load-theme 'lena t)
 
 #+end_src
 *** Doom
@@ -305,6 +322,37 @@
 #+end_src
 
 * Org Mode
+** Font Config
+#+begin_src emacs-lisp
+
+  (defun uver/org-font-setup ()
+    ;; Replace list hyphens with dots
+    (font-lock-add-keywords 'org-mode
+                            '(("^ *\\([-]\\) "
+                               (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+   (dolist (face '((org-level-1 . 1.2)
+                   (org-level-2 . 1.1)
+                   (org-level-3 . 1.05)
+                   (org-level-4 . 1.0)
+                   (org-level-5 . 1.1)
+                   (org-level-6 . 1.1)
+                   (org-level-7 . 1.1)
+                   (org-level-8 . 1.1)))
+     (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
+
+    ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+    (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+    (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+    (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
+
+#+end_src
 ** Basic Config
 #+begin_src emacs-lisp
 
@@ -315,38 +363,15 @@
     (visual-line-mode 1)
     (setq evil-auto-indent nil))
 
-  (defun uver/org-font-setup ()
-    ;; Replace list hyphens with dots
-    (font-lock-add-keywords 'org-mode
-                            '(("^ *\\([-]\\) "
-                               (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-  
-   (dolist (face '((org-level-1 . 1.2)
-                   (org-level-2 . 1.1)
-                   (org-level-3 . 1.05)
-                   (org-level-4 . 1.0)
-                   (org-level-5 . 1.1)
-                   (org-level-6 . 1.1)
-                   (org-level-7 . 1.1)
-                   (org-level-8 . 1.1)))
-     (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
-  
-    ;; Ensure that anything that should be fixed-pitch in Org files appears that way
-    (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
-    (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
-    (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
-    (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
-    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-    (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+    ;; (with-eval-after-load 'org-indent (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch)))
 
-    (with-eval-after-load 'org-indent (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch)))
-  
   (use-package org
+    :pin org
+    :commands (org-capture org-agenda)
     :hook (org-mode . uver/org-mode-setup)
     :config
-    ;; (setq org-ellipsis " ▾"
-    ;; (setq org-ellipsis " ⤵"
+    ;; (setq org-ellipsis " ▾")
+    ;; (setq org-ellipsis " ⤵")
     (setq org-ellipsis " ↴"
           org-hide-emphasis-markers t)
     (setq org-agenda-start-with-log-mode t)
@@ -385,7 +410,7 @@
             ("batch" . ?b)
             ("note" . ?n)
             ("idea" . ?i)))
-  
+
     ;; Configure custom agenda views
     (setq org-agenda-custom-commands
      '(("d" "Dashboard"
@@ -461,18 +486,23 @@
          "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)))
 
     (uver/org-font-setup))
-	 
+
+#+end_src
+
+** More Minimal Bullets
+#+begin_src emacs-lisp
+
   (use-package org-bullets
      :after org
      :hook (org-mode . org-bullets-mode)
      :custom
      (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
-  (require 'org-tempo)
-  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-  (add-to-list 'org-structure-template-alist '("py" . "src python"))
- 
+#+end_src
+
+** Center Org Buffers
+#+begin_src emacs-lisp
+
   (defun uver/org-mode-visual-fill ()
      (setq visual-fill-column-width 100
            visual-fill-column-center-text t)
@@ -480,19 +510,33 @@
   
   (use-package visual-fill-column
       :hook (org-mode . uver/org-mode-visual-fill))
+
 #+end_src
 
 ** Configure Babel Languages
 #+begin_src emacs-lisp
 
-  (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       (python . t)))
+  (with-eval-after-load 'org
+    (org-babel-do-load-languages
+       'org-babel-load-languages
+       '((emacs-lisp . t)
+         (python . t))))
 
-  (push '("conf-unix" . conf-unix) org-src-lang-modes)
+    ;; (push '("conf-unix" . conf-unix) org-src-lang-modes)
 
-  (setq org-src-tab-acts-natively t)
+    (setq org-src-tab-acts-natively t)
+
+#+end_src
+
+** Structure Templates
+#+begin_src emacs-lisp
+
+  (with-eval-after-load 'org
+    (require 'org-tempo)
+
+    (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+    (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+    (add-to-list 'org-structure-template-alist '("py" . "src python")))
 
 #+end_src
 

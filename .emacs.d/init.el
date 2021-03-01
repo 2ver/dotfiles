@@ -25,25 +25,30 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))
 
+(use-package no-littering)
+
+(setq auto-save-file-name-transforms
+      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+
 (setq inhibit-startup-message t)
 
-(scroll-bar-mode -1)								     ; Disable visible scrollbar
-(setq maximum-scroll-margin 0.5                ; Scrolloff behaviour
+(scroll-bar-mode -1)                       ; Disable visible scrollbar
+(setq maximum-scroll-margin 0.5            ; Scrolloff behaviour
       scroll-margin 99999
       scroll-perserve-screen-position t
       scroll-conservatively 0)	
 (setq display-line-numbers-type 'relative)
-(tool-bar-mode -1)										; Disable toolbar
-(tooltip-mode -1)										   ; Disable tooltips
-(set-fringe-mode 10)									   ; Give some breathing room
-(menu-bar-mode -1)										; Disable the menu bar
-(save-place-mode 1)									   ; Open file at last edit
-(blink-cursor-mode 0)									; Disable blinking cursor
-(setq ring-bell-function 'ignore)					; Turn off bell
+(tool-bar-mode -1)                         ; Disable toolbar
+(tooltip-mode -1)                          ; Disable tooltips
+(set-fringe-mode 10)                       ; Give some breathing room
+(menu-bar-mode -1)                         ; Disable the menu bar
+(save-place-mode 1)                        ; Open file at last edit
+(blink-cursor-mode 0)                      ; Disable blinking cursor
+(setq ring-bell-function 'ignore)          ; Turn off bell
 
 ;; Move blocks from customize interface to custom file (https://stackoverflow.com/questions/5052088/what-is-custom-set-variables-and-faces-in-my-emacs/5058752)
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+;; (setq custom-file "~/.emacs.d/custom.el")
+;; (load custom-file)
 
 ;; Line Numbers
 (column-number-mode)
@@ -121,6 +126,12 @@
   :config
   (evil-collection-init))
 
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.3))
+
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -139,12 +150,6 @@
   :config
   (ivy-mode 1))
 
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 0.3))
-
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
@@ -153,6 +158,7 @@
   :after ivy)
 
 ;; For showing recently used commands first
+;; Check on prescient.el
 (use-package smex)
 
 ;; Lazy load recent commands
@@ -219,13 +225,6 @@
 (rune/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
-(defun uver/org-mode-setup ()
-  (org-indent-mode)
-  (variable-pitch-mode 1)
-  (auto-fill-mode 0)
-  (visual-line-mode 1)
-  (setq evil-auto-indent nil))
-
 (defun uver/org-font-setup ()
   ;; Replace list hyphens with dots
   (font-lock-add-keywords 'org-mode
@@ -249,15 +248,26 @@
   (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
   (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
   (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+  (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+  (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
 
-  (with-eval-after-load 'org-indent (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch)))
+(defun uver/org-mode-setup ()
+  (org-indent-mode)
+  (variable-pitch-mode 1)
+  (auto-fill-mode 0)
+  (visual-line-mode 1)
+  (setq evil-auto-indent nil))
+
+  ;; (with-eval-after-load 'org-indent (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch)))
 
 (use-package org
+  :pin org
+  :commands (org-capture org-agenda)
   :hook (org-mode . uver/org-mode-setup)
   :config
-  ;; (setq org-ellipsis " ▾"
-  ;; (setq org-ellipsis " ⤵"
+  ;; (setq org-ellipsis " ▾")
+  ;; (setq org-ellipsis " ⤵")
   (setq org-ellipsis " ↴"
         org-hide-emphasis-markers t)
   (setq org-agenda-start-with-log-mode t)
@@ -379,11 +389,6 @@
    :custom
    (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
-(require 'org-tempo)
-(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-(add-to-list 'org-structure-template-alist '("py" . "src python"))
-
 (defun uver/org-mode-visual-fill ()
    (setq visual-fill-column-width 100
          visual-fill-column-center-text t)
@@ -392,14 +397,22 @@
 (use-package visual-fill-column
     :hook (org-mode . uver/org-mode-visual-fill))
 
-(org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (python . t)))
+(with-eval-after-load 'org
+  (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (python . t))))
 
-(push '("conf-unix" . conf-unix) org-src-lang-modes)
+  ;; (push '("conf-unix" . conf-unix) org-src-lang-modes)
 
-(setq org-src-tab-acts-natively t)
+  (setq org-src-tab-acts-natively t)
+
+(with-eval-after-load 'org
+  (require 'org-tempo)
+
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python")))
 
 ;; Automatically tangle Emacs.org confile file when saved
 (defun efs/org-babel-tangle-config ()

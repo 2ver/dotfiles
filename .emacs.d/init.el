@@ -30,6 +30,13 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+        (lambda (frame)
+            (with-selected-frame (or frame (selected-frame))
+                (load-theme 'lena t))))
+                  (load-theme 'lena t))
+
 (setq inhibit-startup-message t)
 
 (scroll-bar-mode -1)                       ; Disable visible scrollbar
@@ -61,18 +68,42 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-;; Set the default font
-(set-face-attribute 'default nil :font "Iosevka Custom" :height 110)
+(defun uver/set-font-faces ()
+  (message "Setting faces!")
 
-;; Set the fixed pitch face
-(set-face-attribute 'fixed-pitch nil :font "Iosevka Custom" :height 110)
+  ;; Set the default font
+  ;; (set-face-attribute 'default nil :font "Iosevka Custom" :height 110)
+  (set-frame-font "Iosevka Custom" nil t)
 
-;; Set the variable pitch face
-(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 110 :weight 'regular)
+  ;; Set the fixed pitch face
+  ;; (set-face-attribute 'fixed-pitch nil :font "Iosevka Custom" :height 110)
+  (set-frame-font 'fixed-pitch "Iosevka Custom")
+
+  ;; Set the variable pitch face
+  ;; (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 110 :weight 'regular)
+  (set-frame-font 'variable-pitch "Cantarell"))
+
+  ;; add-to-list 'default-frame-alist '(font . "Iosevka Custom"))
+
+  (if (daemonp)
+     (add-hook 'after-make-frame-functions
+        (lambda (frame)
+           (setq doom-modeline-icon t)
+           (with-selected-frame frame
+              (uver/set-font-faces))))
+  (uver/set-font-faces))
+
+
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; Ignore keys
+(global-set-key (kbd "<XF86AudioPrev>") 'ignore)
+(global-set-key (kbd "<XF86AudioNext>") 'ignore)
+(global-set-key (kbd "<XF86VolumeUp>") 'ignore)
+(global-set-key (kbd "<XF86VolumeDown>") 'ignore)
 
 (use-package general
   :config
@@ -196,7 +227,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,user-temporary-file-directory t)))
 
-(load-theme 'lena t)
+;; (load-theme 'lena t)
 
 (use-package all-the-icons)
 
@@ -241,7 +272,7 @@
                  (org-level-8 . 1.1)))
    (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
 
-  ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+ ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
   (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
@@ -415,14 +446,14 @@
   (add-to-list 'org-structure-template-alist '("py" . "src python")))
 
 ;; Automatically tangle Emacs.org confile file when saved
-(defun efs/org-babel-tangle-config ()
+(defun uver/org-babel-tangle-config ()
    (when (string-equal (buffer-file-name)
                        (expand-file-name "~/.emacs.d/emacs.org"))
    ;; Dynamic scoping
    (let ((org-config-babel-evaluate nil))
       (org-babel-tangle))))
 
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'uver/org-babel-tangle-config)))
 
 (use-package evil-nerd-commenter
   :bind ("M-/" . evilnc-comment-or-uncomment-lines))
@@ -479,7 +510,7 @@
 
 (use-package magit)
    ;:custom
-   ;(magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+   ;(magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 
 ;(use-package forge
 ;  :after magit)
@@ -557,4 +588,4 @@
     (setq eshell-destroy-buffer-when-process-dies t)
     (setq eshell-visual-commands '("htop" "zsh" "vim"))))
 
-  ;; (eshell-git-prompt-use-theme 'powerline))
+  ;; (eshell-git-prompt-use-theme 'powerline)

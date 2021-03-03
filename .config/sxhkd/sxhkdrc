@@ -22,6 +22,7 @@ super + p
 
 super + e
 	 emacs
+	 # emacsclient -c -n
 
 super + F2
     pcmanfm
@@ -159,7 +160,7 @@ super + alt + space
 # move/resize
 #
 
-# Expand a window by moving one of its side outward
+# Expand a window by moving one of its sides outward
 super + ctrl + {h,j,k,l}
     n=20; \
     { d1=left;   d2=right;  dx=-$n; dy=0;   \

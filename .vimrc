@@ -18,9 +18,6 @@ Plug 'danielbmarques/vim-ditto'
 " Discord Rich Presence
 Plug 'hugolgst/vimsence'
 
-" Notes
-Plug 'vimwiki/vimwiki'
-
 call plug#end()
 " -- }}}
 
@@ -92,6 +89,10 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " System clipboard (and primary selection)
 vnoremap <C-c> "*y :let @+=@*<CR>
 
+" -- }}}
+
+" __ {{{ Disable visual mode when selecting with cursor
+set mouse-=a
 " -- }}}
 
 " -- {{{ Split and tab customization

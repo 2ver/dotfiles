@@ -2,21 +2,38 @@ set-option global tabstop 3		# Width of a tab
 set-option global indentwidth 3	# Indent with 3 spaces
 set-option global scrolloff 99,3	# Center cursor
 
+# Colorscheme
+colorscheme lena
+
 # Line numbers
 add-highlighter global/ number-lines -relative -separator '  '
-#set-face global LineNumbers rgb:526170,default
 
-add-highlighter global/ regex \h+$ 0:Error		# Highlight trailing whitespace
+add-highlighter global/ regex \h+$ 0:Error	# Highlight trailing whitespace
 
 # Set space to leader key
 map global normal <space> ,
 map global normal , <space>
 
 # Global clipboard mappings
-map -docstring "yank the selection into the clipboard" global user y "<a-|> xsel -i<ret"
+map -docstring "yank the selection into the clipboard" global user y "<a-|> xsel -i -b<ret>"
 map -docstring "paste the clipboard" global user p "<a-!> xsel<ret>"
+
 
 # Shortcuts to exit
 map global user w -docstring 'write' ': w<ret>'
 map global user q -docstring 'quit' ': q<ret>'
 map global user z -docstring 'write and quit' ': wq<ret>'
+
+# Cycle autocompletions with Tab
+hook global InsertCompletionShow .* %{
+   try %{
+      exec -draft 'h<a-K>\h<ret>'
+      map window insert <s-tab> <c-p>
+      map window insert <tab> <c-n>
+   }
+}
+
+hook global InsertCompletionHide .* %{
+   unmap window insert <tab> <c-n>
+   unmap window insert <s-tab> <c-p>
+}

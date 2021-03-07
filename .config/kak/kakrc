@@ -5,6 +5,32 @@ set-option global scrolloff 99,3	# Center cursor
 # Colorscheme
 colorscheme lena
 
+# Change selection color based on mode
+set-face global PrimarySelection white,rgb:5C8CDC+F
+set-face global SecondarySelection black,rgb:86A7E0+F
+set-face global PrimaryCursor white,rgb:8C56EB+F
+set-face global SecondaryCursor black,rgb:AE8DEB+F
+set-face global PrimaryCursorEol black,rgb:DB4979
+set-face global SecondaryCursorEol black,rgb:E084A3
+
+hook global ModeChange ".*:insert" %{
+	set-face window PrimarySelection white,rgb:5C8CDC+F
+	set-face window SecondarySelection black,rgb:86A7E0+F
+	set-face window PrimaryCursor white,rgb:4CD0A0+F
+	set-face window SecondaryCursor black,rgb:94DCC2+F
+	set-face window PrimaryCursorEol black,rgb:677a8f
+	set-face window SecondaryCursorEol black,rgb:4F6074
+}
+
+hook global ModeChange ".*:normal" %{
+	unset-face window PrimarySelection
+	unset-face window SecondarySelection
+	unset-face window PrimaryCursor
+	unset-face window SecondaryCursor
+	unset-face window PrimaryCursorEol
+	unset-face window SecondaryCursorEol
+}
+
 # Line numbers
 add-highlighter global/ number-lines -relative -separator '  '
 

@@ -82,8 +82,8 @@ bindsym $mod+p exec "kitty -e htop"
 # File Manager
 bindsym $mod+F2 exec "pcmanfm"
 
-# Music Player
-bindsym $mod+F3 exec "kitty -o font_size=14 -e ncmpcpp"
+# Open ncmpcpp
+bindsym $mod+F3 workspace number $ws8; exec "kitty -o font_size=14 -e ncmpcpp"
 
 # Screenshots
 
@@ -221,6 +221,8 @@ bindsym $mod+$alt+7 move container to workspace number $ws7; workspace number $w
 bindsym $mod+$alt+8 move container to workspace number $ws8; workspace number $ws8
 bindsym $mod+$alt+9 move container to workspace number $ws9; workspace number $ws9
 bindsym $mod+$alt+0 move container to workspace number $ws10; workspace number $ws10
+
+
 
 # reload the configuration file
 bindsym $mod+Control+r reload

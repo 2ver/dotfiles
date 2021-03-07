@@ -3,7 +3,6 @@ alias \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
    sz="source ~/.zshrc && clear" \
-   vw="vim ~/vimwiki/index.wiki"
 
 alias \
 	ka="killall" \

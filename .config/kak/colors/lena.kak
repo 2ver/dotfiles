@@ -2,14 +2,19 @@
 
 face global value rgb:4ed0a0,default
 face global type rgb:5b8adc,default
-face global identifier rgb:93dcc1,default
+face global variable rgb:86a7E0,default
+face global module rgb:4F6074,default
+face global function rgb:5C8CDC,default
 face global string rgb:af8eeb,default+b
-face global error default,rgb:ffffff
 face global keyword rgb:85a6e0,default+b
 face global operator rgb:dedede,default
-face global attribute rgb:ffffff,default
+face global attribute rgb:4F6074,default+b
+face global identifier rgb:93dcc1,default
+face global error default,rgb:ffffff
 face global comment rgb:4e6073,default+i
-face global meta rgb:878787,default
+face global documentation comment
+face global meta rgb:4F6074,default+b
+face global builtin default+b
 
 # text
 

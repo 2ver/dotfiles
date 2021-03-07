@@ -19,7 +19,7 @@ xcursor.theme:          Vanilla-DMZ
 xscreensaver.fade:   false
 xscreensaver.unfade: false
 
-*background:	#303342	
+*background:	#303342
 *foreground:	#FFFFFF
 *cursorColor:	#FFFFFF
 !*color0:	#242D35

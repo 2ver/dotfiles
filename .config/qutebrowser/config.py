@@ -20,9 +20,50 @@ config.load_autoconfig(False)
 
 #config.set("colors.webpage.darkmode.enabled", True)
 
+# Colemak Bindings
+c.bindings.commands['normal'] = {
+	# Navigation
+	'n' : 'scroll left',
+	'e' : 'scroll down',
+	'i' : 'scroll up',
+	'o' : 'scroll right',
+
+	'N' : 'back',
+	'I' : 'tab-next',
+	'E' : 'tab-prev',
+	'O' : 'forward',
+	
+	# Remap displaced keys
+	'h' : 'mode-enter insert',
+	'k' : 'search-next',
+	'l' : 'set-cmd-text -s :open',
+
+	'L' : 'set-cmd-text -s :open -t',
+
+	# Kakoune specific
+	'ge' : 'scroll-to-perc',
+}
+
+c.bindings.commands['caret'] = {
+	'go' : 'move-to-end-of-line',
+	'gn' : 'move-to-start-of-line',
+	'ge' : 'move-to-end-of-document',
+	'N' : 'scroll left',
+	'E' : 'scroll down',
+	'I' : 'scroll up',
+	'O' : 'scroll right',
+	'n' : 'move-to-prev-char',
+	'e' : 'move-to-next-line',
+	'i' : 'move-to-prev-line',
+	'o' : 'move-to-next-char',
+	'j' : 'move-to-end-of-word',
+}
+
+c.hints.chars = ('arstgmneio')
+
 # Mpv keybindings
-config.bind(',M', 'spawn mpv {url}')
-config.bind(',m', 'hint links spawn mpv {hint-url}')
+config.bind('<space>M', 'spawn mpv {url}')
+config.bind('<space>m', 'hint links spawn mpv {hint-url}')
 config.bind(';m', 'hint links spawn funnel "{hint-url}"')
 
 # List bookmarks

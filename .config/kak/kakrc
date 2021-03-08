@@ -34,7 +34,31 @@ hook global ModeChange ".*:normal" %{
 # Line numbers
 add-highlighter global/ number-lines -relative -separator '  '
 
-add-highlighter global/ regex \h+$ 0:Error	# Highlight trailing whitespace
+#add-highlighter global/ regex \h+$ 0:Error	# Highlight trailing whitespace
+
+# Colemak bindings
+map global normal n h
+map global normal N H
+map global normal e j
+map global normal E J
+map global normal i k
+map global normal I K
+map global normal o l
+map global normal O L
+map global normal h i
+map global normal H I
+map global normal j e
+map global normal J E
+map global normal k n
+map global normal K N
+map global normal l o
+map global normal L O
+
+map global goto n h
+map global goto e j
+map global goto i k
+map global goto o l
+
 
 # Set space to leader key
 map global normal <space> ,

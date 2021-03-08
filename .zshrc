@@ -134,11 +134,10 @@ bindkey -a e down-history
 bindkey -a i up-history
 bindkey -a o forward-char
 
-
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'n' vi-backward-char
+bindkey -M menuselect 'e' vi-down-line-or-history
+bindkey -M menuselect 'i' vi-up-line-or-history
+bindkey -M menuselect 'o' vi-forward-char
 
 function zle-keymap-select {
 	if [[ ${KEYMAP} == vicmd ]] ||

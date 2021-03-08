@@ -3,9 +3,9 @@ def_key "+"
 def_key "="
 	volume_up
 
-def_key "j"
+def_key "e"
 	scroll_down
-def_key "k"
+def_key "i"
 	scroll_up
 
 def_key "ctrl-u"
@@ -13,13 +13,13 @@ def_key "ctrl-u"
 def_key "ctrl-d"
 	page_down
 
-def_key "h"
+def_key "n"
 	previous_column
-def_key "h"
+def_key "n"
 	jump_to_parent_directory
-def_key "l"
+def_key "o"
 	next_column
-def_key "l"
+def_key "o"
 	enter_directory
 
 def_key "v"
@@ -34,9 +34,9 @@ def_key "ctrl-r"
 def_key "."
 	show_lyrics
 
-def_key "n"
+def_key "k"
 	next_found_item
-def_key "N"
+def_key "K"
 	previous_found_item
 
 def_key "g"
@@ -61,9 +61,9 @@ def_key "R"
 def_key "x"
     toggle_consume
 
-def_key "J"
+def_key "E"
 	move_selected_items_down
-def_key "K"
+def_key "I"
 	move_selected_items_up
 
 def_key "space"

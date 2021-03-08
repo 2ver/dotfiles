@@ -4,25 +4,27 @@ prepopulate-query-feeds yes
 auto-reload yes
 max-items 50
 
-unbind-key j
-unbind-key k
-unbind-key J
-unbind-key K
+unbind-key e
+unbind-key i
+unbind-key E
+unbind-key I
+unbind-key ,
 
-bind-key k up
+bind-key SPACE macro-prefix
+bind-key i up
 #bind-key j next articlelist
-bind-key j down
+bind-key e down
 #bind-key k prev articlelist
-bind-key J next-feed articlelist
-bind-key K prev-feed articlelist
+bind-key I next-feed articlelist
+bind-key E prev-feed articlelist
 bind-key G end
 bind-key g home
 bind-key d pagedown
 bind-key u pageup
-bind-key l open
-bind-key h quit
+bind-key o open
+bind-key n quit
 bind-key a toggle-article-read
-bind-key n next-unread
+#bind-key n next-unread
 bind-key N prev-unread
 bind-key D pb-download
 bind-key U show-urls

@@ -131,8 +131,18 @@ export KEYTIMEOUT=1
 # Colemak bindings
 bindkey -a n backward-char
 bindkey -a e down-history
+bindkey -a E vi-join
 bindkey -a i up-history
 bindkey -a o forward-char
+
+bindkey -a h vi-insert
+bindkey -a H vi-insert-bol
+bindkey -a j vi-backward-word
+bindkey -a J vi-bacward-blank-word
+bindkey -a k vi-repeat-search
+bindkey -a K vi-rev-repeat-search
+bindkey -a l vi-open-line-below
+bindkey -a L vi-open-line-above
 
 bindkey -M menuselect 'n' vi-backward-char
 bindkey -M menuselect 'e' vi-down-line-or-history

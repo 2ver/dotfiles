@@ -1,0 +1,26 @@
+# Paste these into the custom mappings section on the extension page
+
+unmap t
+map d removeTab
+map u restoreTab
+
+" map <c-d> scrollPageDown
+map <c-u> scrollPageUp
+unmap <c-e>
+
+" Colemak
+unmap h
+unmap j
+unmap k
+unmap l
+
+map n scrollLeft
+map e scrollDown
+map i scrollUp
+map o scrollRight
+
+map h enterInsertMode
+map k performFind
+map K performBackwardsFind
+map l Vamnibar.activate
+map L createTab

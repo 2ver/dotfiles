@@ -3,17 +3,28 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 # So that plug-clean does not remove plug.kak
 plug "andreyorst/plug.kak" noload
 
+# Tools
+plug "alexherbo2/prelude.kak"
+
 # Auto close {}, (), etc.
-plug "alexherbo2/auto-pairs.kak"
+plug "alexherbo2/auto-pairs.kak" %{
+   require-module prelude
+   require-module auto-pairs
+   auto-pairs-enable
+}
+
 # LSP server
 plug "kak-lsp/kak-lsp" do %{
-   cargo install --locked --force --path .
+   cargo install --release --locked
+   cargo install --force --path .
 }
+
 # Better buffer management
 plug "delapouite/kakoune-buffers" %{
     map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers'
     map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
 }
+
 # Open file at last edit
 plug "Screwtapello/kakoune-state-save" domain "gitlab.com"
 
@@ -26,6 +37,7 @@ set-option global autoreload yes # Live reload
 set-option global writemethod replace # Live reload method
 
 add-highlighter global/ number-lines -relative -separator '  ' # Line numbers
+add-highlighter global/ wrap -word -indent -marker ↳
 add-highlighter global/ show-matching
 #add-highlighter global/ regex \h+$ 0:Error	# Highlight trailing whitespace
 
@@ -33,8 +45,8 @@ add-highlighter global/ show-matching
 colorscheme lena
 
 # Change selection color based on mode
-set-face global PrimarySelection white,rgb:5C8CDC+F
-set-face global SecondarySelection black,rgb:86A7E0+F
+set-face global PrimarySelection white,rgba:5C8CDC80+F
+set-face global SecondarySelection black,rgba:86A7E040+F
 set-face global PrimaryCursor white,rgb:8C56EB+F
 set-face global SecondaryCursor black,rgb:AE8DEB+F
 set-face global PrimaryCursorEol black,rgb:DB4979
@@ -106,6 +118,7 @@ map global buffers K ':buffer-previous<ret>' -docstring 'prev'
 map global buffers x ':buffer-only<ret>' -docstring 'only'
 map global buffers n ':buffer-first<ret>' -docstring 'first'
 map global buffers o ':buffer-last<ret>' -docstring 'last'
+map global buffers i ':buffer-by-index ' -docstring 'index'
 
 # Set space to leader key
 map global normal <space> ,
@@ -119,6 +132,20 @@ map -docstring "yank the selection into the clipboard" global user y "<a-|> xsel
 map -docstring "paste the clipboard" global user p "<a-!> xsel<ret>"
 map -docstring "replace from clipboard" global user r "|xclip -i -selection clipboard<ret>; xclip -o -selection clipboard<ret>"
 
+# X extends up and x extends down
+def -params 1 extend-line-down %{
+  exec "<a-:>%arg{1}X"
+}
+def -params 1 extend-line-up %{
+  exec "<a-:><a-;>%arg{1}K<a-;>"
+    try %{
+      exec -draft ';<a-K>\n<ret>'
+      exec X
+    }
+    exec '<a-;><a-X>'
+}
+map global normal x ': extend-line-down %val{count}<ret>'
+map global normal X ': extend-line-up %val{count}<ret>'
 
 # Comment line
 map global normal '#' :comment-line<ret>

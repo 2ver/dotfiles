@@ -4,7 +4,7 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 # So that plug-clean does not remove plug.kak
 plug "andreyorst/plug.kak" noload
 
-# Tools
+# Dependency of auto-pairs
 plug "alexherbo2/prelude.kak"
 
 # Auto close {}, (), etc.
@@ -40,9 +40,12 @@ set-option global writemethod replace # Live reload method
 
 # Global highlighters
 add-highlighter global/ show-matching
-add-highlighter global/ number-lines -relative -separator '  ' # Line numbers
-add-highlighter global/ wrap -word -indent -marker ↳
+# add-highlighter global/ number-lines -relative -separator '  ' # Line numbers
+#add-highlighter global/ wrap -word -indent -marker ↳
 #add-highlighter global/ regex \h+$ 0:Error	# Highlight trailing whitespace
+
+# Line numbers (hook so I have more control)
+hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines -relative -separator '  ' }
 
 # Buffer list
 hook global WinDisplay .* info-buffers
@@ -181,6 +184,6 @@ hook global InsertCompletionHide .* %{
 def filetype-hook -params 2 %{ hook global WinSetOption "filetype=(%arg{1})" %arg{2} }
 
 filetype-hook man %{
-     remove-highlighter window/number-lines
+remove-highlighter window/number-lines
 }
 

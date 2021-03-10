@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Detach mpv when started from terminal
+
+mpv --no-input-terminal --really-quiet "$@" &
+disown

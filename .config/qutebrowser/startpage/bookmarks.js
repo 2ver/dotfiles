@@ -17,7 +17,9 @@ const bookmarks = [
     title: "Reddit",
     links: [
       { name: "r/unixporn", url: "https://reddit.com/r/unixporn" },
+      { name: "r/kakoune", url: "https://reddit.com/r/kakoune" },
       { name: "r/vim", url: "https://reddit.com/r/vim" },
+      { name: "r/emacs", url: "https://reddit.com/r/emacs" },
     ],
   },
   {

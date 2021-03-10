@@ -49,9 +49,9 @@ bindsym XF86AudioPlay exec "pulseaudio-ctl play-pause"
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up e
-set $down i
 set $left n
+set $down e
+set $up i
 set $right o
 
 set $alt Mod1

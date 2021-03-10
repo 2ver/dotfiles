@@ -136,8 +136,8 @@ bindsym $mod+$alt+Right move right
 
 # Smart resize windows
 bindsym $mod+Ctrl+n exec --no-startup-id i3resize left
-bindsym $mod+Ctrl+e exec --no-startup-id i3resize up
-bindsym $mod+Ctrl+i exec --no-startup-id i3resize down
+bindsym $mod+Ctrl+e exec --no-startup-id i3resize down
+bindsym $mod+Ctrl+i exec --no-startup-id i3resize up
 bindsym $mod+Ctrl+o exec --no-startup-id i3resize right
 
 # split in horizontal orientation

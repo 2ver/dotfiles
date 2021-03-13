@@ -95,9 +95,14 @@
 
 
 
+;; (use-package colemak-mode
+    ;; :straight (colemak-mode :local-repo "~/.emacs.d/colemak/")
+    ;; :bind (("C-c c" . colemak-mode)))
+
 ;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "<escape>") 'ryo-enter)
 
 ;; Ignore keys
 (global-set-key (kbd "<XF86AudioPrev>") 'ignore)
@@ -105,14 +110,20 @@
 (global-set-key (kbd "<XF86VolumeUp>") 'ignore)
 (global-set-key (kbd "<XF86VolumeDown>") 'ignore)
 
+;; (defun ryo-default ()
+;;    'ryo-enter
+;; )
+
+;; (add-hook 'buffer-list-update-hook #'ryo-default)
+
 (use-package general
   :config
-  (general-create-definer rune/leader-keys
+  (general-create-definer uver/leader-keys
     :keymaps '(normal insert visual emacs)
     :prefix "SPC"
     :global-prefix "C-SPC")
 
-  (rune/leader-keys
+  (uver/leader-keys
    "t" '(:ignore t :which-key "toggles")
    "tt" '(counsel-load-theme :which-key "choose theme")))
 
@@ -128,23 +139,92 @@
 ;;		  term-mode))
 ;;    (add to list 'evil-emacs-state-modes mode)))
 
-(use-package evil
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
-  (setq evil-want-fine-undo t)
+(use-package kakoune
+  ;; Having a non-chord way to escape is important, since key-chords don't work in macros
+  ;; :bind ("ESC" . ryo-modal-mode)
+  :bind ("C-z" . ryo-modal-mode)
+  :hook (after-init . uver/kakoune-setup)
   :config
-  (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (defun ryo-enter () "Enter normal mode" (interactive) (ryo-modal-mode 1))
+  (defun uver/kakoune-setup ()
+   "Call kakoune-setup-keybinds and then add some personal config."
+   (kakoune-setup-keybinds)
+   (setq ryo-modal-cursor-type 'box)
+   (add-hook 'prog-mode-hook #'ryo-enter)
+   (define-key ryo-modal-mode-map (kbd "SPC h") 'help-command)
+   ;; Access all C-x bindings easily
+   (define-key ryo-modal-mode-map (kbd "z") ctl-x-map)
+   (ryo-modal-keys
+    ("SPC w" save-buffer)
+    ("SPC q" kill-buffer)
+    ("n" backward-char)
+    ("e" next-line)
+    ("i" previous-line)
+    ("o" forward-char)
+    ("g n" beginning-of-line)
+    ("g e" end-of-buffer)
+    ("g i" beginning-of-buffer)
+    ("g o" end-of-line)
+    ("q" backward-word)
+    ("Q" backward-word)
+    ("L" kakoune-O :exit t)
+    ("l" kakoune-o :exit t)
+    ("h" kakoune-insert-mode)
+    ("H" back-to-indentation :exit t)
+    ("P" counsel-yank-pop)
+    ("M-m" mc/edit-lines)
+    ("*" mc/mark-all-like-this)
+    ("v" er/expand-region)
+    ("C-v" set-rectangular-region-anchor)
+    ("M-s" mc/split-region)
+    (";" kakoune-deactivate-mark)
+    ("C-n" windmove-left)
+    ("C-e" windmove-down)
+    ("C-i" windmove-up)
+    ("C-o" windmove-right)
+    ("C-u" scroll-down-command :first '(deactivate-mark))
+    ("C-d" scroll-up-command :first '(deactivate-mark)))))
 
-  ;; Use visual line motions even outside of visual-line-mode buffers
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+(use-package visual-regexp
+  :ryo
+  ("s" vr/mc-mark)
+  ("?" vr/replace)
+  ("M-/" vr/query-replace))
 
-  (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal))
+(use-package phi-search
+  :bind (("C-s" . phi-search)
+         ("C-r" . phi-search-backward)))
+
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode)
+  :ryo
+  ("u" undo-tree-undo)
+  ("U" undo-tree-redo)
+  ("SPC u" undo-tree-visualize)
+  :bind (:map undo-tree-visualizer-mode-map
+              ("n" . undo-tree-visualize-switch-branch-left)
+              ("e" . undo-tree-visualize-redo)
+              ("i" . undo-tree-visualize-undo)
+              ("o" . undo-tree-visualize-switch-branch-right)))
+
+;; (use-package evil
+;;   :init
+;;   (setq evil-want-integration t)
+;;   (setq evil-want-keybinding nil)
+;;   (setq evil-want-C-u-scroll t)
+;;   (setq evil-want-C-i-jump nil)
+;;   (setq evil-want-fine-undo t)
+;;   :config
+;;   (evil-mode 1)
+;;   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+
+;;   ;; Use visual line motions even outside of visual-line-mode buffers
+;;   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+;;   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+;;   (evil-set-initial-state 'messages-buffer-mode 'normal)
+;;   (evil-set-initial-state 'dashboard-mode 'normal))
 
 ;; Tabs
 ;(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
@@ -152,10 +232,10 @@
 (setq tab-width 3)
 (setq-default tab-always-indent nil)
 
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
+;; (use-package evil-collection
+;;   :after evil
+;;   :config
+;;   (evil-collection-init))
 
 (use-package which-key
   :init (which-key-mode)
@@ -239,11 +319,11 @@
 ;; (use-package doom-themes
 ;;   :init (load-theme 'doom-elena t))
 
-(setq evil-motion-state-cursor '("white" box)	   ; Evil motion cursor shape
-      evil-visual-state-cursor '("white" box)	   ; Evil visual cursor shape
-      evil-normal-state-cursor '("white" box)	   ; Evil normal cursor shape
-      evil-insert-state-cursor '("white" hbar)   ; Evil insert cursor shape
-      evil-emacs-state-cursor '("white" bar))	   ; Evil emacs cursor shape
+;; (setq evil-motion-state-cursor '("white" box)	   ; Evil motion cursor shape
+;;       evil-visual-state-cursor '("white" box)	   ; Evil visual cursor shape
+;;       evil-normal-state-cursor '("white" box)	   ; Evil normal cursor shape
+;;       evil-insert-state-cursor '("white" hbar)   ; Evil insert cursor shape
+;;       evil-emacs-state-cursor '("white" bar))	   ; Evil emacs cursor shape
 
 (use-package hydra)
 
@@ -253,7 +333,7 @@
   ("j" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
 
-(rune/leader-keys
+(uver/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 (defun uver/org-font-setup ()
@@ -287,8 +367,9 @@
   (org-indent-mode)
   (variable-pitch-mode 1)
   (auto-fill-mode 0)
-  (visual-line-mode 1)
-  (setq evil-auto-indent nil))
+  (visual-line-mode 1))
+
+  ;; (setq evil-auto-indent nil))
 
   ;; (with-eval-after-load 'org-indent (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch)))
 
@@ -519,11 +600,11 @@
   :ensure nil
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump))
-  :custom ((dired-listing-switches "-agho --group-directories-first"))
-  :config
-  (evil-collection-define-key 'normal 'dired-mode-map
-    "h" 'dired-single-up-directory
-    "l" 'dired-single-buffer))
+  :custom ((dired-listing-switches "-agho --group-directories-first")))
+  ;; :config
+  ;; (evil-collection-define-key 'normal 'dired-mode-map
+    ;; "h" 'dired-single-up-directory
+    ;; "l" 'dired-single-buffer))
 
 (use-package dired-single)
 
@@ -542,8 +623,8 @@
 (use-package dired-hide-dotfiles
   :hook (dired-mode . dired-hide-dotfiles-mode)
   :config
-  (evil-collection-define-key 'normal 'dired-mode-map
-    "H" 'dired-hide-dotfiles-mode))
+  ;; (evil-collection-define-key 'normal 'dired-mode-map
+    ;; "H" 'dired-hide-dotfiles-mode))
 
 (use-package term
   :config
@@ -569,9 +650,9 @@
   (add-to-list 'eshell-output-filter-functions 'eshell-truncate-buffer)
 
   ;; Bind some useful keys for evil-mode
-  (evil-define-key '(normal insert visual) eshell-mode-map (kbd "C-r") 'counsel-esh-history)
-  (evil-define-key '(normal insert visual) eshell-mode-map (kbd "<home>") 'eshell-bol)
-  (evil-normalize-keymaps)
+  ;; (evil-define-key '(normal insert visual) eshell-mode-map (kbd "C-r") 'counsel-esh-history)
+  ;; (evil-define-key '(normal insert visual) eshell-mode-map (kbd "<home>") 'eshell-bol)
+  ;; (evil-normalize-keymaps)
 
   (setq eshell-history-size         10000
         eshell-buffer-maximum-lines 10000

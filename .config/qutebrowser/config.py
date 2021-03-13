@@ -18,6 +18,7 @@ interceptor.register(filter_yt)
 
 config.load_autoconfig(False)
 
+#c.colors.webpage.preferred_color_scheme = dark
 #config.set("colors.webpage.darkmode.enabled", True)
 
 # Colemak Bindings

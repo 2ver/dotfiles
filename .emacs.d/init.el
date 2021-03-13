@@ -100,21 +100,15 @@
     ;; :bind (("C-c c" . colemak-mode)))
 
 ;; Make ESC quit prompts
-;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "<escape>") 'ryo-enter)
+;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; Ignore keys
 (global-set-key (kbd "<XF86AudioPrev>") 'ignore)
 (global-set-key (kbd "<XF86AudioNext>") 'ignore)
 (global-set-key (kbd "<XF86VolumeUp>") 'ignore)
 (global-set-key (kbd "<XF86VolumeDown>") 'ignore)
-
-;; (defun ryo-default ()
-;;    'ryo-enter
-;; )
-
-;; (add-hook 'buffer-list-update-hook #'ryo-default)
 
 (use-package general
   :config
@@ -182,8 +176,12 @@
     ("C-e" windmove-down)
     ("C-i" windmove-up)
     ("C-o" windmove-right)
+    ("/" swiper)
     ("C-u" scroll-down-command :first '(deactivate-mark))
     ("C-d" scroll-up-command :first '(deactivate-mark)))))
+
+ (add-hook 'prog-mode-hook #'ryo-modal-mode)
+ (add-hook 'text-mode-hook #'ryo-modal-mode)
 
 (use-package visual-regexp
   :ryo
@@ -621,8 +619,8 @@
                                 ("mvk" . "mpv"))))
 
 (use-package dired-hide-dotfiles
-  :hook (dired-mode . dired-hide-dotfiles-mode)
-  :config
+  :hook (dired-mode . dired-hide-dotfiles-mode))
+  ;; :config
   ;; (evil-collection-define-key 'normal 'dired-mode-map
     ;; "H" 'dired-hide-dotfiles-mode))
 

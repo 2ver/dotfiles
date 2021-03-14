@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+# Rofi menu for quickly editing a file in some directory
+# Requires ripgrep
+# I use it for editing dotfiles in my ~/.config directory
+# Script made by elenapan: https://github.com/elenapan/dotfiles/blob/master/bin/rofi_edit
+
+# Directory to search in
+dir="$HOME/.config"
+# Ignore files or directories relative to the directory you want to search
+ignore="
+chromium
+enchant
+mpv/watch_later
+ncmpcpp/lyrics
+transmission/torrents
+transmission/resume
+Ganache
+GIMP
+plover
+discord
+gtk-3.0
+MusicBrainz
+Open\ Steno\ Project
+pulseaudio-ctl
+Bitwarden\ CLI/data.json
+vifm/vifm-help.txt
+vifm/scripts/README
+vifm/colors
+vifm/vifminfo.json
+autostart
+vimium
+configstore
+qmk
+pulse
+mpv/mpvtube_playlists
+libfm
+nicotine
+bspwm/bspwmrc~
+kak/plugins
+kak/colors
+pcmanfm
+xarchiver
+mimeapps.list
+torbrowser
+easytag
+coc
+pavucontrol.ini
+galculator
+gtk-2.0
+obs-studio
+QtProject.conf
+qutebrowser/quickmarks
+qutebrowser/lena
+qutebrowser/autoconfig.yml
+qutebrowser/bookmarks
+qutebrowser/startpage
+dconf
+jgit
+google-chrome
+gpick
+awesome/elemental
+awesome/notifications
+awesome/decorations
+awesome/noodle
+awesome/helpers.lua
+awesome/apps.lua
+awesome/autorun.sh
+awesome/evil
+awesome/themes
+awesome/icons
+awesome/profile.png
+protonmail
+ncmpcpp/error.log
+"
+
+ignore_file="/tmp/rofi_edit_ignore_file"
+# Write ignore file in tmpfs
+echo "$ignore" > "$ignore_file"
+
+# Rofi prompt
+rofi_prompt="Edit dotfile"
+
+# Change directory so that the paths are shorter in rofi
+cd "$dir" || exit
+choice="$(rg --files --color=never --ignore-file "$ignore_file" | rofi -no-disable-history -sort -i -p "$rofi_prompt" -dmenu -fuzzy)"
+
+# If the search is cancelled by the user (e.g. Escape button)
+if [[ -z "${choice// }" ]]; then
+    exit 1
+fi
+
+# Edit the selected file
+kitty -1 -e kak "$choice"

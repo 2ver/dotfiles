@@ -91,6 +91,9 @@ bindsym $mod+F4 exec "rofi_edit"
 # Open ncmpcpp
 bindsym $mod+F3 workspace number $ws8; exec "kitty -o font_size=14 -e ncmpcpp"
 
+# Open newsboat
+bindsym $mod+F6 workspace number $ws1; exec "kitty -o font_size=14 newsboat"
+
 # Screenshots
 
 # Copy selected area to clipboard

@@ -143,6 +143,8 @@ bindkey -a k vi-repeat-search
 bindkey -a K vi-rev-repeat-search
 bindkey -a l vi-open-line-below
 bindkey -a L vi-open-line-above
+bindkey -a q vi-backward-word
+bindkey -a Q vi-backward-blank-word
 
 bindkey -M menuselect 'n' vi-backward-char
 bindkey -M menuselect 'e' vi-down-line-or-history

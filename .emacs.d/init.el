@@ -100,9 +100,9 @@
     ;; :bind (("C-c c" . colemak-mode)))
 
 ;; Make ESC quit prompts
+;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "<escape>") 'ryo-enter)
-;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; Ignore keys
 (global-set-key (kbd "<XF86AudioPrev>") 'ignore)
@@ -110,16 +110,17 @@
 (global-set-key (kbd "<XF86VolumeUp>") 'ignore)
 (global-set-key (kbd "<XF86VolumeDown>") 'ignore)
 
-(use-package general
-  :config
-  (general-create-definer uver/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
+;; (use-package general
+;;   :config
+;;   (general-create-definer uver/leader-keys
+;;     :keymaps '(normal insert visual emacs ryo-modal-mode)
+;;     :prefix "SPC"
+;;     :global-prefix "C-SPC")
 
-  (uver/leader-keys
-   "t" '(:ignore t :which-key "toggles")
-   "tt" '(counsel-load-theme :which-key "choose theme")))
+;;   (uver/leader-keys
+;;    "t" '(:ignore t :which-key "toggles")
+;;    "ts" '(hydra-text-scale/body :which-key "scale text")
+;;    "tt" '(counsel-load-theme :which-key "choose theme")))
 
 ;;(defun uver/evil-hook ()
 ;;  (dolist (mode '(custom-mode
@@ -136,6 +137,7 @@
 (use-package kakoune
   ;; Having a non-chord way to escape is important, since key-chords don't work in macros
   ;; :bind ("ESC" . ryo-modal-mode)
+  :defer t
   :bind ("C-z" . ryo-modal-mode)
   :hook (after-init . uver/kakoune-setup)
   :config
@@ -149,8 +151,10 @@
    ;; Access all C-x bindings easily
    (define-key ryo-modal-mode-map (kbd "z") ctl-x-map)
    (ryo-modal-keys
+    ;; ("ESC" keyboard-escape-quit)
     ("SPC w" save-buffer)
     ("SPC q" kill-buffer)
+    ("SPC ts" hydra-text-scale/body)
     ("n" backward-char)
     ("e" next-line)
     ("i" previous-line)
@@ -165,8 +169,11 @@
     ("l" kakoune-o :exit t)
     ("h" kakoune-insert-mode)
     ("H" back-to-indentation :exit t)
+    ("b" counsel-ibuffer)
+    ("B" ibuffer)
     ("P" counsel-yank-pop)
     ("M-m" mc/edit-lines)
+    ("#" comment-or-uncomment-region)
     ("*" mc/mark-all-like-this)
     ("v" er/expand-region)
     ("C-v" set-rectangular-region-anchor)
@@ -179,6 +186,8 @@
     ("/" swiper)
     ("C-u" scroll-down-command :first '(deactivate-mark))
     ("C-d" scroll-up-command :first '(deactivate-mark)))))
+
+ (setq ryo-modal-cursor-color "#8C56EB")
 
  (add-hook 'prog-mode-hook #'ryo-modal-mode)
  (add-hook 'text-mode-hook #'ryo-modal-mode)
@@ -327,12 +336,12 @@
 
 (defhydra hydra-text-scale (:timeout 4)
   "scale text"
-  ("k" text-scale-increase "in")
-  ("j" text-scale-decrease "out")
+  ("i" text-scale-increase "in")
+  ("e" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
 
-(uver/leader-keys
-  "ts" '(hydra-text-scale/body :which-key "scale text"))
+;; (uver/leader-keys
+  ;; "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 (defun uver/org-font-setup ()
   ;; Replace list hyphens with dots
@@ -522,7 +531,8 @@
 
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-  (add-to-list 'org-structure-template-alist '("py" . "src python")))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  (add-to-list 'org-structure-template-alist '("j" . "src java")))
 
 ;; Automatically tangle Emacs.org confile file when saved
 (defun uver/org-babel-tangle-config ()
@@ -534,8 +544,8 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'uver/org-babel-tangle-config)))
 
-(use-package evil-nerd-commenter
-  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+;;(use-package evil-nerd-commenter
+;;  :bind ("M-/" . comment-or-uncomment-lines))
 
 (add-to-list 'auto-mode-alist '("\\.*rc$" . conf-mode))
 

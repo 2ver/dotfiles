@@ -544,6 +544,36 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'uver/org-babel-tangle-config)))
 
+(use-package hide-mode-line)
+
+(defun uver/presentation-setup ()
+    ;; Hide the modeline
+    (hide-mode-line-mode 1)
+
+    ;; Display images inline
+    (org-display-inline-images)
+
+    ;; Enlarge text
+    (setq text-scale-mode-amount 3)
+    (text-scale-mode 1))
+
+(defun uver/presentation-end ()
+    ;; Reshow the modeline
+    (hide-mode-line-mode 0)
+
+    (text-scale-mode 0))
+
+(use-package org-tree-slide
+    :hook ((org-tree-slide-play . uver/presentation-setup)
+           (org-tree-slide-stop . uver/presentation-end))
+    :custom
+    (org-image-actual-width nil)
+    (org-tree-slide-slide-in-effect t)
+    (org-tree-slide-activate-message "Presentation started!")
+    (org-tree-slide-deactivate-message "Presentation finished!")
+    (org-tree-slide-header t)
+    (org-tree-slide-breadcrumbs " ❯ "))
+
 ;;(use-package evil-nerd-commenter
 ;;  :bind ("M-/" . comment-or-uncomment-lines))
 

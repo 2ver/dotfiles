@@ -250,7 +250,7 @@
       ("C-u" scroll-down-command :first '(deactivate-mark))
       ("C-d" scroll-up-command :first '(deactivate-mark)))))
 
-   (setq ryo-modal-cursor-color blue)
+   (setq ryo-modal-cursor-color "#8C56EB")
 
    (add-hook 'prog-mode-hook #'ryo-modal-mode)
    (add-hook 'text-mode-hook #'ryo-modal-mode)
@@ -709,6 +709,57 @@
         (org-babel-tangle))))
 
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'uver/org-babel-tangle-config)))
+
+#+end_src
+
+** Presentations
+*** Hide modeline while presenting
+#+begin_src emacs-lisp
+
+   (use-package hide-mode-line)
+
+#+end_src
+
+*** Configuration during presentation
+#+begin_src emacs-lisp
+
+  (defun uver/presentation-setup ()
+      ;; Hide the modeline
+      (hide-mode-line-mode 1)
+
+      ;; Display images inline
+      (org-display-inline-images)
+
+      ;; Enlarge text
+      (setq text-scale-mode-amount 3)
+      (text-scale-mode 1))
+
+#+end_src
+
+*** Configuration after presentation
+#+begin_src emacs-lisp
+
+  (defun uver/presentation-end ()
+      ;; Reshow the modeline
+      (hide-mode-line-mode 0)
+
+      (text-scale-mode 0))
+
+#+end_src
+
+*** org-tree-slide
+#+begin_src emacs-lisp
+
+  (use-package org-tree-slide
+      :hook ((org-tree-slide-play . uver/presentation-setup)
+             (org-tree-slide-stop . uver/presentation-end))
+      :custom
+      (org-image-actual-width nil)
+      (org-tree-slide-slide-in-effect t)
+      (org-tree-slide-activate-message "Presentation started!")
+      (org-tree-slide-deactivate-message "Presentation finished!")
+      (org-tree-slide-header t)
+      (org-tree-slide-breadcrumbs " ❯ "))
 
 #+end_src
 

@@ -708,3 +708,41 @@
     (setq eshell-visual-commands '("htop" "zsh" "vim"))))
 
   ;; (eshell-git-prompt-use-theme 'powerline)
+
+(setq flyspell-issue-message-flag nil)
+
+(dolist (hook '(text-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode 1))))
+
+(dolist (hook '(change-log-mode log-edit-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode -1))))
+
+(use-package hide-mode-line)
+
+(defun uver/presentation-setup ()
+    ;; Hide the modeline
+    (hide-mode-line-mode 1)
+
+    ;; Display images inline
+    (org-display-inline-images)
+
+    ;; Enlarge text
+    (setq text-scale-mode-amount 3)
+    (text-scale-mode 1))
+
+(defun uver/presentation-end ()
+    ;; Reshow the modeline
+    (hide-mode-line-mode 0)
+
+    (text-scale-mode 0))
+
+(use-package org-tree-slide
+    :hook ((org-tree-slide-play . uver/presentation-setup)
+           (org-tree-slide-stop . uver/presentation-end))
+    :custom
+    (org-image-actual-width nil)
+    (org-tree-slide-slide-in-effect t)
+    (org-tree-slide-activate-message "Presentation started!")
+    (org-tree-slide-deactivate-message "Presentation finished!")
+    (org-tree-slide-header t)
+    (org-tree-slide-breadcrumbs " ❯ "))

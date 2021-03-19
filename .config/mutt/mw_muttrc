@@ -1,0 +1,38 @@
+source /usr/share/mutt-wizard/mutt-wizard.muttrc
+source /home/uver/.config/mutt/accounts/the-account-to-open-on-startup
+
+## User bindings
+
+# Colemak
+bind index e next-entry
+bind index i previous-entry
+bind index,pager,attach,browser o noop
+bind attach o view-mailcap
+bind pager,attach n exit
+bind pager e next-line
+bind pager i previous-line
+bind pager o view-attachments
+bind index n noop
+bind index o display-message
+macro browser n '<change-dir><kill-line>..<enter>' "Go to parent folder"
+# bind index,pager N view-raw-message
+bind browser o select-entry
+bind index,pager \Ci sidebar-prev
+bind index,pager \Ce sidebar-next
+bind index \Cb bounce-message
+
+# Kakoune-like
+bind index ge last-entry
+bind pager,browser ge bottom-page
+
+# General rebindings
+bind index,pager,browser \Cd half-down
+bind index,pager,browser \Cu half-up
+bind index d delete-message
+bind index u undelete-message
+macro index \Cr "<shell-escape>mw -Y<enter>" "run mw -Y to sync all mail"
+bind index O noop
+
+bind index,pager b noop
+macro index,pager b1 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/first-account.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to first-account"
+macro index,pager b2 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/second-account.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to second-account"

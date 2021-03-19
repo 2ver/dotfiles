@@ -71,6 +71,8 @@ awesome/icons
 awesome/profile.png
 protonmail
 ncmpcpp/error.log
+mutt/accounts
+mutt/mw_muttrc
 "
 
 ignore_file="/tmp/rofi_edit_ignore_file"

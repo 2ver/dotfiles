@@ -1,5 +1,5 @@
 source /usr/share/mutt-wizard/mutt-wizard.muttrc
-source /home/uver/.config/mutt/accounts/the-account-to-open-on-startup
+source /home/uver/.config/mutt/accounts/the-account-to-open-on-startup.muttrc
 
 ## User bindings
 

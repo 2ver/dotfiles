@@ -1,3 +1,14 @@
+(setq-default gc-cons-threshold 100000000)
+
+(let ((file-name-handler-alist nil)) '~/.emacs.d/init.el)
+
+(run-with-idle-timer
+ 5 nil
+ (lambda ()
+  (setq gc-cons-threshold 1000000)
+  (message "gc-cons-threshold restored to %S"
+           gc-cons-threshold)))
+
 ;; Initialize package sources
 (require 'package)
 

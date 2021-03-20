@@ -9,13 +9,6 @@
 
 #+end_src
 
-** Wrap init file
-#+begin_src emacs-lisp
-
-   (let ((file-name-handler-alist nil)) '~/.emacs.d/init.el)
-
-#+end_src
-
 *** Reset garbage collection pause after startup
 #+begin_src emacs-lisp
 
@@ -25,6 +18,13 @@
     (setq gc-cons-threshold 1000000)
     (message "gc-cons-threshold restored to %S"
              gc-cons-threshold)))
+
+#+end_src
+
+** Wrap init file
+#+begin_src emacs-lisp
+
+   (let ((file-name-handler-alist nil)) '~/.emacs.d/init.el)
 
 #+end_src
 

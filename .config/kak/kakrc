@@ -50,8 +50,31 @@ hook global WinCreate ^[^*]+$ %{
 }
 
 # Highlight matching brackets
+ 
+# Normal mode
 hook global WinCreate .* %{
 	add-highlighter window/ show-matching
+}
+
+# Insert mode
+hook global -group kakrc-matching-ranges InsertChar '[[\](){}<>]' %{
+   eval -draft %{
+      try %{
+         exec '<esc>;hm<a-k>..<ret>;'
+         set window show_matching_range %val{timestamp} "%val{selection_desc}|MatchingChar"
+      } catch %{
+         set window show_matching_range 0
+      }
+      hook window -once InsertChar '[^[\](){}<>]' %{
+         set window show_matching_range 0
+      }
+      hook window -once ModeChange .* %{
+         set window show_matching_range 0
+      }
+      hook window -once InsertMove .* %{
+         set window show_matching_range 0
+      }
+   }
 }
 
 # Buffer list

@@ -18,6 +18,33 @@ plug "alexherbo2/auto-pairs.kak" %{
 plug "kak-lsp/kak-lsp" do %{
    cargo install --release --locked
    cargo install --force --path .
+} config %{
+    set global lsp_diagnostic_line_error_sign '║'
+    set global lsp_diagnostic_line_warning_sign '┊'
+
+    define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
+    hook global WinSetOption filetype=(c|cpp|rust|java) %{
+        set-option window lsp_auto_highlight_references true
+        set-option window lsp_hover_anchor false
+        lsp-auto-hover-enable
+        echo -debug "Enabling LSP for filtetype %opt{filetype}"
+        lsp-enable-window
+    }
+
+    hook global WinSetOption filetype=(rust) %{
+        set window lsp_server_configuration rust.clippy_preference="on"
+        # set-option window lsp_auto_highlight_references false
+    }
+
+    hook global WinSetOption filetype=rust %{
+        hook window BufWritePre .* %{
+            evaluate-commands %sh{
+                test -f rustfmt.toml && printf lsp-formatting-sync
+            }
+        }
+    }
+
+    hook global KakEnd .* lsp-exit
 }
 
 # Better buffer management
@@ -213,6 +240,26 @@ hook global InsertCompletionHide .* %{
 def filetype-hook -params 2 %{ hook global WinSetOption "filetype=(%arg{1})" %arg{2} }
 
 filetype-hook man %{
-remove-highlighter window/number-lines
+   remove-highlighter window/number-lines
 }
 
+# Extensions
+# ──────────
+
+# Rofi
+# define-command rofi-buffers -docstring 'Select an open buffer using Rofi' %{
+#    %sh{
+#       BUFFER=$(printf %s\\n "${kak_buflist}" | tr : '\n' | rofi -dmenu)
+#       if [ -n "$BUFFER" ]; then
+#          echo "eval -client '$kak_client' 'buffer ${BUFFER}'" | kak -p ${kak_session}
+#       fi
+#    }
+# }
+
+# Output debug kak-lsp debug logs
+# nop %sh{
+#    (kak-lsp -s $kak_session -vvv ) > /tmp/lsp_"$(date +%F-%T-%N)"_kak-lsp_log 2>&1 < /dev/null &
+# }
+
+# Globally enable kak-lsp
+# lsp-enable

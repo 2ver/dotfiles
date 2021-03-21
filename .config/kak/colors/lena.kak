@@ -31,11 +31,13 @@ face global list rgb:dedede,default
 # kakoune UI
 
 face global Default rgb:e3e3de,rgb:2f3241
-face global PrimarySelection rgb:000000,rgb:af8eeb
-face global SecondarySelection rgb:121212,rgb:977acd
-face global PrimaryCursor rgb:000000,rgb:ffffff+b
-face global SecondaryCursor rgb:121212,rgb:dedede+b
-face global MatchingChar default,rgb:333333
+face global PrimarySelection white,rgb:37424f
+face global SecondarySelection rgba:ffffff50,rgba:37424f50
+face global PrimaryCursor white,rgb:4F6074+b
+face global SecondaryCursor rgba:ffffff50,rgba:4F607450
+face global PrimaryCursorEol white,rgb:4F6074+b
+face global SecondaryCursorEol rgba:ffffff50,rgba:4F607450
+face global MatchingChar rgb:4F6074,default+ub
 face global Search default,rgb:333333
 face global Whitespace default,rgb:333333
 face global BufferPadding rgb:333333,default

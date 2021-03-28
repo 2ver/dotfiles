@@ -58,14 +58,15 @@ c.bindings.commands['caret'] = {
 	'i' : 'move-to-prev-line',
 	'o' : 'move-to-next-char',
 	'j' : 'move-to-end-of-word',
+	'q' : 'move-to-prev-word',
 }
 
 c.hints.chars = ('arstgmneio')
 
 # Mpv keybindings
-config.bind('<space>M', 'spawn mpv {url}')
-config.bind('<space>m', 'hint links spawn mpv {hint-url}')
-config.bind(';m', 'hint links spawn funnel "{hint-url}"')
+config.bind('<space>M', 'spawn umpv {url}')
+config.bind('<space>m', 'hint links spawn umpv {hint-url}')
+config.bind(';m', 'hint --rapid links spawn umpv "{hint-url}"')
 
 # List bookmarks
 config.bind('b', 'set-cmd-text -s :bookmark-load')
@@ -79,12 +80,11 @@ config.bind('Q', 'set-cmd-text -s :quickmark-load -t')
 # Alias for moving tabs
 c.aliases['tabm'] = 'tab-move'
 
-c.editor.command = ['termite', '-e', 'vim {}']
+c.editor.command = ['kitty', 'kak', '{}']
 c.tabs.position = "top"
 c.url.start_pages = ["~/.config/qutebrowser/startpage/index.html"]
-#c.url.start_pages.append('~/.config/qutebrowser/startpage/index.html')
 c.url.default_page = ("~/.config/qutebrowser/startpage/index.html")
-c.url.searchengines = { "DEFAULT" : "https://searx.bar/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}", "gh" : "https://github.com/search?q={}&ref=opensearch" }
+c.url.searchengines = { "DEFAULT" : "https://searx.bar/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}", "gh" : "https://github.com/search?q={}&ref=opensearch", "w" : "https://wiby.me/?q={}" }
 
 # Lena theme
 lena.draw.lena(c, {

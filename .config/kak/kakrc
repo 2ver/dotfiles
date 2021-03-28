@@ -57,12 +57,12 @@ plug "Screwtapello/kakoune-state-save" domain "gitlab.com"
 
 # UI configuration
 # ────────────────
-set-option global tabstop 3		# Width of a tab
-set-option global indentwidth 3	# Indent with 3 spaces
-set-option global scrolloff 99,3	# Center cursor
+set-option global tabstop 3				# Width of a tab
+set-option global indentwidth 3			# Indent with 3 spaces
+set-option global scrolloff 99,99		# Center cursor
 set-option global ui_options ncurses_assistant=off # Disable clippy
-set-option global autoreload yes # Live reload
-set-option global writemethod replace # Live reload method
+set-option global autoreload yes 		# Live reload
+set-option global writemethod replace	# Live reload method
 
 # Global highlighters
 #add-highlighter global/ show-matching

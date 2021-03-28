@@ -138,7 +138,7 @@ bindkey -a o forward-char
 bindkey -a h vi-insert
 bindkey -a H vi-insert-bol
 bindkey -a j vi-backward-word
-bindkey -a J vi-bacward-blank-word
+bindkey -a J vi-backward-blank-word
 bindkey -a k vi-repeat-search
 bindkey -a K vi-rev-repeat-search
 bindkey -a l vi-open-line-below
@@ -204,7 +204,7 @@ MANPAGER=kak-man-pager
 # export ARCHFLAGS="-arch x86_64"
 
 # Functions
-function colors()
+colors()
 {
    for COLOR in {1..255}; do echo -en "\e[38;5;${COLOR}m${COLOR} "; done; echo;
 }

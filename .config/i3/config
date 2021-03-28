@@ -73,6 +73,9 @@ bindsym $mod+space exec "rofi -matching fuzzy -show run"
 # Qutebrowser
 bindsym $mod+b exec "qutebrowser"
 
+# Editor
+bindsym $mod+k exec "kitty kak"
+
 # Password Manager
 bindsym $mod+$alt+p exec "bwmenu --auto-lock -1"
 

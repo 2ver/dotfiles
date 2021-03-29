@@ -55,6 +55,11 @@ plug "delapouite/kakoune-buffers" %{
 # Open file at last edit
 plug "Screwtapello/kakoune-state-save" domain "gitlab.com"
 
+# kitty.kak
+plug "joefiorini/joeconf-kakoune-plugins" subset %{
+   plugins/kitty.kak
+}
+
 # UI configuration
 # ────────────────
 set-option global tabstop 3				# Width of a tab
@@ -83,25 +88,25 @@ hook global WinCreate .* %{
 }
 
 # Insert mode
-hook global -group kakrc-matching-ranges InsertChar '[[\](){}<>]' %{
-   eval -draft %{
-      try %{
-         exec '<esc>;hm<a-k>..<ret>;'
-         set window show_matching_range %val{timestamp} "%val{selection_desc}|MatchingChar"
-      } catch %{
-         set window show_matching_range 0
-      }
-      hook window -once InsertChar '[^[\](){}<>]' %{
-         set window show_matching_range 0
-      }
-      hook window -once ModeChange .* %{
-         set window show_matching_range 0
-      }
-      hook window -once InsertMove .* %{
-         set window show_matching_range 0
-      }
-   }
-}
+# hook global -group kakrc-matching-ranges InsertChar '[[\](){}<>]' %{
+#    eval -draft %{
+#       try %{
+#          exec '<esc>;hm<a-k>..<ret>;'
+#          set window show_matching_range %val{timestamp} "%val{selection_desc}|MatchingChar"
+#       } catch %{
+#          set window show_matching_range 0
+#       }
+#       hook window -once InsertChar '[^[\](){}<>]' %{
+#          set window show_matching_range 0
+#       }
+#       hook window -once ModeChange .* %{
+#          set window show_matching_range 0
+#       }
+#       hook window -once InsertMove .* %{
+#          set window show_matching_range 0
+#       }
+#    }
+# }
 
 # Buffer list
 hook global WinDisplay .* info-buffers
@@ -130,6 +135,9 @@ hook global ModeChange ".*:normal" %{
 	unset-face window PrimaryCursorEol
 	unset-face window SecondaryCursorEol
 }
+
+# Kitty
+# ─────
 
 # Keyboard mappings
 # ─────────────────
@@ -189,6 +197,14 @@ map global normal , <space>
 map -docstring "yank the selection into the clipboard" global user y "<a-|> xsel -i -b<ret>"
 map -docstring "paste the clipboard" global user p "<a-!> xsel<ret>"
 map -docstring "replace from clipboard" global user r "|xclip -i -selection clipboard<ret>; xclip -o -selection clipboard<ret>"
+
+map global user '/' %{
+	:try %{
+   	exec -save-regs '' <lt>a-k>[A-Z]<lt>ret>*
+ 	} catch %{
+    	exec -save-regs '' */(?i)<lt>c-r>/<lt>ret>
+ 	}<ret>
+}
 
 # X extends up and x extends down
 def -params 1 extend-line-down %{

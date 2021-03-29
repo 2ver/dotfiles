@@ -9,8 +9,8 @@ hc emit_hook reload
 xsetroot -solid '#5A8E3A'
 
 # Autostart 
-autostart # Mouse settings
 external_monitor_connecected # Monitor settings
+autostart # Mouse settings
 picom &
 ~/.fehbg
 
@@ -82,16 +82,16 @@ hc keybind $Mod-comma  use_index -1 --skip-visible
 hc keybind $Mod-r remove
 hc keybind $Mod-$Alt-space  floating toggle
 hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
-hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
+hc keybind $Mod-Control-f set_attr clients.focus.floating toggle
+hc keybind $Mod-Control-m set_attr clients.focus.minimized true
 # restore all minimized windows of the focused tag
-hc keybind $Mod-Ctrl-m foreach CLIENT clients. \
+hc keybind $Mod-Shift-m foreach CLIENT clients. \
      sprintf MINATT "%c.minimized" CLIENT \
      sprintf TAGATT "%c.tag" CLIENT and \
        , compare MINATT "=" "true" \
        , substitute FOCUS "tags.focus.name" compare TAGATT "=" FOCUS \
        , set_attr MINATT false
-hc keybind $Mod-p pseudotile toggle
+hc keybind $Mod-Control-p pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
@@ -99,6 +99,10 @@ hc keybind $Mod-Control-space                                                   
             or , and . compare tags.focus.curframe_wcount = 2                   \
                      . cycle_layout +1 vertical horizontal max vertical grid    \
                , cycle_layout +1
+
+hc keybind $Mod-l set_layout vertical
+hc keybind $Mod-Control-l set_layout grid
+hc keybind $Mod-$Alt-l set_layout horizontal
 
 # mouse
 hc mouseunbind --all
@@ -120,9 +124,7 @@ hc keybind XF86AudioRaiseVolume spawn pulseaudio-ctl up
 hc keybind XF86AudioPlay spawn pulseaudio-ctl play-pause
 
 # User programs
-hc keybind $Mod-F1 chain \
-			  use_index "0" \
-			  spawn kitty -o font_size=14 newsboat
+hc keybind $Mod-F1 chain , use_index "0" , spawn kitty -o font_size=14 newsboat
 hc keybind $Mod-F2 spawn kitty vifm
 hc keybind $Mod-F3 spawn kitty -o font_size=13 neomutt
 hc keybind $Mod-F4 spawn rofi_edit
@@ -173,6 +175,7 @@ hc set smart_window_surroundings off
 hc set smart_frame_surroundings on
 hc set mouse_recenter_gap 0
 hc set tree_style '╾│ ├└╼─┐'
+hc set default_frame_layout 3
 
 # rules
 hc unrule -F

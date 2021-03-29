@@ -73,6 +73,10 @@ protonmail
 ncmpcpp/error.log
 mutt/accounts
 mutt/mw_muttrc
+mpv
+ytmdl
+msmtp
+pijul/config.toml
 "
 
 ignore_file="/tmp/rofi_edit_ignore_file"

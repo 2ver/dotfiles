@@ -2,5 +2,5 @@
 
 # Detach mpv when started from terminal
 
-mpv --no-input-terminal --really-quiet "$@" &
+umpv --no-input-terminal --really-quiet "$@" &
 disown

@@ -9,7 +9,7 @@ hc emit_hook reload
 xsetroot -solid '#5A8E3A'
 
 # Autostart 
-external_monitor_connecected # Monitor settings
+external_monitor_connected # Monitor settings
 autostart # Mouse settings
 picom &
 ~/.fehbg
@@ -60,6 +60,9 @@ hc keybind $Mod-Control-Down    resize down +$resizestep
 hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
+# Set default frame layout before creating tags
+hc set default_frame_layout grid
+
 # tags
 tag_names=( {1..9} )
 tag_keys=( {1..9} 0 )
@@ -71,6 +74,7 @@ for i in "${!tag_names[@]}" ; do
     if ! [ -z "$key" ] ; then
         hc keybind "$Mod-$key" use_index "$i"
         hc keybind "$Mod-Shift-$key" move_index "$i"
+        hc keybind "$Mod-$Alt-$key" chain , move_index "$i" , use_index "$i"
     fi
 done
 
@@ -100,9 +104,9 @@ hc keybind $Mod-Control-space                                                   
                      . cycle_layout +1 vertical horizontal max vertical grid    \
                , cycle_layout +1
 
-hc keybind $Mod-l set_layout vertical
+hc keybind $Mod-l set_layout horizontal
 hc keybind $Mod-Control-l set_layout grid
-hc keybind $Mod-$Alt-l set_layout horizontal
+hc keybind $Mod-$Alt-l set_layout vertical
 
 # mouse
 hc mouseunbind --all
@@ -123,18 +127,23 @@ hc keybind XF86AudioLowerVolume spawn pulseaudio-ctl down
 hc keybind XF86AudioRaiseVolume spawn pulseaudio-ctl up
 hc keybind XF86AudioPlay spawn pulseaudio-ctl play-pause
 
+hc keybind $Mod+$Alt+z spawn pulseaudio-ctl up
+
+# Screenshots
+hc keybind $Mod-Shift-c spawn maim -s | xclip -selection clipboard -t image/png # Copy selected area to clipboard
+hc keybind $Mod-Shift-$Alt-c spawn maim -s ~/Pictures/Screenshots/$(date +%s).png # Save selected area to screenshots folder
+
 # User programs
 hc keybind $Mod-F1 chain , use_index "0" , spawn kitty -o font_size=14 newsboat
 hc keybind $Mod-F2 spawn kitty vifm
-hc keybind $Mod-F3 spawn kitty -o font_size=13 neomutt
+hc keybind $Mod-F3 chain , use_index "2" , spawn kitty -o font_size=13 neomutt
 hc keybind $Mod-F4 spawn rofi_edit
 hc keybind $Mod-F5 spawn pcmanfm
-hc keybind $Mod-F8 spawn kitty -o font_size=14 ncmpcpp
+hc keybind $Mod-F8 chain , use_index "7" , spawn kitty -o font_size=14 ncmpcpp
 hc keybind $Mod-p spawn kitty htop
 hc keybind $Mod-$Alt-p spawn bwmenu --auto-lock -1
 hc keybind $Mod-k spawn kitty kak
 hc keybind $Mod-b spawn qutebrowser
-
            
 # theme
 hc attr theme.tiling.reset 1
@@ -175,7 +184,6 @@ hc set smart_window_surroundings off
 hc set smart_frame_surroundings on
 hc set mouse_recenter_gap 0
 hc set tree_style '╾│ ├└╼─┐'
-hc set default_frame_layout 3
 
 # rules
 hc unrule -F

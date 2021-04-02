@@ -8,4 +8,4 @@ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 # awesome
 # exec bspwm
 # exec i3
-exec herbstluftwm --locked 
+exec herbstluftwm #--locked 

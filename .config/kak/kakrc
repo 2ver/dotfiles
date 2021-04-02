@@ -145,15 +145,23 @@ hook global ModeChange ".*:normal" %{
 # Colemak bindings
 map global normal n h
 map global normal N H
+map global normal <a-n> <a-h>
+map global normal <a-N> <a-H>
 map global normal e j
 map global normal E J
+map global normal <a-e> <a-j>
+map global normal <a-E> <a-J>
 map global normal i k
 map global normal I K
+map global normal <a-i> <a-k>
+map global normal <a-I> <a-K>
 map global normal o l
 map global normal O L
-map global normal h i
+map global normal <a-o> <a-l>
+map global normal <a-O> <a-L>
 
 # Remap displaced keys
+map global normal h i
 map global normal H I
 map global normal j e
 map global normal J E

@@ -37,6 +37,7 @@ c.bindings.commands['normal'] = {
 	# Remap displaced keys
 	'h' : 'mode-enter insert',
 	'k' : 'search-next',
+	'K' : 'search-prev',
 	'l' : 'set-cmd-text -s :open',
 
 	'L' : 'set-cmd-text -s :open -t',

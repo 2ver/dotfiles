@@ -51,3 +51,4 @@ browser "newsboat-qutebrowser"
 macro b open-in-browser
 macro m set browser "/usr/local/bin/play %u" ; open-in-browser ; set browser "newsboat-qutebrowser"
 macro 1 set browser /usr/local/bin/play; one; set browser "newsboat-qutebrowser"
+macro d set browser "youtube-dl %u"; one; set browser "newsboat-qutebrowser"

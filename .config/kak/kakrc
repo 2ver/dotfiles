@@ -60,6 +60,12 @@ plug "joefiorini/joeconf-kakoune-plugins" subset %{
    plugins/kitty.kak
 }
 
+# Discord presence
+plug "abuffseagull/kakoune-discord" do %{ cargo install --path . --force } %{
+     discord-presence-enable
+}
+
+
 # UI configuration
 # ────────────────
 set-option global tabstop 3				# Width of a tab

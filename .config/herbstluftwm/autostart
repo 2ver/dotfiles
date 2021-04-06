@@ -122,15 +122,15 @@ hc keybind $Mod-c cycle
 # hc keybind $Mod-i jumpto urgent
 
 # Volume control
-hc keybind XF86AudioMute spawn pulseaudio-ctl mute
-hc keybind XF86AudioLowerVolume spawn pulseaudio-ctl down 2
-hc keybind XF86AudioRaiseVolume spawn pulseaudio-ctl up 2
+hc keybind XF86AudioMute spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
+hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume @DEFAULT_SINK@ -4%
+hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume @DEFAULT_SINK@ +4%
 hc keybind XF86AudioPlay spawn pulseaudio-ctl play-pause
 
 hc keybind $Mod+$Alt+z spawn pulseaudio-ctl up
 
 # Screenshots
-hc keybind $Mod-Shift-c spawn maim -s | xclip -selection clipboard -t image/png # Copy selected area to clipboard
+hc keybind $Mod-Control-c spawn maim -s | xclip -selection clipboard -t image/png # Copy selected area to clipboard
 hc keybind $Mod-Shift-$Alt-c spawn maim -s ~/Pictures/Screenshots/$(date +%s).png # Save selected area to screenshots folder
 
 # User programs

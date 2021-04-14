@@ -56,9 +56,9 @@ plug "delapouite/kakoune-buffers" %{
 plug "Screwtapello/kakoune-state-save" domain "gitlab.com"
 
 # kitty.kak
-plug "joefiorini/joeconf-kakoune-plugins" subset %{
-   plugins/kitty.kak
-}
+# plug "joefiorini/joeconf-kakoune-plugins" subset %{
+#    plugins/kitty.kak
+# }
 
 # Discord presence
 plug "abuffseagull/kakoune-discord" do %{ cargo install --path . --force } %{

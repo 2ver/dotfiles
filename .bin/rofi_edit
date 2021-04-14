@@ -77,6 +77,8 @@ mpv
 ytmdl
 msmtp
 pijul/config.toml
+lbry
+pipewire
 "
 
 ignore_file="/tmp/rofi_edit_ignore_file"

@@ -29,6 +29,7 @@ hc keybind $Mod-Control-r reload
 hc keybind $Mod-q close_or_remove
 hc keybind $Mod-w close_and_remove
 hc keybind $Mod-Return spawn "${TERMINAL:-kitty}"
+hc keybind $Mod-Alt-Return spawn kitty ssh root@austinsahnow.com
 hc keybind $Mod-space spawn rofi -matching fuzzy -show run
 
 # basic movement in tiling and floating mode
@@ -146,7 +147,7 @@ hc keybind $Mod-F5 spawn pcmanfm
 hc keybind $Mod-F8 chain , use_index "7" , spawn kitty -o font_size=14 ncmpcpp
 # hc keybind $Mod-Control-F8 chain , spawn killall mopidy-discord-rpc , spawn mopidy-discord-rpc
 hc keybind $Mod-p spawn kitty htop
-hc keybind $Mod-$Alt-p spawn bwmenu --auto-lock -1
+hc keybind $Mod-$Alt-p spawn bwmenu --auto-lock -1 -C
 hc keybind $Mod-k spawn kitty kak
 hc keybind $Mod-b spawn qutebrowser
            

@@ -12,26 +12,41 @@ super + @space
 
 # Launch qutebrowser
 super + b
-    qutebrowser
+   qutebrowser
+
+super + k
+	kitty kak
 
 super + alt + p
-    bwmenu --auto-lock -1
+   bwmenu --auto-lock -1 -C
 
 super + p
-    kitty -e htop
+   kitty htop
 
-super + e
-	 emacs
-	 # emacsclient -c -n
+# super + e
+	# emacs
+	# emacsclient -c -n
+
+super + F1
+	bspc desktop -f ^1 && kitty -o font_size=14 newsboat
 
 super + F2
-    pcmanfm
+   kitty vifm
 
 super + F3
-    kitty -o font_size=12 -e ncmpcpp
+   bspc desktop -f ^3 && kitty -o font_size=13 -e neomutt
+
+super + F4
+	rofi_edit
+
+super + F5
+	pcmanfm
+
+super + F8
+	bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp
 
 # Copy selected area to clipboard
-super + shift + c
+super + control + c
     maim -s | xclip -selection clipboard -t image/png
 
 # Save selected area as screenshot
@@ -71,16 +86,16 @@ super + g
 	bspc node -s biggest.window
 
 XF86AudioMute
-    pulseaudio-ctl mute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86AudioLowerVolume
-    pulseaudio-ctl down
+	pactl set-sink-volume @DEFAULT_SINK@ -4%
 
 XF86AudioRaiseVolume
-    pulseaudio-ctl up
+	pactl set-sink-volume @DEFAULT_SINK@ +4%
 
 XF86AudioPlay
-    playerctl play-pause
+	pulseaudio-ctl play-pause
 
 XF86MonBrightnessUp
    light -A 10
@@ -92,7 +107,7 @@ XF86MonBrightnessDown
 #
 
 # set the window state
-super + {t,shift + t,s,f}
+super + {t,control+ p,shift+f,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
@@ -104,7 +119,7 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-super + {_,alt + }{h,j,k,l}
+super + {_,alt + }{n,e,i,o}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
@@ -124,10 +139,10 @@ super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+# super + {o,i}
+# 	bspc wm -h off; \
+# 	bspc node {older,newer} -f; \
+# 	bspc wm -h on
 
 # focus or send to the given desktop
 super + {_,alt + }{1-9,0}
@@ -141,7 +156,7 @@ super + shift + {1-9,0}
 #
 
 # preselect the direction
-super + alt + shift + {h,j,k,l}
+super + alt + shift + {n,e,i,o}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
@@ -161,7 +176,7 @@ super + alt + space
 #
 
 # Expand a window by moving one of its sides outward
-super + ctrl + {h,j,k,l}
+super + ctrl + {n,e,i,o}
     n=20; \
     { d1=left;   d2=right;  dx=-$n; dy=0;   \
     , d1=bottom; d2=top;    dx=0;   dy=$n;  \
@@ -176,5 +191,5 @@ super + ctrl + {h,j,k,l}
 #	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
-super + alt + ctrl + {h,j,k,l}
+super + alt + ctrl + {n,e,i,o}
 	bspc node -v {-20 0,0 20,0 -20,20 0}

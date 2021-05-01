@@ -14,7 +14,7 @@ autostart # Mouse settings
 picom &
 ~/.fehbg
 doas systemctl restart mopidy # Janky fix for mopidy on startup
-mopidy-discord-rpc &
+# mopidy-discord-rpc &
 
 # remove all existing keybindings
 hc keyunbind --all

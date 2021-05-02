@@ -18,4 +18,4 @@ picom &
 # exec bspwm
 # exec i3
 # exec herbstluftwm
-exec dwm
+# exec dwm

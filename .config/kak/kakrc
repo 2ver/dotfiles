@@ -1,7 +1,8 @@
 # Plugins
 # ───────
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
-# So that plug-clean does not remove plug.kak
+
+# Install plugin manager so that 'plug-clean' does not remove plug.kak
 plug "andreyorst/plug.kak" noload
 
 # Dependency of auto-pairs
@@ -48,8 +49,8 @@ plug "kak-lsp/kak-lsp" do %{
 
 # Better buffer management
 plug "delapouite/kakoune-buffers" %{
-    map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers'
-    map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
+    map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers' 						 # Open buffer keybind menu
+    map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)' # Open buffer keybind menu with rapid mode enabled
 }
 
 # Open file at last edit
@@ -60,7 +61,7 @@ plug "Screwtapello/kakoune-state-save" domain "gitlab.com"
 #    plugins/kitty.kak
 # }
 
-# Discord presence
+# Discord rich presence (Buggy)
 plug "abuffseagull/kakoune-discord" do %{ cargo install --path . --force } %{
      discord-presence-enable
 }
@@ -68,12 +69,12 @@ plug "abuffseagull/kakoune-discord" do %{ cargo install --path . --force } %{
 
 # UI configuration
 # ────────────────
-set-option global tabstop 3				# Width of a tab
-set-option global indentwidth 3			# Indent with 3 spaces
-set-option global scrolloff 99,99		# Center cursor
+set-option global tabstop 3			 					# Width of a tab
+set-option global indentwidth 3		 					# Indent with 3 spaces
+set-option global scrolloff 99,99	 					# Center cursor
 set-option global ui_options ncurses_assistant=off # Disable clippy
-set-option global autoreload yes 		# Live reload
-set-option global writemethod replace	# Live reload method
+set-option global autoreload yes 	 					# Live reload
+set-option global writemethod replace 					# Live reload method
 
 # Global highlighters
 #add-highlighter global/ show-matching
@@ -115,7 +116,7 @@ hook global WinCreate .* %{
 # }
 
 # Buffer list
-hook global WinDisplay .* info-buffers
+hook global WinDisplay .* info-buffers # Show list of buffers after switching
 
 # Theme
 # ─────
@@ -123,7 +124,7 @@ hook global WinDisplay .* info-buffers
 # Colorscheme
 colorscheme lena
 
-# Change selection colors based on mode
+# Change selection colors in insert mode
 hook global ModeChange ".*:insert" %{
 	set-face window PrimarySelection black,rgb:bfbfbf+F
 	set-face window SecondarySelection black,rgb:bfbfbf+u
@@ -133,6 +134,7 @@ hook global ModeChange ".*:insert" %{
 	set-face window SecondaryCursorEol black,rgb:E4E4DF+u
 }
 
+# Revert cursor colors after reentering normal mode
 hook global ModeChange ".*:normal" %{
 	unset-face window PrimarySelection
 	unset-face window SecondarySelection
@@ -149,69 +151,69 @@ hook global ModeChange ".*:normal" %{
 # ─────────────────
  
 # Colemak bindings
-map global normal n h
-map global normal N H
-map global normal <a-n> <a-h>
-map global normal <a-N> <a-H>
-map global normal e j
-map global normal E J
-map global normal <a-e> <a-j>
-map global normal <a-E> <a-J>
-map global normal i k
-map global normal I K
-map global normal <a-i> <a-k>
-map global normal <a-I> <a-K>
-map global normal o l
-map global normal O L
-map global normal <a-o> <a-l>
-map global normal <a-O> <a-L>
+map global normal n h 			# Select left
+map global normal N H 			# Extend left
+map global normal <a-n> <a-h> # Select to beginning of line
+map global normal <a-N> <a-H> # Extend to beginning of line
+map global normal e j 			# Select down
+map global normal E J 			# Extend down
+map global normal <a-e> <a-j> # Join lines
+map global normal <a-E> <a-J> # Join lines and select spaces
+map global normal i k 			# Select up
+map global normal I K 			# Extend up
+map global normal <a-i> <a-k> # Keep selections matching regex
+map global normal <a-I> <a-K> # Keep selections not matching regex
+map global normal o l 			# Select right
+map global normal O L 			# Extend right
+map global normal <a-o> <a-l> # Select to end of line
+map global normal <a-O> <a-L> # Extend to end of line
 
 # Remap displaced keys
-map global normal h i
-map global normal H I
-map global normal j e
-map global normal J E
-map global normal k n
-map global normal K N
-map global normal l o
-map global normal L O
-
-map global normal <a-h> <a-i>
-map global normal <a-k> <a-n>
+map global normal h i 			# Insert mode
+map global normal <a-h> <a-i> # Keep matching
+map global normal H I         # Insert at beginning of line
+map global normal j e         # End of word
+map global normal J E         # Keep selecting to end of word
+map global normal k n         # Search next
+map global normal <a-k> <a-n> # Search previous
+map global normal K N 		   # Select to next search
+map global normal l o 		   # New line below
+map global normal L O 		   # New line above
 
 # Colemak navigation in goto mode
-map global goto n h
-map global goto e j
-map global goto i k
-map global goto o l
+map global goto n h # Move cursor to beginning of line
+map global goto e j # Move cursor to end of file
+map global goto i k # Move cursor to beginning of file
+map global goto o l # Move cursor to end of line
 
 # Switch macros to ^
-map global normal ^ q
-map global normal <a-^> Q
+map global normal ^ q     # Replay macro
+map global normal <a-^> Q # Start/end macro recording
 
-# Switch back by word to q
-map global normal q b
-map global normal Q B
-map global normal <a-q> <a-b>
-map global normal <a-Q> <a-B>
+# Move back by word to q
+map global normal q b 			# Select by word backward
+map global normal Q B 			# Extend by word backward
+map global normal <a-q> <a-b> # Select by WORD backward
+map global normal <a-Q> <a-B> # Extend by WORD backward
 
 # Buffer switching mode
-map global buffers k ':buffer-next<ret>' -docstring 'next'
-map global buffers K ':buffer-previous<ret>' -docstring 'prev'
-map global buffers x ':buffer-only<ret>' -docstring 'only'
-map global buffers n ':buffer-first<ret>' -docstring 'first'
-map global buffers o ':buffer-last<ret>' -docstring 'last'
-map global buffers i ':buffer-by-index ' -docstring 'index'
+map global buffers k ':buffer-next<ret>' -docstring 'next' 		# Switch to next buffer
+map global buffers K ':buffer-previous<ret>' -docstring 'prev' # Switch to previous buffer
+map global buffers x ':buffer-only<ret>' -docstring 'only' 		# Delete other buffers
+map global buffers n ':buffer-first<ret>' -docstring 'first'	# Switch to first buffer
+map global buffers o ':buffer-last<ret>' -docstring 'last' 		# Switch to last buffer
+map global buffers i ':buffer-by-index ' -docstring 'index' 	# Switch to buffer by index
 
-# Set space to leader key
-map global normal <space> ,
-map global normal , <space>
+# Leader key
+map global normal <space> , # Set space to leader key
+map global normal , <space> # Set comma to remove alternate cursors
 
 # Global clipboard mappings
-map -docstring "yank the selection into the clipboard" global user y "<a-|> xsel -i -b<ret>"
-map -docstring "paste the clipboard" global user p "<a-!> xsel<ret>"
-map -docstring "replace from clipboard" global user r "|xclip -i -selection clipboard<ret>; xclip -o -selection clipboard<ret>"
+map global user y "<a-|> xsel -i -b<ret>" -docstring "yank the selection into the clipboard" 
+map global user p "<a-!> xsel<ret>" -docstring "paste the clipboard"
+map global user r "|xclip -i -selection clipboard<ret>; xclip -o -selection clipboard<ret>" -docstring "replace from clipboard"
 
+# Smart case search (WIP)
 map global user '/' %{
 	:try %{
    	exec -save-regs '' <lt>a-k>[A-Z]<lt>ret>*
@@ -220,7 +222,7 @@ map global user '/' %{
  	}<ret>
 }
 
-# X extends up and x extends down
+# 'x' extends down and 'X' extends selection up
 def -params 1 extend-line-down %{
   exec "<a-:>%arg{1}X"
 }
@@ -232,16 +234,16 @@ def -params 1 extend-line-up %{
     }
     exec '<a-;><a-X>'
 }
-map global normal x ': extend-line-down %val{count}<ret>'
-map global normal X ': extend-line-up %val{count}<ret>'
+map global normal x ': extend-line-down %val{count}<ret>' # Down
+map global normal X ': extend-line-up %val{count}<ret>'	 # Up
 
 # Comment line
-map global normal '#' :comment-line<ret>
+map global normal '#' :comment-line<ret> # Comment selected line(s)
 
 # Shortcuts to exit
-map global user w -docstring 'write' ': w<ret>'
-map global user q -docstring 'quit' ': q<ret>'
-map global user z -docstring 'write and quit' ': wq<ret>'
+map global user w -docstring 'write' ': w<ret>' 			 # Save
+map global user q -docstring 'quit' ': q<ret>'				 # Quit
+map global user z -docstring 'write and quit' ': wq<ret>' # Save and quit
 
 
 # Save after lost focus

@@ -4,6 +4,8 @@ prepopulate-query-feeds yes
 auto-reload yes
 max-items 50
 
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOFH59uoSs8SUF0L_p3W0sg" "title !~ \"keyboard\""
+
 unbind-key e
 unbind-key i
 unbind-key E

@@ -16,35 +16,61 @@ plug "alexherbo2/auto-pairs.kak" %{
 }
 
 # LSP server
-plug "kak-lsp/kak-lsp" do %{
-   cargo install --release --locked
-   cargo install --force --path .
-} config %{
-    set global lsp_diagnostic_line_error_sign '║'
-    set global lsp_diagnostic_line_warning_sign '┊'
+# plug "kak-lsp/kak-lsp" do %{
+   # cargo install --release --locked
+   # cargo install --force --path .
+# } config %{
+    # eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
+    # set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
-    define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
-    hook global WinSetOption filetype=(c|cpp|rust|java) %{
-        set-option window lsp_auto_highlight_references true
-        set-option window lsp_hover_anchor false
+    # try %{
+    #     eval %sh{kak-lsp --kakoune -s $kak_session --config ~/.config/kak/kak-lsp.toml}
+    # }
+
+    # set global lsp_diagnostic_line_error_sign '║'
+    # set global lsp_diagnostic_line_warning_sign '┊'
+
+    # define-command ne -docstring 'go to next error/warning from lsp' %{ lsp-find-error --include-warnings }
+    # define-command pe -docstring 'go to previous error/warning from lsp' %{ lsp-find-error --previous --include-warnings }
+    # define-command ee -docstring 'go to current error/warning from lsp' %{ lsp-find-error --include-warnings; lsp-find-error --previous --include-warnings }
+    # define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
+
+    # hook global WinSetOption filetype=(c|cpp|rust|java|python|bash) %{
+        # set-option window lsp_auto_highlight_references true
+        # set-option window lsp_hover_anchor false
         # lsp-auto-hover-enable
-        echo -debug "Enabling LSP for filtetype %opt{filetype}"
-        lsp-enable-window
-    }
+        # echo -debug "Enabling LSP for filtetype %opt{filetype}"
+        # lsp-enable-window
+    # }
 
-    hook global WinSetOption filetype=(rust) %{
-        set window lsp_server_configuration rust.clippy_preference="on"
-    }
+    # hook global WinSetOption filetype=(rust) %{
+    #     set window lsp_server_configuration rust.clippy_preference="on"
+    # }
 
-    hook global WinSetOption filetype=rust %{
-        hook window BufWritePre .* %{
-            evaluate-commands %sh{
-                test -f rustfmt.toml && printf lsp-formatting-sync
-            }
-        }
-    }
+    # hook global WinSetOption filetype=rust %{
+    #     hook window BufWritePre .* %{
+    #         evaluate-commands %sh{
+    #             test -f rustfmt.toml && printf lsp-formatting-sync
+    #         }
+    #     }
+    # }
 
-    hook global KakEnd .* lsp-exit
+    # hook global KakEnd .* lsp-exit
+# }
+
+plug "kak-lsp/kak-lsp" do %{
+   cargo install --locked --force --path .
+} config %{
+
+	# lsp-inlay-diagnostics-enable global
+   
+   set global lsp_diagnostic_line_warning_sign '┊'
+   set global lsp_diagnostic_line_error_sign '║'
+
+   hook global WinSetOption filetype=(rust|python|c|haskell) %{
+		lsp-auto-hover-enable
+      lsp-enable-window
+   }
 }
 
 # Better buffer management
@@ -55,6 +81,23 @@ plug "delapouite/kakoune-buffers" %{
 
 # Open file at last edit
 plug "Screwtapello/kakoune-state-save" domain "gitlab.com"
+
+plug "delapouite/kakoune-mirror" %{
+   map global normal "'" ': enter-user-mode -lock mirror<ret>'
+   map global mirror n h
+   map global mirror e j
+   map global mirror i k
+   map global mirror o l
+   map global mirror h n
+   map global mirror j e
+   map global mirror k i
+   map global mirror l o
+}
+
+plug "alexherbo2/explore.kak" %{
+	define-command explore-files -params .. '+ kcr-fzf-files %arg{@}'
+	define-command explore-buffers -params .. '+ kcr-fzf-buffers %arg{@}'
+}
 
 # kitty.kak
 # plug "joefiorini/joeconf-kakoune-plugins" subset %{
@@ -124,8 +167,12 @@ hook global WinDisplay .* info-buffers # Show list of buffers after switching
 # Colorscheme
 colorscheme lena
 
+# hook global ModeChange .* %{
+#    echo -debug %val{hook_param}
+# }
+
 # Change selection colors in insert mode
-hook global ModeChange ".*:insert" %{
+hook global ModeChange .*:.*:insert %{
 	set-face window PrimarySelection black,rgb:bfbfbf+F
 	set-face window SecondarySelection black,rgb:bfbfbf+u
 	set-face window PrimaryCursor black,rgb:E4E4DF+b
@@ -135,7 +182,7 @@ hook global ModeChange ".*:insert" %{
 }
 
 # Revert cursor colors after reentering normal mode
-hook global ModeChange ".*:normal" %{
+hook global ModeChange .*:insert:.* %{
 	unset-face window PrimarySelection
 	unset-face window SecondarySelection
 	unset-face window PrimaryCursor
@@ -196,6 +243,9 @@ map global normal Q B 			# Extend by word backward
 map global normal <a-q> <a-b> # Select by WORD backward
 map global normal <a-Q> <a-B> # Extend by WORD backward
 
+# LSP user mode
+map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
+
 # Buffer switching mode
 map global buffers k ':buffer-next<ret>' -docstring 'next' 		# Switch to next buffer
 map global buffers K ':buffer-previous<ret>' -docstring 'prev' # Switch to previous buffer
@@ -203,6 +253,12 @@ map global buffers x ':buffer-only<ret>' -docstring 'only' 		# Delete other buff
 map global buffers n ':buffer-first<ret>' -docstring 'first'	# Switch to first buffer
 map global buffers o ':buffer-last<ret>' -docstring 'last' 		# Switch to last buffer
 map global buffers i ':buffer-by-index ' -docstring 'index' 	# Switch to buffer by index
+
+# Exit normal mode with ii
+hook global InsertChar i %{ try %{
+  exec -draft hH <a-k>ii<ret> d
+  exec <esc>
+}}
 
 # Leader key
 map global normal <space> , # Set space to leader key
@@ -287,10 +343,3 @@ filetype-hook man %{
 #    }
 # }
 
-# Output debug kak-lsp debug logs
-# nop %sh{
-#    (kak-lsp -s $kak_session -vvv ) > /tmp/lsp_"$(date +%F-%T-%N)"_kak-lsp_log 2>&1 < /dev/null &
-# }
-
-# Globally enable kak-lsp
-# lsp-enable

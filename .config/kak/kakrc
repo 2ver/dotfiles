@@ -64,12 +64,54 @@ plug "kak-lsp/kak-lsp" do %{
 
 	# lsp-inlay-diagnostics-enable global
    
-   set global lsp_diagnostic_line_warning_sign '┊'
-   set global lsp_diagnostic_line_error_sign '║'
+   set global lsp_diagnostic_line_warning_sign '⚠'
+   set global lsp_diagnostic_line_error_sign '✗'
 
-   hook global WinSetOption filetype=(rust|python|c|haskell) %{
-		lsp-auto-hover-enable
+	define-command lsp-restart -docstring 'restart lsp server' %{
+   	lsp-exit
+   	lsp-start
+	}
+
+   hook global WinSetOption filetype=(c|css|haskell|json|python|rust|) %{
       lsp-enable-window
+      echo -debug "Enabling LSP for filetype %opt{filetype}"
+		# lsp-auto-hover-enable
+		set global lsp_hover_max_lines 10
+
+		face global DiagnosticWarning rgb:dee681
+		face global DiagnosticError rgb:e084a3
+		face buffer InlayDiagnosticWarning rgba:dee68175+i
+		face buffer InlayDiagnosticError rgba:e084a385+i
+		lsp-diagnostic-lines-disable window
+      lsp-inlay-diagnostics-enable window
+
+      hook window NormalIdle .* %{
+         rmhl window/lsp_diagnostics
+         lsp-inlay-diagnostics-enable window
+      }
+
+      hook window ModeChange push:normal:insert %{
+         lsp-inlay-diagnostics-disable window
+      }
+   }
+
+   hook global WinSetOption filetype=(c|rust) %{
+		hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
+		hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
+		hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
+		hook -once -always window WinSetOption filetype=.* %{
+   		remove-hooks window semantic-tokens
+		}
+   }
+
+   hook global WinSetOption filetype=rust %{
+      hook window -group rust-inlay-hints BufReload .* rust-analyzer-inlay-hints
+      hook window -group rust-inlay-hints NormalIdle .* rust-analyzer-inlay-hints
+      hook window -group rust-inlay-hints InsertIdle .* rust-analyzer-inlay-hints
+      hook -once -always window WinSetOption filetype=.* %{
+         remove-hooks window rust-inlay-hints
+      }
+
    }
 }
 
@@ -80,7 +122,19 @@ plug "delapouite/kakoune-buffers" %{
 }
 
 # Open file at last edit
-plug "Screwtapello/kakoune-state-save" domain "gitlab.com"
+plug "Screwtapello/kakoune-state-save" domain "gitlab.com" config %{
+   hook global KakBegin .* %{
+      state-save-reg-load colon
+      state-save-reg-load pipe
+      state-save-reg-load slash
+   }
+
+   hook global KakEnd .* %{
+      state-save-reg-save colon
+      state-save-reg-save pipe
+      state-save-reg-save slash
+   }
+}
 
 plug "delapouite/kakoune-mirror" %{
    map global normal "'" ': enter-user-mode -lock mirror<ret>'
@@ -112,10 +166,12 @@ plug "abuffseagull/kakoune-discord" do %{ cargo install --path . --force } %{
 
 # UI configuration
 # ────────────────
+set-option global startup_info_version 20200901464 # Hide change notes on startup
 set-option global tabstop 3			 					# Width of a tab
 set-option global indentwidth 3		 					# Indent with 3 spaces
 set-option global scrolloff 99,99	 					# Center cursor
 set-option global ui_options ncurses_assistant=off # Disable clippy
+set-option global ui_options ncurses_status_on_top=true
 set-option global autoreload yes 	 					# Live reload
 set-option global writemethod replace 					# Live reload method
 
@@ -261,8 +317,9 @@ hook global InsertChar i %{ try %{
 }}
 
 # Leader key
-map global normal <space> , # Set space to leader key
-map global normal , <space> # Set comma to remove alternate cursors
+map global normal <space> , 	  # Set space to leader key
+map global normal , <space> 	  # Remove all selections but main
+map global normal <a-,> <space> # Remove main selection
 
 # Global clipboard mappings
 map global user y "<a-|> xsel -i -b<ret>" -docstring "yank the selection into the clipboard" 

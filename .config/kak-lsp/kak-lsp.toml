@@ -46,9 +46,11 @@ args = ["start"]
 
 [language.c_cpp]
 filetypes = ["c", "cpp"]
-roots = ["compile_commands.json", ".clangd"]
+roots = ["compile_commands.json"]
 command = "clangd"
 # args = ["--query-driver=/opt/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-*,/usr/bin/avr-*"]
+# command = "ccls"
+# args = ['--init={"completion": {"detailedLabel": true}}']
 
 [language.crystal]
 filetypes = ["crystal"]
@@ -174,6 +176,9 @@ roots = ["Cargo.toml"]
 command = "rust-analyzer"
 offset_encoding = "utf-8"
 # args = ["-c", "if command -v rustup >/dev/null; then $(rustup which rust-analyzer); else rust-analyzer; fi"]
+
+[language.rust.initialization_options]
+diagnostics.disabled = ["unresolved-macro-call"]
 
 # [language.rust]
 # filetypes = ["rust"]

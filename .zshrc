@@ -99,7 +99,7 @@ SPACESHIP_VI_MODE_SHOW=false
 # Kitty zsh integration
 autoload -Uz compinit
 compinit
-kitty + complete setup zsh | source /dev/stdin
+# kitty + complete setup zsh | source /dev/stdin
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -114,7 +114,7 @@ plugins=(
 )
 
 source /home/uver/.aliasrc
-source /home/uver/.bwsessionkey
+# source /home/uver/.bwsessionkey
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

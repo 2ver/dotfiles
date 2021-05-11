@@ -313,7 +313,7 @@ map global buffers i ':buffer-by-index ' -docstring 'index' 	# Switch to buffer 
 # Exit normal mode with ii
 hook global InsertChar i %{ try %{
   exec -draft hH <a-k>ii<ret> d
-  exec <esc>
+  exec -with-hooks <esc>
 }}
 
 # Leader key

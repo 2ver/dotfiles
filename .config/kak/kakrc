@@ -183,7 +183,7 @@ set-option global writemethod replace 					# Live reload method
 
 # Line numbers
 hook global WinCreate ^[^*]+$ %{
-   add-highlighter window/ number-lines -relative -separator '  '
+   add-highlighter window/ number-lines -relative -separator '  '
 }
 
 # Highlight matching brackets

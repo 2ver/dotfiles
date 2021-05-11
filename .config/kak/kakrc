@@ -72,7 +72,7 @@ plug "kak-lsp/kak-lsp" do %{
    	lsp-start
 	}
 
-   hook global WinSetOption filetype=(c|css|haskell|json|python|rust|) %{
+   hook global WinSetOption filetype=(c|css|haskell|java|json|python|rust|) %{
       lsp-enable-window
       echo -debug "Enabling LSP for filetype %opt{filetype}"
 		# lsp-auto-hover-enable
@@ -166,14 +166,13 @@ plug "abuffseagull/kakoune-discord" do %{ cargo install --path . --force } %{
 
 # UI configuration
 # ────────────────
-set-option global startup_info_version 20200901464 # Hide change notes on startup
-set-option global tabstop 3			 					# Width of a tab
-set-option global indentwidth 3		 					# Indent with 3 spaces
-set-option global scrolloff 99,99	 					# Center cursor
-set-option global ui_options ncurses_assistant=off # Disable clippy
-set-option global ui_options ncurses_status_on_top=true
-set-option global autoreload yes 	 					# Live reload
-set-option global writemethod replace 					# Live reload method
+set-option global startup_info_version 20200901464 									# Hide change notes on startup
+set-option global tabstop 3			 														# Width of a tab
+set-option global indentwidth 3		 														# Indent with 3 spaces
+set-option global scrolloff 99,99	 														# Center cursor
+set-option global ui_options ncurses_assistant=off ncurses_status_on_top=true # Disable clippy
+set-option global autoreload yes 	 														# Live reload
+set-option global writemethod replace 														# Live reload method
 
 # Global highlighters
 #add-highlighter global/ show-matching
@@ -313,7 +312,7 @@ map global buffers i ':buffer-by-index ' -docstring 'index' 	# Switch to buffer 
 # Exit normal mode with ii
 hook global InsertChar i %{ try %{
   exec -draft hH <a-k>ii<ret> d
-  exec <esc>
+  exec -with-hooks <esc>
 }}
 
 # Leader key

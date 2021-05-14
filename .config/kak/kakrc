@@ -15,57 +15,12 @@ plug "alexherbo2/auto-pairs.kak" %{
    auto-pairs-enable
 }
 
-# LSP server
-# plug "kak-lsp/kak-lsp" do %{
-   # cargo install --release --locked
-   # cargo install --force --path .
-# } config %{
-    # eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
-    # set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
-
-    # try %{
-    #     eval %sh{kak-lsp --kakoune -s $kak_session --config ~/.config/kak/kak-lsp.toml}
-    # }
-
-    # set global lsp_diagnostic_line_error_sign '║'
-    # set global lsp_diagnostic_line_warning_sign '┊'
-
-    # define-command ne -docstring 'go to next error/warning from lsp' %{ lsp-find-error --include-warnings }
-    # define-command pe -docstring 'go to previous error/warning from lsp' %{ lsp-find-error --previous --include-warnings }
-    # define-command ee -docstring 'go to current error/warning from lsp' %{ lsp-find-error --include-warnings; lsp-find-error --previous --include-warnings }
-    # define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
-
-    # hook global WinSetOption filetype=(c|cpp|rust|java|python|bash) %{
-        # set-option window lsp_auto_highlight_references true
-        # set-option window lsp_hover_anchor false
-        # lsp-auto-hover-enable
-        # echo -debug "Enabling LSP for filtetype %opt{filetype}"
-        # lsp-enable-window
-    # }
-
-    # hook global WinSetOption filetype=(rust) %{
-    #     set window lsp_server_configuration rust.clippy_preference="on"
-    # }
-
-    # hook global WinSetOption filetype=rust %{
-    #     hook window BufWritePre .* %{
-    #         evaluate-commands %sh{
-    #             test -f rustfmt.toml && printf lsp-formatting-sync
-    #         }
-    #     }
-    # }
-
-    # hook global KakEnd .* lsp-exit
-# }
-
 plug "kak-lsp/kak-lsp" do %{
    cargo install --locked --force --path .
 } config %{
 
-	# lsp-inlay-diagnostics-enable global
-   
-   set global lsp_diagnostic_line_warning_sign '⚠'
-   set global lsp_diagnostic_line_error_sign '✗'
+   # set global lsp_diagnostic_line_warning_sign '⚠'
+   # set global lsp_diagnostic_line_error_sign '✗'
 
 	define-command lsp-restart -docstring 'restart lsp server' %{
    	lsp-exit
@@ -78,9 +33,18 @@ plug "kak-lsp/kak-lsp" do %{
 		# lsp-auto-hover-enable
 		set global lsp_hover_max_lines 10
 
+		# Mappings
+		map window user <;> ':lsp-hover-info<ret>' -docstring 'hover'
+		map window user <:> ':lsp-hover-diagnostics<ret>' -docstring 'hover diagnostics'
+		map window user <.> ':lsp-code-actions<ret>' -docstring 'code actions'
+		map window user <I> '\:lsp-implementation<ret>' -docstring 'goto implementation'
+		map window normal <c-i> ':lsp-find-error<ret>' -docstring 'goto next error'
+		map window normal <c-e> ':lsp-find-error --previous<ret>' -docstring 'goto last error'
+		map window user <r> ':lsp-rename-prompt<ret>' -docstring 'rename'
+		
 		face global DiagnosticWarning rgb:dee681
 		face global DiagnosticError rgb:e084a3
-		face buffer InlayDiagnosticWarning rgba:dee68175+i
+		face buffer InlayDiagnosticWarning rgba:dee68165+i
 		face buffer InlayDiagnosticError rgba:e084a385+i
 		lsp-diagnostic-lines-disable window
       lsp-inlay-diagnostics-enable window
@@ -136,6 +100,8 @@ plug "Screwtapello/kakoune-state-save" domain "gitlab.com" config %{
    }
 }
 
+plug "Screwtapello/kakoune-mark-show" domain "gitlab.com"
+
 plug "delapouite/kakoune-mirror" %{
    map global normal "'" ': enter-user-mode -lock mirror<ret>'
    map global mirror n h
@@ -174,9 +140,15 @@ set-option global ui_options ncurses_assistant=off ncurses_status_on_top=true # 
 set-option global autoreload yes 	 														# Live reload
 set-option global writemethod replace 														# Live reload method
 
+# Color TODO, NOTE, etc. separately
+hook global WinSetOption comment_line=(.*) %{
+    add-highlighter -override window/todo regex "\Q%val{hook_param_capture_1}\E\h*(TODO:|FIXME:|NOTE:|XXX:)[^\n]*" 1:rgb:21c0d5+Fb
+}
+
+# Make search results bold
+hook global RegisterModified '/' %{ add-highlighter -override global/search regex "%reg{/}" 0:+b }
+
 # Global highlighters
-#add-highlighter global/ show-matching
-#add-highlighter global/ number-lines -relative -separator '  ' # Line numbers
 #add-highlighter global/ wrap -word -indent -marker ↳
 #add-highlighter global/ regex \h+$ 0:Error	# Highlight trailing whitespace
 
@@ -185,8 +157,22 @@ hook global WinCreate ^[^*]+$ %{
    add-highlighter window/ number-lines -relative -separator '  '
 }
 
+# Highlight instances of currenly selected word.
+# declare-option -hidden regex curword
+# set-face global CurWord default,rgba:80808040
+
+# hook global NormalIdle .* %{
+#     eval -draft %{ try %{
+#         exec <space><a-i>w <a-k>\A\w+\z<ret>
+#         set-option buffer curword "\b\Q%val{selection}\E\b"
+#     } catch %{
+#         set-option buffer curword ''
+#     } }
+# }
+# add-highlighter global/ dynregex '%opt{curword}' 0:CurWord
+
 # Highlight matching brackets
- 
+
 # Normal mode
 hook global WinCreate .* %{
 	add-highlighter window/ show-matching
@@ -222,10 +208,6 @@ hook global WinDisplay .* info-buffers # Show list of buffers after switching
 # Colorscheme
 colorscheme lena
 
-# hook global ModeChange .* %{
-#    echo -debug %val{hook_param}
-# }
-
 # Change selection colors in insert mode
 hook global ModeChange .*:.*:insert %{
 	set-face window PrimarySelection black,rgb:bfbfbf+F
@@ -251,7 +233,7 @@ hook global ModeChange .*:insert:.* %{
 
 # Keyboard mappings
 # ─────────────────
- 
+
 # Colemak bindings
 map global normal n h 			# Select left
 map global normal N H 			# Extend left
@@ -302,18 +284,27 @@ map global normal <a-Q> <a-B> # Extend by WORD backward
 map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
 
 # Buffer switching mode
-map global buffers k ':buffer-next<ret>' -docstring 'next' 		# Switch to next buffer
-map global buffers K ':buffer-previous<ret>' -docstring 'prev' # Switch to previous buffer
-map global buffers x ':buffer-only<ret>' -docstring 'only' 		# Delete other buffers
-map global buffers n ':buffer-first<ret>' -docstring 'first'	# Switch to first buffer
-map global buffers o ':buffer-last<ret>' -docstring 'last' 		# Switch to last buffer
-map global buffers i ':buffer-by-index ' -docstring 'index' 	# Switch to buffer by index
+map global buffers k 	 ':buffer-next<ret>' -docstring 'next' 		# Switch to next buffer
+map global buffers <a-k> ':buffer-previous<ret>' -docstring 'prev' # Switch to previous buffer
+map global buffers x 	 ':buffer-only<ret>' -docstring 'only' 		# Delete other buffers
+map global buffers n 	 ':buffer-first<ret>' -docstring 'first'	# Switch to first buffer
+map global buffers o 	 ':buffer-last<ret>' -docstring 'last' 		# Switch to last buffer
+map global buffers i 	 ':buffer-by-index ' -docstring 'index' 	# Switch to buffer by index
 
 # Exit normal mode with ii
 hook global InsertChar i %{ try %{
   exec -draft hH <a-k>ii<ret> d
   exec -with-hooks <esc>
 }}
+
+# Source selection
+map global user -docstring 'Source selection' . ': <c-r>.<ret>'
+
+# Autocomplete to buffer directory in :e
+map global prompt -docstring 'Expand to the buffer directory' <a-.> '%sh(dirname "$kak_buffile")<a-!>'
+
+# Select everything matching cursor selection in buffer without searching
+map global normal -docstring 'Select all occurrences of the current selection set' <a-percent> '*%s<ret>'
 
 # Leader key
 map global normal <space> , 	  # Set space to leader key
@@ -326,13 +317,16 @@ map global user p "<a-!> xsel<ret>" -docstring "paste the clipboard"
 map global user r "|xclip -i -selection clipboard<ret>; xclip -o -selection clipboard<ret>" -docstring "replace from clipboard"
 
 # Smart case search (WIP)
-map global user '/' %{
-	:try %{
-   	exec -save-regs '' <lt>a-k>[A-Z]<lt>ret>*
- 	} catch %{
-    	exec -save-regs '' */(?i)<lt>c-r>/<lt>ret>
- 	}<ret>
-}
+
+# map global prompt -docstring 'Case insensitive search' <a-i> '<home>(?i)<end>'
+
+# map global user '/' %{
+# 	:try %{
+#    	exec -save-regs '' <lt>a-k>[A-Z]<lt>ret>*
+#  	} catch %{
+#     	exec -save-regs '' */(?i)<lt>c-r>/<lt>ret>
+#  	}<ret>
+# }
 
 # 'x' extends down and 'X' extends selection up
 def -params 1 extend-line-down %{
@@ -377,6 +371,8 @@ hook global InsertCompletionHide .* %{
    unmap window insert <s-tab> <c-p>
 }
 
+define-command clean-whitespace %{ execute-keys -draft '<percent>s^<space><plus>$<ret>d' }
+
 # File types
 # ──────────
 
@@ -384,6 +380,10 @@ def filetype-hook -params 2 %{ hook global WinSetOption "filetype=(%arg{1})" %ar
 
 filetype-hook man %{
    remove-highlighter window/number-lines
+}
+
+hook global BufCreate .*kitty[.]conf %{
+	set-option buffer filetype ini
 }
 
 # Extensions

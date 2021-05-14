@@ -126,9 +126,11 @@ source $ZSH/oh-my-zsh.sh
 #precmd_functions+=(_fix_cursor)
 
 bindkey -v
-export KEYTIMEOUT=1
+export KEYTIMEOUT=20
 
 # Colemak bindings
+bindkey -M viins 'ii' vi-cmd-mode
+
 bindkey -a n backward-char
 bindkey -a e down-history
 bindkey -a E vi-join

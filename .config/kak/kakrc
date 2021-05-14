@@ -1,6 +1,14 @@
 # Plugins
 # ───────
-source "%val{config}/plugins/plug.kak/rc/plug.kak"
+# source "%val{config}/plugins/plug.kak/rc/plug.kak"
+# Download plugin manager if not installed
+evaluate-commands %sh{
+   plugins="$kak_config/plugins"
+   mkdir -p "$plugins"
+   [ ! -e "$plugins/plug.kak" ] && \
+      git clone -q https://github.com/andreyorst/plug.kak.git "$plugins/plug.kak"
+   printf "%s\n" "source '$plugins/plug.kak/rc/plug.kak'"
+}
 
 # Install plugin manager so that 'plug-clean' does not remove plug.kak
 plug "andreyorst/plug.kak" noload
@@ -15,11 +23,19 @@ plug "alexherbo2/auto-pairs.kak" %{
    auto-pairs-enable
 }
 
+# Use spaces instead of tabs for more consistency
+plug "andreyorst/smarttab.kak" defer smarttab %{
+   set-option global softtabstop %opt{indentwidth}
+} config %{
+   hook global WinSetOption filetype=(rust|markdown|kak|lisp|c|cpp|haskell|txt|sh) expandtab
+   hook global WinSetOption filetype=(makefile) noexpandtab
+}
+
 plug "kak-lsp/kak-lsp" do %{
    cargo install --locked --force --path .
 } config %{
 
-   # set global lsp_diagnostic_line_warning_sign '⚠'
+# set global lsp_diagnostic_line_warning_sign '⚠'
    # set global lsp_diagnostic_line_error_sign '✗'
 
 	define-command lsp-restart -docstring 'restart lsp server' %{
@@ -81,8 +97,15 @@ plug "kak-lsp/kak-lsp" do %{
 
 # Better buffer management
 plug "delapouite/kakoune-buffers" %{
-    map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers' 						 # Open buffer keybind menu
-    map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)' # Open buffer keybind menu with rapid mode enabled
+    map global normal b ': enter-buffers-mode<ret>' -docstring "buffers" 						 # Open buffer keybind menu
+    map global normal B ': enter-user-mode -lock buffers<ret>' -docstring "buffers (lock)" # Open buffer keybind menu with rapid mode enabled
+    
+}
+
+# Contextual "f" searching
+plug "alexherbo2/search.kak" %{
+   map global normal f ':search<ret>(?i)\Q' -docstring "Jump forward"
+   map global normal F <c-o> -docstring "Jump backward"
 }
 
 # Open file at last edit
@@ -112,6 +135,7 @@ plug "delapouite/kakoune-mirror" %{
    map global mirror j e
    map global mirror k i
    map global mirror l o
+   map global mirror q b
 }
 
 plug "alexherbo2/explore.kak" %{

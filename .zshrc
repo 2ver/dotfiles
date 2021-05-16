@@ -247,3 +247,6 @@ ZSH_HIGHLIGHT_STYLES[default]='fg=7'
 
 typeset -A ZSH_HIGHLIGHT_PATTERNS
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=9')
+
+# Created by `pipx` on 2021-05-16 10:53:33
+export PATH="$PATH:/home/uver/.local/bin"

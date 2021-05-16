@@ -43,7 +43,7 @@ plug "kak-lsp/kak-lsp" do %{
    	lsp-start
 	}
 
-   hook global WinSetOption filetype=(c|css|haskell|java|json|python|rust|) %{
+   hook global WinSetOption filetype=(c|css|haskell|java|json|python|rust) %{
       lsp-enable-window
       echo -debug "Enabling LSP for filetype %opt{filetype}"
 		# lsp-auto-hover-enable
@@ -53,7 +53,7 @@ plug "kak-lsp/kak-lsp" do %{
 		map window user <;> ':lsp-hover-info<ret>' -docstring 'hover'
 		map window user <:> ':lsp-hover-diagnostics<ret>' -docstring 'hover diagnostics'
 		map window user <.> ':lsp-code-actions<ret>' -docstring 'code actions'
-		map window user <I> '\:lsp-implementation<ret>' -docstring 'goto implementation'
+		map window user <I> ':lsp-implementation<ret>' -docstring 'goto implementation'
 		map window normal <c-i> ':lsp-find-error<ret>' -docstring 'goto next error'
 		map window normal <c-e> ':lsp-find-error --previous<ret>' -docstring 'goto last error'
 		map window user <r> ':lsp-rename-prompt<ret>' -docstring 'rename'
@@ -91,13 +91,30 @@ plug "kak-lsp/kak-lsp" do %{
       hook -once -always window WinSetOption filetype=.* %{
          remove-hooks window rust-inlay-hints
       }
-
    }
+
+   set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
 }
+
+# Spell checking
+plug "dmerejkowsky/kak-spell" config %{
+   declare-user-mode kak-spell
+   map global user s ':enter-user-mode -lock kak-spell<ret>' -docstring 'enter spell user mode'
+   map global kak-spell a ':kak-spell-add<ret>' -docstring 'add the selection to the user dict'
+   map global kak-spell d ':kak-spell-disable<ret>' -docstring 'clear spelling highlighters'
+   map global kak-spell e ':kak-spell-enable en_US<ret> :kak-spell <ret>' -docstring 'enable spell check in English'
+   map global kak-spell l ':kak-spell-list <ret>' -docstring 'list spelling errors in a buffer'
+   map global kak-spell n ':kak-spell-next<ret>' -docstring 'go to next spell error'
+   map global kak-spell p ':kak-spell-previous<ret>' -docstring 'go to next spell error'
+   map global kak-spell r ':kak-spell-replace<ret>' -docstring 'suggest a list of replacements'
+   map global kak-spell x ':kak-spell-remove<ret>' -docstring 'remove the selection from the user dict'
+}
+
+# plug "JasonBrownDeveloper/spell-comments.kak"
 
 # Better buffer management
 plug "delapouite/kakoune-buffers" %{
-    map global normal b ': enter-buffers-mode<ret>' -docstring "buffers" 						 # Open buffer keybind menu
+map global normal b ': enter-buffers-mode<ret>' -docstring "buffers" 						 # Open buffer keybind menu
     map global normal B ': enter-user-mode -lock buffers<ret>' -docstring "buffers (lock)" # Open buffer keybind menu with rapid mode enabled
     
 }
@@ -139,20 +156,14 @@ plug "delapouite/kakoune-mirror" %{
 }
 
 plug "alexherbo2/explore.kak" %{
-	define-command explore-files -params .. '+ kcr-fzf-files %arg{@}'
+define-command explore-files -params .. '+ kcr-fzf-files %arg{@}'
 	define-command explore-buffers -params .. '+ kcr-fzf-buffers %arg{@}'
 }
-
-# kitty.kak
-# plug "joefiorini/joeconf-kakoune-plugins" subset %{
-#    plugins/kitty.kak
-# }
 
 # Discord rich presence (Buggy)
 plug "abuffseagull/kakoune-discord" do %{ cargo install --path . --force } %{
      discord-presence-enable
 }
-
 
 # UI configuration
 # ────────────────
@@ -330,6 +341,9 @@ map global prompt -docstring 'Expand to the buffer directory' <a-.> '%sh(dirname
 # Select everything matching cursor selection in buffer without searching
 map global normal -docstring 'Select all occurrences of the current selection set' <a-percent> '*%s<ret>'
 
+# Spawn terminal
+# map global user <ret> ': connect-terminal<ret>' -docstring 'Open terminal'
+
 # Leader key
 map global normal <space> , 	  # Set space to leader key
 map global normal , <space> 	  # Remove all selections but main
@@ -423,3 +437,74 @@ hook global BufCreate .*kitty[.]conf %{
 #    }
 # }
 
+try %{
+    evaluate-commands %sh{
+        if command -v kcr >/dev/null; then
+            echo 'nop'
+        else
+            echo 'echo -debug "kcr binary missing"'
+            echo 'fail'
+        fi
+    }
+
+    define-command -hidden set-popup-alias %{
+        alias global popup kitty-terminal
+    }
+
+    hook global ModuleLoaded kitty %{
+        set-popup-alias
+    }
+
+    evaluate-commands %sh{ kcr init kakoune }
+
+    map global user <ret> ' :connect-terminal<ret>' -docstring 'open terminal'
+
+    # declare-user-mode fzf
+
+    # map global normal <c-p> ':enter-user-mode fzf<ret>' -docstring 'fuzzy finder mode'
+    # map global fzf f ': + kcr-fzf-files<ret>' -docstring 'Open files'
+    # map global fzf b ': + kcr-fzf-buffers<ret>' -docstring 'Open buffers'
+    # map global fzf g ': + kcr-fzf-grep<ret>' -docstring 'Grep files'
+
+    define-command nnn-persistent -params 0..1 -file-completion -docstring 'Open file with nnn' %{
+        connect-terminal nnn %sh{echo "${@:-$(dirname "$kak_buffile")}"}
+    }
+
+    alias global nnn nnn-persistent
+} catch %{
+    echo -debug 'failed to initialize kakoune.cr'
+}
+
+define-command setup-kitty -hidden %{
+    map global user w ': kitty-mode<ret>' -docstring 'kitty mode'
+    alias global new kitty-new
+    hook -group kitty-hooks global KakBegin .* %{
+        define-command -hidden set-kitty-terminal-alias %{
+            alias global terminal kitty-terminal-b
+            alias global terminal-l kitty-terminal-l
+            alias global terminal-r kitty-terminal-r
+            alias global terminal-b kitty-terminal-b
+            alias global terminal-t kitty-terminal-t
+        }
+        alias global set-terminal-alias set-kitty-terminal-alias
+
+        set-terminal-alias
+    }
+}
+
+# Kitty integration
+plug "Parasrah/kitty.kak" defer kitty %{
+   define-command nnn-current -params 0..1 -file-completion -docstring 'Open file with nnn' %{
+      kitty-overlay sh -c %{
+         PAGER=""
+         kak_buffile=$1 kak_session=$2 kak_client=$3
+         shift 3
+         kak_pwd="${@:-$(dirname "${kak_buffile}")}"
+         filename=$(nnn -p - "${kak_pwd}")
+         kak_cmd="evaluate-commands -client $kak_client edit $filename"
+         echo $kak_cmd | kak -p $kak_session
+      } -- %val{buffile} %val{session} %val{client} %arg{@}
+   }
+
+   map global normal <minus> ': nnn-current<ret>' -docstring 'open current buffer directory in nnn'
+}

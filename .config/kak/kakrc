@@ -35,26 +35,26 @@ plug "kak-lsp/kak-lsp" do %{
    cargo install --locked --force --path .
 } config %{
 
-# set global lsp_diagnostic_line_warning_sign '⚠'
-   # set global lsp_diagnostic_line_error_sign '✗'
+   set global lsp_diagnostic_line_warning_sign '⚠'
+   set global lsp_diagnostic_line_error_sign '✗'
 
 	define-command lsp-restart -docstring 'restart lsp server' %{
    	lsp-exit
    	lsp-start
 	}
 
-   hook global WinSetOption filetype=(c|css|haskell|java|json|python|rust) %{
+   hook global WinSetOption filetype=(c|haskell|python|rust) %{
       lsp-enable-window
       echo -debug "Enabling LSP for filetype %opt{filetype}"
 		# lsp-auto-hover-enable
 		set global lsp_hover_max_lines 10
 
 		# Mappings
-		map window user <;> ':lsp-hover-info<ret>' -docstring 'hover'
-		map window user <:> ':lsp-hover-diagnostics<ret>' -docstring 'hover diagnostics'
-		map window user <.> ':lsp-code-actions<ret>' -docstring 'code actions'
+		map window user '<;>' ':hover<ret>' -docstring 'hover'
+		map window user <:> ':lsp-code-actions<ret>' -docstring 'code actions'
 		map window user <I> ':lsp-implementation<ret>' -docstring 'goto implementation'
-		map window normal <c-i> ':lsp-find-error<ret>' -docstring 'goto next error'
+		# unmap window <c-i>
+		map window normal <tab> ':lsp-find-error<ret>' -docstring 'goto next error' # Ambiguous key (maps to <c-i>)
 		map window normal <c-e> ':lsp-find-error --previous<ret>' -docstring 'goto last error'
 		map window user <r> ':lsp-rename-prompt<ret>' -docstring 'rename'
 		
@@ -93,11 +93,12 @@ plug "kak-lsp/kak-lsp" do %{
       }
    }
 
-   set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
+   # set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
 }
 
+
 # Spell checking
-plug "dmerejkowsky/kak-spell" config %{
+nop plug "dmerejkowsky/kak-spell" config %{
    declare-user-mode kak-spell
    map global user s ':enter-user-mode -lock kak-spell<ret>' -docstring 'enter spell user mode'
    map global kak-spell a ':kak-spell-add<ret>' -docstring 'add the selection to the user dict'

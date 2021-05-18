@@ -2,9 +2,13 @@ prepopulate-query-feeds yes
 
 #show-read-feeds no
 auto-reload yes
-max-items 50
+max-items 3
+# pager "~/.bin/kak-newsboat %f"
+# pager "less %f"
 
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOFH59uoSs8SUF0L_p3W0sg" "title !~ \"keyboard\""
+# ignore-mode "display" # For debugging
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOFH59uoSs8SUF0L_p3W0sg" "title !~ \"keyboard\"" # Badseed Tech
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCDBCCMlFD-hArPbWv38FINA" "title !~ \"watches\"" # Daz Black
 
 unbind-key e
 unbind-key i

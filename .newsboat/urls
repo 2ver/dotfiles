@@ -14,12 +14,14 @@
 
 http://cachestocaches.com/feed/ "!Hidden" "(Blogs)"
 https://lukesmith.xyz/rss.xml "~Luke Smith Blog" "!Hidden" "(Blogs)"
+https://usermod.net/feed.xml "!Hidden" "(Blogs)"
 https://vas.neocities.org/rss.xml "!Hidden" "(Blogs)"
 
 # (News)
 # ──────────────────────────────────────────────────────────────────────────────────────────
 
 https://www.archlinux.org/feeds/news/ "~Arch Linux" "!Hidden" "(News)"
+https://www.theatlantic.com/feed/all/ "~The Atlantic" "!Hidden" "(News)"
 https://nitter.net/plover/rss "~Plover" "!Hidden" "(News)"
 https://suckless.org/atom.xml "~Suckless" "!Hidden" "(News)"
 
@@ -40,7 +42,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg   "
 
 # Music
 
-https://www.youtube.com/feeds/videos.xml?channel_id=UCjSvjbknHwGbU1Kx0PC5zRg   "~Aries" 						"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCQ4FyiI_1mWI2AtLS5ChdPQ   "~Boyinaband" 				"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCnZx--LpG2spgmlxOcC-DRA   "~Daniel Thrasher" 			"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9SVhrnsGxWwiBRWT9c7Ozw   "~Roomie" 						"!Hidden" "(Videos)"
@@ -55,23 +56,16 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC9bvUn7x3IrZ4yMANYjexUw   "
 https://www.youtube.com/feeds/videos.xml?channel_id=UChU3JRloULzdFX3aCu7BiSA   "~DreamXD" 					"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCA2tt9GSU2sl8rAqjlLR3mQ   "~GeorgeNotFound" 			"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCtWJFkS6AQ4dQ_nUTBPWi4A   "~GeorgeWasFound" 			"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCUqeVjVmNwYw4rNfNg95bmA   "~Legendaray" 				"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC3S6nIDGJ5OtpC-mbvFA8Ew   "~Orange Juice" 				"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCyWzvWoYRqdkNB9HScS7MTA   "~Oscar" 						"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UClY084mbGLK_SLlOfgizjow   "~SalC1" 						"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqynl7rdtktKMQESdSBmE-g   "~Sapnap" 						"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCN8n_2OqLNtpl1411Ctd6RQ   "~Space Croissant" 			"!Hidden" "(Videos)"
 
 # Memes
 
 https://www.youtube.com/feeds/videos.xml?channel_id=UCwkDQ8tE_3UhB8LcnvUv0Fw   "~Bosnian Ape Society" 	"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCBj-ylPMfLRGN_0YoD1oNyw   "~Damemer" 					"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCQbphLRfm6WZqJ1qNJBFokg   "~memes by cowbelly" 		"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCPOC7MO1VlSm_FpwdAZQHgA   "~Mugo" 						"!Hidden" "(Videos)"
 
 # Humor
 https://www.youtube.com/feeds/videos.xml?channel_id=UCamvct0fdKsWoR5DuYdFzww   "~Abelina Sabrina" 			"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCI1XS_GkLGDOgf8YLaaXNRA   "~CalebCity" 					"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCMn-zv1SE-2y6vyewscfFqw   "~CrackerMilk" 				"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCIabPXjvT5BVTxRDPCBBOOQ   "~Dani" 						"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCzmtKpQQyZ-9ZNY_bbFtVHw   "~Dani2" 						"!Hidden" "(Videos)"
@@ -100,17 +94,14 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCfb2YpWR9FWTJMjzvAlP0_Q   "
 https://www.youtube.com/feeds/videos.xml?channel_id=UCBNG0osIBAprVcZZ3ic84vw   "~Jim Browning" 				"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUzQJ3JBuQ9w-po4TXRJHiA   "~jdh" 							"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCY1kMZp36IQSyNx_9h4mpCg   "~Mark Rober" 				"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCX6OQ3DkcsbYNE6H8uQQuVA   "~MrBeast" 					"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCu6v4AdYxVH5fhfq9mi5llA   "~Let Me Explain Studios" "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCStGslsoc9pr89XnmwnsYWw   "~The People"  				"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-lHJZR3Gqxm24_Vd_AJ5Yw   "~PewDiePie" 					"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-nDNn0pKEyOGH5d0_ttqSA   "~Pinguefy" 					"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCyc7XDbacO7Zrms4OsGc9ZA   "~Pokee" 						"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCcem9I78ybZLHLRUlkUO3sw   "~The Proper People" 		"!Hidden" "(Videos)"
 
 # Commentary
 
-https://www.youtube.com/feeds/videos.xml?channel_id=UCFb_gfGsPrw3P9Keawd2QBg   "~Cyrus"  						"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCuVgoagmU3hmfMwtxG9s4Sw   "~Optimus"  					"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqWxviU8cjjHZsTLWgPFZuA   "~dangelowallace"  			"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHTM9IknXs4ZHzwHqDjakoQ   "~D'Angelo Wallace"  		"!Hidden" "(Videos)"
@@ -140,48 +131,14 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCLNoXf8gq6vhwsrYp-l0J-Q   "
 
 # Technology
 
-https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q "~The Hated One" "!Hidden" "(Videos)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q 	 "~The Hated One" "!Hidden" "(Videos)"
 
 # Disabled Channels
 # ──────────────────────────────────────────────────────────────────────────────────────────
 
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCll4ovHOvR7jQ401s7ox94A "~Aaron Reyes Kpop" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCAi_uNeDWRXj8C8yw358gWw "~CharlesBerthoud" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCPeiIDYMwZQpL7aocblfqtQ "~I DONT KNOW HOW BUT THEY FOUND ME" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCtuYNnKhOOQL_H6F-EzUaZg "~mxmtoon" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCKnBNM0_8P87KomLAAqVxNw "~Rob Landes" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCOmHUn--16B90oW2L6FRR3A "~BLACKPINK" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCj-wTLj0p0YvTkS-9-ACm0A "~Blooprint" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCMBw7l_-Ws8aIJ5lQgkq8gA "~Public Prank" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCCE5NVlm0FhbunMMBT48WAw "~Fundy" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCJhTTqtsvThK99_IbNDtwSw "~FundyLIVE" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCibsT4vXPpOdmzjiRKeE4Lw "~Geosquare" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC64v1CqfTBlwumeNqxSClDA "~Paradox Poke" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCvje1_OaZUZVZDzxeyOFf6A "~SirTag" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC5p_l5ZeB_wGjO_yDXwiqvw "~TommyInnit" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCgAyQyy6x3L-tmM1GICelGA "~TommyOutit" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCg4XK-l40KZD7fLi12pJ1YA "~Welyn" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCQMjMW-9PhWoH6TWwmnVWvA "~CallMeCarson" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCPDXXXJj9nax0fr0Wfc048g "~CollegeHumor" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCTrtA2LyW7gie0o8hY4efXw "~Improv Everywhere" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCZDj6Ig-gxkHWzZyQSdGq0Q "~JK! Studios" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCMUKOasG95vjYlIjl-5nfAQ "~The Royal Stampede" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCl7dSJloxuCa9IBFml7sakw "~PolyMars" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCMBw7l_-Ws8aIJ5lQgkq8gA "~Public Prank" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCTUHzVzRwN_2x13IWQ9QVNg "~senzawa" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCdPui8EYr_sX6q1xNXCRPXg "~Storror" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCWH4JkQWioU3vTAritHDnAA "~sydsnap" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC8BDPbc5lKVBaz4LFVeWWcw "~JT" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC7Jwj9fkrf1adN4fMmTkpug "~DankPods" "!Hidden" "(Videos)"
-
 # Backup links
 
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "~Brodie Robertson" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCS97tchJDq17Qms3cux8wcA "~ChrisAtMachine" "!Hidden" "(Videos)"
 # https://www.youtube.com/feeds/videos.xml?channel_id=UCq2QwnKW79w4a55ZQqOBReg "~IrishLuck Linux" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith" "!Hidden" "(Videos)"
-# https://lbryfeed.melroy.org/channel/@luke#7 "~Luke Smith" "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~Distrotube" "!Hidden" "(Videos)"
 
 # Podcasts
 # ──────────────────────────────────────────────────────────────────────────────────────────

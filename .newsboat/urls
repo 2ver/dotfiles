@@ -2,7 +2,8 @@
 "query:Blogs:(tags # \"(Blogs)\") and (unread = \"yes\")"
 "query:News:(tags # \"(News)\") and (unread = \"yes\")"
 "query:Podcasts:(tags # \"(Podcasts)\") and (unread = \"yes\")"
-"query:Saved:flags # \"s\""
+"query:Starred:flags # \"s\""
+"query:Later:flags # \"l\""
 
 "──────────"
 

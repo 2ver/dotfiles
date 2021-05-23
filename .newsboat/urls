@@ -21,7 +21,7 @@ https://vas.neocities.org/rss.xml "!Hidden" "(Blogs)"
 # (News)
 # ──────────────────────────────────────────────────────────────────────────────────────────
 
-https://www.archlinux.org/feeds/news/ "~Arch Linux" "!Hidden" "(News)"
+https://archlinux.org/feeds/news/ "~Arch Linux" "!Hidden" "(News)"
 https://www.theatlantic.com/feed/all/ "~The Atlantic" "!Hidden" "(News)"
 https://nitter.net/plover/rss "~Plover" "!Hidden" "(News)"
 https://suckless.org/atom.xml "~Suckless" "!Hidden" "(News)"
@@ -36,9 +36,10 @@ https://lbryfeed.melroy.org/channel/odysee/chrisatmachine 							 "~ChrisAtMachi
 https://lbryfeed.melroy.org/channel/odysee/DistroTube 								 "~Distrotube" 				"!Hidden" "(Videos)"
 https://lbryfeed.melroy.org/channel/odysee/IrishluckLinux							 "~IrishLuck Linux" 			"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCfp-lNJy4QkIGnaEE6NtDSg   "~Learn Linux" 				"!Hidden" "(Videos)"
-https://lukesmith.xyz/peertube 																 "~Luke Smith" 				"!Hidden" "(Videos)"
+https://videos.lukesmith.xyz/feeds/videos.xml?accountId=3 							 "~Luke Smith" 				"!Hidden" "(Videos)"
 https://lbryfeed.melroy.org/channel/odysee/AlphaNerd 									 "~Mental Outlaw" 			"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ   "~System Crafters" 			"!Hidden" "(Videos)"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ   "~System Crafters" 			"!Hidden" "(Videos)"
+https://lbryfeed.melroy.org/channel/odysee/SystemCrafters							 "~System Crafters"			"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg   "~Wolfgang's Channel" 		"!Hidden" "(Videos)"
 
 # Music
@@ -99,7 +100,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCu6v4AdYxVH5fhfq9mi5llA   "
 https://www.youtube.com/feeds/videos.xml?channel_id=UCStGslsoc9pr89XnmwnsYWw   "~The People"  				"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-lHJZR3Gqxm24_Vd_AJ5Yw   "~PewDiePie" 					"!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-nDNn0pKEyOGH5d0_ttqSA   "~Pinguefy" 					"!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCcem9I78ybZLHLRUlkUO3sw   "~The Proper People" 		"!Hidden" "(Videos)"
 
 # Commentary
 

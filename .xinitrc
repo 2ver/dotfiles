@@ -9,6 +9,7 @@ autostart &
 external_monitor_connected &
 ~/.fehbg &
 picom &
+dunst &
 
 ## Restart DWM without quitting Xorg
 ~/.bin/startdwm

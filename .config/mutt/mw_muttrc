@@ -1,12 +1,14 @@
 source /usr/share/mutt-wizard/mutt-wizard.muttrc
 source /home/uver/.config/mutt/accounts/the-account-to-open-on-startup.muttrc
 
+set editor = "kak"
+
 ## User bindings
 
 # Colemak
+unmacro index O
 bind index e next-entry
 bind index i previous-entry
-bind index,pager,attach,browser o noop
 bind attach o view-mailcap
 bind pager,attach n exit
 bind pager e next-line
@@ -31,8 +33,30 @@ bind index,pager,browser \Cu half-up
 bind index d delete-message
 bind index u undelete-message
 macro index \Cr "<shell-escape>mw -Y<enter>" "run mw -Y to sync all mail"
-bind index O noop
 
 bind index,pager b noop
-macro index,pager b1 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/first-account.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to first-account"
-macro index,pager b2 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/second-account.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to second-account"
+macro index,pager b1 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/first-account<enter><change-folder>!<enter>;<check-stats>' "switch to MrUver@protonmail.com"
+macro index,pager b2 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/second-account<enter><change-folder>!<enter>;<check-stats>' "switch to austin.sahnow@aceclassicaled.org"
+macro index,pager b3 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/third-account<enter><change-folder>!<enter>;<check-stats>' "switch to sahnowa@my.lanecc.edu"
+macro index,pager b4 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/fourth-account<enter><change-folder>!<enter>;<check-stats>' "switch to austin@austinsahnow.com"
+macro index,pager b5 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/fifth-account<enter><change-folder>!<enter>;<check-stats>' "switch to uver@uveronunix.com"
+
+## Colors
+
+# Default index colors
+color index magenta default '.*'
+color index_author brightblue default '.*'
+color index_number color10 default
+color index_subject white default '.*'
+
+# Unread mail
+color index brightmagenta black "~N"
+color index_author brightblue black "~N"
+color index_subject brightwhite black "~N"
+
+# Statusbar
+color status magenta black
+
+# Links
+color body brightyellow default "[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+" # Email addresses
+color body yellow default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"

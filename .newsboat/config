@@ -8,11 +8,11 @@ history-limit 0
 # pager "" # $PAGER
 
 # UI
-datetime-format "%d %R"
+datetime-format "%d"
 feedlist-title-format "❬Feeds❭ %u Unread Feed(s)"
 feedlist-format "%8u %t"
 articlelist-title-format "❬%T❭ %u/%t Unread Article(s)"
-articlelist-format "%-3i │ %f │ %8D │ %-17T │ %t"
+articlelist-format "%-3i │ %f │ %2D │ %-17T │ %t"
 show-keymap-hint no
 
 # Rules

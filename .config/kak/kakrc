@@ -425,6 +425,14 @@ hook global BufCreate .*kitty[.]conf %{
 	set-option buffer filetype ini
 }
 
+hook global BufCreate .*dunstrc %{
+	set-option buffer filetype yaml
+}
+
+hook global BufCreate .*mopidy.conf %{
+	set-option buffer filetype ini
+}
+
 # Extensions
 # ──────────
 

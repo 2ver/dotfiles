@@ -1,5 +1,6 @@
 mpd_host = "localhost"
 mpd_port = "6600"
+# mpd_port = "4713"
 mpd_music_dir = "/home/uver/Music"
 
 # Behaviour

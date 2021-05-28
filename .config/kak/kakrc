@@ -431,6 +431,7 @@ hook global BufCreate .*dunstrc %{
 
 hook global BufCreate .*mopidy.conf %{
 	set-option buffer filetype ini
+	# set-option buffer filetype toml
 }
 
 # Extensions

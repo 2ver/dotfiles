@@ -34,24 +34,40 @@ super + F2
    kitty vifm
 
 super + F3
-   bspc desktop -f ^3 && kitty -o font_size=13 -e neomutt
+   bspc desktop -f ^3 && kitty -o font_size=13 neomutt
 
 super + F4
-	rofi_edit
+	bspc desktop -f ^4 && kitty -o font_size=13 gomuks
 
 super + F5
 	pcmanfm
 
+super + F6
+	rofi_edit
+
 super + F8
 	bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp
 
+## Screenshots
+Print
+	ss_copy_sel
+
+alt + Print
+	ss_copy_screen
+
+control + Print
+	ss_save_sel
+
+shift + Print
+	ss_save_screen
+
 # Copy selected area to clipboard
-super + control + c
-    maim -s | xclip -selection clipboard -t image/png
+# super + control + c
+    # maim -s | xclip -selection clipboard -t image/png
 
 # Save selected area as screenshot
-super + shift + alt + c
-   maim -s ~/Pictures/Screenshots/$(date +%s).png
+# super + shift + alt + c
+   # maim -s ~/Pictures/Screenshots/$(date +%s).png
 
 # make sxhkd reload its configuration files:
 super + ctrl + Escape

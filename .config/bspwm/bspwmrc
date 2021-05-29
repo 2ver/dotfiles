@@ -1,11 +1,11 @@
 #! /bin/sh
 
 # Autostart
-autostart # Cursor speed
-external_monitor_connected # Turn off interal display if external is connected
+# autostart # Cursor speed
+# external_monitor_connected # Turn off interal display if external is connected
 #~/bin/bspwm/conf_desktops
-~/.fehbg # Set wallpaper
-picom & # Run compositer
+# ~/.fehbg # Set wallpaper
+# picom & # Run compositer
 
 # For sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &

@@ -18,8 +18,8 @@ interceptor.register(filter_yt)
 
 config.load_autoconfig(False)
 
-#c.colors.webpage.preferred_color_scheme = dark
-#config.set("colors.webpage.darkmode.enabled", True)
+# c.colors.webpage.preferred_color_scheme = dark
+# config.set("colors.webpage.darkmode.enabled", True)
 
 # Colemak Bindings
 c.bindings.commands['normal'] = {
@@ -85,7 +85,7 @@ c.editor.command = ['kitty', 'kak', '{}']
 c.tabs.position = "top"
 c.url.start_pages = ["~/.config/qutebrowser/startpage/index.html"]
 c.url.default_page = ("~/.config/qutebrowser/startpage/index.html")
-c.url.searchengines = { "DEFAULT" : "https://searx.cedars.xyz/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}", "gh" : "https://github.com/search?q={}&ref=opensearch", "w" : "https://wiby.me/?q={}" }
+c.url.searchengines = { "DEFAULT" : "https://searx.cedars.xyz/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}", "gh" : "https://github.com/search?q={}&ref=opensearch", "w" : "https://wiby.me/?q={}", "aw" : "https://wiki.archlinux.org/index.php?search={}", "o" : "https://odysee.com/$/search?q={}" }
 
 # Lena theme
 lena.draw.lena(c, {

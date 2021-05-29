@@ -74,7 +74,7 @@ emoji_favicons = true
 
 # When a scrollbar appears. "never", "auto", and "always" are the only valid values.
 # "auto" means the scrollbar only appears when the page is longer than the window.
-scrollbar = "auto"
+scrollbar = "never"
 
 
 [auth]
@@ -328,13 +328,14 @@ entries_per_page = 20
 # bottombar_bg
 # scrollbar: The scrollbar that appears on the right for long pages
 bg = "#303342"
-tab_num = "#E4E4DF"
-# tab_num = "#1B1D25"
+# tab_num = "#E4E4DF"
+tab_num = "#94DCC2"
+# tab_num = "#4CD0A0"
 tab_divider = "#4CD0A0"
 bottombar_label = "#86A7E0"
 bottombar_text = "#E4E4DF"
-bottombar_bg = "#1B1D25"
-# bottombar_bg = "303342"
+# bottombar_bg = "#1B1D25"
+bottombar_bg = "#303342"
 scrollbar = "#E4E4DF"
 
 # hdg_1
@@ -407,3 +408,8 @@ input_modal_field_text = "#E4E4DF"
 # bkmk_modal_label
 # bkmk_modal_field_bg
 # bkmk_modal_field_text
+bkmk_modal_bg = "#1B1D25"
+bkmk_modal_text = "#86A7E0"
+bkmk_modal_label = "#AE8DEB"
+bkmk_modal_field_bg = "#303342"
+bkmk_modal_field_text = "#E4E4DF"

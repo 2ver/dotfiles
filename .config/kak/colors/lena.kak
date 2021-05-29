@@ -30,7 +30,7 @@ face global list rgb:dedede,default
 
 # kakoune UI
 
-face global Default rgb:e3e3de,rgb:2f3241
+face global Default rgb:e3e3de,rgb:303342
 face global PrimarySelection white,rgb:37424f
 face global SecondarySelection rgba:ffffff50,rgba:37424f50
 face global PrimaryCursor white,rgb:4F6074+b

@@ -18,6 +18,9 @@ super + @space
 super + b
    qutebrowser
 
+super + g
+	kitty amfora
+
 super + k
 	kitty kak
 
@@ -35,7 +38,7 @@ super + F1
 	bspc desktop -f ^1 && kitty -o font_size=14 newsboat
 
 super + F2
-   kitty vifm
+   kitty nnn
 
 super + F3
    bspc desktop -f ^3 && kitty -o font_size=13 neomutt
@@ -127,7 +130,7 @@ super + g
 #
 
 # set the window state
-super + {t,control+ p,shift+f,f}
+super + {t,control + p,control + f,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags

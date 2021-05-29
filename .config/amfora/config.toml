@@ -321,13 +321,21 @@ entries_per_page = 20
 # Available keys to set:
 
 # bg: background for pages, tab row, app in general
-# bg = #303342
 # tab_num: The number/highlight of the tabs at the top
 # tab_divider: The color of the divider character between tab numbers: |
 # bottombar_label: The color of the prompt that appears when you press space
 # bottombar_text: The color of the text you type
 # bottombar_bg
 # scrollbar: The scrollbar that appears on the right for long pages
+bg = "#303342"
+tab_num = "#E4E4DF"
+# tab_num = "#1B1D25"
+tab_divider = "#4CD0A0"
+bottombar_label = "#86A7E0"
+bottombar_text = "#E4E4DF"
+bottombar_bg = "#1B1D25"
+# bottombar_bg = "303342"
+scrollbar = "#E4E4DF"
 
 # hdg_1
 # hdg_2
@@ -339,9 +347,22 @@ entries_per_page = 20
 # quote_text
 # preformatted_text
 # list_text
+hdg_1 = "#86A7E0"
+hdg_2 = "#94DCC2"
+hdg_3 = "#AE8DEB"
+amfora_link = "#5C8CDC"
+foreign_link = "#8C56EB"
+link_number = "#4F6074"
+regular_text = "#E4E4DF"
+quote_text = "#4F6074"
+preformatted_text = "#4CD0A0"
+list_text = "#7CCDD8"
+
 
 # btn_bg: The bg color for all modal buttons
 # btn_text: The text color for all modal buttons
+btn_bg = "#1B1D25"
+btn_text = "#E4E4DF"
 
 # dl_choice_modal_bg
 # dl_choice_modal_text
@@ -357,11 +378,29 @@ entries_per_page = 20
 # tofu_modal_text
 # subscription_modal_bg
 # subscription_modal_text
+dl_choice_modal_bg = "#1B1D25"
+dl_choice_modal_text = "#86A7E0"
+dl_modal_bg = "#1B1D25"
+dl_modal_text = "#86A7E0"
+info_modal_bg = "#1B1D25"
+info_modal_text = "#86A7E0"
+error_modal_bg = "#1B1D25"
+error_modal_text = "#E084A3"
+yesno_modal_bg = "#1B1D25"
+yesno_modal_text = "#86A7E0"
+tofu_modal_bg = "#1B1D25"
+tofu_modal_text = "#86A7E0"
+subscription_modal_bg = "#1B1D25"
+subscription_modal_text = "#86A7E0"
 
 # input_modal_bg
 # input_modal_text
 # input_modal_field_bg: The bg of the input field, where you type the text
 # input_modal_field_text: The color of the text you type
+input_modal_bg = "#1B1D25"
+input_modal_text = "#86A7E0"
+input_modal_field_bg = "#303342"
+input_modal_field_text = "#E4E4DF"
 
 # bkmk_modal_bg
 # bkmk_modal_text

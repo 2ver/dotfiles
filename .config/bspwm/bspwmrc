@@ -43,3 +43,4 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a Discord desktop='^3' follow=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Emacs state=tiled
+bspc rule -a Zathura state=tiled

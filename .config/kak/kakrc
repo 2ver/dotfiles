@@ -436,6 +436,10 @@ hook global BufCreate .*mopidy.conf %{
 	# set-option buffer filetype toml
 }
 
+hook global BufCreate .*\.gmi %{
+   set-option buffer filetype markdown
+}
+
 hook global BufWritePost .*\.tex %{
    nop %sh{
       pdflatex "$kak_buffile"

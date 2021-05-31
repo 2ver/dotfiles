@@ -5,8 +5,8 @@
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 
 ## Autostart Apps
-autostart &
-external_monitor_connected &
+cursor-settings &
+external-monitor &
 ~/.fehbg &
 picom &
 dunst &

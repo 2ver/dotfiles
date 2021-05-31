@@ -43,7 +43,7 @@ plug "kak-lsp/kak-lsp" do %{
    	lsp-start
 	}
 
-   hook global WinSetOption filetype=(c|haskell|python|rust) %{
+   hook global WinSetOption filetype=(c|haskell|latex|python|rust) %{
       lsp-enable-window
       echo -debug "Enabling LSP for filetype %opt{filetype}"
 		# lsp-auto-hover-enable
@@ -390,6 +390,8 @@ map global user w -docstring 'write' ': w<ret>' 			 # Save
 map global user q -docstring 'quit' ': q<ret>'				 # Quit
 map global user z -docstring 'write and quit' ': wq<ret>' # Save and quit
 
+# TODO: Open corresponding pdf to LaTeX file
+map global user v -docstring 'open pdf file corresponding to current LaTeX project' '| zathura "$kak_pwd"/*\.pdf'
 
 # Save after lost focus
 hook global FocusOut .* %{
@@ -432,6 +434,12 @@ hook global BufCreate .*dunstrc %{
 hook global BufCreate .*mopidy.conf %{
 	set-option buffer filetype ini
 	# set-option buffer filetype toml
+}
+
+hook global BufWritePost .*\.tex %{
+   nop %sh{
+      pdflatex "$kak_buffile"
+   }
 }
 
 # Extensions

@@ -12,11 +12,11 @@ picom &
 dunst &
 
 ## Restart DWM without quitting Xorg
-~/.bin/startdwm
+# ~/.bin/startdwm
 
 ## Window Manager  
 # awesome
-# exec bspwm
+exec bspwm
 # exec i3
 # exec herbstluftwm
 # exec dwm

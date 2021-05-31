@@ -145,7 +145,7 @@ bind_bottom = ["l",":"]
 bind_edit = "Ctrl-E"
 # bind_home
 bind_bookmarks = "b"
-bind_add_bookmark = "M"
+bind_add_bookmark = "m"
 # bind_save
 bind_reload = "r"
 bind_back = "N"

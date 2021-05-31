@@ -60,7 +60,7 @@ control + space
 	dunstctl close
 
 control + shift + space
-	dunstctl close all
+	dunstctl close-all
 
 super + d
 	dunstctl set-paused toggle

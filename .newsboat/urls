@@ -137,17 +137,18 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCLNoXf8gq6vhwsrYp-l0J-Q   "
 
 # Technology
 
-https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q 	 "~The Hated One" "!Hidden" "(Videos)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q 	 "~The Hated One" 			"!Hidden" "(Videos)"
 
 # Disabled Channels
 # ──────────────────────────────────────────────────────────────────────────────────────────
 
 # Backup links
 
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCq2QwnKW79w4a55ZQqOBReg "~IrishLuck Linux" "!Hidden" "(Videos)"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCq2QwnKW79w4a55ZQqOBReg "~IrishLuck Linux" 			"!Hidden" "(Videos)"
 
 # Podcasts
 # ──────────────────────────────────────────────────────────────────────────────────────────
 
-https://feeds.soundcloud.com/users/soundcloud:users:956521729/sounds.rss "Ace Podcast" "!Hidden" "(Podcasts)"
-https://feeds.megaphone.fm/misfits "~Misfits" "!Hidden" "(Podcasts)"
+https://feeds.soundcloud.com/users/soundcloud:users:956521729/sounds.rss 		 "Ace Podcast" 				"!Hidden" "(Podcasts)"
+https://feeds.megaphone.fm/misfits 															 "~Misfits" 					"!Hidden" "(Podcasts)"
+https://notrelated.xyz/rss 																	 "~Not Related!"				"!Hidden" "(Podcasts)"

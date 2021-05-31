@@ -10,7 +10,7 @@ set pages-per-row 1
 
 #stop at page boundries
 set scroll-page-aware "true"
-set smooth-scroll "true"
+# set smooth-scroll "true"
 set scroll-full-overlap 0.01
 set scroll-step 100
 
@@ -64,7 +64,7 @@ map [fullscreen] f toggle_fullscreen
 map n scroll left
 map e scroll down
 map i scroll up
-unmap o
+# unmap o
 map o scroll right
 
 map E navigate next

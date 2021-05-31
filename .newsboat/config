@@ -20,6 +20,7 @@ show-keymap-hint no
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOFH59uoSs8SUF0L_p3W0sg" "title !~ \"keyboard\"" # Badseed Tech
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCDBCCMlFD-hArPbWv38FINA" "title !~ \"watches\"" # Daz Black
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOfelP_99_8AzQ4kbmTJrfQ" "content =~ \"streamlabs\"" # tmol
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOfelP_99_8AzQ4kbmTJrfQ" "content =~ \"streamlabs\"" # B-rad
 ignore-article "https://lbryfeed.melroy.org/channel/odysee/hexdsl" "content =~ \"steampowered\"" # Hex DSL
 
 # Key bindings

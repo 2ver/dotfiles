@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -uvrP --delete-after ~/capsules/\~uver/ uver@tilde.club:/home/uver/public_gemini

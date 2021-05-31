@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd ~/qmk_firmware/
+git checkout master
+git fetch upstream
+git pull upstream master
+git push origin master
+git checkout dev_branch

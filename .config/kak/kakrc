@@ -96,7 +96,6 @@ plug "kak-lsp/kak-lsp" do %{
    # set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
 }
 
-
 # Spell checking
 nop plug "dmerejkowsky/kak-spell" config %{
    declare-user-mode kak-spell
@@ -379,11 +378,12 @@ def -params 1 extend-line-up %{
     }
     exec '<a-;><a-X>'
 }
-map global normal x ': extend-line-down %val{count}<ret>' # Down
-map global normal X ': extend-line-up %val{count}<ret>'	 # Up
+map global normal x ': extend-line-down %val{count}<ret>' -docstring 'Extend selection down' # Down
+map global normal X ': extend-line-up %val{count}<ret>' -docstring 'Extend selection up'     # Up
 
 # Comment line
-map global normal '#' :comment-line<ret> # Comment selected line(s)
+map global normal '#' ': comment-line<ret>' -docstring 'Comment line'       # Comment selected line(s)
+map global normal '<a-#>' ': comment-block<ret>' -docstring 'Comment block' # Comment selected block
 
 # Shortcuts to exit
 map global user w -docstring 'write' ': w<ret>' 			 # Save
@@ -439,6 +439,14 @@ hook global BufCreate .*mopidy.conf %{
 hook global BufCreate .*\.gmi %{
    set-option buffer filetype markdown
 }
+
+hook global BufCreate .*\.elv %{
+   set-option buffer filetype sh
+}
+
+# hook global BufCreate .newsboat/* %{
+#    set-option buffer filetype txt
+# }
 
 hook global BufWritePost .*\.tex %{
    nop %sh{

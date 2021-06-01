@@ -10,7 +10,7 @@ evaluate-commands %sh{
    printf "%s\n" "source '$plugins/plug.kak/rc/plug.kak'"
 }
 
-# Install plugin manager so that 'plug-clean' does not remove plug.kak
+# Install plug.kak so 'plug-clean' does not remove itself
 plug "andreyorst/plug.kak" noload
 
 # Dependency of auto-pairs
@@ -142,29 +142,6 @@ plug "Screwtapello/kakoune-state-save" domain "gitlab.com" config %{
 
 plug "Screwtapello/kakoune-mark-show" domain "gitlab.com"
 
-plug "delapouite/kakoune-mirror" %{
-   map global normal "'" ': enter-user-mode -lock mirror<ret>'
-   map global mirror n h
-   map global mirror e j
-   map global mirror i k
-   map global mirror o l
-   map global mirror h n
-   map global mirror j e
-   map global mirror k i
-   map global mirror l o
-   map global mirror q b
-}
-
-plug "alexherbo2/explore.kak" %{
-define-command explore-files -params .. '+ kcr-fzf-files %arg{@}'
-	define-command explore-buffers -params .. '+ kcr-fzf-buffers %arg{@}'
-}
-
-# Discord rich presence (Buggy)
-plug "abuffseagull/kakoune-discord" do %{ cargo install --path . --force } %{
-     discord-presence-enable
-}
-
 # UI configuration
 # ────────────────
 set-option global startup_info_version 20200901464 									# Hide change notes on startup
@@ -174,7 +151,15 @@ set-option global scrolloff 99,99	 														# Center cursor
 set-option global ui_options ncurses_assistant=off ncurses_status_on_top=true # Disable clippy
 set-option global autoreload yes 	 														# Live reload
 set-option global writemethod replace 														# Live reload method
+# set-option global modelinefmt '{yellow}%opt{out_of_view_status_line}{default} {{mode_info}} {magenta}%val{client}{default} at {yellow}%val{session}{default} on {green}%val{bufname}{default} {{context_info}} {cyan}U+%sh{printf ''%04x'' "$kak_cursor_char_value"}{default} {cyan}%val{cursor_line}{default}:{cyan}%val{cursor_char_column}{default}'
+# set-option global modelinefmt '{{mode_info}} {magenta}%val{client}{default} at {yellow}%val{session}{default} on {green}%val{bufname}{default} {{context_info}} {cyan}U+%sh{printf ''%04x'' "$kak_cursor_char_value"}{default} {cyan}%val{cursor_line}{default}:{cyan}%val{cursor_char_column}{default}'
+set-option global modelinefmt '{{mode_info}} {green}%val{bufname}{default} {{context_info}}'
 
+# Blank scratch buffer
+hook -group delete-scratch-message global BufCreate '\Q*scratch*' %{
+   execute-keys '%d'
+}
+  
 # Color TODO, NOTE, etc. separately
 hook global WinSetOption comment_line=(.*) %{
     add-highlighter -override window/todo regex "\Q%val{hook_param_capture_1}\E\h*(TODO:|FIXME:|NOTE:|XXX:)[^\n]*" 1:rgb:21c0d5+Fb
@@ -417,46 +402,7 @@ define-command clean-whitespace %{ execute-keys -draft '<percent>s^<space><plus>
 # File types
 # ──────────
 
-def filetype-hook -params 2 %{ hook global WinSetOption "filetype=(%arg{1})" %arg{2} }
-
-filetype-hook man %{
-   remove-highlighter window/number-lines
-}
-
-hook global BufCreate .*kitty[.]conf %{
-	set-option buffer filetype ini
-}
-
-hook global BufCreate .*dunstrc %{
-	set-option buffer filetype yaml
-}
-
-hook global BufCreate .*mopidy.conf %{
-	set-option buffer filetype ini
-	# set-option buffer filetype toml
-}
-
-hook global BufCreate .*\.gmi %{
-   set-option buffer filetype markdown
-}
-
-hook global BufCreate .*\.elv %{
-   set-option buffer filetype sh
-}
-
-hook global BufCreate .*sxhkdrc %{
-   set-option buffer filetype sh
-}
-
-# hook global BufCreate .newsboat/* %{
-#    set-option buffer filetype txt
-# }
-
-hook global BufWritePost .*\.tex %{
-   nop %sh{
-      pdflatex "$kak_buffile"
-   }
-}
+source "%val{config}/filetypes.kak"
 
 # Extensions
 # ──────────

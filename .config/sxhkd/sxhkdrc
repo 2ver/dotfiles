@@ -50,7 +50,7 @@ super + F5
 	pcmanfm
 
 super + F6
-	rofi_edit
+	rofi-edit
 
 super + F8
 	bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp
@@ -70,16 +70,16 @@ super + control + d
 
 ## Screenshots
 Print
-	ss_copy_sel
+	ss-copy-sel
 
 alt + Print
-	ss_copy_screen
+	ss-copy-screen
 
 control + Print
-	ss_save_sel
+	ss-save-sel
 
 shift + Print
-	ss_save_screen
+	ss-save-screen
 
 ## Volume
 XF86AudioMute

@@ -444,6 +444,10 @@ hook global BufCreate .*\.elv %{
    set-option buffer filetype sh
 }
 
+hook global BufCreate .*sxhkdrc %{
+   set-option buffer filetype sh
+}
+
 # hook global BufCreate .newsboat/* %{
 #    set-option buffer filetype txt
 # }

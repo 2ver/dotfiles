@@ -23,6 +23,13 @@ hook global BufCreate .*mopidy.conf %{
 
 hook global BufCreate .*\.gmi %{
    set-option buffer filetype markdown
+
+   declare-user-mode sync
+   map buffer user s ': enter-user-mode sync<ret>' -docstring 'sync capsules'
+   map buffer sync u ': | syncuveronunixcapsule<ret>' -docstring 'uveronunix.com'
+   map buffer sync ~ ': | sync~uvercapsule<ret>' -docstring 'tilde.chat/~uver'
+
+   source "%val{config}/privatecapsule.kak"
 }
 
 hook global BufCreate .*\.elv %{

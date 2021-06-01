@@ -318,7 +318,7 @@ hook global InsertChar i %{ try %{
 }}
 
 # Source selection
-map global user -docstring 'Source selection' . ': <c-r>.<ret>'
+map global user -docstring 'source selection' . ': <c-r>.<ret>'
 
 # Autocomplete to buffer directory in :e
 map global prompt -docstring 'Expand to the buffer directory' <a-.> '%sh(dirname "$kak_buffile")<a-!>'

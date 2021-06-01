@@ -21,10 +21,11 @@ https://vas.neocities.org/rss.xml "!Hidden" "(Blogs)"
 # (News)
 # ──────────────────────────────────────────────────────────────────────────────────────────
 
-https://archlinux.org/feeds/news/ "~Arch Linux" "!Hidden" "(News)"
-https://www.theatlantic.com/feed/all/ "~The Atlantic" "!Hidden" "(News)"
-https://nitter.net/plover/rss "~Plover" "!Hidden" "(News)"
-https://suckless.org/atom.xml "~Suckless" "!Hidden" "(News)"
+https://archlinux.org/feeds/news/															 "~Arch Linux" 				"!Hidden" "(News)"
+https://www.theatlantic.com/feed/all/														 "~The Atlantic" 				"!Hidden" "(News)"
+https://elv.sh/feed.atom 																		 "~Elvish"						"!Hidden" "(News)"
+https://nitter.net/plover/rss 																 "~Plover" 						"!Hidden" "(News)"
+https://suckless.org/atom.xml 																 "~Suckless" 					"!Hidden" "(News)"
 
 # (Videos)
 # ──────────────────────────────────────────────────────────────────────────────────────────

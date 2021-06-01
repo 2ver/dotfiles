@@ -6,12 +6,12 @@ use math # Math operation
 # Executable paths
 paths = [
    $E:GOPATH/bin
-	/usr/local/bin
-	/usr/local/sbin
-	/usr/sbin
-	/sbin
-	/usr/bin
-	/bin
+   /usr/local/bin
+   /usr/local/sbin
+   /usr/sbin
+   /sbin
+   /usr/bin
+   /bin
 ]
 
 # Check paths' existence
@@ -25,29 +25,44 @@ each [p]{
 # Packages
 use epm
 
-epm:install &silent-if-installed			^
-github.com/zzamboni/elvish-modules		^
+epm:install &silent-if-installed       ^
+github.com/zzamboni/elvish-modules     ^
 github.com/zzamboni/elvish-completions ^
+github.com/zzamboni/elvish-themes      ^
 github.com/iwoloschin/elvish-packages 	^
 github.com/muesli/elvish-libs
 
 # General settings
-edit:insert:binding[Alt-i] = $edit:-instant:start~
 edit:max-height = 20
+
+# Key bindings
+use readline-binding
+
+edit:insert:binding[Alt-i] = $edit:-instant:start~
+# edit:insert:binding[Ctrl-l] = { clear > /dev/tty; edit:redraw &full=$true }
+# edit:insert:binding[Ctrl-l] = { clear > /dev/tty; edit:clear }
+
+edit:navigation:binding[n] = { edit:navigation:left }
+edit:navigation:binding[e] = { edit:navigation:down}
+edit:navigation:binding[i] = { edit:navigation:up }
+edit:navigation:binding[o] = { edit:navigation:right }
+edit:navigation:binding[Ctrl-d] = { edit:navigation:page-down }
+edit:navigation:binding[Ctrl-u] = { edit:navigation:page-up}
 
 # Completions
 use github.com/zzamboni/elvish-completions/builtins
 use github.com/zzamboni/elvish-completions/cd
 use github.com/zzamboni/elvish-completions/git
 use github.com/zzamboni/elvish-completions/ssh
+edit:completion:matcher[''] = [p]{ edit:match-prefix &smart-case $p } # Smart case in completion
 
 use github.com/zzamboni/elvish-modules/bang-bang # Enable !! & !$
-use github.com/muesli/elvish-libs/git # Git utilities
+use github.com/muesli/elvish-libs/git            # Git utilities
 
 # Notify if new commits
-use github.com/iwoloschin/elvish-packages/update
-update:curl-timeout = 3
-update:check-commit &verbose
+# use github.com/iwoloschin/elvish-packages/update
+# update:curl-timeout = 3
+# update:check-commit &verbose
 
 # Environment variables
 E:LC_ALL = "en_US.UTF-8"
@@ -63,11 +78,32 @@ fn icat [@a]{ e:kitty +kitten icat $@a }
 fn config [@a]{ e:/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver $@a }
 
 # Prompt
-edit:prompt = { tilde-abbr $pwd; styled ' ❱ ' blue }
+edit:-prompt-eagerness = 10
 edit:prompt-stale-transform = [x]{ styled $x "bright-black" }
 # edit:prompt-stale-transform = $all~
-edit:-prompt-eagerness = 10
-edit:rprompt = { } # Disable right-side prompt
 
-# Smart case in completion
-edit:completion:matcher[''] = [p]{ edit:match-prefix &smart-case $p }
+# Chain
+use github.com/zzamboni/elvish-themes/chain
+chain:init
+
+# Styling
+chain:glyph[chain] = " "
+chain:glyph[arrow] = "❱"
+chain:glyph[git-branch] = ""
+
+chain:bold-prompt = $true
+chain:prompt-segment-delimiters = [ "" "" ]
+
+# Colors
+chain:segment-style[dir] = magenta
+chain:segment-style[arrow] = blue
+chain:segment-style[git-branch] = green
+chain:segment-style[git-staged] = yellow
+chain:segment-style[git-untracked] = red
+chain:segment-style[git-deleted] = red
+chain:segment-style[git-ahead] = yellow
+chain:segment-style[git-behind] = yellow
+
+# Default prompt
+# edit:prompt = { tilde-abbr $pwd; styled ' ❱ ' blue }
+# edit:rprompt = { } # Disable right-side prompt

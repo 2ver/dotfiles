@@ -1,2 +1,2 @@
 #!/bin/sh
-rsync -uvrP --delete-after ~/capsules/uveroununix/ root@uveronunix.com:/srv/gemini/content
+rsync -uvrP --delete-after ~/capsules/uveronunix/ root@uveronunix.com:/srv/gemini/content

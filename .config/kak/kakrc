@@ -142,6 +142,14 @@ plug "Screwtapello/kakoune-state-save" domain "gitlab.com" config %{
 
 plug "Screwtapello/kakoune-mark-show" domain "gitlab.com"
 
+#alias global terminal kitty-terminal
+#alias global popup kitty-terminal-popup
+
+nop %sh{
+   mkdir -p "$kak_config/autoload"
+   ln -s "$kak_runtime/autoload" "$kak_config/autoload/standard-library"
+}
+
 # UI configuration
 # ────────────────
 set-option global startup_info_version 20200901464 									# Hide change notes on startup
@@ -399,11 +407,6 @@ hook global InsertCompletionHide .* %{
 
 define-command clean-whitespace %{ execute-keys -draft '<percent>s^<space><plus>$<ret>d' }
 
-# File types
-# ──────────
-
-source "%val{config}/filetypes.kak"
-
 # Extensions
 # ──────────
 
@@ -428,7 +431,7 @@ try %{
     }
 
     define-command -hidden set-popup-alias %{
-        alias global popup kitty-terminal
+        alias global popup kitty-terminal-popup
     }
 
     hook global ModuleLoaded kitty %{
@@ -455,36 +458,36 @@ try %{
     echo -debug 'failed to initialize kakoune.cr'
 }
 
-define-command setup-kitty -hidden %{
-    map global user w ': kitty-mode<ret>' -docstring 'kitty mode'
-    alias global new kitty-new
-    hook -group kitty-hooks global KakBegin .* %{
-        define-command -hidden set-kitty-terminal-alias %{
-            alias global terminal kitty-terminal-b
-            alias global terminal-l kitty-terminal-l
-            alias global terminal-r kitty-terminal-r
-            alias global terminal-b kitty-terminal-b
-            alias global terminal-t kitty-terminal-t
-        }
-        alias global set-terminal-alias set-kitty-terminal-alias
+# define-command setup-kitty -hidden %{
+#     map global user t ': kitty-mode<ret>' -docstring 'kitty mode'
+#     alias global new kitty-new
+#     hook -group kitty-hooks global KakBegin .* %{
+#         define-command -hidden set-kitty-terminal-alias %{
+#             alias global terminal kitty-terminal-b
+#             alias global terminal-l kitty-terminal-l
+#             alias global terminal-r kitty-terminal-r
+#             alias global terminal-b kitty-terminal-b
+#             alias global terminal-t kitty-terminal-t
+#         }
+#         alias global set-terminal-alias set-kitty-terminal-alias
 
-        set-terminal-alias
-    }
-}
+#         set-terminal-alias
+#     }
+# }
 
 # Kitty integration
-plug "Parasrah/kitty.kak" defer kitty %{
-   define-command nnn-current -params 0..1 -file-completion -docstring 'Open file with nnn' %{
-      kitty-overlay sh -c %{
-         PAGER=""
-         kak_buffile=$1 kak_session=$2 kak_client=$3
-         shift 3
-         kak_pwd="${@:-$(dirname "${kak_buffile}")}"
-         filename=$(nnn -p - "${kak_pwd}")
-         kak_cmd="evaluate-commands -client $kak_client edit $filename"
-         echo $kak_cmd | kak -p $kak_session
-      } -- %val{buffile} %val{session} %val{client} %arg{@}
-   }
+# plug "Parasrah/kitty.kak" defer kitty %{
+#    define-command nnn-current -params 0..1 -file-completion -docstring 'Open file with nnn' %{
+#       kitty-overlay sh -c %{
+#          PAGER=""
+#          kak_buffile=$1 kak_session=$2 kak_client=$3
+#          shift 3
+#          kak_pwd="${@:-$(dirname "${kak_buffile}")}"
+#          filename=$(nnn -p - "${kak_pwd}")
+#          kak_cmd="evaluate-commands -client $kak_client edit $filename"
+#          echo $kak_cmd | kak -p $kak_session
+#       } -- %val{buffile} %val{session} %val{client} %arg{@}
+#    }
 
-   map global normal <minus> ': nnn-current<ret>' -docstring 'open current buffer directory in nnn'
-}
+#    map global normal <minus> ': nnn-current<ret>' -docstring 'open current buffer directory in nnn'
+# }

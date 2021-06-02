@@ -91,9 +91,9 @@ plug "kak-lsp/kak-lsp" do %{
          remove-hooks window rust-inlay-hints
       }
    }
-
-   # set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
+   set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
 }
+
 
 # Spell checking
 nop plug "dmerejkowsky/kak-spell" config %{
@@ -144,23 +144,23 @@ plug "Screwtapello/kakoune-mark-show" domain "gitlab.com"
 #alias global terminal kitty-terminal
 #alias global popup kitty-terminal-popup
 
-nop %sh{
-   mkdir -p "$kak_config/autoload"
-   ln -s "$kak_runtime/autoload" "$kak_config/autoload/standard-library"
-}
+# nop %sh{
+#    mkdir -p "$kak_config/autoload"
+#    ln -s "$kak_runtime/autoload" "$kak_config/autoload/standard-library"
+# }
 
 # UI configuration
 # ────────────────
-set-option global startup_info_version 20200901464 									# Hide change notes on startup
-set-option global tabstop 3			 														# Width of a tab
-set-option global indentwidth 3		 														# Indent with 3 spaces
-set-option global scrolloff 99,99	 														# Center cursor
+set-option global startup_info_version 20200901464                            # Hide change notes on startup
+set-option global tabstop 3                                                   # Width of a tab
+set-option global indentwidth 3                                               # Indent with 3 spaces
+set-option global scrolloff 99,99                                             # Center cursor
 set-option global ui_options ncurses_assistant=off ncurses_status_on_top=true # Disable clippy
-set-option global autoreload yes 	 														# Live reload
-set-option global writemethod replace 														# Live reload method
+set-option global autoreload yes                                              # Live reload
+set-option global writemethod replace                                         # Live reload method
 # set-option global modelinefmt '{yellow}%opt{out_of_view_status_line}{default} {{mode_info}} {magenta}%val{client}{default} at {yellow}%val{session}{default} on {green}%val{bufname}{default} {{context_info}} {cyan}U+%sh{printf ''%04x'' "$kak_cursor_char_value"}{default} {cyan}%val{cursor_line}{default}:{cyan}%val{cursor_char_column}{default}'
 # set-option global modelinefmt '{{mode_info}} {magenta}%val{client}{default} at {yellow}%val{session}{default} on {green}%val{bufname}{default} {{context_info}} {cyan}U+%sh{printf ''%04x'' "$kak_cursor_char_value"}{default} {cyan}%val{cursor_line}{default}:{cyan}%val{cursor_char_column}{default}'
-set-option global modelinefmt '{{mode_info}} {green}%val{bufname}{default} {{context_info}}'
+set-option global modelinefmt '{{mode_info}} {green}%val{bufname}{default} {{context_info}}' # Colored/minimal status line
 
 # Blank scratch buffer
 hook -group delete-scratch-message global BufCreate '\Q*scratch*' %{
@@ -183,20 +183,6 @@ hook global RegisterModified '/' %{ add-highlighter -override global/search rege
 hook global WinCreate ^[^*]+$ %{
    add-highlighter window/ number-lines -relative -separator '  '
 }
-
-# Highlight instances of currenly selected word.
-# declare-option -hidden regex curword
-# set-face global CurWord default,rgba:80808040
-
-# hook global NormalIdle .* %{
-#     eval -draft %{ try %{
-#         exec <space><a-i>w <a-k>\A\w+\z<ret>
-#         set-option buffer curword "\b\Q%val{selection}\E\b"
-#     } catch %{
-#         set-option buffer curword ''
-#     } }
-# }
-# add-highlighter global/ dynregex '%opt{curword}' 0:CurWord
 
 # Highlight matching brackets
 
@@ -255,10 +241,7 @@ hook global ModeChange .*:insert:.* %{
 	unset-face window SecondaryCursorEol
 }
 
-# Kitty
-# ─────
-
-# Keyboard mappings
+# Keymappings
 # ─────────────────
 
 # Colemak bindings
@@ -307,8 +290,8 @@ map global normal Q B         # Extend by word backward
 map global normal <a-q> <a-b> # Select by WORD backward
 map global normal <a-Q> <a-B> # Extend by WORD backward
 
-map global normal <del> ': set-option buffer scrolloff 0,0<ret>' -docstring 'disable cursor centering'        # Quickly disable scrolloff setting
-map global normal <backspace> ': set-option buffer scrolloff 99,99<ret>' -docstring 'enable cursor centering' # Reenable scrolloff
+# Toggle scrolloff value
+map global normal <backspace> ': eval %sh{ if [ "$kak_opt_scrolloff" = 0,0 ]; then offset=99,99; else offset=0,0; fi; echo set-option buffer scrolloff $offset }<ret>'
 
 # LSP user mode
 map global user l %{: enter-user-mode lsp<ret>} -docstring 'LSP mode'
@@ -337,8 +320,8 @@ map global prompt -docstring 'Expand to the buffer directory' <a-.> '%sh(dirname
 map global normal -docstring 'Select all occurrences of the current selection set' <a-percent> '*%s<ret>'
 
 # Leader key
-map global normal <space> , 	  # Set space to leader key
-map global normal , <space> 	  # Remove all selections but main
+map global normal <space> ,     # Set space to leader key
+map global normal , <space>     # Remove all selections but main
 map global normal <a-,> <space> # Remove main selection
 
 # Global clipboard mappings
@@ -346,7 +329,7 @@ map global user y '<a-|> xsel -i -b<ret>' -docstring 'yank the selection into th
 map global user p '<a-!> xsel<ret>' -docstring 'paste the clipboard'
 map global user r '|xclip -i -selection clipboard<ret>; xclip -o -selection clipboard<ret>' -docstring 'replace from clipboard'
 
-# Smart case search (WIP)
+# TODO: Smart case search
 
 # map global prompt -docstring 'Case insensitive search' <a-i> '<home>(?i)<end>'
 

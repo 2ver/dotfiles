@@ -22,6 +22,7 @@ ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCDBCCMlFD-h
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOfelP_99_8AzQ4kbmTJrfQ" "content =~ \"streamlabs\"" # tmol
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOfelP_99_8AzQ4kbmTJrfQ" "content =~ \"streamlabs\"" # B-rad
 ignore-article "https://lbryfeed.melroy.org/channel/odysee/hexdsl" "content =~ \"steampowered\"" # Hex DSL
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCGGdOIkVIZipux13jt7rprw" "content =~ \"streamlabs\"" # twomad 360
 
 # Key bindings
 unbind-key e

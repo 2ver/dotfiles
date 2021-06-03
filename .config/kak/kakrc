@@ -115,7 +115,7 @@ nop plug "dmerejkowsky/kak-spell" config %{
 plug "delapouite/kakoune-buffers" %{
 map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers'                       # Open buffer keybind menu
     map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)' # Open buffer keybind menu with rapid mode enabled
-    
+
 }
 
 # Contextual "f" searching
@@ -166,7 +166,7 @@ set-option global modelinefmt '{{mode_info}} {green}%val{bufname}{default} {{con
 hook -group delete-scratch-message global BufCreate '\Q*scratch*' %{
    execute-keys '%d'
 }
-  
+
 # Color TODO, NOTE, etc. separately
 hook global WinSetOption comment_line=(.*) %{
     add-highlighter -override window/todo regex "\Q%val{hook_param_capture_1}\E\h*(TODO:|FIXME:|NOTE:|XXX:)[^\n]*" 1:rgb:21c0d5+Fb
@@ -392,6 +392,70 @@ define-command clean-whitespace %{ execute-keys -draft '<percent>s^<space><plus>
 # Extensions
 # ──────────
 
+try %{
+   evaluate-commands %sh{
+      if command -v kcr >/dev/null; then
+         echo 'nop'
+      else
+         echo 'echo -debug "kcr binary missing"'
+         echo 'fail'
+      fi
+   }
+
+   evaluate-commands %sh{
+      kcr init kakoune
+   }
+
+   # https://github.com/Parasrah/kitty.kak/blob/master/rc/kitty.kak#L5-L12
+   define-command kitty-popup -params 1.. -shell-completion -docstring '
+   kitty-terminal <program> [<arguments>]: create a new terminal as a kitty window
+   The program passed as argument will be executed in the new terminal' \
+   %{
+      nop %sh{
+         # kitty @ --to=$kak_client_env_KITTY_LISTEN_ON new-window --no-response --window-type $kak_opt_kitty_window_type --cwd "$PWD" "$@"
+         kitty @ --to=$kak_client_env_KITTY_LISTEN_ON new-window --no-response --cwd "$PWD" "$@"
+      }
+   }
+
+
+   # https://github.com/Parasrah/kitty.kak/blob/master/rc/kitty.kak#L14-L21
+   define-command kitty-overlay -params 1.. -shell-completion -docstring '
+   kitty-overlay <program> [<arguments>]: create a new terminal as a kitty overlay
+   The program passed as argument will be executed in the new terminal' \
+   %{
+      nop %sh{
+         kitty @ --to=$kak_client_env_KITTY_LISTEN_ON launch --type overlay --cwd "$PWD" "$@"
+      }
+   }
+   alias global connect-overlay kitty-overlay
+
+   hook global ModuleLoaded x11 %{
+      alias global terminal x11-terminal
+      alias global popup kitty-popup
+   }
+
+   map -docstring 'New client' global normal <c-e> ': new<ret>'
+   map -docstring 'New terminal' global normal <c-n> ': connect-terminal elvish<ret>'
+   # map -docstring 'New popup' global normal + ': connect-popup<ret>'
+   map -docstring 'New popup' global normal + ': connect-popup elvish<ret>'
+   # map -docstring 'New popup' global normal + ': kitty-popup<ret>'
+   map -docstring 'Overlay program' global normal <c-t> ': connect-overlay elvish<ret>'
+   map -docstring 'Open pcmanfm' global normal <c-o> ': $ pcmanfm .<ret>'
+   # map -docstring 'Open Broot' global normal <c-e> ': > broot<ret>'
+   # map -docstring 'Open sidetree' global normal <c-e> ': > sidetree<ret>'
+   # map -docstring 'Open files' global normal <c-f> ': + kcr-fzf-files<ret>'
+   # map -docstring 'Open buffers' global normal <c-b> ': + kcr-fzf-buffers<ret>'
+   # map -docstring 'Open files by content' global normal <c-g> ': + kcr-fzf-grep<ret>'
+   # map -docstring 'Open gitui' global normal <c-l> ': + gitui<ret>'
+
+   define-command nnn-persistent -params 0..1 -file-completion -docstring 'Open file with nnn' %{
+      connect-popup nnn %sh{echo "${@:-$(dirname "$kak_buffile")}"}
+   }
+
+} catch %{
+   echo -debug 'failed to initialize kakoune.cr'
+}
+
 # Rofi
 # define-command rofi-buffers -docstring 'Select an open buffer using Rofi' %{
 #    %sh{
@@ -402,36 +466,36 @@ define-command clean-whitespace %{ execute-keys -draft '<percent>s^<space><plus>
 #    }
 # }
 
-try %{
-    evaluate-commands %sh{
-        if command -v kcr >/dev/null; then
-            echo 'nop'
-        else
-            echo 'echo -debug "kcr binary missing"'
-            echo 'fail'
-        fi
-    }
+# try %{
+#     evaluate-commands %sh{
+   #         if command -v kcr >/dev/null; then
+#             echo 'nop'
+#         else
+#             echo 'echo -debug "kcr binary missing"'
+#             echo 'fail'
+#         fi
+#     }
 
-    define-command -hidden set-popup-alias %{
-        alias global popup kitty-terminal-popup
-    }
+#     define-command -hidden set-popup-alias %{
+#         alias global popup kitty-terminal-popup
+#     }
 
-    hook global ModuleLoaded kitty %{
-        set-popup-alias
-    }
+#     hook global ModuleLoaded kitty %{
+#         set-popup-alias
+#     }
 
-    evaluate-commands %sh{ kcr init kakoune }
+#     evaluate-commands %sh{ kcr init kakoune }
 
-    map global user <ret> ' :connect-terminal<ret>' -docstring 'open terminal'
+#     map global user <ret> ' :connect-terminal<ret>' -docstring 'open terminal'
 
-    define-command nnn-persistent -params 0..1 -file-completion -docstring 'Open file with nnn' %{
-        connect-terminal nnn %sh{echo "${@:-$(dirname "$kak_buffile")}"}
-    }
+#     define-command nnn-persistent -params 0..1 -file-completion -docstring 'Open file with nnn' %{
+#         connect-terminal nnn %sh{echo "${@:-$(dirname "$kak_buffile")}"}
+#     }
 
-    alias global nnn nnn-persistent
-} catch %{
-    echo -debug 'failed to initialize kakoune.cr'
-}
+#     alias global nnn nnn-persistent
+# } catch %{
+#     echo -debug 'failed to initialize kakoune.cr'
+# }
 
 # define-command setup-kitty -hidden %{
 #     map global user t ': kitty-mode<ret>' -docstring 'kitty mode'
@@ -448,21 +512,4 @@ try %{
 
 #         set-terminal-alias
 #     }
-# }
-
-# Kitty integration
-# plug "Parasrah/kitty.kak" defer kitty %{
-#    define-command nnn-current -params 0..1 -file-completion -docstring 'Open file with nnn' %{
-#       kitty-overlay sh -c %{
-#          PAGER=""
-#          kak_buffile=$1 kak_session=$2 kak_client=$3
-#          shift 3
-#          kak_pwd="${@:-$(dirname "${kak_buffile}")}"
-#          filename=$(nnn -p - "${kak_pwd}")
-#          kak_cmd="evaluate-commands -client $kak_client edit $filename"
-#          echo $kak_cmd | kak -p $kak_session
-#       } -- %val{buffile} %val{session} %val{client} %arg{@}
-#    }
-
-#    map global normal <minus> ': nnn-current<ret>' -docstring 'open current buffer directory in nnn'
 # }

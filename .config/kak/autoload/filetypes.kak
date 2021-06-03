@@ -6,8 +6,8 @@ filetype-hook man %{
    remove-highlighter window/number-lines
 }
 
-# Specify filetypes for files
-# ───────────────────────────
+# Specify filetypes
+# ─────────────────
 hook global BufCreate .*kitty[.]conf|.*newsboat/.* %{
    set-option buffer filetype toml
 }
@@ -23,8 +23,6 @@ hook global BufCreate .*\.gmi %{
    map buffer user s ': enter-user-mode sync<ret>' -docstring 'sync capsules'
    map buffer sync u ': | syncuveronunixcapsule<ret>' -docstring 'uveronunix.com'
    map buffer sync ~ ': | sync~uvercapsule<ret>' -docstring 'tilde.chat/~uver'
-
-   # source "%val{config}/privatecapsule.kak"
 }
 
 hook global BufCreate .*sxhkdrc|.*\.elv %{

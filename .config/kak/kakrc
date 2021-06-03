@@ -27,7 +27,7 @@ plug "alexherbo2/auto-pairs.kak" %{
 plug "andreyorst/smarttab.kak" defer smarttab %{
    set-option global softtabstop %opt{indentwidth}
 } config %{
-   hook global WinSetOption filetype=(rust|markdown|kak|lisp|c|cpp|haskell|txt|sh) expandtab
+   hook global WinSetOption filetype=(rust|markdown|kak|lisp|c|cpp|haskell|yaml|toml|ini|txt|sh) expandtab
    hook global WinSetOption filetype=(makefile) noexpandtab
 }
 

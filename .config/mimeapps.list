@@ -1,0 +1,38 @@
+[Default Applications]
+image/gif=feh.desktop;
+image/jpeg=feh.desktop;
+image/png=feh.desktop;
+inode/directory=nnn.desktop;
+# text/html=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/about=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/discord-413038514616139786=discord-413038514616139786.desktop;
+x-scheme-handler/eclipse+command=_usr_lib_eclipse_.desktop;
+x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop;
+x-scheme-handler/etcher=balena-etcher-electron.desktop;
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop;
+application/pdf=org.pwmt.zathura.desktop
+application/csv=kcr.desktop
+application/json=kcr.desktop
+application/postscript=kcr.desktop
+text/html=kcr.desktop
+text/plain=kcr.desktop
+text/troff=kcr.desktop
+text/x-c++=kcr.desktop
+text/x-c=kcr.desktop
+text/x-java=kcr.desktop
+text/x-lisp=kcr.desktop
+text/x-makefile=kcr.desktop
+text/xml=kcr.desktop
+text/x-ruby=kcr.desktop
+text/x-script.python=kcr.desktop
+text/x-shellscript=kcr.desktop
+
+[Added Associations]
+# application/pdf=org.pwmt.zathura.desktop;
+# image/gif=feh.desktop;
+# image/jpeg=feh.desktop;
+# image/png=feh.desktop;
+# inode/director=nnn.desktop;
+

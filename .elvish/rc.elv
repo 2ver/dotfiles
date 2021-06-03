@@ -66,8 +66,9 @@ use github.com/muesli/elvish-libs/git            # Git utilities
 
 # Environment variables
 E:LC_ALL = "en_US.UTF-8"
+E:EDITOR = "kcr edit"
 
-# Aliases
+## Aliases
 fn ls [@a]{ e:ls --color $@a  }
 fn grep [@a]{ e:grep --color $@a }
 fn diff [@a]{ e:diff --color $@a }
@@ -76,6 +77,17 @@ fn g [@a]{ e:git $@a }
 fn pac [@a]{ e:doas pacman $@a }
 fn icat [@a]{ e:kitty +kitten icat $@a }
 fn config [@a]{ e:/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver $@a }
+
+# kakoune.cr
+fn k [@a]{ e:kcr edit $@a }
+fn ks [@a]{ e:kcr shell --session $@a }
+fn kl [@a]{ e:kcr list $@a }
+fn a [@a]{ e:kcr attach $@a }
+fn kcd [@a]{ e:cd (kcr get --raw --shell pwd) $@a }
+fn cdk [@a]{ e:kcr send cd $E:PWD $@a }
+
+fn K [@a]{ e:kcr-fzf-shell $@a }
+fn KK [@a]{ e:K --working-directory . $@a }
 
 # Prompt
 edit:-prompt-eagerness = 10

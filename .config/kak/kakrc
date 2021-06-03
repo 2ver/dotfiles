@@ -440,7 +440,7 @@ try %{
    map -docstring 'New popup' global normal + ': connect-popup elvish<ret>'
    # map -docstring 'New popup' global normal + ': kitty-popup<ret>'
    map -docstring 'Overlay program' global normal <c-t> ': connect-overlay elvish<ret>'
-   map -docstring 'Open pcmanfm' global normal <c-o> ': $ pcmanfm .<ret>'
+   map -docstring 'Open pcmanfm' global normal <c-o> ': $ pcmanfm %sh{echo "${@:-$(dirname "$kak_buffile")}"}<ret>'
    # map -docstring 'Open Broot' global normal <c-e> ': > broot<ret>'
    # map -docstring 'Open sidetree' global normal <c-e> ': > sidetree<ret>'
    # map -docstring 'Open files' global normal <c-f> ': + kcr-fzf-files<ret>'

@@ -8,7 +8,7 @@ filetype-hook man %{
 
 # Specify filetypes for files
 # ───────────────────────────
-hook global BufCreate .*kitty[.]conf|.*newsboat/urls %{
+hook global BufCreate .*kitty[.]conf|.*newsboat/.* %{
    set-option buffer filetype toml
 }
 

@@ -1,5 +1,5 @@
-# Behaviour based on filetype
-# ────────────────────────────
+# Filetype behaviour
+# ──────────────────
 def filetype-hook -params 2 %{ hook global WinSetOption "filetype=(%arg{1})" %arg{2} }
 
 filetype-hook man %{
@@ -8,7 +8,7 @@ filetype-hook man %{
 
 # Specify filetypes
 # ─────────────────
-hook global BufCreate .*kitty[.]conf|.*newsboat/.* %{
+hook global BufCreate .*kitty[.]conf|.*newsboat/.*|.*mimeapps.list %{
    set-option buffer filetype toml
 }
 

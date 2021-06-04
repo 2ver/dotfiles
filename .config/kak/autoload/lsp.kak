@@ -16,7 +16,7 @@ try %{
    }
 
    # Enable lsp on specific windows
-   hook global WinSetOption filetype=(c|haskell|latex|python|rust) %{
+   hook global WinSetOption filetype=(c|haskell|latex|python|rust|yaml) %{
       lsp-enable-window
       echo -debug "Enabling LSP for filetype %opt{filetype}"
       set global lsp_hover_max_lines 10

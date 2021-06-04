@@ -64,9 +64,14 @@ use github.com/muesli/elvish-libs/git            # Git utilities
 # update:curl-timeout = 3
 # update:check-commit &verbose
 
-# Environment variables
+## Environment variables
 E:LC_ALL = "en_US.UTF-8"
 E:EDITOR = "kcr edit"
+
+# nnn
+E:NNN_BMS = "h:~;d:~/Documents;D:~/Downloads;v:~/Videos;p:~/Pictures;w:~/Pictures/Wallpapers;c:~/.config/"
+E:NNN_PLUG = "t:_|kitty*;m:_|mpv $nnn*;g:_|gimp $nnn*"
+E:NNN_COLORS = "1267"
 
 ## Aliases
 fn ls [@a]{ e:ls --color $@a  }
@@ -77,6 +82,7 @@ fn g [@a]{ e:git $@a }
 fn pac [@a]{ e:doas pacman $@a }
 fn icat [@a]{ e:kitty +kitten icat $@a }
 fn config [@a]{ e:/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver $@a }
+fn nnn [@a]{ e:nnn -R $@a }
 
 # kakoune.cr
 fn k [@a]{ e:kcr edit $@a }

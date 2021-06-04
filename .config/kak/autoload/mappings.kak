@@ -55,26 +55,26 @@ map global buffers n 	 ': buffer-first<ret>'    -docstring 'first' # Switch to f
 map global buffers o 	 ': buffer-last<ret>'     -docstring 'last'  # Switch to last buffer
 map global buffers i 	 ': buffer-by-index '     -docstring 'index' # Switch to buffer by index
 
+# Leader key
+map global normal <space> ,                                          # Set space to leader key
+map global normal ,       <space>                                    # Remove all selections but main
+map global normal <a-,>   <space>                                    # Remove main selection
+
+# Shortcuts to exit
+map global user w ': w<ret>'  -docstring 'write'                     # Save
+map global user q ': q<ret>'  -docstring 'quit'                      # Quit
+map global user z ': wq<ret>' -docstring 'write and quit'            # Save and quit
+
 # Exit normal mode with ii
 hook global InsertChar i %{ try %{
   exec -draft hH <a-k>ii<ret> d
   exec -with-hooks <esc>
 }}
 
-# Leader key
-map global normal <space> ,                                          # Set space to leader key
-map global normal ,       <space>                                    # Remove all selections but main
-map global normal <a-,>   <space>                                    # Remove main selection
-
 # Global clipboard mappings
 map global user y '<a-|> xsel -i -b<ret>'                                                   -docstring 'yank the selection into the clipboard' 
 map global user p '<a-!> xsel<ret>'                                                         -docstring 'paste the clipboard'
 map global user r '|xclip -i -selection clipboard<ret>; xclip -o -selection clipboard<ret>' -docstring 'replace from clipboard'
-
-# Shortcuts to exit
-map global user w ': w<ret>'  -docstring 'write'                     # Save
-map global user q ': q<ret>'  -docstring 'quit'                      # Quit
-map global user z ': wq<ret>' -docstring 'write and quit'            # Save and quit
 
 # Comment line
 map global normal '#' ': comment-line<ret>'      -docstring 'Comment line'

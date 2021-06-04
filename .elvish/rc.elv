@@ -66,6 +66,7 @@ use github.com/muesli/elvish-libs/git            # Git utilities
 
 ## Environment variables
 E:LC_ALL = "en_US.UTF-8"
+E:PAGER = "kak-pager"
 E:EDITOR = "kcr edit"
 
 # nnn

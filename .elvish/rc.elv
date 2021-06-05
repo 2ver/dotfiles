@@ -76,28 +76,38 @@ E:NNN_COLORS = "5"
 var BLK = c1 ; var CHR = e2 ; var DIR = 04 ; var EXE = 02 ; var REG = 07 ; var HARDLINK = 0e ; var SYMLINK = 0c ; var MISSING = f7 ; var ORPHAN = 01 ; var FIFO = ab ; var SOCK = 09 ; var OTHER = c4
 E:NNN_FCOLORS = $BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER
 
+
 ## Aliases
 # fn sudo [@a]{ e:doas $@a }
-fn ls [@a]{ e:ls --color $@a }
-fn grep [@a]{ e:grep --color $@a }
-fn diff [@a]{ e:diff --color $@a }
-fn ka [@a]{ e:killall $@a }
-fn g [@a]{ e:git $@a }
-fn pac [@a]{ e:doas pacman $@a }
-fn icat [@a]{ e:kitty +kitten icat $@a }
+fn ls     [@a]{ e:ls --color $@a }
+fn grep   [@a]{ e:grep --color $@a }
+fn diff   [@a]{ e:diff --color $@a }
+fn ka     [@a]{ e:killall $@a }
+fn g      [@a]{ e:git $@a }
+fn pac    [@a]{ e:doas pacman $@a }
+fn icat   [@a]{ e:kitty +kitten icat $@a }
 fn config [@a]{ e:/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver $@a }
-fn nnn [@a]{ e:nnn -nR $@a }
+fn n      [@a]{ e:nnn -nR $@a }
 
 # kakoune.cr
-fn k [@a]{ e:kcr edit $@a }
-fn ks [@a]{ e:kcr shell --session $@a }
-fn kl [@a]{ e:kcr list $@a }
-fn a [@a]{ e:kcr attach $@a }
+fn k   [@a]{ e:kcr edit $@a }
+fn ks  [@a]{ e:kcr shell --session $@a }
+fn kl  [@a]{ e:kcr list $@a }
+fn a   [@a]{ e:kcr attach $@a }
 fn kcd [@a]{ e:cd (kcr get --raw --shell pwd) $@a }
 fn cdk [@a]{ e:kcr send cd $E:PWD $@a }
 
-fn K [@a]{ e:kcr-fzf-shell $@a }
-fn KK [@a]{ e:K --working-directory . $@a }
+fn K   [@a]{ e:kcr-fzf-shell $@a }
+fn KK  [@a]{ e:K --working-directory . $@a }
+
+## Abbreviations
+edit:abbr['~c'] = '~/.config/'
+edit:abbr['~C'] = '~/.config/'
+edit:abbr['~d'] = '~/Documents/'
+edit:abbr['~D'] = '~/Downloads/'
+edit:abbr['~m'] = '~/Music/'
+edit:abbr['~p'] = '~/Pictures/'
+edit:abbr['~v'] = '~/Videos/'
 
 # Prompt
 edit:-prompt-eagerness = 10

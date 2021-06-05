@@ -37,7 +37,7 @@ libfm
 nicotine
 bspwm/bspwmrc~
 kak/plugins
-kak/colors
+# kak/colors
 pcmanfm
 xarchiver
 mimeapps.list
@@ -79,6 +79,16 @@ msmtp
 pijul/config.toml
 lbry
 pipewire
+menus/applications-merged
+nnn/plugins
+nnn/*.tar.gz
+beets
+VirtualBox
+olivevideoeditor.org
+Element
+lagrange
+qalculate
+balena-etcher
 "
 
 ignore_file="/tmp/rofi_edit_ignore_file"
@@ -98,4 +108,4 @@ if [[ -z "${choice// }" ]]; then
 fi
 
 # Edit the selected file
-kitty kak "$choice"
+kitty kcr edit "$choice"

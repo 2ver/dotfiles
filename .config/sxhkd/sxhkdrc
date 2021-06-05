@@ -4,7 +4,7 @@
 
 # make sxhkd reload its configuration files:
 super + ctrl + Escape
-   notify-send "Restarting sxhkd"
+   notify-send "Restarting sxhkd" && \
 	pkill -USR1 -x sxhkd
 
 # terminal emulator
@@ -23,7 +23,7 @@ super + g
 	kitty amfora
 
 super + k
-	kitty kak
+	kitty kcr edit
 
 super + p
    kitty htop
@@ -32,7 +32,7 @@ super + F1
 	bspc desktop -f ^1 && kitty -o font_size=14 newsboat
 
 super + F2
-   kitty nnn
+   kitty nnn -nR
 
 super + F3
    bspc desktop -f ^3 && kitty -o font_size=13 neomutt
@@ -43,27 +43,27 @@ super + F4
 super + F5
 	pcmanfm
 
-super + F6
-	rofi-edit
-
 super + F8
 	bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp
 
 ## Rofi
-super + re
+super + r ; c
+   rofi -show calc -modi calc -no-show-match -no-sort
+
+super + r ; d
+   rofi-edit
+
+super + r ; e
    rofimoji
 
-super + rp
-   bwmenu --auto-lock -1 -C
+super + r ; k
+   sh /home/uver/.local/bin/kaomoji-rofi/kaomoji.sh
 
-super + rk
-   ./home/uver/.local/bin/kaomoji/kaomoji.sh
-
-super + rl
+super + r ; l
    rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/lockscreen/suspend --confirm=reboot/shutdown"
 
-super + rc
-   rofi -show calc -modi calc -no-show-match -no-sort
+super + r ; p
+   bwmenu --auto-lock -1 -C
 
 ## Notifications
 control + space
@@ -111,9 +111,6 @@ XF86MonBrightnessDown
    light -U 10
 
 # Info
-super + z ; d
-   notify-send $(date +%H:%M) $(date +%d/%m/%y)
-
 super + z ; t
    notify-send "`date +"%I:%M %a %b %d"`"
 

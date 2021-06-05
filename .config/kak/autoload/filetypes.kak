@@ -8,11 +8,11 @@ filetype-hook man %{
 
 # Specify filetypes
 # ─────────────────
-hook global BufCreate .*kitty[.]conf|.*newsboat/.*|.*mimeapps.list %{
+hook global BufCreate .*kitty[.]conf|.*newsboat/.*|.*mimeapps.list|.*mopidy.conf %{
    set-option buffer filetype toml
 }
 
-hook global BufCreate .*dunstrc|.*mopidy.conf %{
+hook global BufCreate .*dunstrc|%{
    set-option buffer filetype yaml
 }
 

@@ -25,15 +25,8 @@ super + g
 super + k
 	kitty kak
 
-super + alt + p
-   bwmenu --auto-lock -1 -C
-
 super + p
    kitty htop
-
-# super + e
-	# emacs
-	# emacsclient -c -n
 
 super + F1
 	bspc desktop -f ^1 && kitty -o font_size=14 newsboat
@@ -55,6 +48,22 @@ super + F6
 
 super + F8
 	bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp
+
+## Rofi
+super + re
+   rofimoji
+
+super + rp
+   bwmenu --auto-lock -1 -C
+
+super + rk
+   ./home/uver/.local/bin/kaomoji/kaomoji.sh
+
+super + rl
+   rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/lockscreen/suspend --confirm=reboot/shutdown"
+
+super + rc
+   rofi -show calc -modi calc -no-show-match -no-sort
 
 ## Notifications
 control + space

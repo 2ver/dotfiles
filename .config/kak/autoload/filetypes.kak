@@ -25,7 +25,7 @@ hook global BufCreate .*\.gmi %{
    map buffer sync ~ ': | sync~uvercapsule<ret>' -docstring 'tilde.chat/~uver'
 }
 
-hook global BufCreate .*sxhkdrc|.*\.elv %{
+hook global BufCreate .*sxhkdrc| %{
    set-option buffer filetype sh
 }
 

@@ -22,6 +22,8 @@ plug "alexherbo2/auto-pairs.kak" demand auto-pairs %{
    hook global WinCreate .* %{ auto-pairs-enable }
 }
 
+# Elvish integration
+plug "https://git.tchncs.de/notramo/elvish.kak"
 
 # Better buffer management
 plug "delapouite/kakoune-buffers" %{

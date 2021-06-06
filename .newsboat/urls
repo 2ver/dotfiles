@@ -148,6 +148,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q   "
 # Podcasts
 # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-https://feeds.soundcloud.com/users/soundcloud:users:956521729/sounds.rss       "Ace Podcast"                "!Hidden" "(Podcasts)"
+https://feeds.soundcloud.com/users/soundcloud:users:956521729/sounds.rss       "~Ace Podcast"               "!Hidden" "(Podcasts)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCRE3NFNtdjR96-H4QG4U1Fg   "~Trendy Talk"                   "!Hidden" "(Podcasts)"
 https://feeds.megaphone.fm/misfits                                             "~Misfits"                   "!Hidden" "(Podcasts)"
 https://notrelated.xyz/rss                                                     "~Not Related!"              "!Hidden" "(Podcasts)"

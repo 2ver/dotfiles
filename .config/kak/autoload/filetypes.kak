@@ -29,6 +29,10 @@ hook global BufCreate .*sxhkdrc|.*\.elv %{
    set-option buffer filetype sh
 }
 
+hook global BufCreate .*fonts.conf %{
+   set-option buffer filetype xml
+}
+
 # On save
 # ───────
 hook global BufWritePost .*\.tex %{

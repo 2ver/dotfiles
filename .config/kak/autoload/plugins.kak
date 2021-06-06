@@ -55,6 +55,6 @@ plug "Screwtapello/kakoune-state-save" domain "gitlab.com" config %{
 plug "andreyorst/smarttab.kak" defer smarttab %{
    set-option global softtabstop %opt{indentwidth}
 } config %{
-   hook global WinSetOption filetype=(c|cpp|haskell|ini|kak|lisp|markdown|rust|sh|toml|txt|yaml) expandtab
+   hook global WinSetOption filetype=(c|cpp|css|haskell|html|ini|kak|lisp|markdown|rust|sh|toml|txt|yaml|xml) expandtab
    hook global WinSetOption filetype=(makefile) noexpandtab
 }

@@ -36,10 +36,7 @@ hook global WinCreate (?!/tmp/[.]nnn)[^*]+ %{
    add-highlighter window/relative-line-numbers number-lines -relative -separator '  '
 }
 
-
 # Highlight matching brackets
-
-# Normal mode
 hook global WinCreate .* %{
 	add-highlighter window/ show-matching
 }
@@ -67,6 +64,9 @@ hook global ModeChange .*:insert:.* %{
    unset-face window PrimaryCursorEol
    unset-face window SecondaryCursorEol
 }
+
+# Functionality
+# ─────────────
 
 # Save after lost focus
 hook global FocusOut .* %{

@@ -2,16 +2,16 @@ plug "kak-lsp/kak-lsp" do %{
    cargo install --locked --force --path .
 } config %{
    # Check that kak-lsp binary is available in path
-   try %{
-      evaluate-commands %sh{
-         is command -v kak-lsp >/dev/null; then
-            echo 'nop'
-         else
-            echo 'echo -debug "kak-lsp binary missing"'
-            echo 'echo -debug "run `doas pacman -S kak-lsp`"'
-            echo 'fail'
-         fi
-      }
+   # try %{
+   #    evaluate-commands %sh{
+   #       is command -v kak-lsp >/dev/null; then
+   #          echo 'nop'
+   #       else
+   #          echo 'echo -debug "kak-lsp binary missing"'
+   #          echo 'echo -debug "run `doas pacman -S kak-lsp`"'
+   #          echo 'fail'
+   #       fi
+   #    }
 
       # Run kak-lsp (if not using plug)
       # eval %sh{
@@ -85,7 +85,7 @@ plug "kak-lsp/kak-lsp" do %{
       # Python does not support kak-lsp.toml
       set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
 
-   } catch %{
-      echo -debug 'failed to initialize kak-lsp'
-   }
+   # } catch %{
+   #    echo -debug 'failed to initialize kak-lsp'
+   # }
 }

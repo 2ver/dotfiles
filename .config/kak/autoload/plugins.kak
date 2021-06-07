@@ -27,9 +27,8 @@ plug "https://git.tchncs.de/notramo/elvish.kak"
 
 # Better buffer management
 plug "delapouite/kakoune-buffers" %{
-map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers'                       # Open buffer keybind menu
+   map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers'                   # Open buffer keybind menu
    map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)' # Open buffer keybind menu with rapid mode enabled
-
 }
 
 # Highlight 'Z' marks
@@ -51,6 +50,13 @@ plug "Screwtapello/kakoune-state-save" domain "gitlab.com" config %{
       state-save-reg-save pipe
       state-save-reg-save slash
    }
+}
+
+# Shows number of off-screen selections
+plug "alexherbo2/out-of-view.kak" demand out-of-view %{
+   out-of-view-enable
+} config %{
+   set-option global modelinefmt '{cyan}%opt{out_of_view_status_line}{default} {{mode_info}} {magenta}%val{bufname}{default} {green}%val{client}{default}/{yellow}%val{session}{default} {{context_info}}'
 }
 
 # Use spaces instead of tabs for more consistency

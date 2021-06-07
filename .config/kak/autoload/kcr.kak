@@ -13,9 +13,9 @@ plug "alexherbo2/kakoune.cr" do %{
          fi
       }
 
-      # evaluate-commands %sh{
-      #    kcr init kakoune
-      # }
+      evaluate-commands %sh{
+         kcr init kakoune
+      }
 
       # https://github.com/Parasrah/kitty.kak/blob/master/rc/kitty.kak#L5-L12
       define-command kitty-popup -params 1.. -shell-completion -docstring '

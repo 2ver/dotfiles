@@ -46,12 +46,11 @@ face global LineNumberCursor rgb:666666,default
 face global MenuForeground rgb:384657,rgb:85a6e0
 face global MenuBackground rgb:85a6e0,rgb:384657
 face global MenuInfo rgb:af8eeb,rgb:384657
-#face global Information rgb:f0f0f0,rgb:3e4e60
 face global Information rgb:f0f0f0,rgb:2f3241
 face global Error rgb:121212,rgb:dedede
-face global StatusLine rgb:cccccc,rgb:2f3241
-face global StatusLineMode rgb:384657,rgb:85a6e0
-face global StatusLineInfo rgb:ffffff,rgb:384657
-face global StatusLineValue rgb:ffffff,rgb:384657
+face global StatusLine rgb:cccccc,rgb:303342
+face global StatusLineMode rgb:f8f8f2,rgb:303342
+face global StatusLineInfo rgb:85a6e0,rgb:303342
+face global StatusLineValue rgb:85a6e0,rgb:303342
 face global StatusCursor default,rgb:787878
 face global Prompt rgb:121212,rgb:85a6e0

@@ -33,6 +33,10 @@ hook global BufCreate .*fonts.conf %{
    set-option buffer filetype xml
 }
 
+hook global BufCreate .*Xresources %{
+   set-option buffer comment_line '!'
+}
+
 # On save
 # ───────
 hook global BufWritePost .*\.tex %{

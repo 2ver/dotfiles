@@ -16,9 +16,9 @@ articlelist-format "%-3i │ %f │ %2D │ %-17T │ %t"
 show-keymap-hint no
 
 # Rules
-# ignore-mode "display" # For debugging
+ignore-mode "display" # For debugging
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOFH59uoSs8SUF0L_p3W0sg" "title !~ \"keyboard\""       # Badseed Tech
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOfelP_99_8AzQ4kbmTJrfQ" "content =~ \"streamlabs\""   # B-rad
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCo3ixhcZiwcmwVnqJlFJ2Iw" "content =~ \"streamlabs\""   # B-rad
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCDBCCMlFD-hArPbWv38FINA" "title !~ \"watches\""        # Daz Black
 ignore-article "https://lbryfeed.melroy.org/channel/odysee/hexdsl"                            "content =~ \"steampowered\"" # Hex DSL
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOfelP_99_8AzQ4kbmTJrfQ" "content =~ \"streamlabs\""   # tmol

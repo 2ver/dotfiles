@@ -3,6 +3,7 @@ alias \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
    sz="source ~/.zshrc && clear" \
+	n="nnn -nR" \
 
 alias \
 	ka="killall" \

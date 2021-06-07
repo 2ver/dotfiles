@@ -32,7 +32,7 @@ super + F1
 	bspc desktop -f ^1 && kitty -o font_size=14 newsboat
 
 super + F2
-   kitty nnn -nR
+   kitty n -nR
 
 super + F3
    bspc desktop -f ^3 && kitty -o font_size=13 neomutt

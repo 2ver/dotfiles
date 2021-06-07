@@ -35,8 +35,8 @@ configuration {
     kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab,Alt+n";
     kb-row-left: "Control+Page_Up,Control+Alt+n";
     kb-row-right: "Control+Page_Down,Control+Alt+o";
-    kb-row-up: "Up,Control+p,ISO_Left_Tab,Alt+i";
-    kb-row-down: "Down,Control+n,Alt+e";
+    kb-row-up: "Up,Control+p,ISO_Left_Tab,Control+Alt+i";
+    kb-row-down: "Down,Control+n,Control+Alt+e";
     kb-select-1: "";
     kb-select-2: "";
     kb-select-3: "";

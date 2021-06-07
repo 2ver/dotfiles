@@ -110,7 +110,13 @@ XF86AudioRaiseVolume
    pactl set-sink-volume @DEFAULT_SINK@ +4%
 
 XF86AudioPlay
-   pulseaudio-ctl play-pause
+   playerctl play-pause
+
+XF86AudioNext
+   playerctl next
+
+XF86AudioPrev
+   playerctl previous
 
 ## Brightness
 XF86MonBrightnessUp

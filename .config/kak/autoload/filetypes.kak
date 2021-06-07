@@ -2,9 +2,9 @@
 # ──────────────────
 def filetype-hook -params 2 %{ hook global WinSetOption "filetype=(%arg{1})" %arg{2} }
 
-filetype-hook man %{
-   remove-highlighter window/number-lines
-}
+# filetype-hook man %{
+#    remove-highlighter window/number-lines
+# }
 
 # Specify filetypes
 # ─────────────────

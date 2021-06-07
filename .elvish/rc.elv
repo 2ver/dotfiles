@@ -102,12 +102,14 @@ fn KK  [@a]{ e:K --working-directory . $@a }
 
 ## Abbreviations
 edit:abbr['~c'] = '~/.config/'
-edit:abbr['~C'] = '~/.config/'
+edit:abbr['~C'] = '~/capsules/'
 edit:abbr['~d'] = '~/Documents/'
 edit:abbr['~D'] = '~/Downloads/'
+edit:abbr['~k'] = '~/.config/kak/'
 edit:abbr['~m'] = '~/Music/'
 edit:abbr['~p'] = '~/Pictures/'
 edit:abbr['~v'] = '~/Videos/'
+edit:abbr['~w'] = '~/websites/'
 
 # Prompt
 edit:-prompt-eagerness = 10

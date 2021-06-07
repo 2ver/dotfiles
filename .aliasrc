@@ -1,14 +1,14 @@
 alias \
-	ls="ls -hNA --color=auto --group-directories-first" \
-	grep="grep --color=auto" \
-	diff="diff --color=auto" \
+   ls="ls -hNA --color=auto --group-directories-first" \
+   grep="grep --color=auto" \
+   diff="diff --color=auto" \
    sz="source ~/.zshrc && clear" \
-	n="nnn -nR" \
+   n="nnn -nR" \
 
 alias \
-	ka="killall" \
-	g="git" \
-	pac="doas pacman" \
+   ka="killall" \
+   g="git" \
+   pac="doas pacman" \
 
 alias \
-	icat="kitty +kitten icat" \
+   icat="kitty +kitten icat" \

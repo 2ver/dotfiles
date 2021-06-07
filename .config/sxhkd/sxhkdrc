@@ -73,6 +73,9 @@ super + r ; p
    rofi-rbw
    # bwmenu --auto-lock -1 -C
 
+super + r ; y
+   rofi-mpvtube
+
 ## Notifications
 control + space
    dunstctl close

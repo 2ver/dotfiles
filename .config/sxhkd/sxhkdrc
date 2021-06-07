@@ -63,7 +63,8 @@ super + r ; l
    rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/lockscreen/suspend --confirm=reboot/shutdown"
 
 super + r ; p
-   bwmenu --auto-lock -1 -C
+   rofi-rbw
+   # bwmenu --auto-lock -1 -C
 
 ## Notifications
 control + space

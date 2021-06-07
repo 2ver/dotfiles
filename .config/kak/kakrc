@@ -32,11 +32,7 @@ hook global RegisterModified '/' %{ add-highlighter -override global/search rege
 #add-highlighter global/ regex \h+$ 0:Error	# Highlight trailing whitespace
 
 # Line numbers
-# hook global WinCreate ^[^*]+$ %{
-#    add-highlighter window/relative-line-numbers number-lines -relative -separator '  '
-# }
-
-hook global WinCreate ^(?!/tmp/[.]nnn)[^*]+$ %{
+hook global WinCreate (?!/tmp/[.]nnn)[^*]+ %{
    add-highlighter window/relative-line-numbers number-lines -relative -separator '  '
 }
 

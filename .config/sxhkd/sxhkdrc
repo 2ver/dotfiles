@@ -32,7 +32,6 @@ super + F1
 	bspc desktop -f ^1 && kitty -o font_size=14 newsboat
 
 super + F2
-   # kitty/sxhkd doesn't like respecting global environment variables
    export NNN_BMS="h:~;d:~/Documents;D:~/Downloads;v:~/Videos;p:~/Pictures;w:~/Pictures/Wallpapers;c:~/.config/" && \
    export NNN_PLUG="t:_|kitty*;m:_|mpv $nnn*;g:_|gimp $nnn*;d:dragdrop;p:getplugs;3:mp3conv;n:nuke;r:_|doasedit $nnn*" && \
    export NNN_COLORS="5" && \

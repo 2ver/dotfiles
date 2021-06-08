@@ -14,8 +14,9 @@ plug "kak-lsp/kak-lsp" do %{
    #    }
 
       # Run kak-lsp (if not using plug)
+      # TODO: Use ~/.config/kak/lsp.toml with pluk.kak
       # eval %sh{
-      #    kak-lsp --config $kak_config/lsp.toml --kakoune -s $kak_session
+         #kak-lsp --config $kak_config/lsp.toml --kakoune -s $kak_session
       # }
 
       # Enable lsp on specific windows
@@ -83,7 +84,7 @@ plug "kak-lsp/kak-lsp" do %{
       }
 
       # Python does not support kak-lsp.toml
-      set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
+      # set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
 
    # } catch %{
    #    echo -debug 'failed to initialize kak-lsp'

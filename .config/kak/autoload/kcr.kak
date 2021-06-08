@@ -4,15 +4,15 @@ plug "alexherbo2/kakoune.cr" do %{
    make install
 } config %{
    # Check if binary exists
-   # try %{
-   #    evaluate-commands %sh{
-   #       if command -v kcr >/dev/null; then
-   #          echo 'nop'
-   #       else
-   #          echo 'echo -debug "kcr binary missing"'
-   #          echo 'fail'
-   #       fi
-   #    }
+   try %{
+      evaluate-commands %sh{
+         if command -v kcr >/dev/null; then
+            echo 'nop'
+         else
+            echo 'echo -debug "kcr binary missing"'
+            echo 'fail'
+         fi
+      }
 
       evaluate-commands %sh{
          kcr init kakoune
@@ -61,7 +61,7 @@ plug "alexherbo2/kakoune.cr" do %{
       map -docstring 'Overlay program' global normal <c-t> ': connect-overlay elvish<ret>'
       map -docstring 'Open pcmanfm' global normal <c-o> ': $ pcmanfm %sh{echo "${@:-$(dirname "$kak_buffile")}"}<ret>'
 
-   # } catch %{
-      # echo -debug 'failed to initialize kakoune.cr'
-   # }
+   } catch %{
+      echo -debug 'failed to initialize kakoune.cr'
+   }
 }

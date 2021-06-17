@@ -67,3 +67,6 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
    hook global WinSetOption filetype=(c|cpp|css|haskell|html|ini|kak|lisp|markdown|rust|sh|toml|txt|yaml|xml) expandtab
    hook global WinSetOption filetype=(makefile) noexpandtab
 }
+
+# Syntax highlighting for sxhkdrc
+plug "jwhett/sxhkdrc-kak"

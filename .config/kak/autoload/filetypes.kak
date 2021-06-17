@@ -6,6 +6,11 @@ def filetype-hook -params 2 %{ hook global WinSetOption "filetype=(%arg{1})" %ar
 #    remove-highlighter window/number-lines
 # }
 
+# filetype-hook haskell %{
+#    set-option buffer comment_block_begin '{-'
+#    set-option buffer comment_block_end '-}'
+# }
+
 # Specify filetypes
 # ─────────────────
 hook global BufCreate .*kitty.conf|.*kitty/colors.conf|.*newsboat/.*|.*mimeapps.list|.*mopidy.conf %{
@@ -18,14 +23,9 @@ hook global BufCreate .*dunstrc %{
 
 hook global BufCreate .*\.gmi %{
    set-option buffer filetype markdown
-
-   declare-user-mode sync
-   map buffer user s ': enter-user-mode sync<ret>'    -docstring 'sync capsules'
-   map buffer sync u ': | syncuveronunixcapsule<ret>' -docstring 'uveronunix.com'
-   map buffer sync ~ ': | sync~uvercapsule<ret>'      -docstring 'tilde.chat/~uver'
 }
 
-hook global BufCreate .*sxhkdrc|.*profile|.*aliasrc %{
+hook global BufCreate .*profile|.*aliasrc %{
    set-option buffer filetype sh
 }
 
@@ -36,6 +36,10 @@ hook global BufCreate .*fonts.conf %{
 hook global BufCreate .*Xresources %{
    set-option buffer comment_line '!'
 }
+
+# hook global BufCreate .*Xresources %{
+#    set-option buffer comment_line '!'
+# }
 
 # On save
 # ───────

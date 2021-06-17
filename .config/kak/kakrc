@@ -97,3 +97,5 @@ define-command chmod -params .. -docstring 'Change access permissions of the cur
       chmod "$@" "$kak_buffile"
    }
 }
+
+source "%val{config}/scripts/sync.kak"

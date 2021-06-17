@@ -37,8 +37,8 @@ text/xml=kcr.desktop;
 text/x-ruby=kcr.desktop;
 text/x-script.python=kcr.desktop;
 
-# Randome
-x-scheme-handler/discord-413038514616139786=discord-413038514616139786.desktop;
+# Random
+x-scheme-handler/discord-413038514616139786=discord-413038514616139786.desktop
 x-scheme-handler/eclipse+command=_usr_lib_eclipse_.desktop;
 x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop;
 x-scheme-handler/etcher=balena-etcher-electron.desktop;ext/x-shellscript=kcr.desktop;

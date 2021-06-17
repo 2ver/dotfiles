@@ -52,6 +52,9 @@ super + F5
 super + F8
    bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp
 
+super + XF86AudioMute
+   kitty pulsemixer
+
 ## Rofi
 super + r ; c
    rofi -show calc -modi calc -no-show-match -no-sort
@@ -65,10 +68,10 @@ super + r ; e
 super + r ; k
    sh /home/uver/.local/bin/kaomoji-rofi/kaomoji.sh
 
-super + r ; l
+super + r ; p
    rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/lockscreen/suspend --confirm=reboot/shutdown"
 
-super + r ; p
+super + r ; v
    rofi-rbw
    # bwmenu --auto-lock -1 -C
 
@@ -136,7 +139,7 @@ super + z ; t
 
 quit/restart bspwm
 super + ctrl + {q,r}
-   bspc {quit,wm -r}
+   bspc {quit,wm -r && notify-send "Restarting bspwm"}
 
 # close and kill
 super + {_,shift + }w
@@ -150,10 +153,16 @@ super + m
 super + y
    bspc node newest.marked.local -n newest.!automatic.local
 
+super + alt + r
+   bspc node @/ -R 90
+
 # swap the current node and the biggest window
-super + g
+super + control + b
    bspc node -s biggest.window
 
+# Equalize all window sizes
+super + alt + shift + control + e
+   bspc node @/ -E
 
 #
 # state/flags
@@ -175,9 +184,12 @@ super + ctrl + {m,x,y,z}
 super + {_,alt + }{n,e,i,o}
    bspc node -{f,s} {west,south,north,east}
 
+super + {_,alt + }{Left,Down,Up,Right}
+   bspc node -{f,s} {west,south,north,east}
+
 # focus the node for the given path jump
-super + {p,b,comma,period}
-   bspc node -f @{parent,brother,first,second}
+# super + {p,b,comma,period}
+   # bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }c

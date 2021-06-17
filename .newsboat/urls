@@ -13,10 +13,11 @@
 # (Blogs)
 # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-http://cachestocaches.com/feed/                                                                             "!Hidden" "(Blogs)"
+http://cachestocaches.com/feed/                                                "~Caches to Caches"          "!Hidden" "(Blogs)"
 https://lukesmith.xyz/rss.xml                                                  "~Luke Smith Blog"           "!Hidden" "(Blogs)"
-https://usermod.net/feed.xml                                                                                "!Hidden" "(Blogs)"
-https://vas.neocities.org/rss.xml                                                                           "!Hidden" "(Blogs)"
+https://usermod.net/feed.xml                                                   "~usermod.net"               "!Hidden" "(Blogs)"
+https://vas.neocities.org/rss.xml                                              "~vas"                       "!Hidden" "(Blogs)"
+https://sidhartharya.me/index.xml                                              "~SidharthArya"              "!Hidden" "(Blogs)"
 
 # (News)
 # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -106,6 +107,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCu6v4AdYxVH5fhfq9mi5llA   "
 https://www.youtube.com/feeds/videos.xml?channel_id=UCStGslsoc9pr89XnmwnsYWw   "~The People"                "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-lHJZR3Gqxm24_Vd_AJ5Yw   "~PewDiePie"                 "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-nDNn0pKEyOGH5d0_ttqSA   "~Pinguefy"                  "!Hidden" "(Videos)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCefl-5pmhZmljwZTE2KrcdA   "~VINwiki"                   "!Hidden" "(Videos)"
 
 # Commentary
 

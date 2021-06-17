@@ -1,2 +1,6 @@
 #!/bin/sh
-rsync -uvrP --delete-after ~/capsules/\~uver/ uver@tilde.club:/home/uver/public_gemini
+
+# Sync only changed files (buggy)
+# rsync -uvrP --delete-after ~/capsules/\~uver/ uver@tilde.club:/home/uver/public_gemini
+
+rsync -vrP --delete-after ~/capsules/\~uver/ uver@tilde.club:/home/uver/public_gemini

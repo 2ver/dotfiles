@@ -32,10 +32,14 @@ map global normal l     o                                            # New line 
 map global normal L     O                                            # New line above
 
 # Colemak (goto mode)
-map global goto n h                                                  # Move cursor to beginning of line
-map global goto e j                                                  # Move cursor to end of file
-map global goto i k                                                  # Move cursor to beginning of file
-map global goto o l                                                  # Move cursor to end of line
+unmap global goto h
+unmap global goto j
+unmap global goto k
+unmap global goto l
+map global goto n h -docstring 'line begin'                          # Move cursor to beginning of line
+map global goto e j -docstring 'buffer bottom'                       # Move cursor to end of file
+map global goto i k -docstring 'buffer top'                          # Move cursor to beginning of file
+map global goto o l -docstring 'line end'                            # Move cursor to end of line
 
 # Switch macros to ^
 map global normal ^     q                                            # Replay macro
@@ -58,7 +62,10 @@ map global buffers i 	 ': buffer-by-index '     -docstring 'index' # Switch to b
 # Leader key
 map global normal <space> ,                                          # Set space to leader key
 map global normal ,       <space>                                    # Remove all selections but main
-map global normal <a-,>   <space>                                    # Remove main selection
+map global normal <a-,>   <a-space>                                  # Remove main selection
+
+map global normal <del> ';'                                          # Shrink selections to "cursors"
+map global normal <a-del> '<a-;>'                                    # Swap "cursors" and anchors
 
 # Shortcuts to exit
 map global user w ': w<ret>'  -docstring 'write'                     # Save
@@ -86,6 +93,10 @@ map global user . ': <c-r>.<ret>' -docstring 'source selection'
 # Toggle scrolloff value
 map global normal <backspace> ': eval %sh{ if [ "$kak_opt_scrolloff" = 0,0 ]; then offset=99,99; else offset=0,0; fi; echo set-option buffer scrolloff $offset }<ret>'
 
+# Toggle line wrapping
+map global normal '<;>' ': addhl buffer/wrap wrap -word -indent -marker "↳ "<ret>'
+map global normal '<a-;>' ': rmhl buffer/wrap<ret>'
+
 # Autocomplete to buffer directory in :e
 map global prompt -docstring 'Expand to the buffer directory' <a-.> '%sh(dirname "$kak_buffile")<a-!>'
 
@@ -93,7 +104,7 @@ map global prompt -docstring 'Expand to the buffer directory' <a-.> '%sh(dirname
 map global user l ': enter-user-mode lsp<ret>' -docstring 'LSP mode'
 
 # Select everything matching selection
-map global normal -docstring 'Select all occurrences of the current selection set' <a-percent> '*%s<ret>'
+map global normal <a-percent> '*%s<ret>' -docstring 'select all occurrences of current selection' 
 
 # TODO: Smart case search
 
@@ -102,9 +113,9 @@ map global normal -docstring 'Select all occurrences of the current selection se
 # map global user '/' %{
 # 	:try %{
 #    	exec -save-regs '' <lt>a-k>[A-Z]<lt>ret>*
-#  	} catch %{
-#     	exec -save-regs '' */(?i)<lt>c-r>/<lt>ret>
-#  	}<ret>
+#     } catch %{
+#        exec -save-regs '' */(?i)<lt>c-r>/<lt>ret>
+#     }<ret>
 # }
 
 # 'x' extends down and 'X' extends selection up

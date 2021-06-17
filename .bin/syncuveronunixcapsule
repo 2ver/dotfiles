@@ -1,2 +1,6 @@
 #!/bin/sh
-rsync -uvrP --delete-after ~/capsules/uveronunix/ root@uveronunix.com:/srv/gemini/content
+
+# Only sync files with changes (buggy)
+# rsync -uvrP --delete-after ~/capsules/uveronunix/ root@uveronunix.com:/srv/gemini/content
+
+rsync -vrP --delete-after ~/capsules/uveronunix/ root@uveronunix.com:/srv/gemini/content

@@ -54,7 +54,7 @@ plug "Screwtapello/kakoune-state-save" domain "gitlab.com" config %{
 }
 
 # Shows number of off-screen selections
-plug "alexherbo2/out-of-view.kak" demand out-of-view %{
+nop plug "alexherbo2/out-of-view.kak" demand out-of-view %{
    out-of-view-enable
 } config %{
    set-option global modelinefmt '{cyan}%opt{out_of_view_status_line}{default} {{mode_info}} {magenta}%val{bufname}{default} {green}%val{client}{default}/{yellow}%val{session}{default} {{context_info}}'

@@ -51,14 +51,6 @@ map global normal Q     B                                            # Extend by
 map global normal <a-q> <a-b>                                        # Select by WORD backward
 map global normal <a-Q> <a-B>                                        # Extend by WORD backward
 
-# Buffer switching mode
-map global buffers k 	 ': buffer-next<ret>'     -docstring 'next'  # Switch to next buffer
-map global buffers <a-k> ': buffer-previous<ret>' -docstring 'prev'  # Switch to previous buffer
-map global buffers x 	 ': buffer-only<ret>'     -docstring 'only'  # Delete other buffers
-map global buffers n 	 ': buffer-first<ret>'    -docstring 'first' # Switch to first buffer
-map global buffers o 	 ': buffer-last<ret>'     -docstring 'last'  # Switch to last buffer
-map global buffers i 	 ': buffer-by-index '     -docstring 'index' # Switch to buffer by index
-
 # Leader key
 map global normal <space> ,                                          # Set space to leader key
 map global normal ,       <space>                                    # Remove all selections but main
@@ -105,6 +97,20 @@ map global user l ': enter-user-mode lsp<ret>' -docstring 'LSP mode'
 
 # Select everything matching selection
 map global normal <a-percent> '*%s<ret>' -docstring 'select all occurrences of current selection' 
+
+# Cycle autocompletions with Tab
+hook global InsertCompletionShow .* %{
+   try %{
+      exec -draft 'h<a-K>\h<ret>'
+      map window insert <s-tab> <c-p>
+      map window insert <tab> <c-n>
+   }
+}
+
+hook global InsertCompletionHide .* %{
+   unmap window insert <tab> <c-n>
+   unmap window insert <s-tab> <c-p>
+}
 
 # TODO: Smart case search
 

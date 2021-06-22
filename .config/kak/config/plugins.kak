@@ -17,9 +17,9 @@ plug "andreyorst/plug.kak" noload
 
 # Plugins
 # ───────
- 
+
 # Auto close {}, (), etc.
-plug "alexherbo2/auto-pairs.kak" demand auto-pairs %{
+nop plug "alexherbo2/auto-pairs.kak" demand auto-pairs %{
    hook global WinCreate .* %{ auto-pairs-enable }
 }
 
@@ -28,8 +28,14 @@ plug "https://git.tchncs.de/notramo/elvish.kak"
 
 # Better buffer management
 plug "delapouite/kakoune-buffers" %{
-   map global normal b ': enter-buffers-mode<ret>' -docstring 'buffers'                   # Open buffer keybind menu
-   map global normal B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)' # Open buffer keybind menu with rapid mode enabled
+   map global normal b      ': enter-buffers-mode<ret>'            -docstring 'buffers'        # Open buffer keybind menu
+   map global normal B      ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)' # Open buffer keybind menu with rapid mode enabled
+   map global buffers k     ': buffer-next<ret>'                   -docstring 'next'           # Switch to next buffer
+   map global buffers <a-k> ': buffer-previous<ret>'               -docstring 'prev'           # Switch to previous buffer
+   map global buffers x     ': buffer-only<ret>'                   -docstring 'only'           # Delete other buffers
+   map global buffers n     ': buffer-first<ret>'                  -docstring 'first'          # Switch to first buffer
+   map global buffers o     ': buffer-last<ret>'                   -docstring 'last'           # Switch to last buffer
+   map global buffers i     ': buffer-by-index '                   -docstring 'index'          # Switch to buffer by index
 }
 
 # Highlight 'Z' marks

@@ -13,7 +13,7 @@ def filetype-hook -params 2 %{ hook global WinSetOption "filetype=(%arg{1})" %ar
 
 # Specify filetypes
 # ─────────────────
-hook global BufCreate .*kitty.conf|.*kitty/colors.conf|.*newsboat/.*|.*mimeapps.list|.*mopidy.conf %{
+hook global BufCreate .*kitty.conf|.*kitty/colors.conf|.*newsboat/.*|.*mimeapps.list|.*mopidy.conf|.*[.]ncmpcpp/.* %{
    set-option buffer filetype toml
 }
 

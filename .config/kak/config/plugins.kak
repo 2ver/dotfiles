@@ -12,7 +12,6 @@ evaluate-commands %sh{
 }
 
 # Install plug.kak so it does not remove itself with 'plug-clean'
-# plug "andreyorst/plug.kak" tag "f1c4f35" noload
 plug "andreyorst/plug.kak" noload
 
 # Plugins

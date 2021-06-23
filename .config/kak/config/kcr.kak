@@ -18,6 +18,8 @@ plug "alexherbo2/kakoune.cr" do %{
          kcr init kakoune
       }
 
+      # enable-auto-pairs
+
       # https://github.com/Parasrah/kitty.kak/blob/master/rc/kitty.kak#L5-L12
       define-command kitty-popup -params 1.. -shell-completion -docstring '
       kitty-terminal <program> [<arguments>]: create a new terminal as a kitty window
@@ -52,14 +54,25 @@ plug "alexherbo2/kakoune.cr" do %{
          connect-popup nnn %sh{echo "${@:-$(dirname "$kak_buffile")}"}
       }
 
-      # Mappings
-      map -docstring 'New client' global normal <c-e> ': new<ret>'
-      map -docstring 'New terminal' global normal <c-n> ': connect-terminal elvish<ret>'
-      # map -docstring 'New popup' global normal + ': connect-popup<ret>'
-      map -docstring 'New popup' global normal + ': connect-popup elvish<ret>'
-      # map -docstring 'New popup' global normal + ': kitty-popup<ret>'
-      map -docstring 'Overlay program' global normal <c-t> ': connect-overlay elvish<ret>'
-      map -docstring 'Open pcmanfm' global normal <c-o> ': $ pcmanfm %sh{echo "${@:-$(dirname "$kak_buffile")}"}<ret>'
+      ## Mappings
+
+      # External windows/tools
+      map global normal <c-e>    ': new<ret>'                                                   -docstring 'New client'
+      map global normal <c-n>    ': connect-terminal elvish<ret>'                               -docstring 'New terminal'
+      map global normal +        ': connect-popup<ret>'                                         -docstring 'New popup'
+      map global normal +        ': connect-popup elvish<ret>'                                  -docstring 'New popup'
+      map global normal <c-t>    ': connect-overlay elvish<ret>'                                -docstring 'Overlay program'
+      map global normal <c-o>    ': $ pcmanfm %sh{echo "${@:-$(dirname "$kak_buffile")}"}<ret>' -docstring 'Open pcmanfm'
+
+      # Selections & Movement
+      map global normal <a-down> ': move-lines-down<ret>'                                       -docstring 'move line down'
+      map global normal <a-up>   ': move-lines-up<ret>'                                         -docstring 'move line up'
+
+      # View
+      map global view   p        '<esc>:show-palette<ret>'                                      -docstring 'show palette'
+
+      # General
+      map global normal <F5>     ':source-kakrc; echo reloaded kakrc<ret>'                      -docstring 'reload kakrc'
 
    } catch %{
       echo -debug 'failed to initialize kakoune.cr'

@@ -24,7 +24,7 @@ nop plug "alexherbo2/auto-pairs.kak" demand auto-pairs %{
 }
 
 # Elvish integration
-plug "https://git.tchncs.de/notramo/elvish.kak"
+plug "elvish.kak" domain "git.tchncs.de"
 
 # Better buffer management
 plug "delapouite/kakoune-buffers" %{
@@ -64,6 +64,18 @@ nop plug "alexherbo2/out-of-view.kak" demand out-of-view %{
    out-of-view-enable
 } config %{
    set-option global modelinefmt '{cyan}%opt{out_of_view_status_line}{default} {{mode_info}} {magenta}%val{bufname}{default} {green}%val{client}{default}/{yellow}%val{session}{default} {{context_info}}'
+}
+
+# Scrollbar (shows offscreen selections)
+plug "sawdust-and-diamonds/scrollbar.kak" do %{
+   make kak-calc-scrollbar
+} config %{
+   hook global WinCreate [^*]+ %{ scrollbar-enable }
+   set-face global Scrollbar rgb:394354,default
+   set-face global ScrollbarSel rgb:53e2ae,rgb:394354
+   set-face global ScrollbarHL rgb:a1efd3,default
+   set-option global scrollbar_char "█"
+   set-option global scrollbar_sel_char "•"
 }
 
 # Use spaces instead of tabs for more consistency

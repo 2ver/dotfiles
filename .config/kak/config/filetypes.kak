@@ -21,7 +21,7 @@ hook global BufCreate .*dunstrc %{
    set-option buffer filetype yaml
 }
 
-hook global BufCreate .*\.gmi %{
+hook global BufCreate .*[.]gmi %{
    set-option buffer filetype markdown
 }
 

@@ -83,7 +83,7 @@ fn ls     [@a]{ e:ls --color $@a }
 fn grep   [@a]{ e:grep --color $@a }
 fn diff   [@a]{ e:diff --color $@a }
 fn ka     [@a]{ e:killall $@a }
-fn g      [@a]{ e:git $@a }
+# fn g      [@a]{ e:git $@a }
 fn pac    [@a]{ e:doas pacman $@a }
 fn icat   [@a]{ e:kitty +kitten icat $@a }
 fn config [@a]{ e:/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver $@a }
@@ -101,15 +101,17 @@ fn K   [@a]{ e:kcr-fzf-shell $@a }
 fn KK  [@a]{ e:K --working-directory . $@a }
 
 ## Abbreviations
-edit:abbr['~c'] = '~/.config/'
-edit:abbr['~C'] = '~/capsules/'
-edit:abbr['~d'] = '~/Documents/'
-edit:abbr['~D'] = '~/Downloads/'
-edit:abbr['~k'] = '~/.config/kak/'
-edit:abbr['~m'] = '~/Music/Music'
-edit:abbr['~p'] = '~/Pictures/'
-edit:abbr['~v'] = '~/Videos/'
-edit:abbr['~w'] = '~/websites/'
+edit:abbr['~c'] 	= '~/.config/'
+edit:abbr['~C'] 	= '~/capsules/'
+edit:abbr['~d'] 	= '~/Documents/'
+edit:abbr['~D'] 	= '~/Downloads/'
+edit:abbr['~k'] 	= '~/.config/kak/'
+edit:abbr['~mll'] = '~/Music/Music/Lossless/'
+edit:abbr['~mly'] = '~/Music/Music/Lossy'
+edit:abbr['~mp']  = '~/Music/Music/playlists/'
+edit:abbr['~p'] 	= '~/Pictures/'
+edit:abbr['~v'] 	= '~/Videos/'
+edit:abbr['~w'] 	= '~/websites/'
 
 # Prompt
 edit:-prompt-eagerness = 10

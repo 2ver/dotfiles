@@ -86,7 +86,7 @@ c.tabs.position = "top"
 c.tabs.title.format = "{index}: {current_title}"
 c.url.start_pages = ["~/.config/qutebrowser/startpage/index.html"]
 c.url.default_page = ("~/.config/qutebrowser/startpage/index.html")
-c.url.searchengines = { "DEFAULT" : "https://searx.bar/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}", "gh" : "https://github.com/search?q={}&ref=opensearch", "w" : "https://wiby.me/?q={}", "aw" : "https://wiki.archlinux.org/index.php?search={}", "aur" : "https://archlinux.org/packages/?q={}", "o" : "https://odysee.com/$/search?q={}", "t" : "https://translate.yandex.com/?text={}" }
+c.url.searchengines = { "DEFAULT" : "https://search.brave.com/search?q={}", "b" : "https://search.brave.com/search?q={}", "s" : "https://searx.bar/search?q={}", "d" : "https://duckduckgo.com/?q={}&ia=web", "g" : "https://google.com/search?q={}", "y" : "https://www.youtube.com/results?search_query={}", "gh" : "https://github.com/search?q={}&ref=opensearch", "w" : "https://wiby.me/?q={}", "aw" : "https://wiki.archlinux.org/index.php?search={}", "aur" : "https://archlinux.org/packages/?q={}", "o" : "https://odysee.com/$/search?q={}", "t" : "https://translate.yandex.com/?text={}" }
 
 # Lena theme
 lena.draw.lena(c, {

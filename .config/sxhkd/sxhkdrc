@@ -158,6 +158,7 @@ super + m
 super + y
    bspc node newest.marked.local -n newest.!automatic.local
 
+# Rotate windows
 super + alt + r
    bspc node @/ -R 90
 

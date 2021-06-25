@@ -35,10 +35,11 @@ super + F2
    export NNN_BMS="h:~;d:~/Documents;D:~/Downloads;v:~/Videos;p:~/Pictures;w:~/Pictures/Wallpapers;c:~/.config/" && \
    export NNN_PLUG="t:_|kitty*;m:_|mpv $nnn*;g:_|gimp $nnn*;d:dragdrop;p:getplugs;3:mp3conv;n:nuke;r:_|doasedit $nnn*" && \
    export NNN_COLORS="5" && \
-
    BLK="c1" CHR="e2" DIR="04" EXE="02" REG="07" HARDLINK="0e" SYMLINK="0c" MISSING="f7" ORPHAN="01" FIFO="ab" SOCK="09" OTHER="c4" && \
    export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER" && \
-   kitty -o shell=zsh nnn -nR
+# TODO: Set correct editor for batch renaming mode
+# export VISUAL="kcr edit" && \
+   kitty nnn -nR
 
 super + F3
    bspc desktop -f ^3 && kitty -o font_size=13 neomutt
@@ -93,15 +94,19 @@ super + control + d
 
 ## Screenshots
 Print
+   notify-send "Copying selection" && \
    ss-copy-sel
 
 alt + Print
+   notify-send "Copying screen" && \
    ss-copy-screen
 
 control + Print
+	notify-send "Saving selection" && \
    ss-save-sel
 
 shift + Print
+	notify-send "Saving screen" && \
    ss-save-screen
 
 ## Volume

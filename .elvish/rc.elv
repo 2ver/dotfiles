@@ -68,6 +68,7 @@ use github.com/muesli/elvish-libs/git            # Git utilities
 E:LC_ALL = "en_US.UTF-8"
 E:PAGER = "kak-pager"
 E:EDITOR = "kcr edit"
+E:VISUAL = "kcr edit"
 
 # nnn
 E:NNN_BMS = "h:~;d:~/Documents;D:~/Downloads;v:~/Videos;p:~/Pictures;w:~/Pictures/Wallpapers;c:~/.config/"

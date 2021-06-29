@@ -17,11 +17,6 @@ plug "andreyorst/plug.kak" noload
 # Plugins
 # ───────
 
-# Auto close {}, (), etc.
-nop plug "alexherbo2/auto-pairs.kak" demand auto-pairs %{
-   hook global WinCreate .* %{ auto-pairs-enable }
-}
-
 # Elvish integration
 plug "elvish.kak" domain "git.tchncs.de"
 
@@ -58,13 +53,6 @@ plug "Screwtapello/kakoune-state-save" domain "gitlab.com" config %{
    }
 }
 
-# Shows number of off-screen selections
-nop plug "alexherbo2/out-of-view.kak" demand out-of-view %{
-   out-of-view-enable
-} config %{
-   set-option global modelinefmt '{cyan}%opt{out_of_view_status_line}{default} {{mode_info}} {magenta}%val{bufname}{default} {green}%val{client}{default}/{yellow}%val{session}{default} {{context_info}}'
-}
-
 # Scrollbar (shows offscreen selections)
 plug "sawdust-and-diamonds/scrollbar.kak" do %{
    make kak-calc-scrollbar
@@ -81,7 +69,7 @@ plug "sawdust-and-diamonds/scrollbar.kak" do %{
 plug "andreyorst/smarttab.kak" defer smarttab %{
    set-option global softtabstop %opt{indentwidth}
 } config %{
-   hook global WinSetOption filetype=(c|cpp|css|haskell|html|ini|kak|lisp|markdown|rust|sh|toml|txt|yaml|xml) expandtab
+   hook global WinSetOption filetype=(c|cpp|css|elvish|haskell|html|ini|kak|lisp|markdown|python|rust|sh|toml|txt|yaml|xml) expandtab
    hook global WinSetOption filetype=(makefile) noexpandtab
 }
 

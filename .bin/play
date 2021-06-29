@@ -1,6 +1,5 @@
 #!/bin/sh
 
 # Detach mpv when started from terminal
-
 umpv --no-input-terminal --really-quiet "$@" &
 disown

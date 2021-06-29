@@ -38,35 +38,35 @@ rofi_prompt="YouTube ❯"
 
 # Grab the playlist names from the file
 get_playlists() {
-    while read -r LINE
-    do
-        playlist_name="$(echo $LINE | cut -d "@" -f 1)"
-        echo $playlist_name
-    done < "$playlist_file"
+while read -r LINE
+   do
+      playlist_name="$(echo $LINE | cut -d "@" -f 1)"
+      echo $playlist_name
+   done < "$playlist_file"
 }
 
 main() {
-    # Get choice from rofi
-    choice=$( (get_playlists) | rofi -dmenu -i -fuzzy -p "$rofi_prompt" )
+   # Get choice from rofi
+   choice=$( (get_playlists) | rofi -dmenu -i -fuzzy -p "$rofi_prompt" )
 
-  # If user has not picked anything, exit
-  if [[ -z "${choice// }" ]]; then
+   # If user has not picked anything, exit
+   if [[ -z "${choice// }" ]]; then
       exit 1
-  fi
+   fi
 
-  # Get URL
-  linktoplay="$(grep -m 1 "$choice" $playlist_file | cut -d '@' -f 2)"
-  # If the choice does not exist, try searching for it
-  if [ ${#linktoplay} -eq "0" ]; then
-    yid=$(youtube-dl ytsearch:"$choice" -s | grep "\[youtube\]" | cut -d ']' -f 2 | awk -F ':' '{print $1}' | cut -c 2-)
-    linktoplay=https://www.youtube.com/watch\?v\="$yid"
-  fi
+   # Get URL
+   linktoplay="$(grep -m 1 "$choice" $playlist_file | cut -d '@' -f 2)"
+   # If the choice does not exist, try searching for it
+   if [ ${#linktoplay} -eq "0" ]; then
+      yid=$(youtube-dl ytsearch:"$choice" -s | grep "\[youtube\]" | cut -d ']' -f 2 | awk -F ':' '{print $1}' | cut -c 2-)
+      linktoplay=https://www.youtube.com/watch\?v\="$yid"
+   fi
 
-  # Send notification
-  notify-send "YouTube - Loading:" "$choice"
+   # Send notification
+   notify-send "YouTube - Loading:" "$choice"
 
-  # Spawn mpv
-  /usr/local/bin/play $mpv_args "$linktoplay"
+   # Spawn mpv
+   play $mpv_args "$linktoplay"
 }
 
 main &

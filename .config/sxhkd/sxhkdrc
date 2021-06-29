@@ -3,61 +3,40 @@
 # ■ ■ ■     / /_/ /| |/ /  __/ /
 # ■ ■ ■ ■   \____/ |___/\___/_/
 
-## Apps
-# Terminal
-super + Return
-   kitty
+## Programs
+super + \
+{ Return        \
+, b             \
+, g             \
+, k             \
+, p             \
+, XF86AudioMute \
+}
 
-# Web browser
-super + b
-   qutebrowser
+   { kitty            # Terminal         \
+   , qutebrowser      # Web browser      \
+   , kitty amfora     # Gemini browser   \
+   , kitty kcr edit   # Editor           \
+   , kitty htop       # Process monitor  \
+   , kitty pulsemixer # Audio controller \
+   }
 
-# Gemini browser
-super + g
-   kitty amfora
+super + \
+{ F1 \
+, F2 \
+, F3 \
+, F4 \
+, F5 \
+, F8 \
+}
 
-# Editor
-super + k
-   kitty kcr edit
-
-# Process monitor
-super + p
-   kitty htop
-
-# Audio device manager
-super + XF86AudioMute
-   kitty pulsemixer
-
-# RSS Reader
-super + F1
-   bspc desktop -f ^1 && kitty -o font_size=14 newsboat
-
-# File manager
-super + F2
-   export NNN_BMS="h:~;d:~/Documents;D:~/Downloads;v:~/Videos;p:~/Pictures;w:~/Pictures/Wallpapers;c:~/.config/" && \
-   export NNN_PLUG="t:_|kitty*;m:_|mpv $nnn*;g:_|gimp $nnn*;d:dragdrop;p:getplugs;3:mp3conv;n:nuke;r:_|doasedit $nnn*" && \
-   export NNN_COLORS="5" && \
-   BLK="c1" CHR="e2" DIR="04" EXE="02" REG="07" HARDLINK="0e" SYMLINK="0c" MISSING="f7" ORPHAN="01" FIFO="ab" SOCK="09" OTHER="c4" && \
-   export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER" && \
-# TODO: Set correct editor for batch renaming mode
-# export VISUAL="kcr edit" && \
-   kitty nnn -nR
-
-# Email client
-super + F3
-   bspc desktop -f ^3 && kitty -o font_size=13 neomutt
-
-# Matrix client
-super + F4
-   bspc desktop -f ^4 && kitty -o font_size=13 gomuks
-
-# File manager (GUI)
-super + F5
-   pcmanfm
-
-# Music client
-super + F8
-   bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp
+   { bspc desktop -f ^1 && kitty -o font_size=14 newsboat # RSS reader         \
+   , kitty nnn -nR                                        # File manager       \
+   , bspc desktop -f ^3 && kitty -o font_size=13 neomutt  # Email client       \
+   , bspc desktop -f ^4 && kitty -o font_size=14 gomuks   # Matrix client      \
+   , pcmanfm                                              # File manager (GUI) \
+   , bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp  # Music client       \
+   }
 
 # Used keys: super + [⏎,🕨,b,g,k,F1,F2,F3,F4,F5,F8]
 
@@ -200,7 +179,7 @@ super + control + b
 super + alt + control + shift + e
    bspc node @/ -E
 
-# Used keys: super + [alt,control,shift] + [b,e,m,r,y,w]
+# Used keys: super + [alt,control,shift] + [b,e,m,r,w,y]
 
 ## States/flags
 # Set window state

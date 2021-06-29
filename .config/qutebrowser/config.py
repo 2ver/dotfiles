@@ -108,7 +108,7 @@ c.url.searchengines = {
    "b"       : "https://search.brave.com/search?q={}",
    "d"       : "https://duckduckgo.com/?q={}&ia=web",
    "g"       : "https://google.com/search?q={}",
-   "gh" 	    : "https://github.com/search?q={}&ref=opensearch",
+   "gh"      : "https://github.com/search?q={}&ref=opensearch",
    "o"       : "https://odysee.com/$/search?q={}",
    "s"       : "https://searx.bar/search?q={}",
    "t"       : "https://translate.yandex.com/?text={}",

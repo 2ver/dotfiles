@@ -58,7 +58,7 @@ super + r ; {c,d,e,k,p,v,y}
 
 ## Notifications
 control + {_,shift + ,shift + alt +}@space
-   {dunstctl close,dunstctl close-all,dunstctl context}
+   dunstctl {close,close-all,context}
 
 super + control + d
    dunstctl set-paused toggle
@@ -136,13 +136,9 @@ super + m
 super + y
    bspc node newest.marked.local -n newest.!automatic.local
 
-# Rotate windows clockwise
-super + alt + r
-   bspc node @/ -R 90
-
-# Rotate windows counter-clockwise
-super + alt + shift + r
-   bspc node @/ -R 270
+# Rotate windows on desktop
+super + alt + {_,shift + }r
+   bspc node @/ -R {90,270}
 
 # Swap current and largest window
 # TODO: Only current desktop
@@ -192,23 +188,20 @@ super + {grave,Tab}
 super + {_,alt + }{1-9,0}
    bspc {desktop -f,node -d} '^{1-9,10}' --follow
 
+# TODO: Include this in the previous two lines
 super + shift + {1-9,0}
-   bspc node --to-desktop '^{1-9,10}'
+   bspc node -d '^{1-9,10}'
 
-# Used keys: super + [alt,shift] + [←,↓,↑,→,b,e,i,n,o,p,~,↹,1,2,3,4,5,6,7,8,9,0]
+# Used keys: super + [alt,shift] + [←,↓,↑,→,b,e,i,n,o,p,`,↹,1,2,3,4,5,6,7,8,9,0]
 
 ## Preselection & movement
 # Preselect direction
-super + alt + shift + {n,e,i,o}
-   bspc node -p {'~west','~south','~north','~east'}
+super + alt + shift + {n,e,i,o,@space}
+   bspc node -p {'~west','~south','~north','~east',cancel}
 
 # Preselect ratio
 super + alt + shift + {1-9}
    bspc node -o 0.{1-9}
-
-# Cancel preselection for focused window
-super + alt + shift + space
-   bspc node -p cancel
 
 # Cancel preselection for focused desktop
 super + alt + space

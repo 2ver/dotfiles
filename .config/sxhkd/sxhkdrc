@@ -44,26 +44,15 @@ super + \
 super + @space
    rofi -matching fuzzy -show run
 
-super + r ; c
-   rofi -show calc -modi calc -no-show-match -no-sort
-
-super + r ; d
-   rofi-edit
-
-super + r ; e
-   rofimoji
-
-super + r ; k
-   sh /home/uver/.local/bin/kaomoji-rofi/kaomoji.sh
-
-super + r ; p
-   rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/lockscreen/suspend --confirm=reboot/shutdown"
-
-super + r ; v
-   rofi-rbw
-
-super + r ; y
-   rofi-mpvtube
+super + r ; {c,d,e,k,p,v,y}
+   { rofi -show calc -modi calc -no-show-match -no-sort                                                                  # Calculator       \
+   , rofi-edit                                                                                                           # Dotfile chooser  \
+   , rofimoji                                                                                                            # Emoji picker     \
+   , sh ~/.local/bin/kaomoji-rofi/kaomoji.sh                                                                             # Kaomoji picker   \
+   , rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/lockscreen/suspend --confirm=reboot/shutdown" # Power menu       \
+   , rofi-rbw                                                                                                            # Password vault   \
+   , rofi-mpvtube                                                                                                        # YT video chooser \
+   }
 
 # Used keys: super + r + [␣,c,d,e,k,p,v,y]
 

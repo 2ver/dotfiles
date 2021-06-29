@@ -84,7 +84,7 @@ plug "kak-lsp/kak-lsp" do %{
       }
 
       # Python does not support kak-lsp.toml
-      # set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
+      set-option global lsp_server_configuration pyls.configurationSources=["flake8"]
 
    # } catch %{
    #    echo -debug 'failed to initialize kak-lsp'

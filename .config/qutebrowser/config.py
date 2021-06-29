@@ -1,8 +1,13 @@
+# ■           __  ___   _____  _____
+# ■ ■        / / / / | / / _ \/ ___/
+# ■ ■ ■     / /_/ /| |/ /  __/ /
+# ■ ■ ■ ■   \____/ |___/\___/_/
+
 import subprocess
 import os
 import lena.draw
 
-config.load_autoconfig(False)
+config.load_autoconfig(False)  # Ignore configuration set from within browser
 
 ## Bindings
 c.bindings.commands['normal'] = {
@@ -77,10 +82,10 @@ lena.draw.lena(c, {
    }
 })
 
-config.set("colors.webpage.darkmode.enabled", True) # Darkmode
+config.set("colors.webpage.darkmode.enabled", True)  # Darkmode
 
 c.tabs.position = "top"
-c.tabs.title.format = "{index}: {current_title}" # Don't show [A] for tabs with audio
+c.tabs.title.format = "{index}: {current_title}"  # Don't show [A] for tabs with audio
 c.tabs.show = "multiple"
 c.tabs.last_close = "close"
 
@@ -90,7 +95,7 @@ c.statusbar.widgets = ["keypress", "url", "progress"]
 c.url.start_pages = ["~/.config/qutebrowser/startpage/index.html"]
 c.url.default_page = ("~/.config/qutebrowser/startpage/index.html")
 
-c.prompt.radius = 40 # Rounder corners
+c.prompt.radius = 40  # Rounder corners
 c.scrolling.smooth = True
 c.fonts.web.size.default = 15
 

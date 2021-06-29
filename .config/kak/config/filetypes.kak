@@ -25,7 +25,7 @@ hook global BufCreate .*[.]gmi %{
    set-option buffer filetype markdown
 }
 
-hook global BufCreate .*profile|.*aliasrc %{
+hook global BufCreate .*profile|.*aliasrc|.*bspwmrc %{
    set-option buffer filetype sh
 }
 

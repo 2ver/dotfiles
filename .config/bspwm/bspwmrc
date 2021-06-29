@@ -1,13 +1,16 @@
-#! /bin/sh
+#!/bin/sh
+# ■           __  ___   _____  _____
+# ■ ■        / / / / | / / _ \/ ___/
+# ■ ■ ■     / /_/ /| |/ /  __/ /
+# ■ ■ ■ ■   \____/ |___/\___/_/
+  
+# Autostart (handled by .xinitrc)
+# cursor-settings  # Cursor speed
+# external-monitor # Turn off interal display if external is connected
+# ~/.fehbg         # Set wallpaper
+# picom &          # Run compositer
 
-# Autostart
-# autostart # Cursor speed
-# external_monitor_connected # Turn off interal display if external is connected
-#~/bin/bspwm/conf_desktops
-# ~/.fehbg # Set wallpaper
-# picom & # Run compositer
-
-# For sxhkd
+# sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Monitor(s)
@@ -38,10 +41,9 @@ bspc config click_to_focus          none
 bspc config focus_follows_pointer   true
 xsetroot -cursor_name left_ptr &
 
-
+# Rules
 bspc rule -a Gimp desktop='^6' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
-bspc rule -a Discord desktop='^3' follow=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Emacs state=tiled
 bspc rule -a Zathura state=tiled

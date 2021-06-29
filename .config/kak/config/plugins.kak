@@ -69,7 +69,7 @@ plug "sawdust-and-diamonds/scrollbar.kak" do %{
 plug "andreyorst/smarttab.kak" defer smarttab %{
    set-option global softtabstop %opt{indentwidth}
 } config %{
-   hook global WinSetOption filetype=(c|cpp|css|elvish|haskell|html|ini|kak|lisp|markdown|python|rust|sh|toml|txt|yaml|xml) expandtab
+   hook global WinSetOption filetype=(c|cpp|css|elvish|haskell|html|ini|kak|lisp|markdown|python|rust|sxhkdrc|sh|toml|txt|yaml|xml) expandtab
    hook global WinSetOption filetype=(makefile) noexpandtab
 }
 

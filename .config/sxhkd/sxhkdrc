@@ -1,36 +1,38 @@
-#
-# wm independent hotkeys
-#
+# ■           __  ___   _____  _____
+# ■ ■        / / / / | / / _ \/ ___/
+# ■ ■ ■     / /_/ /| |/ /  __/ /
+# ■ ■ ■ ■   \____/ |___/\___/_/
 
-# make sxhkd reload its configuration files:
-super + ctrl + Escape
-   notify-send "Restarting sxhkd" && \
-   pkill -USR1 -x sxhkd
-
-# terminal emulator
+## Apps
+# Terminal
 super + Return
    kitty
 
-# program launcher
-super + @space
-   rofi -matching fuzzy -show run
-
-# Launch qutebrowser
+# Web browser
 super + b
    qutebrowser
 
+# Gemini browser
 super + g
    kitty amfora
 
+# Editor
 super + k
    kitty kcr edit
 
+# Process monitor
 super + p
    kitty htop
 
-super + F1
-	bspc desktop -f ^1 && kitty -o font_size=14 newsboat
+# Audio device manager
+super + XF86AudioMute
+   kitty pulsemixer
 
+# RSS Reader
+super + F1
+   bspc desktop -f ^1 && kitty -o font_size=14 newsboat
+
+# File manager
 super + F2
    export NNN_BMS="h:~;d:~/Documents;D:~/Downloads;v:~/Videos;p:~/Pictures;w:~/Pictures/Wallpapers;c:~/.config/" && \
    export NNN_PLUG="t:_|kitty*;m:_|mpv $nnn*;g:_|gimp $nnn*;d:dragdrop;p:getplugs;3:mp3conv;n:nuke;r:_|doasedit $nnn*" && \
@@ -41,22 +43,28 @@ super + F2
 # export VISUAL="kcr edit" && \
    kitty nnn -nR
 
+# Email client
 super + F3
    bspc desktop -f ^3 && kitty -o font_size=13 neomutt
 
+# Matrix client
 super + F4
    bspc desktop -f ^4 && kitty -o font_size=13 gomuks
 
+# File manager (GUI)
 super + F5
    pcmanfm
 
+# Music client
 super + F8
    bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp
 
-super + XF86AudioMute
-   kitty pulsemixer
+# Used keys: super + [⏎,🕨,b,g,k,F1,F2,F3,F4,F5,F8]
 
 ## Rofi
+super + @space
+   rofi -matching fuzzy -show run
+
 super + r ; c
    rofi -show calc -modi calc -no-show-match -no-sort
 
@@ -74,10 +82,11 @@ super + r ; p
 
 super + r ; v
    rofi-rbw
-   # bwmenu --auto-lock -1 -C
 
 super + r ; y
    rofi-mpvtube
+
+# Used keys: super + r + [␣,c,d,e,k,p,v,y]
 
 ## Notifications
 control + space
@@ -91,6 +100,8 @@ super + d
 
 super + control + d
    dunstctl context
+
+# Used keys: [control,super] + [shift] + [␣,d]
 
 ## Screenshots
 Print
@@ -108,6 +119,8 @@ control + Print
 shift + Print
 	notify-send "Saving screen" && \
    ss-save-screen
+
+# Used keys: [control,alt,shift] + PrtSc
 
 ## Volume
 XF86AudioMute
@@ -128,152 +141,149 @@ XF86AudioNext
 XF86AudioPrev
    playerctl previous
 
+# Used keys: [🕨,🕩,🕪,⏯,⏮,⏭]
+
 ## Brightness
 XF86MonBrightnessUp
    light -A 10
 XF86MonBrightnessDown
    light -U 10
 
-# Info
+# Used keys: [🔅,🔆]
+
+## Info
+# Time
 super + z ; t
    notify-send "`date +"%I:%M %a %b %d"`"
 
-#
-# bspwm hotkeys
-#
+# Used keys: super + z + [t]
 
-quit/restart bspwm
+## Reload configs
+# Reload sxhkd
+super + ctrl + Escape
+   notify-send "Restarting sxhkd" && \
+   pkill -USR1 -x sxhkd
+
+# Quit/restart bspwm
 super + ctrl + {q,r}
    bspc {quit,wm -r && notify-send "Restarting bspwm"}
 
-# close and kill
-super + {_,shift + }w
+# Used keys: super + ctrl + [⎋,r,q]
+
+## General window management
+# Close/kill window
+super + {_,shift + } w
    bspc node -{c,k}
 
-# alternate between the tiled and monocle layout
+# Toggle maximized
 super + m
    bspc desktop -l next
 
-# send the newest marked node to the newest preselected node
+# Send last marked window to last preselection
 super + y
    bspc node newest.marked.local -n newest.!automatic.local
 
-# Rotate windows
+# Rotate windows clockwise
 super + alt + r
    bspc node @/ -R 90
 
-# swap the current node and the biggest window
+# Rotate windows counter-clockwise
+super + alt + shift + r
+   bspc node @/ -R 270
+
+# Swap current and largest window
+# TODO: Only current desktop
 super + control + b
    bspc node -s biggest.window
 
-# Equalize all window sizes
-super + alt + shift + control + e
+# Equalize window sizes on current desktop
+super + alt + control + shift + e
    bspc node @/ -E
 
-#
-# state/flags
-#
+# Used keys: super + [alt,control,shift] + [b,e,m,r,y,w]
 
-# set the window state
+## States/flags
+# Set window state
 super + {t,control + p,control + f,f}
-   bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+   bspc node -t {'~tiled','~pseudo_tiled','~floating','~fullscreen'}
 
-# set the node flags
+# Set window flags
 super + ctrl + {m,x,y,z}
    bspc node -g {marked,locked,sticky,private}
 
-#
-# focus/swap
-#
+# Used keys: super + [ctrl] + [f,m,p,t,x,y,z]
 
-# focus the node in the given direction
-super + {_,alt + }{n,e,i,o}
-   bspc node -{f,s} {west,south,north,east}
+## Focus/swap windows
+# Focus window in given direction
+super + {_,alt + }{n,Left,e,Down,i,Up,o,Right}
+   bspc node -{f,s} {west,west,south,south,north,north,east,east}
 
-super + {_,alt + }{Left,Down,Up,Right}
-   bspc node -{f,s} {west,south,north,east}
+# Focus based on path jumps
+super + alt + {p,b,comma,period}
+   bspc node -f @{parent,brother,first,second}
 
-# focus the node for the given path jump
-# super + {p,b,comma,period}
-   # bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous window in the current desktop
+# Cycle focus of windows
 super + {_,shift + }c
    bspc node -f {next,prev}.local.!hidden.window
 
-# focus the next/previous desktop in the current monitor
+# Switch desktops
 super + bracket{left,right}
    bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
+# Focus the last window/desktop
+# TODO: Figure out how to map `~` instead of tab
 super + {grave,Tab}
    bspc {node,desktop} -f last
 
-# focus the older or newer node in the focus history
-# super + {o,i}
-# 	bspc wm -h off; \
-# 	bspc node {older,newer} -f; \
-# 	bspc wm -h on
-
-# focus or send to the given desktop
+# Focus/send to desktop
 super + {_,alt + }{1-9,0}
-   bspc {desktop -f,node --to-desktop} '^{1-9,10}' --follow
+   bspc {desktop -f,node -d} '^{1-9,10}' --follow
 
 super + shift + {1-9,0}
    bspc node --to-desktop '^{1-9,10}'
 
-#
-# preselect
-#
+# Used keys: super + [alt,shift] + [←,↓,↑,→,b,e,i,n,o,p,~,↹,1,2,3,4,5,6,7,8,9,0]
 
-# preselect the direction
+## Preselection & movement
+# Preselect direction
 super + alt + shift + {n,e,i,o}
-   bspc node -p {west,south,north,east}
+   bspc node -p {'~west','~south','~north','~east'}
 
-# preselect the ratio
-super + ctrl + {1-9}
+# Preselect ratio
+super + alt + shift + {1-9}
    bspc node -o 0.{1-9}
 
-# cancel the preselection for the focused node
+# Cancel preselection for focused window
 super + alt + shift + space
    bspc node -p cancel
 
-# cancel the preselection for the focused desktop
+# Cancel preselection for focused desktop
 super + alt + space
    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-#
-# move/resize
-#
-
-# Expand a window by moving one of its sides outward (movement keys)
-super + ctrl + {n,e,i,o}
+# Expand window by moving one of its sides outward
+super + ctrl + {n,Left,e,Down,i,Up,o,Right}
    n=20; \
    { d1=left;   d2=right;  dx=-$n; dy=0;   \
+   , d1=left;   d2=right;  dx=-$n; dy=0;   \
    , d1=bottom; d2=top;    dx=0;   dy=$n;  \
+   , d1=bottom; d2=top;    dx=0;   dy=$n;  \
+   , d1=top;    d2=bottom; dx=0;   dy=-$n; \
    , d1=top;    d2=bottom; dx=0;   dy=-$n; \
    , d1=right;  d2=left;   dx=$n;  dy=0;   \
-   } \
-   bspc node --resize  $d1 $dx $dy || bspc node --resize $d2 $dx $dy
-   #bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}super + ctrl + {n,e,i,o}
-
-# Expand a window by moving one of its sides outward (arrow keys)
-super + ctrl + {Left,Down,Up,Right}
-   n=20; \
-   { d1=left;   d2=right;  dx=-$n; dy=0;   \
-   , d1=bottom; d2=top;    dx=0;   dy=$n;  \
-   , d1=top;    d2=bottom; dx=0;   dy=-$n; \
    , d1=right;  d2=left;   dx=$n;  dy=0;   \
    } \
    bspc node --resize  $d1 $dx $dy || bspc node --resize $d2 $dx $dy
 
-# contract a window by moving one of its side inward
-#super + ctrl + shift + {h,j,k,l}
-#	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+# Used keys: super + [alt,ctrl,shift] + [␣,←,↓,↑,→,e,i,n,o,1,2,3,4,5,6,7,8,9,0]
 
-# move a floating window
-super + alt + ctrl + {n,e,i,o}
-   bspc node -v {-20 0,0 20,0 -20,20 0}
+## Floating
+# Move floating window
+super + alt + ctrl + {n,Left,e,Down,i,Up,o,Right}
+   bspc node -v {-20 0,-20 0,0 20,0 20,0 -20,0 -20,20 0,20 0}
 
-super + alt + ctrl + {Left,Down,Up,Right}
-   bspc node -v {-20 0,0 20,0 -20,20 0}
+# Contract window by moving one of its side inward
+super + ctrl + shift + alt + {n,Left,e,Down,i,Up,o,Right}
+   bspc node -z {right -20 0,right -20 0,top 0 20,top 0 20,bottom 0 -20,bottom 0 -20,left 20 0,left 20 0}
+
+# Used keys: super + alt + ctrl + [shift] + [←,↓,↑,→,e,i,n,o]

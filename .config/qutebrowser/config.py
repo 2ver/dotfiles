@@ -29,7 +29,7 @@ c.bindings.commands['normal'] = {
    'L'       : 'set-cmd-text -s :open -t',
 
    # Kakoune
-   'ge' 	    : 'scroll-to-perc',
+   'ge'      : 'scroll-to-perc',
 }
 
 c.bindings.commands['caret'] = {
@@ -103,12 +103,12 @@ c.fonts.web.size.default = 15
 c.editor.command = ['kitty', 'kcr edit', '{}']
 c.url.searchengines = {
    "DEFAULT" : "https://search.brave.com/search?q={}",
-   "aur" 	 : "https://archlinux.org/packages/?q={}",
+   "aur"     : "https://archlinux.org/packages/?q={}",
    "aw"      : "https://wiki.archlinux.org/index.php?search={}",
    "b"       : "https://search.brave.com/search?q={}",
    "d"       : "https://duckduckgo.com/?q={}&ia=web",
    "g"       : "https://google.com/search?q={}",
-   "gh" 		 : "https://github.com/search?q={}&ref=opensearch",
+   "gh" 	    : "https://github.com/search?q={}&ref=opensearch",
    "o"       : "https://odysee.com/$/search?q={}",
    "s"       : "https://searx.bar/search?q={}",
    "t"       : "https://translate.yandex.com/?text={}",

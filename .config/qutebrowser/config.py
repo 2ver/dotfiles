@@ -77,8 +77,8 @@ c.aliases['tabm'] = 'tab-move'
 # Theme
 lena.draw.lena(c, {
    'spacing':{
-        'vertical': 6,
-        'horizontal': 8
+      'vertical': 6,
+      'horizontal': 8
    }
 })
 

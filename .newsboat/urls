@@ -1,3 +1,9 @@
+# ■           __  ___   _____  _____
+# ■ ■        / / / / | / / _ \/ ___/
+# ■ ■ ■     / /_/ /| |/ /  __/ /
+# ■ ■ ■ ■   \____/ |___/\___/_/
+
+# Shows custom feed groups only (!Hidden flag on feeds hides them elsewhere)
 "query:Videos:(tags # \"(Videos)\") and (unread = \"yes\")" "(Videos)"
 "query:Blogs:(tags # \"(Blogs)\") and (unread = \"yes\")"
 "query:News:(tags # \"(News)\") and (unread = \"yes\")"
@@ -11,8 +17,7 @@
 # "query:All Unread:unread = \"yes\""
 
 # (Blogs)
-# ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 http://cachestocaches.com/feed/                                                "~Caches to Caches"          "!Hidden" "(Blogs)"
 https://lukesmith.xyz/rss.xml                                                  "~Luke Smith Blog"           "!Hidden" "(Blogs)"
 https://usermod.net/feed.xml                                                   "~usermod.net"               "!Hidden" "(Blogs)"
@@ -20,8 +25,7 @@ https://vas.neocities.org/rss.xml                                              "
 https://sidhartharya.me/index.xml                                              "~SidharthArya"              "!Hidden" "(Blogs)"
 
 # (News)
-# ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 https://archlinux.org/feeds/news/                                              "~Arch Linux"                "!Hidden" "(News)"
 https://www.theatlantic.com/feed/all/                                          "~The Atlantic"              "!Hidden" "(News)"
 https://elv.sh/feed.atom                                                       "~Elvish"                    "!Hidden" "(News)"
@@ -29,15 +33,13 @@ https://nitter.net/plover/rss                                                  "
 https://suckless.org/atom.xml                                                  "~Suckless"                  "!Hidden" "(News)"
 
 # (Videos)
-# ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 # Linux
-
 https://lbryfeed.melroy.org/channel/odysee/BrodieRobertson                     "~Brodie Robertson"          "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCi8XrDg1bK_MJ0goOnbpTMQ   "~budlabs"                   "!Hidden" "(Videos)"
 https://lbryfeed.melroy.org/channel/odysee/chrisatmachine                      "~ChrisAtMachine"            "!Hidden" "(Videos)"
 https://lbryfeed.melroy.org/channel/odysee/DistroTube                          "~Distrotube"                "!Hidden" "(Videos)"
-https://lbryfeed.melroy.org/channel/odysee/GavinFreeborn                       "~Gavin Freeborn"             "!Hidden" "(Videos)"
+https://lbryfeed.melroy.org/channel/odysee/GavinFreeborn                       "~Gavin Freeborn"            "!Hidden" "(Videos)"
 https://lbryfeed.melroy.org/channel/odysee/hexdsl                              "~Hex DSL"                   "!Hidden" "(Videos)"
 https://lbryfeed.melroy.org/channel/odysee/IrishluckLinux                      "~IrishLuck Linux"           "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCfp-lNJy4QkIGnaEE6NtDSg   "~Terminalforlife"           "!Hidden" "(Videos)"
@@ -49,19 +51,17 @@ https://lbryfeed.melroy.org/channel/odysee/sudo:3                              "
 https://www.youtube.com/feeds/videos.xml?channel_id=UC3b-caG6CqILTGorHQww_mw   "~uo ou"                     "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg   "~Wolfgang's Channel"        "!Hidden" "(Videos)"
 
-# Musical Content
-
+# Musical creators
 https://www.youtube.com/feeds/videos.xml?channel_id=UCQ4FyiI_1mWI2AtLS5ChdPQ   "~Boyinaband"                "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCnZx--LpG2spgmlxOcC-DRA   "~Daniel Thrasher"           "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9SVhrnsGxWwiBRWT9c7Ozw   "~Roomie"                    "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCoNRSwYHJdy-yV1b82ZdHfQ   "~Seth Everman"              "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCJ1FHssfaGtUx1Ax-8-7C_g   "~Yosuto"                    "!Hidden" "(Videos)"
 
-# Music Artists
+# Music artists
 https://www.youtube.com/feeds/videos.xml?channel_id=UCTo6K4zTLfhtklxzhORVT1A  "~EYWA"                       "!Hidden" "(Videos)"
 
 # Gaming
-
 https://www.youtube.com/feeds/videos.xml?channel_id=UCo3ixhcZiwcmwVnqJlFJ2Iw   "~B-rad"                     "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCTkXRDQl0luXxVQrRQvWS6w   "~Dream"                     "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9bvUn7x3IrZ4yMANYjexUw   "~Dream Team"                "!Hidden" "(Videos)"
@@ -73,10 +73,9 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UClY084mbGLK_SLlOfgizjow   "
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqynl7rdtktKMQESdSBmE-g   "~Sapnap"                    "!Hidden" "(Videos)"
 
 # Memes
-
 https://www.youtube.com/feeds/videos.xml?channel_id=UCwkDQ8tE_3UhB8LcnvUv0Fw   "~Bosnian Ape Society"       "!Hidden" "(Videos)"
 
-# Humor
+# Comedy
 https://www.youtube.com/feeds/videos.xml?channel_id=UCamvct0fdKsWoR5DuYdFzww   "~Abelina Sabrina"           "!Hidden" "(Videos)"
 https://lbryfeed.melroy.org/channel/odysee/CrackerMilk                         "~CrackerMilk"               "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCIabPXjvT5BVTxRDPCBBOOQ   "~Dani"                      "!Hidden" "(Videos)"
@@ -97,7 +96,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCGGdOIkVIZipux13jt7rprw   "
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5QdUumbNeQ_futxQRuz9kg   "~WhosChaos"                 "!Hidden" "(Videos)"
 
 # Entertainment
-
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5k3Kc0avyDJ2nG9Kxm9JmQ   "~Bright Sun Films"          "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw   "~Daily Dose of Internet"    "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC7Jwj9fkrf1adN4fMmTkpug   "~DankPods"                  "!Hidden" "(Videos)"
@@ -117,20 +115,17 @@ https://lbryfeed.melroy.org/channel/odysee/steezykane                          "
 https://www.youtube.com/feeds/videos.xml?channel_id=UCefl-5pmhZmljwZTE2KrcdA   "~VINwiki"                   "!Hidden" "(Videos)"
 
 # Commentary
-
 https://www.youtube.com/feeds/videos.xml?channel_id=UCuVgoagmU3hmfMwtxG9s4Sw   "~Optimus"                   "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqWxviU8cjjHZsTLWgPFZuA   "~dangelowallace"            "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHTM9IknXs4ZHzwHqDjakoQ   "~D'Angelo Wallace"          "!Hidden" "(Videos)"
 
 # Keyboards
-
 https://www.youtube.com/feeds/videos.xml?channel_id=UCOFH59uoSs8SUF0L_p3W0sg   "~Badseed Tech"              "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCFtOX-21N1earf-K58C7HjQ   "~Glarses"                   "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCllGwtW6scxAjM28fIgEozg   "~Tae Keyboards"             "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCMHXMAeKkI6HXlPfLiYvo9g   "~Taeha"                     "!Hidden" "(Videos)"
 
 # Learning
-
 https://www.youtube.com/feeds/videos.xml?channel_id=UCz4v6UaejwajHV0nU-IT6CQ   "~Aerick"                    "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCJW5UDaDqN66Iw1sbtXlEMA   "~Jordan Orme"               "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCYwVxWpjeKFWwu8TML-Te9A   "~JCS - Criminal Psychology" "!Hidden" "(Videos)"
@@ -139,27 +134,20 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCd0ZD4iCXRXf18p3cA7EQfg   "
 https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A   "~Tom Scott"                 "!Hidden" "(Videos)"
 
 # Languages
-
 https://www.youtube.com/feeds/videos.xml?channel_id=UCa57CLZlqhFtn1m-e-tWhpg   "~Bilingue Blogs"            "!Hidden" "(Videos)"
-# https://lbryfeed.melroy.org/channel/@indigoblockchaingames#4                   "~Iñigo Echeverría"             "!Hidden" "(Spanish)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCi1Rgm2ulItUOagasB3B8sg   "~Jan Lunge"                 "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbRaUB7Hfe3clmKqqj8Nm1Q   "~Laoshu"                    "!Hidden" "(Videos)"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCoXtmmnLCbXDiSo8GxsmOzA   "~La gata de Schrödinger"      "!Hidden" "(Spanish)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLNoXf8gq6vhwsrYp-l0J-Q   "~Xioma"                     "!Hidden" "(Videos)"
 
 # Technology
-
 https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q   "~The Hated One"             "!Hidden" "(Videos)"
 
 # Backup links
-# ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 # https://www.youtube.com/feeds/videos.xml?channel_id=UCq2QwnKW79w4a55ZQqOBReg "~IrishLuck Linux" 			"!Hidden" "(Videos)"
 
 # Podcasts
-# ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 https://feeds.soundcloud.com/users/soundcloud:users:956521729/sounds.rss       "~Ace Podcast"               "!Hidden" "(Podcasts)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCRE3NFNtdjR96-H4QG4U1Fg   "~Trendy Talk"                   "!Hidden" "(Podcasts)"
 https://feeds.megaphone.fm/misfits                                             "~Misfits"                   "!Hidden" "(Podcasts)"
 https://notrelated.xyz/rss                                                     "~Not Related!"              "!Hidden" "(Podcasts)"

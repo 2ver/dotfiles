@@ -1,13 +1,19 @@
-# Functionality
+# ■           __  ___   _____  _____
+# ■ ■        / / / / | / / _ \/ ___/
+# ■ ■ ■     / /_/ /| |/ /  __/ /
+# ■ ■ ■ ■   \____/ |___/\___/_/
+
+# General
+# ───────
 prepopulate-query-feeds yes
 auto-reload yes
 max-items 3
 history-limit 0
-# pager "~/.bin/kak-newsboat %f"
-# pager "less %f"
+# TODO: Change pager to kak
 # pager "" # $PAGER
 
 # UI
+# ──
 datetime-format "%d"
 feedlist-title-format "❬Feeds❭ %u Unread Feed(s)"
 feedlist-format "%8u %t"
@@ -15,65 +21,70 @@ articlelist-title-format "❬%T❭ %u/%t Unread Article(s)"
 articlelist-format "%-3i │ %f │ %2D │ %-17T │ %t"
 show-keymap-hint no
 
-# Rules
-ignore-mode "display" # For debugging
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOFH59uoSs8SUF0L_p3W0sg" "title !~ \"keyboard\"" | "title !~ \"audio\""                # Badseed Tech
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCo3ixhcZiwcmwVnqJlFJ2Iw" "content =~ \"streamlabs\""                                   # B-rad
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCDBCCMlFD-hArPbWv38FINA" "title !~ \"watches\""                                        # Daz Black
-ignore-article "https://lbryfeed.melroy.org/channel/odysee/hexdsl"                            "content =~ \"steampowered\"" | "content =~ \"humblebundle\"" | "title =~ \"Trendy\"" # Hex DSL
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOfelP_99_8AzQ4kbmTJrfQ" "content =~ \"streamlabs\""                                   # tmol
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCRE3NFNtdjR96-H4QG4U1Fg" "title !~ \"Trendy\""                                         # Trendy Talk podcast
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCGGdOIkVIZipux13jt7rprw" "content =~ \"streamlabs\""                                   # twomad 360
-
-# Key bindings
+# Keybindings
+# ───────────
 unbind-key e
 unbind-key i
 unbind-key E
 unbind-key I
 unbind-key ,
 
-bind-key SPACE macro-prefix
-bind-key i up
-bind-key e down
-bind-key I next-feed articlelist
-bind-key E prev-feed articlelist
-bind-key G end
-bind-key g home
-bind-key d pagedown
-bind-key u pageup
-bind-key o open
-bind-key n quit
-bind-key a toggle-article-read
-bind-key k next-unread
-bind-key K prev-unread
-bind-key D pb-download
-bind-key U show-urls
-bind-key x pb-delete
+bind-key   SPACE macro-prefix
+bind-key   i     up
+bind-key   e     down
+bind-key   I     next-feed articlelist
+bind-key   E     prev-feed articlelist
+bind-key   G     end
+bind-key   g     home
+bind-key   d     pagedown
+bind-key   u     pageup
+bind-key   o     open
+bind-key   n     quit
+bind-key   a     toggle-article-read
+bind-key   k     next-unread
+bind-key   K     prev-unread
+bind-key   D     pb-download
+bind-key   U     show-urls
+bind-key   x     pb-delete
 
 # Colorscheme
-color listnormal        color8   default
-color listfocus         color4   default bold
-color listnormal_unread color250 default
-color listfocus_unread  color4   default bold
-color info              color2 default
-color article           color7   default
+# ───────────
+color     listnormal                                  color8   default
+color     listfocus                                   color4   default bold
+color     listnormal_unread                           color250 default
+color     listfocus_unread                            color4   default bold
+color     info                                        color2   default
+color     article                                     color7   default
 
-# Highlighting within content
-highlight article "^Feed:.*" color6
-highlight article "^Title:.*" color4 default bold
-highlight article "^Author:.*" color1
-highlight article "^Date:.*" color3
-highlight article "^Link:.*" color5
-highlight article "^Flags:.*" color9
-highlight article "https?://[^ ]+" color5 default
-highlight article ":.*\\(link\\)$" color5 default
-highlight article "\\[[0-9][0-9]*\\]" color7 default bold
-highlight article "\\[image [0-9][0-9]*\\]" color7 default bold
-highlight article "\\[embedded flash: [0-9][0-9]*\\]" color7 default bold
+# Title colors and highlighting
+# ─────────────────────────────
+highlight article "^Feed:.*"                          color6
+highlight article "^Title:.*"                         color4   default bold
+highlight article "^Author:.*"                        color1
+highlight article "^Date:.*"                          color3
+highlight article "^Link:.*"                          color5
+highlight article "^Flags:.*"                         color9
+highlight article "https?://[^ ]+"                    color5   default
+highlight article ":.*\\(link\\)$"                    color5   default
+highlight article "\\[[0-9][0-9]*\\]"                 color7   default bold
+highlight article "\\[image [0-9][0-9]*\\]"           color7   default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" color7   default bold
+
+# Feed rules
+# ──────────
+# ignore-mode "display" # For debugging
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOFH59uoSs8SUF0L_p3W0sg" "(title !~ \"keyboard\") or (title !~ \"audio\")"                # Badseed Tech
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCo3ixhcZiwcmwVnqJlFJ2Iw" "content =~ \"streamlabs\""                                      # B-rad
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCDBCCMlFD-hArPbWv38FINA" "title !~ \"watches\""                                           # Daz Black
+ignore-article "https://lbryfeed.melroy.org/channel/odysee/hexdsl"                            "(content =~ \"steampowered\") or (content =~ \"humblebundle\")" # Hex DSL
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCOfelP_99_8AzQ4kbmTJrfQ" "content =~ \"streamlabs\""                                      # tmol
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCRE3NFNtdjR96-H4QG4U1Fg" "title !~ \"Trendy\""                                            # Trendy Talk podcast
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCGGdOIkVIZipux13jt7rprw" "content =~ \"streamlabs\""                                      # twomad 360
 
 # Macros
+# ──────
 browser "newsboat-qutebrowser"
 macro b open-in-browser
-macro m set browser "/usr/local/bin/play %u" ; open-in-browser ; set browser "newsboat-qutebrowser"
-macro 1 set browser /usr/local/bin/play; one; set browser "newsboat-qutebrowser"
+macro m set browser "play %u" ; open-in-browser ; set browser "newsboat-qutebrowser"
+macro 1 set browser "play" ; one; set browser "newsboat-qutebrowser"
 macro d set browser "youtube-dl %u"; one; set browser "newsboat-qutebrowser"

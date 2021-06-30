@@ -4,36 +4,20 @@
 # ■ ■ ■ ■   \____/ |___/\___/_/
 
 ## Programs
-super + \
-{ Return        \
-, b             \
-, g             \
-, k             \
-, p             \
-, XF86AudioMute \
-}
-
-   { kitty            # Terminal         \
-   , qutebrowser      # Web browser      \
-   , kitty amfora     # Gemini browser   \
-   , kitty kcr edit   # Editor           \
-   , kitty htop       # Process monitor  \
-   , kitty pulsemixer # Audio controller \
+super + {Return,b,g,k,p,XF86AudioMute}
+   { kitty                                                # Terminal           \
+   , qutebrowser                                          # Web browser        \
+   , kitty amfora                                         # Gemini browser     \
+   , kitty kcr edit                                       # Editor             \
+   , kitty htop                                           # Process monitor    \
+   , kitty pulsemixer                                     # Audio controller   \
    }
 
-super + \
-{ F1 \
-, F2 \
-, F3 \
-, F4 \
-, F5 \
-, F8 \
-}
-
+super + {F1,F2,F3,F4,F5,F8}
    { bspc desktop -f ^1 && kitty -o font_size=14 newsboat # RSS reader         \
    , kitty nnn -nR                                        # File manager       \
    , bspc desktop -f ^3 && kitty -o font_size=13 neomutt  # Email client       \
-   , bspc desktop -f ^4 && kitty -o font_size=14 gomuks   # Matrix client      \
+   , bspc desktop -f ^4 && kitty gomuks                   # Matrix client      \
    , pcmanfm                                              # File manager (GUI) \
    , bspc desktop -f ^8 && kitty -o font_size=14 ncmpcpp  # Music client       \
    }
@@ -44,14 +28,20 @@ super + \
 super + @space
    rofi -matching fuzzy -show run
 
-super + r ; {c,d,e,k,p,v,y}
-   { rofi -show calc -modi calc -no-show-match -no-sort                                                                  # Calculator       \
-   , rofi-edit                                                                                                           # Dotfile chooser  \
-   , rofimoji                                                                                                            # Emoji picker     \
-   , sh ~/.local/bin/kaomoji-rofi/kaomoji.sh                                                                             # Kaomoji picker   \
-   , rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/lockscreen/suspend --confirm=reboot/shutdown" # Power menu       \
-   , rofi-rbw                                                                                                            # Password vault   \
-   , rofi-mpvtube                                                                                                        # YT video chooser \
+super + r ; {c,d,e,k}
+   { rofi -show calc -modi calc -no-show-match                                 \ 
+     -no-sort                                             # Calculator         \
+   , rofi-edit                                            # Dotfile picker     \
+   , rofimoji                                             # Emoji picker       \
+   , sh ~/.local/bin/kaomoji-rofi/kaomoji.sh              # Kaomoji picker     \
+   }
+
+super + r ; {p,v,y}
+   { rofi -show menu -modi "menu:rofi-power-menu                               \
+     --choices=shutdown/reboot/lockscreen/suspend                              \
+     --confirm=reboot/shutdown"                           # Power menu         \
+   , rofi-rbw                                             # Password vault     \
+   , rofi-mpvtube                                         # YT video picker    \
    }
 
 # Used keys: super + r + [␣,c,d,e,k,p,v,y]
@@ -76,31 +66,20 @@ super + control + d
 # Used keys: [control,alt,shift] + PrtSc
 
 ## Volume
-XF86AudioMute
-   pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-XF86AudioLowerVolume
-   pactl set-sink-volume @DEFAULT_SINK@ -4%
-
-XF86AudioRaiseVolume
-   pactl set-sink-volume @DEFAULT_SINK@ +4%
-
-XF86AudioPlay
-   playerctl play-pause
-
-XF86AudioNext
-   playerctl next
-
-XF86AudioPrev
-   playerctl previous
+XF86Audio{Mute,LowerVolume,RaiseVolume,Play,Next,Prev}
+   { pactl set-sink-mute @DEFAULT_SINK@ toggle \
+   , pactl set-sink-volume @DEFAULT_SINK@ -4%  \
+   , pactl set-sink-volume @DEFAULT_SINK@ +4%  \
+   , playerctl play-pause                      \
+   , playerctl next                            \
+   , playerctl previous                        \
+   }
 
 # Used keys: [🕨,🕩,🕪,⏯,⏮,⏭]
 
 ## Brightness
-XF86MonBrightnessUp
-   light -A 10
-XF86MonBrightnessDown
-   light -U 10
+XF86MonBrightness{Up,Down}
+   {light -A 10,light -U 10}
 
 # Used keys: [🔅,🔆]
 
@@ -111,15 +90,13 @@ super + z ; t
 
 # Used keys: super + z + [t]
 
-## Reload configs
-# Reload sxhkd
-super + ctrl + Escape
-   notify-send "Restarting sxhkd" && \
-   pkill -USR1 -x sxhkd
-
-# Quit/restart bspwm
-super + ctrl + {q,r}
-   bspc {quit,wm -r && notify-send "Restarting bspwm"}
+## Reload/restart/quit
+super + ctrl + {q,r,Escape}
+   { bspc quit                                    \
+   , bspc wm -r && notify-send "Restarting bspwm" \
+   , notify-send "Restarting sxhkd" &&            \
+     pkill -USR1 -x sxhkd
+   }
 
 # Used keys: super + ctrl + [⎋,r,q]
 
@@ -146,7 +123,7 @@ super + control + b
    bspc node -s biggest.window
 
 # Equalize window sizes on current desktop
-super + alt + control + shift + e
+super + equal
    bspc node @/ -E
 
 # Used keys: super + [alt,control,shift] + [b,e,m,r,w,y]

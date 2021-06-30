@@ -22,8 +22,8 @@
 http://cachestocaches.com/feed/                                                "~Caches to Caches"          "!Hidden" "(Blogs)"
 https://lukesmith.xyz/rss.xml                                                  "~Luke Smith Blog"           "!Hidden" "(Blogs)"
 https://usermod.net/feed.xml                                                   "~usermod.net"               "!Hidden" "(Blogs)"
-https://vas.neocities.org/rss.xml                                              "~vas"                       "!Hidden" "(Blogs)"
 https://sidhartharya.me/index.xml                                              "~SidharthArya"              "!Hidden" "(Blogs)"
+https://vas.neocities.org/rss.xml                                              "~vas"                       "!Hidden" "(Blogs)"
 
 # (News)
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -116,9 +116,9 @@ https://lbryfeed.melroy.org/channel/odysee/steezykane                          "
 https://www.youtube.com/feeds/videos.xml?channel_id=UCefl-5pmhZmljwZTE2KrcdA   "~VINwiki"                   "!Hidden" "(Videos)"
 
 # Commentary
-https://www.youtube.com/feeds/videos.xml?channel_id=UCuVgoagmU3hmfMwtxG9s4Sw   "~Optimus"                   "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqWxviU8cjjHZsTLWgPFZuA   "~dangelowallace"            "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHTM9IknXs4ZHzwHqDjakoQ   "~D'Angelo Wallace"          "!Hidden" "(Videos)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCuVgoagmU3hmfMwtxG9s4Sw   "~Optimus"                   "!Hidden" "(Videos)"
 
 # Keyboards
 https://www.youtube.com/feeds/videos.xml?channel_id=UCOFH59uoSs8SUF0L_p3W0sg   "~Badseed Tech"              "!Hidden" "(Videos)"
@@ -128,8 +128,8 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCMHXMAeKkI6HXlPfLiYvo9g   "
 
 # Learning
 https://www.youtube.com/feeds/videos.xml?channel_id=UCz4v6UaejwajHV0nU-IT6CQ   "~Aerick"                    "!Hidden" "(Videos)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCJW5UDaDqN66Iw1sbtXlEMA   "~Jordan Orme"               "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCYwVxWpjeKFWwu8TML-Te9A   "~JCS - Criminal Psychology" "!Hidden" "(Videos)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJW5UDaDqN66Iw1sbtXlEMA   "~Jordan Orme"               "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCcaTUtGzOiS4cqrgtcsHYWg   "~jvscholz"                  "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd0ZD4iCXRXf18p3cA7EQfg   "~Taran Van Hemert"          "!Hidden" "(Videos)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A   "~Tom Scott"                 "!Hidden" "(Videos)"
@@ -145,7 +145,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q   "
 
 # Backup links
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-https://www.youtube.com/feeds/videos.xml?channel_id=UCq2QwnKW79w4a55ZQqOBReg "~IrishLuck Linux"             "!Hidden" "(Videos)"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCq2QwnKW79w4a55ZQqOBReg   "~IrishLuck Linux"             "!Hidden" "(Videos)"
 
 # Podcasts
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

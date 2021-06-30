@@ -7,7 +7,7 @@
 # ───────
 prepopulate-query-feeds yes
 auto-reload yes
-max-items 3
+max-items 3 # TODO: Per feed max-items
 history-limit 0
 # TODO: Change pager to kak
 # pager "" # $PAGER

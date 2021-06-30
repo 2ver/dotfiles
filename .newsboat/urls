@@ -2,6 +2,8 @@
 # ■ ■        / / / / | / / _ \/ ___/
 # ■ ■ ■     / /_/ /| |/ /  __/ /
 # ■ ■ ■ ■   \____/ |___/\___/_/
+# This file was never meant to be public but I accidently committed it once and couldn't be bothered to "un-push" from GitHub.
+# Plz don't judge the content I consoom and hopefully you gain something from how I organize my groups of feeds :)
 
 # Shows custom feed groups only (!Hidden flag on feeds hides them elsewhere)
 "query:Videos:(tags # \"(Videos)\") and (unread = \"yes\")" "(Videos)"
@@ -13,8 +15,7 @@
 
 "──────────"
 
-"query:Everything:(total_count > 0)"
-# "query:All Unread:unread = \"yes\""
+"query:Everything:(total_count > 0)" # Keep a feed of everything to search if needed
 
 # (Blogs)
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -144,7 +145,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q   "
 
 # Backup links
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCq2QwnKW79w4a55ZQqOBReg "~IrishLuck Linux" 			"!Hidden" "(Videos)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCq2QwnKW79w4a55ZQqOBReg "~IrishLuck Linux"             "!Hidden" "(Videos)"
 
 # Podcasts
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

@@ -1,7 +1,9 @@
+# ──────────────────────────────────
 # ■           __  ___   _____  _____
 # ■ ■        / / / / | / / _ \/ ___/
 # ■ ■ ■     / /_/ /| |/ /  __/ /
 # ■ ■ ■ ■   \____/ |___/\___/_/
+# ──────────────────────────────────
 
 import subprocess
 import os
@@ -9,7 +11,8 @@ import lena.draw
 
 config.load_autoconfig(False)  # Ignore configuration set from within browser
 
-## Bindings
+# Bindings
+# ────────
 c.bindings.commands['normal'] = {
    # Colemak navigation
    'n'       : 'scroll left',
@@ -75,6 +78,7 @@ c.aliases['tabm'] = 'tab-move'
 
 ## UI
 # Theme
+# ──────
 lena.draw.lena(c, {
    'spacing':{
       'vertical': 6,
@@ -99,7 +103,8 @@ c.prompt.radius = 40  # Rounder corners
 c.scrolling.smooth = True
 c.fonts.web.size.default = 15
 
-## User settings
+# User settings
+# ─────────────
 c.editor.command = ['kitty', 'kcr edit', '{}']
 c.url.searchengines = {
    "DEFAULT" : "https://search.brave.com/search?q={}",

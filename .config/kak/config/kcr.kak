@@ -57,11 +57,11 @@ plug "alexherbo2/kakoune.cr" do %{
       ## Mappings
 
       # External windows/tools
-      map global normal <c-e>    ': new<ret>'                                                   -docstring 'New client'
-      map global normal <c-n>    ': connect-terminal elvish<ret>'                               -docstring 'New terminal'
-      map global normal +        ': connect-popup<ret>'                                         -docstring 'New popup'
+      map global normal <c-n>    ': new<ret>'                                                   -docstring 'New client'
+      # map global normal <c-t>    'something'
+      map global normal <a-ret>  ': connect-terminal elvish<ret>'                               -docstring 'New terminal'
       map global normal +        ': connect-popup elvish<ret>'                                  -docstring 'New popup'
-      map global normal <c-t>    ': connect-overlay elvish<ret>'                                -docstring 'Overlay program'
+      map global normal <a-+>    ': connect-overlay elvish<ret>'                                -docstring 'Overlay program'
       map global normal <c-o>    ': $ pcmanfm %sh{echo "${@:-$(dirname "$kak_buffile")}"}<ret>' -docstring 'Open pcmanfm'
 
       # Selections & Movement
@@ -69,10 +69,10 @@ plug "alexherbo2/kakoune.cr" do %{
       map global normal <a-up>   ': move-lines-up<ret>'                                         -docstring 'move line up'
 
       # View
-      map global view   p        '<esc>:show-palette<ret>'                                      -docstring 'show palette'
+      map global view   p        '<esc>: show-palette<ret>'                                      -docstring 'show palette'
 
       # General
-      map global normal <F5>     ':source-kakrc; echo reloaded kakrc<ret>'                      -docstring 'reload kakrc'
+      map global normal <F5>     ': source-kakrc; echo reloaded kakrc<ret>'                      -docstring 'reload kakrc'
 
    } catch %{
       echo -debug 'failed to initialize kakoune.cr'

@@ -1,4 +1,11 @@
+# ■           __  ___   _____  _____
+# ■ ■        / / / / | / / _ \/ ___/
+# ■ ■ ■     / /_/ /| |/ /  __/ /
+# ■ ■ ■ ■   \____/ |___/\___/_/
+# ──────────────────────────────────
+
 # Colemak bindings
+# ────────────────
 def_key "n"
    previous_column
 def_key "n"
@@ -16,6 +23,7 @@ def_key "o"
    enter_directory
 
 # Remap displaced keys
+# ────────────────────
 def_key "ctrl-i"
    show_song_info
 
@@ -39,6 +47,7 @@ def_key "l"
    jump_to_playing_song
 
 # Vim-like
+# ────────
 def_key "v"
    select_item
 def_key "ctrl-v"
@@ -66,6 +75,7 @@ def_key "d"
    delete_browser_items
 
 # General playback
+# ────────────────
 def_key "0"
    replay_song
 
@@ -76,6 +86,7 @@ def_key "space"
 #  volume_up
 
 # Modes
+# ─────
 def_key "r"
    toggle_random
 def_key "R"
@@ -88,6 +99,7 @@ def_key "z"
    shuffle
 
 # Movement
+# ────────
 def_key "alt-down"
    move_selected_items_down
 def_key "alt-up"
@@ -99,6 +111,7 @@ def_key "alt-up"
 # 	move_selected_items_up
 
 # Random
+# ──────
 def_key "."
    show_lyrics
 
@@ -107,3 +120,8 @@ def_key "p"
 
 def_key "9"
    show_clock
+
+# Unbinds
+# ───────
+def_key "ctrl-h"
+   dummy

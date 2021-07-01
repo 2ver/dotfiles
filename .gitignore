@@ -1,11 +1,5 @@
 .cfg
-~/.newsboat/cache.db
-~/.newsboat/history.cmdline
-~/.newsboat/history.search
-~/.newsboat/urls
 ~/.config/mutt/muttrc
 ~/.config/mopidy/mopidy.conf
-~/.elvish/lib
-~/.elvish/db
 ~/.config/kak/autoload/privatecapsule.kak
 ~/.config/htop/htoprc

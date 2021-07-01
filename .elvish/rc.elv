@@ -5,7 +5,6 @@ use math # Math operation
 
 # Executable paths
 paths = [
-   $E:GOPATH/bin
    /usr/local/bin
    /usr/local/sbin
    /usr/sbin

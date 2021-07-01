@@ -114,7 +114,6 @@ plugins=(
 )
 
 source /home/uver/.aliasrc
-source /home/uver/.bwsessionkey
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

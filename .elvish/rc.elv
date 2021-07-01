@@ -5,7 +5,6 @@ use math # Math operation
 
 # Executable paths
 paths = [
-   $E:GOPATH/bin
    /usr/local/bin
    /usr/local/sbin
    /usr/sbin
@@ -29,7 +28,7 @@ epm:install &silent-if-installed       ^
 github.com/zzamboni/elvish-modules     ^
 github.com/zzamboni/elvish-completions ^
 github.com/zzamboni/elvish-themes      ^
-github.com/iwoloschin/elvish-packages 	^
+github.com/iwoloschin/elvish-packages  ^
 github.com/muesli/elvish-libs
 
 # General settings
@@ -58,11 +57,6 @@ edit:completion:matcher[''] = [p]{ edit:match-prefix &smart-case $p } # Smart ca
 
 use github.com/zzamboni/elvish-modules/bang-bang # Enable !! & !$
 use github.com/muesli/elvish-libs/git            # Git utilities
-
-# Notify if new commits
-# use github.com/iwoloschin/elvish-packages/update
-# update:curl-timeout = 3
-# update:check-commit &verbose
 
 ## Environment variables
 E:LC_ALL = "en_US.UTF-8"

@@ -1,8 +1,7 @@
 .cfg
-~/.newsboat/cache.db
-~/.newsboat/history.cmdline
-~/.newsboat/history.search
-~/.newsboat/urls
+~/.config/newsboat/cache.db
+~/.config/newsboat/history.cmdline
+~/.config/newsboat/history.search
 ~/.config/mutt/muttrc
 ~/.config/mopidy/mopidy.conf
 ~/.elvish/lib

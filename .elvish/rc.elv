@@ -70,6 +70,9 @@ E:PAGER = "kak-pager"
 E:EDITOR = "kcr edit"
 E:VISUAL = "kcr edit"
 E:SXHKD_SHELL = "elvish"
+E:XDG_CONFIG_HOME = "/home/uver/.config/"
+E:XDG_CACHE_HOME = "/home/uver/.cache/"
+# E:ncmpcpp_directory = "$E:XDG_CACHE_HOME_HOME/ncmpcpp/" # Move error.log
 
 # nnn
 E:NNN_BMS = "h:~;d:~/Documents;D:~/Downloads;v:~/Videos;p:~/Pictures;w:~/Pictures/Wallpapers;c:~/.config/"
@@ -90,6 +93,7 @@ fn pac    [@a]{ e:doas pacman $@a }
 fn icat   [@a]{ e:kitty +kitten icat $@a }
 fn config [@a]{ e:/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver $@a }
 fn n      [@a]{ e:nnn -nR $@a }
+# fn ncmpcpp [@a]{ e:ncmpcpp ncmpcpp_directory=$E:XDG_CONFIG_HOME/ncmpcpp/data/ $@a }
 
 # kakoune.cr
 fn k   [@a]{ e:kcr edit $@a }

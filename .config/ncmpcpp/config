@@ -13,6 +13,7 @@ mpd_music_dir = "~/Music/music"
 
 # Behaviour
 # ─────────
+# ncmpcpp_directory = .config/ncmpcpp
 message_delay_time = 1
 playlist_disable_highlight_delay = 2
 autocenter_mode = "yes"

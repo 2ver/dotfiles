@@ -69,9 +69,13 @@ E:PAGER = "kak-pager"
 E:EDITOR = "kcr edit"
 E:VISUAL = "kcr edit"
 E:SXHKD_SHELL = "elvish"
-E:XDG_CONFIG_HOME = "/home/uver/.config/"
-E:XDG_CACHE_HOME = "/home/uver/.cache/"
-# E:ncmpcpp_directory = "$E:XDG_CACHE_HOME_HOME/ncmpcpp/" # Move error.log
+
+E:XDG_CONFIG_HOME = "/home/uver/.config"
+E:XDG_CACHE_HOME = "/home/uver/.cache"
+E:XDG_DATA_HOME = "/home/uver/.local/share"
+
+E:HISTFILE = $E:XDG_DATA_HOME"/bash/history"
+# E:ncmpcpp_directory = $E:XDG_CACHE_HOME_HOME"/ncmpcpp/" # Move error.log
 
 # nnn
 E:NNN_BMS = "h:~;d:~/Documents;D:~/Downloads;v:~/Videos;p:~/Pictures;w:~/Pictures/Wallpapers;c:~/.config/"

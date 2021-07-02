@@ -111,20 +111,20 @@ fn KK  [@a]{ e:K --working-directory . $@a }
 
 ## Abbreviations
 edit:abbr['~c'] 	= '~/.config/'
-edit:abbr['~C'] 	= '~/capsules/'
-edit:abbr['~d'] 	= '~/Documents/'
-edit:abbr['~D'] 	= '~/Downloads/'
+edit:abbr['~C'] 	= '~/src/capsules/'
+edit:abbr['~d'] 	= '~/usr/Documents/'
+edit:abbr['~D'] 	= '~/usr/Downloads/'
 edit:abbr['~k'] 	= '~/.config/kak/'
-edit:abbr['~mll'] = '~/Music/music/all/lossless/'
-edit:abbr['~mly'] = '~/Music/music/all/lossy'
-edit:abbr['~ma']	= '~/Music/music/all/'
-edit:abbr['~mp']  = '~/Music/music/playlists/'
-edit:abbr['~md']	= '~/Music/music/downloads/'
-edit:abbr['~mu']	= '~/Music/music/unorganized/'
-edit:abbr['~M']	= '~/Music/music/'
-edit:abbr['~p'] 	= '~/Pictures/'
-edit:abbr['~v'] 	= '~/Videos/'
-edit:abbr['~w'] 	= '~/websites/'
+edit:abbr['~mll'] = '~/usr/Music/music/all/lossless/'
+edit:abbr['~mly'] = '~/usr/Music/music/all/lossy'
+edit:abbr['~ma']	= '~/usr/Music/music/all/'
+edit:abbr['~mp']  = '~/usr/Music/music/playlists/'
+edit:abbr['~md']	= '~/usr/Music/music/downloads/'
+edit:abbr['~mu']	= '~/usr/Music/music/unorganized/'
+edit:abbr['~M']	= '~/usr/Music/music/'
+edit:abbr['~p'] 	= '~/usr/Pictures/'
+edit:abbr['~v'] 	= '~/usr/Videos/'
+edit:abbr['~w'] 	= '~/src/websites/'
 
 # Prompt
 edit:-prompt-eagerness = 10

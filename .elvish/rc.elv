@@ -28,7 +28,7 @@ epm:install &silent-if-installed       ^
 github.com/zzamboni/elvish-modules     ^
 github.com/zzamboni/elvish-completions ^
 github.com/zzamboni/elvish-themes      ^
-github.com/iwoloschin/elvish-packages 	^
+github.com/iwoloschin/elvish-packages  ^
 github.com/muesli/elvish-libs
 
 # General settings

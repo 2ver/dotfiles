@@ -88,6 +88,7 @@ ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCGGdOIkVIZi
 # ──────
 browser "newsboat-qutebrowser"
 macro b open-in-browser
-macro m set browser "play %u" ; open-in-browser ; set browser "newsboat-qutebrowser"
+# macro m set browser "play %u" ; open-in-browser ; set browser "newsboat-qutebrowser"
+macro m set browser "umpv %u" ; open-in-browser ; set browser "newsboat-qutebrowser"
 macro 1 set browser "play" ; one; set browser "newsboat-qutebrowser"
 macro d set browser "youtube-dl %u"; one; set browser "newsboat-qutebrowser"

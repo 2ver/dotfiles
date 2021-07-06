@@ -35,11 +35,11 @@ bind index u undelete-message
 macro index \Cr "<shell-escape>mw -Y<enter>" "run mw -Y to sync all mail"
 
 bind index,pager b noop
-macro index,pager b1 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/first-account<enter><change-folder>!<enter>;<check-stats>' "switch to MrUver@protonmail.com"
-macro index,pager b2 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/second-account<enter><change-folder>!<enter>;<check-stats>' "switch to austin.sahnow@aceclassicaled.org"
-macro index,pager b3 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/third-account<enter><change-folder>!<enter>;<check-stats>' "switch to sahnowa@my.lanecc.edu"
-macro index,pager b4 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/fourth-account<enter><change-folder>!<enter>;<check-stats>' "switch to austin@austinsahnow.com"
-macro index,pager b5 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/fifth-account<enter><change-folder>!<enter>;<check-stats>' "switch to uver@uveronunix.com"
+macro index,pager b1 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/first-account<enter><change-folder>!<enter>;<check-stats>' "switch to first account"
+macro index,pager b2 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/second-account<enter><change-folder>!<enter>;<check-stats>' "switch to second account"
+macro index,pager b3 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/third-account<enter><change-folder>!<enter>;<check-stats>' "switch to third account"
+macro index,pager b4 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/fourth-account<enter><change-folder>!<enter>;<check-stats>' "switch to fourth account"
+macro index,pager b5 '<sync-mailbox><enter-command>source /home/uver/.config/mutt/accounts/fifth-account<enter><change-folder>!<enter>;<check-stats>' "switch to fifth account"
 
 ## Colors
 

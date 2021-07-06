@@ -66,19 +66,22 @@ use github.com/muesli/elvish-libs/git            # Git utilities
 ## Environment variables
 E:LC_ALL = "en_US.UTF-8"
 E:PAGER = "kak-pager"
+E:MANPAGER = "kak-man-pager"
 E:EDITOR = "kcr edit"
 E:VISUAL = "kcr edit"
 E:SXHKD_SHELL = "elvish"
 
-E:XDG_CONFIG_HOME = "/home/uver/.config"
-E:XDG_CACHE_HOME = "/home/uver/.cache"
-E:XDG_DATA_HOME = "/home/uver/.local/share"
+# E:XDG_CONFIG_HOME = $E:HOME"/cfg"
+# E:XDG_CACHE_HOME = $E:HOME"/tmp"
+# E:XDG_DATA_HOME = $E:HOME"/.local/share"
 
-E:HISTFILE = $E:XDG_DATA_HOME"/bash/history"
-# E:ncmpcpp_directory = $E:XDG_CACHE_HOME_HOME"/ncmpcpp/" # Move error.log
+E:LESSHISTFILE = "-"
+# E:GNUPGHOME = $E:XDG_DATA_HOME"/gnupg/"
+# E:HISTFILE = $E:XDG_DATA_HOME"/bash/history"
+# E:ncmpcpp_directory = $E:XDG_CACHE_HOME"/ncmpcpp/" # Move error.log
 
 # nnn
-E:NNN_BMS = "h:~;d:~/Documents;D:~/Downloads;v:~/Videos;p:~/Pictures;w:~/Pictures/Wallpapers;c:~/.config/"
+E:NNN_BMS = "h:~;d:~/usr/doc;D:~/usr/dwn;v:~/usr/vid;p:~/usr/pic;w:~/usr/pic/Wallpapers/;c:~/cfg"
 E:NNN_PLUG = "t:_|kitty*;m:_|mpv $nnn*;g:_|gimp $nnn*;d:dragdrop;p:getplugs;3:mp3conv;n:nuke;r:_|doasedit $nnn*"
 E:NNN_COLORS = "5"
 var BLK = c1 ; var CHR = e2 ; var DIR = 04 ; var EXE = 02 ; var REG = 07 ; var HARDLINK = 0e ; var SYMLINK = 0c ; var MISSING = f7 ; var ORPHAN = 01 ; var FIFO = ab ; var SOCK = 09 ; var OTHER = c4
@@ -98,6 +101,12 @@ fn config [@a]{ e:/usr/bin/git --git-dir=/home/uver/.cfg/ --work-tree=/home/uver
 fn n      [@a]{ e:nnn -nR $@a }
 # fn ncmpcpp [@a]{ e:ncmpcpp ncmpcpp_directory=$E:XDG_CONFIG_HOME/ncmpcpp/data/ $@a }
 
+# pijul
+fn pj     [@a]{ e:pijul $@a }
+fn pa     [@a]{ e:pijul add $@a }
+fn pR     [@a]{ e:pijul record $@a }
+fn pp     [@a]{ e:pijul push $@a }
+
 # kakoune.cr
 fn k   [@a]{ e:kcr edit $@a }
 fn ks  [@a]{ e:kcr shell --session $@a }
@@ -110,21 +119,21 @@ fn K   [@a]{ e:kcr-fzf-shell $@a }
 fn KK  [@a]{ e:K --working-directory . $@a }
 
 ## Abbreviations
-edit:abbr['~c'] 	= '~/.config/'
-edit:abbr['~C'] 	= '~/src/capsules/'
-edit:abbr['~d'] 	= '~/usr/Documents/'
-edit:abbr['~D'] 	= '~/usr/Downloads/'
-edit:abbr['~k'] 	= '~/.config/kak/'
-edit:abbr['~mll'] = '~/usr/Music/music/all/lossless/'
-edit:abbr['~mly'] = '~/usr/Music/music/all/lossy'
-edit:abbr['~ma']	= '~/usr/Music/music/all/'
-edit:abbr['~mp']  = '~/usr/Music/music/playlists/'
-edit:abbr['~md']	= '~/usr/Music/music/downloads/'
-edit:abbr['~mu']	= '~/usr/Music/music/unorganized/'
-edit:abbr['~M']	= '~/usr/Music/music/'
-edit:abbr['~p'] 	= '~/usr/Pictures/'
-edit:abbr['~v'] 	= '~/usr/Videos/'
-edit:abbr['~w'] 	= '~/src/websites/'
+edit:abbr['~c'] 	= $E:XDG_CONFIG_HOME"/"
+edit:abbr['~C'] 	= "~/src/capsules/"
+edit:abbr['~d'] 	= "~/usr/doc/"
+edit:abbr['~D'] 	= "~/usr/dwn/"
+edit:abbr['~k'] 	= $E:XDG_CONFIG_HOME"/kak/"
+edit:abbr['~mll'] = "~/usr/muz/music/all/lossless/"
+edit:abbr['~mly'] = "~/usr/muz/music/all/lossy"
+edit:abbr['~ma']	= "~/usr/muz/music/all/"
+edit:abbr['~mp']  = "~/usr/muz/music/playlists/"
+edit:abbr['~md']	= "~/usr/muz/music/downloads/"
+edit:abbr['~mu']	= "~/usr/muz/music/unorganized/"
+edit:abbr['~M']	= "~/usr/muz/music/"
+edit:abbr['~p'] 	= "~/usr/pic/"
+edit:abbr['~v'] 	= "~/usr/vid/"
+edit:abbr['~w'] 	= "~/src/websites/"
 
 # Prompt
 edit:-prompt-eagerness = 10

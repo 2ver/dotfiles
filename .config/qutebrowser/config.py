@@ -96,8 +96,8 @@ c.tabs.last_close = "close"
 c.statusbar.show = "in-mode"
 c.statusbar.widgets = ["keypress", "url", "progress"]
 
-c.url.start_pages = ["~/.config/qutebrowser/startpage/index.html"]
-c.url.default_page = ("~/.config/qutebrowser/startpage/index.html")
+c.url.start_pages = [os.path.join(os.getenv("XDG_CONFIG_HOME"), "qutebrowser/startpage/index.html")]
+c.url.default_page = (os.path.join(os.getenv("XDG_CONFIG_HOME"), "qutebrowser/startpage/index.html"))
 
 c.prompt.radius = 40  # Rounder corners
 c.scrolling.smooth = True

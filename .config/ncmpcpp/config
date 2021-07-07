@@ -13,8 +13,8 @@ mpd_music_dir = "~/Music/music"
 
 # Behaviour
 # ─────────
-ncmpcpp_directory = "~/tmp/ncmpcpp"
-lyrics_directory = "~/tmp/lyrics"
+ncmpcpp_directory = "~/.cache/ncmpcpp"
+lyrics_directory = "~/.cache/lyrics"
 message_delay_time = 1
 playlist_disable_highlight_delay = 2
 autocenter_mode = "yes"

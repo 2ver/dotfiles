@@ -1,2 +1,2 @@
 #!/bin/sh
-rsync -uvrP --delete-after ~/websites/uveronunix/ root@uveronunix.com:/var/www/uveronunix
+rsync -uvrP --delete-after ~/src/websites/uveronunix/ root@uveronunix.com:/var/www/uveronunix

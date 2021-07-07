@@ -40,6 +40,7 @@ map   global goto   n       h           -docstring 'line begin'     # Move curso
 map   global goto   e       j           -docstring 'buffer bottom'  # Move cursor to end of file
 map   global goto   i       k           -docstring 'buffer top'     # Move cursor to beginning of file
 map   global goto   o       l           -docstring 'line end'       # Move cursor to end of line
+map   global goto   h       i
 
 # Switch macros to ^
 map   global normal ^       q                                       # Replay macro

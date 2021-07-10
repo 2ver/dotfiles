@@ -1,0 +1,3 @@
+feh -B black \
+--geometry 500x500 \
+--auto-zoom

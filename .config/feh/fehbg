@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/sbin/feh --no-fehbg --bg-fill --randomize --image-bg 'black' '/home/uver/usr/pic/Wallpapers/Amarena/Vida Loca.png' '/home/uver/usr/pic/Wallpapers/Amarena/Amarena.jpg'

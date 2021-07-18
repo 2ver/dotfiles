@@ -7,7 +7,8 @@ set-option global scrolloff 99,99                                             # 
 set-option global ui_options ncurses_assistant=off ncurses_status_on_top=true # Disable clippy
 set-option global autoreload yes                                              # Live reload
 set-option global writemethod replace                                         # Live reload method
-set-option global modelinefmt '{{mode_info}} {magenta}%val{bufname}{default} {green}%val{client}{default}/{yellow}%val{session}{default} {{context_info}}'
+# set-option global modelinefmt '{{mode_info}} {magenta}%val{bufname}{default} {cyan}❬%opt{filetype}❭ {red}%sh{ eval set -- "$kak_quoted_buflist"; for i do printf "●"; done } {green}%val{client}{default}/{yellow}%val{session}{default} {{context_info}}'
+set-option global modelinefmt '{{mode_info}} {magenta}%val{bufname}{default} {cyan}%sh{ eval set -- "$kak_quoted_buflist"; for i do printf "●"; done } {green}%val{client}{default}/{yellow}%val{session}{default} {{context_info}}'
 
 # Blank scratch buffer
 hook -group delete-scratch-message global BufCreate '\Q*scratch*' %{

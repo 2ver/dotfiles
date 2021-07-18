@@ -38,6 +38,16 @@ plug "Screwtapello/kakoune-mark-show" domain "gitlab.com" config %{
    map global user Z ': set-register ^<ret>' -docstring 'clear saved marks'
 }
 
+# Predict words based on previously typed text
+plug "Screwtapello/kakoune-predictive-text" domain "gitlab.com" config %{
+   hook global WinSetOption filetype=(markdown|org|plain) %{
+      predictive-text-enable
+      hook window -once WinSetOption filetype.* %{
+         predictive-text-disable
+      }
+   }
+}
+
 # Open file at last edit
 plug "Screwtapello/kakoune-state-save" domain "gitlab.com" config %{
    hook global KakBegin .* %{
@@ -69,7 +79,7 @@ plug "sawdust-and-diamonds/scrollbar.kak" do %{
 plug "andreyorst/smarttab.kak" defer smarttab %{
    set-option global softtabstop %opt{indentwidth}
 } config %{
-   hook global WinSetOption filetype=(c|cpp|css|elvish|haskell|html|ini|kak|lisp|markdown|python|rust|sxhkdrc|sh|toml|txt|yaml|xml) expandtab
+   hook global WinSetOption filetype=(c|cpp|css|elvish|haskell|html|ini|js|kak|lisp|markdown|plain|python|rust|sxhkdrc|sh|toml|yaml|xml) expandtab
    hook global WinSetOption filetype=(makefile) noexpandtab
 }
 

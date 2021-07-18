@@ -18,7 +18,11 @@ plug "alexherbo2/kakoune.cr" do %{
          kcr init kakoune
       }
 
-      # enable-auto-pairs
+      # Auto pairing
+      set-option global auto_pairs ( ) { } [ ] '"' '"' "'" "'" ` ` “ ” ‘ ’
+      hook global WinCreate .* %{
+         enable-auto-pairs
+      }
 
       # https://github.com/Parasrah/kitty.kak/blob/master/rc/kitty.kak#L5-L12
       define-command kitty-popup -params 1.. -shell-completion -docstring '

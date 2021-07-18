@@ -62,11 +62,12 @@ super + control + d
 
 # Screenshots
 # ───────────
+# , notify-send "Copying screen" && ss-copy-screen \
 {_,alt,control,shift,} + Print
    { notify-send "Copying selection" && ss-copy-sel \
-   , notify-send "Copying screen" && ss-copy-screen \
+   , ss-copy-screen && notify-send "Copying screen" \
    , notify-send "Saving selection" && ss-save-sel  \
-   , notify-send "Saving screen" && ss-save-screen  \
+   , ss-save-screen && notify-send "Saving screen"  \
    }
 
 # Used keys: [control,alt,shift] + PrtSc

@@ -70,6 +70,7 @@ E:MANPAGER = "kak-man-pager"
 E:EDITOR = "kcr edit"
 E:VISUAL = "kcr edit"
 E:SXHKD_SHELL = "elvish"
+# E:KAKOUNE_CONFIG_DIR = "src/kak-example"
 
 # E:XDG_CONFIG_HOME = $E:HOME"/cfg"
 # E:XDG_CACHE_HOME = $E:HOME"/tmp"
